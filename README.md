@@ -1,6 +1,5 @@
 
 ## Hey! I'm Maploop
-**I'm a 17-year-old with a passion for creating things! I'm mostly known for programming in Java and C# but I also do Web Development with Node.js and React**
 
 ### Sections:
 - [About Me](#about-me)
