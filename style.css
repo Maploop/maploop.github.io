@@ -382,7 +382,7 @@ footer {
 
   .card2 {
     width: 800px;
-    height: 800px;
+    height: 900px;
     background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
     border-radius: 20px;
     transition: all .3s;
@@ -394,7 +394,7 @@ footer {
    
    .card3 {
     width: 800px;
-    height: 800px;
+    height: 900px;
     background-color: #1a1a1a;
     border-radius: 10px;
     transition: all .2s;
