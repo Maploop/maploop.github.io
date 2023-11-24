@@ -7,6 +7,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="css/card.css">
     <link rel="icon" type="image/x-icon" href="assets/profile.png">
 
     <title>Maploop</title>
@@ -17,139 +19,175 @@
     <meta content="#43B581" data-react-helmet="true" name="theme-color" />
 </head>
 <body>
-    <div id="topbar">
-        <div class="logo">
-            <button class="firstbtn" onclick="window.location.href = '/#'">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span> Maploop
-              </button>
-        </div>
-        
-        <button class="btn firstbtn downalil" onclick="window.location.href = '/login'">
-            Log In
-        </button>
-
-        <br>
-        <br>
+    <div class="topnav" id="navbar">
+        <div onclick="mainPage()" id="lyla-logo" class="outlined-title myico"><span> MAPLOOP </span></div>
+      
+      
+      
+      <a class="buttonified" href="/resume">Resume</a>
+      <a href="#contact">Contact</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="javascript:void(0);" class="icon" onclick="responsiveNav()">
+        <i class="fa fa-bars"></i>
+      </a>
     </div>
 
-    <br>
-    <div id="aboutme-card" class="card left">
-        <div class="titlebar">
-            <span class="tite">• About Me!</span>
-          <span class="buttons">
-          <button class="minimize">
-                  <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="10.2" height="1"></rect></svg>
-              </button>
-          <button class="maximize">
-                  <svg viewBox="0 0 10 10"><path d="M0,0v10h10V0H0z M9,9H1V1h8V9z"></path></svg>
-              </button>
-          <button class="close" onclick="document.getElementById('aboutme-card').style.display = 'none'">
-                  <svg viewBox="0 0 10 10"><polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1"></polygon></svg>
-              </button>
-          </span>
-        </div>
-        <div class="cppcode">
-          <pre id="pre"><code><span class="s1">#include</span> <span class="s2">&lt;iostream&gt;</span>
-      using<span class="s3"> namespace </span>Maploop<span class="sc">;</span>
-      
-      <span class="s3">int</span> <span class="s2">main()</span> <span class="curlies">{</span>
-        <span class="s4">cout</span> <span class="s5">&lt;&lt;</span> <span class="s1">"Hi I'm Maploop!"</span></span><span class="sc">;</span>
-        <span class="s4">cout</span> <span class="s5">&lt;&lt;</span> <span class="s1">"Age: 17"</span></span><span class="sc">;</span>
-        <span class="s4">cout</span> <span class="s5">&lt;&lt;</span> <span class="s1">"Based in: Iran"</span></span><span class="sc">;</span>
-        <span class="s4">cout</span> <span class="s5">&lt;&lt;</span> <span class="s1">"Languages: Java, C#, C++, JS"</span></span><span class="sc">;</span>
-        <span class="s4">cout</span> <span class="s5">&lt;&lt;</span> <span class="s1">"Current Projects: Atlas, Syscow"</span></span><span class="sc">;</span>
+    <div class="bg-limiter"></div>
 
-        <span class="s6">return</span> 0<span class="sc">;</span>
-      
-      <span class="curlies">}</span>
-          </code></pre>
+    <div class="middle dropdownAnimation">
+        <h6 style="margin-left: -1%;">Hi, my name is</h6>
+        <h1 style="font-size: 80px;">Maploop!</h1>
+        <h1 style="opacity: 0.8;">I'm a software developer</h1>
+
+        <p>I'm a software engineer specializing in Game Development, Web Development, and I'm currently building / designing exceptional digital experiences.
+            Currently I'm focused on building, managing, and catering for a player experience at <a href="https://discord.gg/atlasmc">Atlas Network</a>.
+        </p>
+
+        <button onclick="window.open(`https://github.com/Maploop`)" class="download"><i class="fa-brands fa-github"></i> Visit My GitHub</button>
+    </div>
+
+    <div id="about" class="dropdownAnimation features-section">
+      <img class="align-right" src="assets/profile.png" alt="Image">
+      <h1>>_ About Me</h1>
+      <p>Hello! My name is Maploop and I enjoy creating things that live on the internet. My interest in software development started back in 2018 when I first started learning the Minecraft Spigot library — turns out hacking together a command using the Spigot library taught me alot about Java & Spigot!</p>
+      <p>Fast forward to today, I've had the privilage of 
+        <a href="https://trexmine.com">Working for the largest Minecraft server in Iran</a>,
+        <a>Managing my own server and dev team of over 10</a>,
+        <a href="https://github.com/Maploop/">Delivering 50+ freelance projects</a>, and
+        <a href="https://github.com/Maploop/">Building a 3D Game-Engine using DirectX</a>.
+        My main focus nowdays is building large-scale, inclusive projects and digital experiences with my development team at <a>Atlas Network</a> for both clients and players.
+      </p>
+      <p>I have also recently worked on a variety of <a href="https://github.com/Maploop/">open source projects</a> for use by both regular people & developers.</p>
+      <p>Here are a few technologies I’ve been working with recently:</p>
+      <p><i class="fa-solid fa-arrow-right"></i> Java <i class="fa-solid fa-arrow-right"></i> C++ <i class="fa-solid fa-arrow-right"></i> DirectX <i class="fa-solid fa-arrow-right"></i> Vulkan <i class="fa-solid fa-arrow-right"></i> Python<i class="fa-solid fa-arrow-right"></i> NodeJS <i class="fa-solid fa-arrow-right"></i> React</p>
+      </div>
+    </div>
+
+    <div class="icon-bar">
+      <a href="https://github.com/Maploop" class="facebook"><i class="fa-brands fa-github"></i></a>
+      <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+      <a href="https://instagram.com/best_rookie_ever" class="google"><i class="fa fa-instagram"></i></a>
+      <a href="https://linkedin.com/Maploop" class="linkedin"><i class="fa fa-linkedin"></i></a>
+      <a href="https://youtube.com/c/Maploop" class="youtube"><i class="fa fa-youtube"></i></a>
+    </div>
+
+    <!-- <div class="cards">
+        <div class="card">
+          <div class="card-header card-image">
+            <img src="assets/img-dev.avif">Developer Program Update</img>
+          </div>
+          <div class="card-body">
+            Our Developer program recently had an update to benefit programmers in usage of our API.
+          </div>
+          <div class="card-footer">
+            <div class="card-date">September 18, 2023</div>
+            <div class="card-comments"><i class="fas fa-comment"></i> 0</div>
+          </div>
+        </div>
+  
+  
+        <div class="card">
+          <div class="card-header card-image">
+            <img src="https://source.unsplash.com/">Web API Roadmap</img>
+          </div>
+          <div class="card-body">
+            Our WEB Api is in the works! Click to check out the roadmap.
+          </div>
+          <div class="card-footer">
+            <div class="card-date">September 18, 2023</div>
+            <div class="card-comments"><i class="fas fa-comment"></i> 0</div>
+          </div>
+        </div>
+      </div> -->
+
+      <div id="experience" style="margin-top: 500px" class="dropdownAnimation features-section">
+        <h1>>_ Where I've worked</h1>
+        <div class="cards">
+  
+          <div class="card">
+            <p class="card-title" style="color:aqua">Lead Developer @ Atlas</p>
+            <p>February 2020 - Present</p>
+            <p class="card-body">
+              <a>>> Communicate and manage multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis</a>
+              <br> <br>
+              <a>>> Work with a variety of different languages, platforms, frameworks, and content management systems such as Java, JSP, JavaScript and Python</a>
+              <br> <br>
+              <a>>> Write modern, performant, maintainable code for a diverse array of client and internal projects</a>
+              <br> <br>
+              <a>>> Contributed extensively to AtlasRedisAPI, a Java library aimed to make utilizing Redis messaging systems easier</a>
+              <br> <br>
+            
+            
+            </p>
+          </div>
+          
+  
+          <div class="card">
+            <p class="card-title" style="color:aqua">Developer @ TrexMine</p>
+            <p>July 2020 - May 2021</p>
+            <p class="card-body">
+              <a>>> Handle MySQL database management</a>
+              <br> <br>
+              <a>>> Work with a variety of different languages, platforms, frameworks, and content management systems such as MySQL, Perodactyl</a>
+              <br> <br>
+              <a>>> Write modern, performant, maintainable code for a diverse array of client and internal projects</a>
+              <br> <br>
+              <a>>> Contributed extensively to TrexMine's custom BedWars plugin, fixing bugs and adding new features</a>
+              <br> <br>
+            
+            
+            </p>
+          </div>
+  
         </div>
       </div>
 
-      <div class="card2">
-        <div class="card3">
-            <div class="textincard">
-                <h3>Places I've worked:</h3>
-                <a>• </a><a class="no-deco1" href="https://discord.gg/atlasmc">Atlas Network</a> <a>[Jan. 2021 - Present] - Worked on the Best Commerical SkyBlock re-creation with a dev team
-                    of over 10 people as a Lead Developer; worked on maintaining the back-end library handling system through automatic compilation with GitHub, worked on the Back-End database
-                    system for the server using MongoDB and messaging pub/sub system with Redis.
-                </a>
-                <br>
-                <br>
-                <a>• </a><a class="no-deco1" href="https://trexmine.com">TrexMine</a> <a>[Jan. 2022 - Mar. 2022] - Worked on multiple large-scaled projects including
-                    a fully custom-made BedWars plugin.
-                </a>
-                <h3>Some of my creations: <a style="font-size: 14px">(Click to view details)</a></h3>
-                
-                <div class="dropdown"><a id="sb-recreation" class="bold title cursor-pointer"><i class="fa fa-eye"></i> SkyBlock Recreation</a>
-                    <div id="sb-recreation-dd" class="dropdown-content">
-                        The best commercial Hypixel SkyBlock Sandbox / Recreation currently available. Contains Gemstones, 70% of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests, Islands, Bazaar and just about everything else!
-                        <img width="300" height="200" src="assets/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png">
-                </div>
-                <div class="dropdown"><a id="dnum" class="bold title cursor-pointer"><i class="fa fa-eye"></i> Dnum Framework</a>
-                    <div id="dnum-dd" class="dropdown-content">
-                        A simple framework with pre-made libraries such as Commands, NPCs, Holograms, SignGUI, Packet Listener, GUI, etc.
-                        <button style="width: 100px" class="btn cursor-hand" onclick="window.location.href = 'https://github.com/maploop/DnumFramework'">Git</button>
-                    </div>
+    <div id="work" style="margin-top: 500px" class="dropdownAnimation features-section">
+      <h1>>_ Some of the things I've built</h1>
+      <div class="cards">
 
-                    <div class="dropdown"><a id="seyf" class="bold title cursor-pointer"><i class="fa fa-eye"></i> Seyf Music Bot</a>
-                        <div id="seyf-dd" class="dropdown-content">
-                            Seyf Bot is a discord bot I made using Node.js that plays music using the discord-player library. This bot was made for a friend's server originally but I decided to publish the code on GitHub for free use.
-                            <button style="width: 100px" class="btn cursor-hand" onclick="window.location.href = 'https://github.com/Maploop/siefbot'">Git</button></div>
-                <h3>My websites</h3>
-                This website is one of the many websites I've designed and maintained! Heres a list of my other websites:
-                <br>
-                <a>• <a class="no-deco1" href="https://maploop.github.io/LylaWebsite/">Lyla</a> - AI Assistant</a>
-                <br>
-                <a>• <a class="no-deco1" href="https://the-atlas.net">Atlas Network</a> - Full-stack website for Atlas Network</a>
-                            <h3>Contact Me</h3>
-                Wanna get in touch? Here are my socials! <br> <br>
-                <a href="https://instagram.com/ink.drinker.jay" class="no-deco sociallink fa-brands fa-instagram"></a>
-                <a href="https://twitter.com/jayfrong" class="no-deco sociallink fa-brands fa-twitter"></a>
-                <a href="https://discord.gg/atlasmc" class="no-deco sociallink fa-brands fa-discord"></a>
-                <a href="https://linkedin.com/maploop" class="no-deco sociallink fa-brands fa-linkedin"></a>
-                <a href="https://https://linktr.ee/maploop" class="no-deco sociallink fa-solid fa-link"></a>
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=maploop.val@gmail.com&su=&body=Hello!" class="no-deco sociallink fa-solid fa-envelope"></a>
+        <div class="card">
+          <div class="card-image"><img alt="Screenshot" src="assets/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png"></div>
+          <p class="card-title">SkyBlock Recreation</p>
+          <p class="card-body">
+            The best commercial Hypixel SkyBlock Sandbox / Recreation currently available. Contains Gemstones, 70% of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests, Islands, Bazaar and just about everything else!
+          </p>
         </div>
+        
+
+        <div class="card">
+          <div class="card-image"></div>
+          <p class="card-title">Dnum  Framework</p>
+          <p class="card-body">
+            A simple framework with pre-made libraries such as Commands, NPCs, Holograms, SignGUI, Packet Listener, GUI, etc. Check it out on
+            <a href="https://github.com/maploop/DnumFramework">Git</a>!
+          </p>
+        </div>
+
       </div>
+    </div>
 
-      <script>
-        const sbdropdown = document.getElementById("sb-recreation");
-        const dnumdropdown = document.getElementById("dnum");
-        const seyfdropdown = document.getElementById("seyf");
-        sbdropdown.onclick = () => {
-            if (document.getElementById("sb-recreation-dd").style.display == '') {
-                sbdropdown.innerHTML = '<i class="fa fa-eye-slash"></i> SkyBlock Recreation'
-                document.getElementById("sb-recreation-dd").style.display = 'flex';
-            } else {
-                sbdropdown.innerHTML = '<i class="fa fa-eye"></i> SkyBlock Recreation'
-                document.getElementById("sb-recreation-dd").style.display = '';
-            }
-        }
+    <div id="contact" style="margin-top: 500px" class="dropdownAnimation features-section middle">
+      <h1>>_ Get in touch</h1>
+      <p>
+        Whether it's for an opportunity, a question, or a freelance request, my inbox is always open. Even if you just want to say hi, I’ll try my best to get back to you!
+      </p>
+      <button class="download"><i class="fa-solid fa-hand-wave"></i> Say Hello!</button>
+    </div>
 
-        dnum.onclick = () => {
-            if (document.getElementById("dnum-dd").style.display == '') {
-                dnum.innerHTML = '<i class="fa fa-eye-slash"></i> Dnum Framework'
-                document.getElementById("dnum-dd").style.display = 'flex';
-            } else {
-                dnum.innerHTML = '<i class="fa fa-eye"></i> Dnum Framework'
-                document.getElementById("dnum-dd").style.display = '';
-            }
-        }
+    <div class="icon-bar">
+      <a href="https://github.com/Maploop" class="facebook"><i class="fa-brands fa-github"></i></a>
+      <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+      <a href="https://instagram.com/best_rookie_ever" class="google"><i class="fa fa-instagram"></i></a>
+      <a href="https://linkedin.com/Maploop" class="linkedin"><i class="fa fa-linkedin"></i></a>
+      <a href="https://youtube.com/c/Maploop" class="youtube"><i class="fa fa-youtube"></i></a>
+    </div>
 
-        seyfdropdown.onclick = () => {
-            if (document.getElementById("seyf-dd").style.display == '') {
-                seyfdropdown.innerHTML = '<i class="fa fa-eye-slash"></i> Seyf Music Bot'
-                document.getElementById("seyf-dd").style.display = 'flex';
-            } else {
-                seyfdropdown.innerHTML = '<i class="fa fa-eye"></i> Seyf Music Bot'
-                document.getElementById("seyf-dd").style.display = '';
-            }
-        }
-      </script>
+    <!-- <div onclick="mainPage()" id="lyla-logo" class="outlined-title"><span> L Y L A </span></div> -->
+
+    <script src="script.js"></script>
       <script src="https://kit.fontawesome.com/19dfeda7d2.js" crossorigin="anonymous"></script>
 </body>
 </html>
