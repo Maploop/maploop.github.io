@@ -7,40 +7,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form class="form">
-    
-        <div class="flex">
-            <label>
-                <input required="" placeholder="" type="text" class="input">
-                <span>first name</span>
-            </label>
-    
-            <label>
-                <input required="" placeholder="" type="text" class="input">
-                <span>last name</span>
-            </label>
-        </div>  
-                
-        <label>
-            <input required="" placeholder="" type="email" class="input">
-            <span>email</span>
-        </label> 
-            
-        <label>
-            <input required="" type="tel" placeholder="" class="input">
-            <span>contact number</span>
-        </label>
-        <label>
-            <textarea required="" rows="3" placeholder="" class="input01"></textarea>
-            <span>message</span>
-        </label>
-        
-        <button class="fancy" href="#">
-          <span class="top-key"></span>
-          <span class="text">submit</span>
-          <span class="bottom-key-1"></span>
-          <span class="bottom-key-2"></span>
-        </button>
-    </form>
+    <div class="form-container">
+        <form class="form">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input required="" name="name" id="name" type="text">
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input required="" name="email" id="email" type="text">
+          </div>
+          <div class="form-group">
+            <label for="textarea">Message</label>
+            <textarea required="" cols="50" rows="10" id="textarea" name="textarea"></textarea>
+          </div>
+          <button id="submitbtn" type="submit" class="form-submit-btn">Submit</button>
+          <a id="success">Your message was sent to Maploop!</a>
+        </form>
+      </div>
+
+      <script src="sc.js"></script>
 </body>
 </html>
