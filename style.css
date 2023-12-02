@@ -90,7 +90,7 @@ body {
 
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: black;
+  background-color: transparent;
   overflow: hidden;
   width: 100.5%;
   
@@ -112,6 +112,7 @@ body {
   margin-top: 1%;
   margin-left: 1%;
   transition: 0.4s;
+  cursor: pointer;
   }
 
 .topnav .navbarleft {
