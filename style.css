@@ -329,7 +329,6 @@ body {
 .middle h1 {
   color: #f1f1f1;
   font-size: 48px;
-  /* text-shadow: 2px 2px #000000; */
 }
 
 .middle h6 {
@@ -466,9 +465,9 @@ background: #2c2c2c;
 }
 
 .cards {
-padding: 2rem;
+padding: 1rem;
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 gap: 1rem;
 align-items: flex-start;
 z-index: 2;
@@ -558,6 +557,7 @@ position: relative;
 text-align: left;
 margin-left: auto;
 height: 500px;
+max-height: 900px;
 }
 
 .features-section p {
