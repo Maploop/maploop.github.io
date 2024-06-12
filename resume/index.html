@@ -2,10 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maploop RESUME</title>
+    <link rel="stylesheet" href="cleria.css">
+    <link rel="icon" type="image" href="../assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Resume - Maploop</title>
 </head>
 <body>
-    <h1>403; FORBIDDEN</h1>
+
+    <div id="about">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="userInfo">
+            <img src="../assets/warning.png" width="100">
+            <h1 class="yellow">NOTICE!</h1>
+            <h3>Maploop's resume is only availble to authorized personnel.</h2>
+            <h4 class="gray">If you are an emplyer you are most likely to already have access to the document.</h4>
+            <h4 class="gray"></h4>
+            <br>
+            <button onclick="redirect('')" class="btn success"><i class="fa-solid fa-right-from-bracket"></i> Proceed</button>
+        </div>
+    </div>
+
+    <script>
+        function redirect(loc) {
+            window.location.href = "https://docs.google.com/document/d/1j9TtCaOtk652Lgn42HguPjNdFLD1ntrBVR-HHWFIPuY/edit?usp=sharing" + loc;
+        }
+    </script>
 </body>
 </html>
