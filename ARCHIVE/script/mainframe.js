@@ -1,5 +1,14 @@
+const parameters = new URLSearchParams(window.location.search);
+const preset_section = parameters.get("section");
+
 var selected_section = "HOME";
 var navigation_bar_id = "navigation_bar";
+
+// UPDATE SELECTED SECTION ON LOAD IN CASE THERE IS A DIFFERENT SELECTION!
+onload = () => {
+  if (preset_section)
+    select_section(preset_section); 
+};
 
 let nav_buttons = document.getElementById(navigation_bar_id).children;
 for (var i = 0; i < nav_buttons.length; i++) {
@@ -7,8 +16,7 @@ for (var i = 0; i < nav_buttons.length; i++) {
   
   let sec_id = button.id.split('_')[2];
   
-  if (!sec_id || sec_id === "ignore_me") continue;
-  console.log('hello')
+  if (!sec_id || sec_id === "ignore_me") continue; 
 
   console.log(`[INFO] INITIATED NAVIGATION BAR BUTTON FOR SECTION "${sec_id}"`);
   button.onclick = () => {
@@ -30,5 +38,10 @@ function select_section(section) {
   document.getElementById(selected_section).classList.remove("hide");
   document.getElementById("nav_button_" + selected_section).classList.add("selected");
 
-  window.scrollTo(0,0);
+  window.scrollTo(0,0); 
+  update_page_url(section);
+}
+
+function update_page_url(sectionName) {
+  window.history.pushState("filler", document.title, `?section=${sectionName}`);
 }
