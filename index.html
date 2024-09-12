@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="ARCHIVE/cyberpunk.css">
+    <link rel="stylesheet" href="ARCHIVE/self.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="css/card.css">
+    
     <link rel="icon" type="image/x-icon" href="assets/profile.png">
 
     <title>Maploop</title>
@@ -19,198 +21,253 @@
     <meta content="#43B581" data-react-helmet="true" name="theme-color" />
 </head>
 <body>
-    <div class="topnav" id="navbar">
-        <div onclick="mainPage()" id="lyla-logo" class="outlined-title myico"><span> Maploop </span></div>
-      
-      
-      
-      <a class="buttonified" href="/resume">Resume</a>
-      <a onclick="ScrollToView('contact')">Contact</a>
-      <a href="/contract/">Commissions</a>
-      <a onclick="ScrollToView('work')">Work</a>
-      <a onclick="ScrollToView('experience')">Experience</a>
-      <a onclick="ScrollToView('projects')">Active Projects</a>
-      <a onclick="ScrollToView('about')">About</a>
-      <a href="javascript:void(0);" class="icon" onclick="responsiveNav()">
-        <i class="fa fa-bars"></i>
-      </a>
+    <div class="row head cyber-razor-bottom bg-dark">
+        <div class="col-1"></div>
+        <a class="f-x3-0 col-4 cyberpunk-font-og cyber-a fg-red" href="https://github.com/Maploop">M     A     P     L     O     O     P</a>
+
+        
     </div>
 
-    <div class="bg-limiter"></div>
+    <div class="ml-30 mt-10 row navigation" id="navigation_bar">
+        <button onclick="window.open('https://github.com/Maploop')" id="ignore_me" class="col-2 cyber-button fg-white bg-red">
+            Maploop PORTFOLIO
+            <span id="ignore_me" class="glitchtext">Edgy</span>
+            <span id="ignore_me" class="tag">4C</span>
+        </button>
 
-    <div class="middle dropdownAnimation">
-        <h6 style="margin-left: -1%;">Hi, my name is</h6>
-        <h1 style="font-size: 80px;">Maploop</h1>
-        <h1 style="opacity: 0.8; margin-top: -50px;">Software Developer</h1>
+        <button id="nav_button_HOME" class="col-2 oxanium-font ml-half f-x1-6 square-button fg-white bg-dark selected">
+            Home  
+        </button>
 
-        <p>I'm a software engineer specializing in Game Development, Web Development, and I'm currently building / designing exceptional digital experiences.
-            Currently I'm focused on building, managing, and catering for a player experience at <a href="https://discord.gg/atlasmc">Atlas Network</a>.
-        </p>
+        <button id="nav_button_ABOUT" class="col-2 oxanium-font ml-half f-x1-6 square-button fg-white bg-dark">
+            About
 
-        <button onclick="window.open(`https://github.com/Maploop`)" class="download"><i class="fa-brands fa-github"></i> Visit My GitHub</button>
+        </button>
+
+        <button id="nav_button_PROJECTS" class="col-2 oxanium-font ml-half f-x1-6 square-button fg-white bg-dark">
+            Projects
+
+        </button>
+
+        <button id="nav_button_EXP" class="col-2 oxanium-font ml-half f-x1-6 square-button fg-white bg-dark">
+            Experience
+
+        </button>
     </div>
 
-    <div id="about" class="dropdownAnimation features-section">
-      <img class="align-right mypic" src="assets/profile.png" alt="Image">
-      <h1><i class="fa-solid fa-link goodcolor"></i> About Me</h1>
-      <p>Hello! My name is Maploop and I enjoy creating things that live on the internet. My interest in software development started back in 2018 when I first started learning the Minecraft Spigot library — turns out hacking together a command using the Spigot library taught me alot about Java & Spigot!</p>
-      <p>Fast forward to today, I've had the privilage of 
-        <a href="https://trexmine.com">Working for the largest Minecraft server in Iran</a>,
-        <a>Managing my own server and dev team of over 10</a>,
-        <a href="https://github.com/Maploop/">Delivering 50+ freelance projects</a>, and
-        <a href="https://github.com/Maploop/">Building a 3D Game-Engine using DirectX</a>.
-        My main focus nowdays is building large-scale, inclusive projects and digital experiences with my development team at <a>Atlas Network</a> for both clients and players.
-      </p>
-      <p>I have also recently worked on a variety of <a href="https://github.com/Maploop/">open source projects</a> for use by both regular people & developers.</p>
-      <p>Here are a few technologies I’ve been working with recently:</p>
-      <br><br>
-      <div class="icons">
-        <img draggable="false" class="myicon" title="Java" src="assets/icons8-java.svg">
-        <img draggable="false" class="myicon" title="C++" src="assets/icons8-c.svg">
-        <img draggable="false" class="myicon" title="Microsoft DirectX" src="assets/directx.svg">
-        <img draggable="false" class="myicon" title="Vulkan 3D Library" src="assets/vulkan-svgrepo-com.svg">
-        <img draggable="false" class="myicon" title="OpenGL & GLFW" src="assets/opengl-svgrepo-com.svg">
-        <img draggable="false" class="myicon" title="Python" src="assets/icons8-python.svg">
-        <img draggable="false" class="myicon" title="NodeJS" src="assets/icons8-nodejs.svg">
-        <img draggable="false" class="myicon" title="ReactJS" src="assets/icons8-react-120.svg">
-      </div>
-      </div>
-    </div>
+   <div class="row mt-5">
+       <div class="col-1"></div>
+       <div class="col-12 line cyber-razo-top bg-red">
 
-    <div id="projects" style="margin-top: 500px; height: 900px" class="dropdownAnimation features-section">
-      <h1><i class="fa-solid fa-link goodcolor"></i> My current projects</h1>
-      <div class="cards">
+       </div>
+       <div class="col-1"></div>
+   </div> 
 
-        <div class="card">
-          <div class="card-image"><img alt="Screenshot" title="Click to enlarge" onclick="window.open('assets/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png')" src="assets/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png"></div>
-          <p class="card-title">Atlas Network</p>
-          <p class="card-body">
-              My largest and longest project to-date and one of if not the best active recreation of Hypixel Skyblock with a community of 9,000+ members.
-            <br><br>
-            <button onclick="window.open('https://discord.gg/atlasmc')" class="download"><i class="fas fa-external-link"></i> Community</button>
-          </p>
+    <div class="ml-30 mt-5 row sec-1" id="HOME">
+        <div class="col-4"></div>
+        <div class="col-12"> 
+            <h1 class="fg-white">Hi, my name is</h1>
+            <div class="desc ml-10">
+                <span class="f-x3-1 oxanium-font fg-cyan">Maploop</span>
+                <br>
+                <span class="f-x2-1 oxanium-font fg-dark">> Software Developer</span>
+                <br>
+                <p class="mw-45 f-x1-2">I'm a software engineer specializing in Game 
+                Development, Web Development, and I'm currently building / designing exceptional digital experiences.
+                Currently I'm focused on building, managing, and catering for a player experience at <a href="https://discord.gg/atlasmc" class="cyber-a">Atlas Network</a>.</p>
+                <button onclick="window.open('https://github.com/Maploop')" class="cyber-button fg-white bg-red">
+                    My GitHub
+                    <span class="glitchtext">Edgy</span>
+                    <span class="tag">4C</span>
+                </button>
+            </div>
+                        
+            
+            
         </div>
-
-        <div class="card">
-          <div class="card-image"><img alt="Screenshot" title="Click to enlarge" onclick="window.open('https://github.com/Maploop/EFlame/assets/76199586/4680e148-eef2-4346-855b-7607d7585ebe')" src="https://github.com/Maploop/EFlame/assets/76199586/4680e148-eef2-4346-855b-7607d7585ebe"></div>
-          <p class="card-title">EFlame Engine</p>
-          <p class="card-body">
-              A Simple OpenGL game engine which I intend to use as a framework to practice computer physics in. Or maybe turn into a fully fledged engine who knows!
-            <br><br>
-            <button onclick="window.open('https://github.com/maploop/EFlame')" class="download"><i class="fas fa-external-link"></i> GitHub</button>
-          </p>
-        </div>
-
-      </div>
     </div>
 
-    <div class="icon-bar">
-      <a href="https://github.com/Maploop" class="facebook"><i class="fa-brands fa-github"></i></a>
-      <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-      <a href="https://instagram.com/best_rookie_ever" class="google"><i class="fa fa-instagram"></i></a>
-      <a href="https://linkedin.com/Maploop" class="linkedin"><i class="fa fa-linkedin"></i></a>
-      <a href="https://youtube.com/c/Maploop" class="youtube"><i class="fa fa-youtube"></i></a>
-    </div>
-      <div id="experience" style="margin-top: 500px" class="dropdownAnimation features-section">
-        <h1><i class="fa-solid fa-link goodcolor"></i> Where I've worked</h1>
-        <div class="cards">
-  
-          <div class="card">
-            <p class="card-title" style="color:aqua">Lead Developer @ Atlas</p>
-            <p>February 2020 - Present</p>
-            <p class="card-body big">
-              <a><i class='fas fa-caret-right'></i> Communicate and manage multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis</a>
-              <br> <br>
-              <a><i class='fas fa-caret-right'></i> Work with a variety of different languages, platforms, frameworks, and content management systems such as Java, JSP, JavaScript and Python</a>
-              <br> <br>
-              <a><i class='fas fa-caret-right'></i> Write modern, performant, maintainable code for a diverse array of client and internal projects</a>
-              <br> <br>
-              <a><i class='fas fa-caret-right'></i> Contributed extensively to AtlasRedisAPI, a Java library aimed to make utilizing Redis messaging systems easier</a>
-              <br> <br>
-              <br><br>
-              <button onclick="window.open('https://atlas-mc.net')" class="download"><i class="fas fa-external-link"></i> Atlas Website</button>
-            </p>
-          </div>
-          
-  
-          <div class="card">
-            <p class="card-title" style="color:aqua">Developer @ TrexMine</p>
-            <p>July 2020 - May 2021</p>
-            <p class="card-body big">
-              <a><i class='fas fa-caret-right'></i> Handle MySQL database management</a>
-              <br> <br>
-              <a><i class='fas fa-caret-right'></i> Work with a variety of different languages, platforms, frameworks, and content management systems such as MySQL, Perodactyl</a>
-              <br> <br>
-              <a><i class='fas fa-caret-right'></i> Write modern, performant, maintainable code for a diverse array of client and internal projects</a>
-              <br> <br>
-              <a><i class='fas fa-caret-right'></i> Contributed extensively to TrexMine's custom BedWars plugin, fixing bugs and adding new features</a>
-              <br> <br>
-              <br><br><br><br>
-              <button onclick="window.open('https://trexmine.com')" class="download"><i class="fas fa-external-link"></i> TrexMine Website</button>
-            </p>
-          </div>
-  
+    <div class="ml-30 mt-5 row sec-2 hide" id="ABOUT">
+        <div class=""></div>
+        <div class="col-12">
+            <span class="f-x3-1 oxanium-font fg-cyan"># About Me</span>
+            <br>
+            <span class="f-x1-2 oxanium-font fg-dark">> Last Updated: 9/12/24</span>
+            <br>
+            <p class="mw-45 f-x1-2">Hello! My name is Maploop and I enjoy creating things that live on the internet.
+            My interest in software development started back in 2018 when I first started learning the Minecraft Spigot library 
+            — turns out hacking together a 
+            command using the Spigot library taught me alot about Java & Spigot!</p>
+            <p class="mw-45 f-x1-2">Fast forward to today, I've had the privilage 
+            of <a class="cyber-a" href="https://trexmine.com">Working for the largest Minecraft server in Iran</a>, 
+            <a class="cyber-a" href="https://discord.gg/atlasmc">Managing my own server and dev team of over 10</a>, 
+            <a class="cyber-a" href="https://discord.gg/devroom">Delivering 50+ freelance projects</a>, and 
+            <a class="cyber-a" href="https://github.com/Maploop/EFlame">Building a 3D Game-Engine using DirectX</a>. My main focus nowdays
+            is building large-scale, inclusive projects and digital experiences with 
+            my development team at Atlas Network for both clients and players.</p>
+            <p class="mw-45 f-x1-2">I have also recently worked on a 
+            <a class="cyber-a" href="https://github.com/Maploop">variety of open source projects</a> 
+            for use by both regular people & developers.</p>
+
+            <p class="mw-45 f-x1-2">Here are a few technologies I’ve been working with recently:</p>
+
+            <div class="row">
+               <img width="20" class="col-1 bg-blue" src="./ARCHIVE/icon/icons8-java.svg" alt="Java">
+               <img width="20" class="col-1 bg-blue" src="./ARCHIVE/icon/icons8-c.svg" alt="C">
+               <img width="20" class="col-1 bg-blue" src="./ARCHIVE/icon/icons8-nodejs.svg" alt="Node JS">
+               <img width="20" class="col-1 bg-blue" src="./ARCHIVE/icon/icons8-react-120.svg" alt="React">
+               <img width="20" class="col-1 bg-blue" src="./ARCHIVE/icon/icons8-python.svg" alt="Python">
+               <img width="20" class="col-1 bg-blue" src="./ARCHIVE/icon/vulkan-svgrepo-com.svg" alt="Vulkan">
+               <img width="20" class="col-1 bg-blue" src="./ARCHIVE/icon/opengl-svgrepo-com.svg" alt="OpenGL">
+            </div>
         </div>
-      </div>
-
-    <div id="work" style="margin-top: 500px; height: 900px" class="dropdownAnimation features-section">
-      <h1><i class="fa-solid fa-link goodcolor"></i> Some of the things I've built</h1>
-      <div class="cards">
-
-        <div class="card">
-          <div class="card-image"><img alt="Screenshot" title="Click to enlarge" onclick="window.open('assets/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png')" src="assets/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png"></div>
-          <p class="card-title">SkyBlock Recreation</p>
-          <p class="card-body">
-            The best commercial Hypixel SkyBlock Sandbox / Recreation currently available. Contains Gemstones, 70% of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests, Islands, Bazaar and just about everything else!
-            <br><br>
-            <button onclick="window.open('https://github.com/AtlasNetworkDev/')" class="download"><i class="fas fa-external-link"></i> Check it out</button>
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-image"><img alt="Screenshot" title="Click to enlarge" onclick="window.open('assets/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877b.png')" src="assets/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877b.png"></div>
-          <p class="card-title">Reimagined Engine</p>
-          <p class="card-body">
-            Graphics Engine (soon to be game engine) created with Microsoft DirectX and OpenGL. With features like Anti-Aliasing, Accurate light reflection, semi-editor UI, Multiple cameras on scene, etc.
-            Check out the full project on Github for more info
-            <br><br>
-            <button onclick="window.open('https://github.com/Maploop/ReimaginedEngine/')" class="download"><i class="fas fa-external-link"></i> Check it out</button>
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-image"><div class="card-image"><img alt="Screenshot" title="Click to enlarge" onclick="window.open('assets/dnumframework.png')" src="assets/dnumframework.png"></div></div>
-          <p class="card-title">Dnum  Framework</p>
-          <p class="card-body">
-            A simple framework with pre-made libraries such as Commands, NPCs, Holograms, SignGUI, Packet Listener, GUI, etc. Check it out on
-            git!
-            <br><br><br><br>
-            <button onclick="window.open('https://github.com/maploop/DnumFramework')" class="download"><i class="fas fa-external-link"></i> Check it out</button>
-          </p>
-        </div>
-
-      </div>
     </div>
 
-    <div id="contact" style="margin-top: 500px" class="dropdownAnimation features-section middle">
-      <h1><i class="fa-solid fa-link goodcolor"></i> Get in touch</h1>
-      <p>
-        Whether it's for an opportunity, a question, or a freelance request, my inbox is always open. Even if you just want to say hi, I’ll try my best to get back to you!
-      </p>
-      <button onclick="window.location.href = '/contact';" class="download"><i class="fa-solid fa-hand-sparkles"></i> Say Hello!</button>
+    <div class="ml-30 mt-5 row sec-1 hide" id="PROJECTS"> 
+        <div class="col-12"> 
+            <span class="f-x3-1 oxanium-font fg-cyan"># My Current Projects</span>
+            <br>
+            <span class="f-x1-2 oxanium-font fg-dark">> Last Updated: 9/12/24</span>
+            <br>
+            
+
+            <div class="mt-5 row cards">
+
+               <div class="col-5 cyber-tile-big bg-dark fg-white">
+                   <img src="./ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png" alt="Screenshot">
+                   <label class="f-x2-1 oxanium-font fg-cyan">Atlas Network</label>
+                   <label class="f-x1-1 fg-white">My largest and longest project to-date and one of if not the 
+                   best active recreation of Hypixel Skyblock with a community
+                   of 9,000+ members.</label>
+
+                   <button
+                       onclick="window.open('https://discord.gg/atlasmc')" 
+                       class="ml-3 mt-3 cyber-button bg-red fg-white">Community <span class="glitchtext">EDGY</span></button>
+               </div>
+                
+               <div class="col-5 ml-5 cyber-tile-big bg-dark fg-white">
+                   <img src="./ARCHIVE/image/340363236-4680e148-eef2-4346-855b-7607d7585ebe.png" alt="Screenshot">
+                   <label class="f-x2-1 oxanium-font fg-cyan">EFlame Engine</label>
+                   <label class="f-x1-1 fg-white">A Simple OpenGL game engine which I intend to
+                       use as a framework to practice computer physics in.</label>
+
+                   <button
+                       onclick="window.open('https://github.com/maploop/EFlame')" 
+                       class="ml-3 mt-3 cyber-button bg-red fg-white">GitHub <span class="glitchtext">EDGY</span></button>
+               </div>
+            </div> 
+           
+            <div class="mt-5"></div>
+            <span class="f-x3-1 oxanium-font fg-cyan"># My Finished Projects</span>
+            <div class="mt-5 row">
+
+                <div class="col-3 ml-5 cyber-tile-big bg-dark fg-white">
+                    <img src="./ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png" alt="Screenshot">
+                    <label class="f-x2-1 oxanium-font fg-cyan">SkyBlock Recreation</label>
+                    <label class="f-x1-1 fg-white">The best commercial Hypixel SkyBlock
+                        Sandbox / Recreation currently available. Contains Gemstones, 70%
+                        of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, 
+                        Quests, Islands, Bazaar and just about everything else!</label>
+
+                    <button
+                        onclick="window.open('https://discord.gg/atlasmc')" 
+                        class="ml-3 mt-3 cyber-button bg-red fg-white">Check it out<span class="glitchtext">EDGY</span></button>
+
+               </div>
+               
+               <div class="col-3 ml-5 cyber-tile-big bg-dark fg-white">
+                    <img src="./ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877b.png" alt="Screenshot">
+                    <label class="f-x2-1 oxanium-font fg-cyan">Reimagined Engine</label>
+                    <label class="f-x1-1 fg-white">Graphics Engine (soon to be game engine) created with 
+                        Microsoft DirectX and OpenGL. With features like Anti-Aliasing, Accurate light reflection,
+                        semi-editor UI, Multiple cameras on 
+                        scene, etc. Check out the full project on Github for more info</label>
+
+                    <button
+                        onclick="window.open('https://github.com/maploop/ReimaginedEngine')" 
+                        class="ml-3 mt-3 cyber-button bg-red fg-white">Check it out<span class="glitchtext">EDGY</span></button>
+
+               </div>
+
+               <div class="col-3 ml-5 cyber-tile-big bg-dark fg-white">
+                    <img src="./ARCHIVE/image/dnumframework.png" alt="Screenshot">
+                    <label class="f-x2-1 oxanium-font fg-cyan">Dnum Framework</label>
+                    <label class="f-x1-1 fg-white">A simple framework with pre-made libraries such as 
+                        Commands, NPCs, Holograms, SignGUI, Packet Listener, GUI, etc. 
+                        Check it out on git!</label>
+
+                    <button
+                        onclick="window.open('https://github.com/maploop/DnumFramework')" 
+                        class="ml-3 mt-3 cyber-button bg-red fg-white">Check it out<span class="glitchtext">EDGY</span></button>
+
+               </div>
+
+            </div> 
+        </div>
     </div>
 
-    <div class="icon-bar">
-      <a href="https://github.com/Maploop" class="facebook"><i class="fa-brands fa-github"></i></a>
-      <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-      <a href="https://instagram.com/best_rookie_ever" class="google"><i class="fa fa-instagram"></i></a>
-      <a href="https://linkedin.com/Maploop" class="linkedin"><i class="fa fa-linkedin"></i></a>
-      <a href="https://youtube.com/c/Maploop" class="youtube"><i class="fa fa-youtube"></i></a>
+    <div class="ml-30 mt-5 row sec-5 hide" id="EXP">
+        
+        <div class="col-12">  
+            <div class="desc ml-10">
+                <span class="f-x3-1 oxanium-font fg-cyan"># Where I've Worked</span>
+                <br>
+                <span class="f-x1-2 oxanium-font fg-dark">> Last Updated: 9/12/24</span> 
+                <br>
+                <div class="row mt-5">
+
+                   <div class="col-4 cyber-tile bg-dark">
+                       <label class="f-x2-1 oxanium-font fg-cyan">Atlas Network</label>
+                       <label class="f-x1-2 oxanium-font fg-blue">> February 2020 - Present</label>
+                       <label class="f-x1-1 fg-white">- Communicate and manage multi-disciplinary
+                           teams of engineers, designers, producers, and clients on a daily basis</label>
+                       <label class="f-x1-1 fg-white">- Work with a variety of different
+                           languages, platforms, frameworks, and content management 
+                           systems such as Java, JSP, JavaScript and Python</label>
+                       <label class="f-x1-1 fg-white">- Contributed extensively to AtlasRedisAPI, a Java 
+                           library aimed to make utilizing Redis messaging systems easier</label>
+                       <label class="f-x1-1 fg-white">- Write modern, performant, maintainable code for a diverse array of client 
+                           and internal projects</label>
+
+                       <button 
+                              onclick="window.open('https://atlasmc.com')"
+
+                           class="mt-5 ml-10 cyber-button bg-red fg-white">Atlas Website <span class="glitchtext">E</span></button>
+                   </div> 
+
+                   <div class="col-4 ml-5 cyber-tile bg-dark">
+                       <label class="f-x2-1 oxanium-font fg-cyan">TrexMine</label>
+                       <label class="f-x1-2 oxanium-font fg-blue">> July 2020 - May 2021</label>
+                       <label class="f-x1-1 fg-white">- Handle MySQL database management</label>
+                       <label class="f-x1-1 fg-white">- Work with a variety of different languages, platforms,
+                           frameworks, and content management systems such as MySQL, Perodactyl</label>
+                       <label class="f-x1-1 fg-white">- Write modern, performant, maintainable code for a 
+                           diverse array of client and internal projects</label>
+                       <label class="f-x1-1 fg-white">- Contributed extensively to TrexMine's custom BedWars plugin, 
+                           fixing bugs and adding new features</label>
+
+                       <button 
+                            onclick="window.open('https://trexmine.com')"
+                           class="mt-10 ml-7 cyber-button bg-red fg-white">TrexMine Website <span class="glitchtext">E</span></button>
+                   </div>
+
+                </div> 
+            </div>
+                        
+            
+            
+        </div>
     </div>
 
-    <!-- <div onclick="mainPage()" id="lyla-logo" class="outlined-title"><span> L Y L A </span></div> -->
 
-    <script src="script.js"></script>
-      <script src="https://kit.fontawesome.com/19dfeda7d2.js" crossorigin="anonymous"></script>
+    <div class="mt-30 row foot cyber-razor-top bg-dark" id="footer">
+       <p class="ml-10 f-x1-5 fg-cyan">Copyright 2024 @ Maploop - 
+       Website inspired by the franchise Cyberpunk and the game Cyberpunk 2077 by 
+       <a class="cyber-a fg-red ac-yellow" href="https://cdprojektred.com">CD Projekt RED</a>.</p>
+       <p class="ml-10 f-x1-4 fg-white"></p>
+    </div>
+
+    <script src="ARCHIVE/script/mainframe.js"></script>
+    <script src="https://kit.fontawesome.com/19dfeda7d2.js" crossorigin="anonymous"></script>
 </body>
 </html>
