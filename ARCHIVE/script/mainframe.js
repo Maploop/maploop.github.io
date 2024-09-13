@@ -1,14 +1,13 @@
 const parameters = new URLSearchParams(window.location.search);
 const preset_section = parameters.get("section");
+const login_available = parameters.get("login") === 1;
 
 var selected_section = "HOME";
 var navigation_bar_id = "navigation_bar";
 
 // UPDATE SELECTED SECTION ON LOAD IN CASE THERE IS A DIFFERENT SELECTION!
-onload = () => {
-  if (preset_section)
-    select_section(preset_section); 
-};
+if (preset_section)
+    select_section(preset_section.toUpperCase()); 
 
 let nav_buttons = document.getElementById(navigation_bar_id).children;
 for (var i = 0; i < nav_buttons.length; i++) {
