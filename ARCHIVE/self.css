@@ -33,6 +33,8 @@ See index.html for usage.
  .vt-top{vertical-align: top;}
 
 
+ 
+canvas {display: block;}
 
  .container
  {
@@ -110,6 +112,7 @@ See index.html for usage.
   display: none;
  }
 
+ .mt-neg-10{margin-top: calc(var(--step) * -50) !important;}
  .mw-50{max-width: 50%; !important;}
  .mw-45{max-width: 45%; !important;}
 
