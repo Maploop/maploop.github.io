@@ -31,6 +31,14 @@ function select_section(section) {
   document.getElementById(selected_section).classList.add("hide");
   document.getElementById("nav_button_" + selected_section).classList.remove("selected");
 
+  if (section !== "HOME") {
+    document.getElementById("ignore_me_btn").classList.remove("bg-red");
+    document.getElementById("ignore_me_btn").classList.add("bg-dark");
+  } 
+  else if (section === "HOME") {
+    document.getElementById("ignore_me_btn").classList.remove("bg-dark");
+    document.getElementById("ignore_me_btn").classList.add("bg-red");
+  } 
   selected_section = section;
 
   console.log("[INFO] SHOWING SECTION " + selected_section);

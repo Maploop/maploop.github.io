@@ -12,6 +12,10 @@ See index.html for usage.
      --step: 8px;
      --col-padding: 8px;
  }
+
+.no-pointer {
+ cursor: default !important;
+}
  
  .fixed-bottom,
  .fixed-top
@@ -112,9 +116,11 @@ canvas {display: block;}
   display: none;
  }
 
+
+
  .mt-neg-10{margin-top: calc(var(--step) * -50) !important;}
- .mw-50{max-width: 50%; !important;}
- .mw-45{max-width: 45%; !important;}
+ .mw-50{max-width: 45%; !important;}
+ .mw-45{max-width: 60%; !important;}
 
  .ml-half{margin-left: calc(var(--step) * 0) !important;}
 
