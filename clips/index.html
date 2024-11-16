@@ -5,28 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://harry.x-dream-media.com/index.jsp">
+    <meta property="og:url" content="https://maploop.github.io/">
     <meta property="fb:app_id" content="217926898242066">
-    <meta property="og:video" content="http://harry.x-dream-media.com/test.m4v" />
     <meta property="og:video:width" content="640" />
     <meta property="og:video:height" content="426" />
     <meta property="og:video:type" content="application/mp4" />
-    <meta property="og:video" content="http://harry.x-dream-media.com/test.m4v" />
     <meta property="og:video:type" content="video/mp4" />
-    <meta property="og:video" content="http://harry.x-dream-media.com/test.m4v" />
     <meta property="og:video:type" content="text/html" />
-    <meta property="og:title" content="MeowSite">
-    <meta property="og:image" content="http://harry.x-dream-media.com/test.png"/>
-    <meta property="og:description"  content="Maploop clip center"/>
-    <meta property="og:site_name" content="MeowSite">
+    <meta property="og:title" content="§ MeowSite">
+    <meta property="og:description"  content="Maploop's Clip Viewer!"/>
+    <meta property="og:site_name" content="§ MeowSite">
 
-    <title>Clip</title>
+    <title>§ MeowSite • Maploop's Clip Viewer</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="map.css">
 </head>
 <body>
-    <h1 id="clip_title" class="ml-10">CLIP - </h1>
+    <div class="black row">
+        <div class="col-1"></div>
+        <div class="col-5">
+            <h1 class="blenderpro-font color-white">§ MeowSite • Maploop's Clip Viewer</h1>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-2"></div>
@@ -37,14 +38,16 @@
     </div>
     
     <div class="row">
-        <div class="col-3"></div>
+        <div class="col-2"></div>
+        <div class="col-5"><h2 id="clip_title" class="color-white">CLIP - </h2></div>
         <div class="col-5">
-            <button class="btn">Upload</button>
+            <button id="share_button" class="btn"><i class="fa-solid fa-share"></i> Share</button>
+            <button id="upload_button" class="btn color-green"><i class="fa-solid fa-upload"></i> Upload Clip</button>
+            <button id="download_button" class="btn color-yellow"><i class="fa-solid fa-download"></i> Download</button>
         </div>
-        <div class="col-1"></div>
     </div>
 
     <script src="back.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/ed041a3f03.js" crossorigin="anonymous"></script>
 </body>
 </html>

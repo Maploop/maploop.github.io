@@ -8,7 +8,8 @@ const authToken = urlParams.get("auth");
 if (!clipFormat) clipFormat = "mp4";
 
 // Just display the title of the clip on top
-document.getElementById('clip_title').innerHTML = clipID;
+document.getElementById('clip_title').innerHTML = "Clip: " + clipID;
+document.title = "§ MeowSite • " + clipID + " in " + clipFormat;
 
 console.log(`Fetching video with ID ${clipID}...`);
 console.log(`Auth token is ${authToken}`);
@@ -22,18 +23,25 @@ fetch(`https://api.github.com/repos/refiu/clips/contents/${clipID}.${clipFormat}
 }).then(response => response.json()).then(data => {
     video_url = data['download_url'];
     console.log("Video URL: " + video_url);
-    
-    // Update meta tags so the video can embed
-    update_meta_tags(video_url);
 
     // Finally we slot in the video URL
     document.getElementById("clip_player").src = video_url;
 });
 
-function update_meta_tags(url) {
-    document.querySelector('meta[property="og:video"]').setAttribute('content', url);
-    document.querySelector('meta[property="og:video:type"]').setAttribute('content', "application/" + clipFormat);
-    document.querySelector('meta[property="og:image"]').setAttribute('content', url);
-    document.querySelector('meta[property="og:description"]').setAttribute('content', clipID + " in " + clipFormat);
-    console.log("Meta tags updated");
+// Website pretty backend lmfao
+document.getElementById("share_button").onclick = (e) => {
+    navigator.clipboard.writeText(window.location.href);
+    document.getElementById("share_button").innerHTML = `<i class="fa-solid fa-check"></i> Copied`;
+};
+
+document.getElementById("share_button").onmouseleave = (e) => {
+    document.getElementById("share_button").innerHTML = `<i class="fa-solid fa-share"></i> Share`;
 }
+
+document.getElementById("upload_button").onclick = (e) => {
+    alert("Upload is not yet implemented.");
+};
+
+document.getElementById("download_button").onclick = (e) => {
+    alert("Download is not yet implemented.");
+};

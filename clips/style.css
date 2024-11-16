@@ -68,3 +68,32 @@ body
     filter: brightness(90%);
     cursor: pointer;
 }
+
+.color-green
+{
+    background-color: var(--green)
+}
+
+.color-white {
+    color: whitesmoke;
+}
+
+.color-yellow
+{
+    background-color: yellow;
+}
+
+.black
+{
+    background-color: black;
+}
+
+.oxanium-font
+{
+    font-family: Oxanium !important;
+}
+
+.blenderpro-font
+{
+    font-family: BlenderProBook !important;
+}
