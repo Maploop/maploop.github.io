@@ -116,11 +116,133 @@ canvas {display: block;}
   display: none;
  }
 
+ .navigation {
+  width: 89% !important;
+ }
 
+ .dropup-btn {  
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 0%;
+  text-align: center;
+  line-height: 40px;
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  background-color: var(--red);
+  cursor: pointer;
+ }
+
+ .dropup-btn:hover {
+  background-color: #555;
+  color: var(--cyan);
+  border: none;
+ }
+
+/* Sidebar styling */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: end;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.bold-textyo {
+  font-weight: bold;
+}
+
+#sidebar-socials {
+  display: none;
+  animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 20px 0;
+  animation: scaleUp .3s ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); /* Start below the original position */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* End at the normal position */
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.social-icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 0%;
+  text-align: center;
+  line-height: 40px;
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.social-icon:hover {
+  /* background-color: #555; */
+  /* color: var(--cyan); */
+  filter: brightness(0.5)
+}
+
+/* Colors for each social icon */
+.instagram {
+  background-color: #E1306C;
+  /* background-color: var(--dark); */
+}
+
+.linkedin {
+  background-color: #0077b5;
+}
+
+.spotify {
+  background-color: #1DB954;
+}
+
+.email {
+  background-color: #D44638;
+}
+
+/* Main content styling */
+.content {
+  margin-left: 80px; /* Space for the sidebar */
+  padding: 20px;
+  flex-grow: 1;
+}
 
  .mt-neg-10{margin-top: calc(var(--step) * -50) !important;}
- .mw-50{max-width: 45%; !important;}
- .mw-45{max-width: 60%; !important;}
+ .mw-50{max-width: 45% !important;}
+ .mw-45{max-width: 60% !important;}
 
  .ml-half{margin-left: calc(var(--step) * 0) !important;}
 
