@@ -35,6 +35,11 @@ fetch(
   .then((response) => response.json())
   .then((data) => {
     video_url = data["download_url"];
+<<<<<<< HEAD
+=======
+    var binaryString = atob(data["content"]);
+    var blob = new Blob([binaryString], { type: `video/${clipFormat}` });
+>>>>>>> e1769eb6b23f00552671eb237d3f59308f5e6739
     console.log("Video URL: " + video_url);
 
     // Finally we slot in the video URL
@@ -54,6 +59,7 @@ document.getElementById("share_button").onmouseleave = (e) => {
 };
 
 document.getElementById("upload_button").onclick = (e) => {
+<<<<<<< HEAD
   document.getElementById("upload_modal").style.display = "block";
 };
 
@@ -64,6 +70,9 @@ document.getElementById("submit_upload_button").onclick = (e) => {
 document.getElementById("modal_close_button").onclick = (e) => {
   document.getElementById("upload_modal").style.display = "none";
   document.getElementById("error_in_modal").style.display = "none";
+=======
+  alert("Upload is not yet implemented.");
+>>>>>>> e1769eb6b23f00552671eb237d3f59308f5e6739
 };
 
 document.getElementById("download_button").onclick = (e) => {

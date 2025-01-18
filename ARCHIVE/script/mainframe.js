@@ -52,3 +52,31 @@ function select_section(section) {
 function update_page_url(sectionName) {
   window.history.pushState("filler", document.title, `?section=${sectionName}`);
 }
+
+mouseInSidebar = false;
+document.getElementById('meowsidebar').onmouseenter = (e) => {
+  mouseInSidebar = true;
+}
+
+document.getElementById('meowsidebar').onmouseleave = (e) => {
+  mouseInSidebar = false;
+  if (document.getElementById("sidebar-socials").style.display === "block") {
+    document.getElementById("sidebar-socials").style.display = "none"
+    document.getElementById("open-shit-btn").style.backgroundColor = "var(--red)"
+    document.getElementById("open-shit-btn").style.color = "black"
+    document.getElementById("open-shit-btn").style.border = "none"
+  }
+}
+
+document.getElementById("open-shit-btn").onmouseenter = (e) => {
+  document.getElementById("sidebar-socials").style.display = "block"
+  document.getElementById("open-shit-btn").style.backgroundColor = "#555"
+  document.getElementById("open-shit-btn").style.color = "var(--cyan)"
+  document.getElementById("open-shit-btn").style.border = "2px solid var(--cyan)"
+}
+
+document.getElementById('open-shit-btn').onmouseleave = (e) => {
+  if (!mouseInSidebar) {
+    document.getElementById("sidebar-socials").style.display = "none"
+  }
+}
