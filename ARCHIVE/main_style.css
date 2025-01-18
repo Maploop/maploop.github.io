@@ -1,0 +1,578 @@
+:root {
+    --signature-blue: rgba(37, 99, 235, 1.0);
+    --bg-dark: #111111;
+    --signature-purple: rgba(194, 45, 179, 1.0);
+
+    --card-bg: #1e1e1e;
+    --text-color: #ffffff;
+    --link-color: #1e90ff;
+    --card-padding: 1rem;
+    --card-border-radius: 8px;
+    --card-gap: 1.5rem;
+}
+
+body {
+    background-color: var(--bg-dark);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #111111;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 1px solid #333333;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 2rem;
+}
+
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+.logo-svg:hover {
+    cursor: pointer;
+    fill: rgba(194, 45, 179, 1.0);
+}
+
+.logo-text:hover {
+    cursor: pointer;
+    color: rgba(37, 99, 235, 0.8);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    /* transition: all 0.2s ease; */
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    position: relative;
+}
+
+.nav-links a:hover {
+    background-color: #333333;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #2563eb;
+    border-radius: 2px;
+    transform: scaleX(0);
+    /* transition: transform 0.2s ease; */
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Banner Styles */
+.banner-container {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+    margin-top: 4rem;
+}
+
+.banner-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.banner-slide.active {
+    opacity: 1;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.banner-subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #2563eb;
+    margin-bottom: 1rem;
+}
+
+.banner-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.banner-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.banner-dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.banner-navigation {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+.banner-nav-button {
+    background: rgba(0, 0, 0, 0.0);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    /* border: none; */
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-radius: 6px;
+    /* transition: all 0.3s ease; */
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.banner-nav-button.active {
+    /* background: #2563eb; */
+    border-color: #2563eb;
+}
+
+.banner-nav-button:hover {
+    background: rgba(37, 99, 235, 0.1);
+    border-color: #2563eb;
+}
+
+@media (max-width: 768px) {
+    .banner-navigation {
+        flex-direction: column;
+        bottom: 1.5rem;
+        gap: 0.5rem;
+    }
+
+    .banner-nav-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .logo-container {
+        margin-right: 1rem;
+    }
+
+    .banner-heading {
+        font-size: 2.5rem;
+    }
+
+    .banner-subtitle {
+        font-size: 0.875rem;
+    }
+
+    .banner-description {
+        font-size: 1rem;
+    }
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    font-size: 0.9rem;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    border-top: 1px solid #333333;
+    margin-top: 10rem;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .footer-left {
+    margin-bottom: 5px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 15px;
+  }
+
+  .footer-links a {
+    color: #aaaaaa;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+
+  .back-to-top {
+    background: none;
+    border: none;
+    color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .back-to-top:hover {
+    background-color: #333333;
+  }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--card-gap);
+    width: 100%;
+    max-width: 1200px;
+    justify-content: center;
+}
+
+.sections {
+    margin-top: 100px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card p {
+    color: gray;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--card-border-radius);
+}
+
+.card a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.scroll-button {
+    position: absolute;
+    bottom: 1rem;  /* Position below the navigation buttons */
+    left: 50%;
+    transform: translateX(-50%);
+    background: transparent;
+    border: none;  /* Removed border */
+    color: white;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    z-index: 10;
+    opacity: 0.8;  /* Slightly transparent by default */
+}
+
+.scroll-button:hover {
+    opacity: 1;  /* Full opacity on hover */
+}
+
+.scroll-arrow {
+    animation: bounce 2s infinite;
+    transform: translateY(0);
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(5px);
+    }
+}
+
+.section-title {
+    color: whitesmoke;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.section-description {
+    color: whitesmoke;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+/* Update banner-navigation margin to create space for scroll button */
+.banner-navigation {
+    position: absolute;
+    bottom: 4rem;  /* Moved up to make room for scroll button */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .banner-navigation {
+        bottom: 5rem;  /* Adjusted for mobile */
+    }
+    
+    .scroll-button {
+        bottom: 1rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+.content-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .content-section {
+        padding: 3rem 1rem;
+    }
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    color: #1a1a1a;
+    font-size: 1.75rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.social-link:hover {
+    color: #2563eb;
+    transform: translateY(-3px);
+}
+
+/* Discord tooltip styles */
+.discord-tooltip {
+    position: relative;
+    cursor: pointer;
+}
+
+.discord-tooltip::after {
+    content: "Add me: @nightmare.freddy or @jinx.luvr";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    background: #1a1a1a;
+    color: white;
+    font-size: 0.875rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.discord-tooltip:hover::after {
+    opacity: 1;
+    bottom: calc(100% + 10px);
+}
+
+/* Add arrow to tooltip */
+.discord-tooltip::before {
+    content: "";
+    position: absolute;
+    bottom: calc(100% + 3px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1a1a1a;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.discord-tooltip:hover::before {
+    opacity: 1;
+    bottom: calc(100% + 4px);
+}
+
+@media (max-width: 768px) {
+    .content-section {
+        padding: 3rem 1rem;
+    }
+    
+    .socials {
+        gap: 1.5rem;
+    }
+
+    .social-link {
+        font-size: 1.5rem;
+    }
+}
+
+.social-link {
+    font-size: 1.75rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Add these brand-specific classes */
+.social-link.youtube {
+    color: #FF0000;
+}
+
+.social-link.discord {
+    color: #5865F2;
+}
+
+.social-link.spotify {
+    color: #1DB954;
+}
+
+.social-link.email {
+    color: #EA4335;
+}
+
+.social-link.linkedin {
+    color: #0A66C2;
+}
+
+.social-link.mail {
+    color: blueviolet;
+}
+
+/* Update the hover state */
+.social-link:hover {
+    color: #8B5CF6; /* Purple color on hover */
+    transform: translateY(-3px);
+}
+
+.pretty-a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.pretty-a:hover {
+    text-decoration: underline;
+}
+
+.bigger {
+    font-size: 20px;
+}
