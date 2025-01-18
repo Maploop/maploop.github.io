@@ -6,7 +6,7 @@
     <title>Maploop</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="ARCHIVE/main_style.css">
+    <link rel="stylesheet" href="../ARCHIVE/main_style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -270,137 +270,10 @@
         </div>
     </nav>
 
-    <!-- Banner Section -->
-    <div class="banner-container">
-        <div class="banner-slide active" style="background-image: url('ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877b.png');">
-            <div class="banner-text">
-                <div class="banner-subtitle">Hi, my name is</div>
-                <h2 class="banner-heading">Maploop!</h2>
-                <p class="banner-description">I'm a Software Developer</p>
-            </div>
-        </div>
-        <div class="banner-slide" style="background-image: url('ARCHIVE/image/340363236-4680e148-eef2-4346-855b-7607d7585ebe.png');">
-            <div class="banner-text">
-                <div class="banner-subtitle">Latest Projects</div>
-                <h2 class="banner-heading"></h2>
-                <p class="banner-description">Scroll to view some of the projects I've been working on lately!</p>
-            </div>
-        </div>
-        <div class="banner-slide" style="background-image: url('ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png');">
-            <div class="banner-text">
-                <div class="banner-subtitle">My Experience</div>
-                <h2 class="banner-heading"></h2>
-                <p class="banner-description">Scroll to view a brief history of the communities and projects I've been a part of!</p>
-            </div>
-        </div>
-
-        <div class="banner-navigation">
-            <button class="banner-nav-button active" onclick="goToSlide(0)">1. Who am I?</button>
-            <button class="banner-nav-button" onclick="goToSlide(1)">2. My Work</button>
-            <button class="banner-nav-button" onclick="goToSlide(2)">3. My Experience</button>
-        </div>
-
-        <button class="scroll-button" onclick="scrollPastBanner()">
-            Scroll to read
-            <svg class="scroll-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-        </button>
-    </div>
-
     <div class="content-section">
-        <div id="slide-0">
-            <h1 class="section-title">About Me</h1>
-            <p class="bigger section-description">Hi, my name is Maploop (also known as Jinx and realEkko is various places)</p>
-            <p class="bigger section-description">I'm a software engineer specializing in Game Development, Web Development, and I'm currently building / designing exceptional digital experiences. Currently I'm focused on building, managing, and catering for a player experience at <a class="pretty-a" href="https://discord.gg/paper"> Atlas Network</a>.</p>
-        
-            <p class="bigger section-description">Check out my socials here:</p>
-            <div class="socials">
-                <a href="https://youtube.com/@Jinx_Luvr" target="_blank" rel="noopener noreferrer" class="social-link youtube">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                
-                <span class="social-link discord discord-tooltip">
-                    <i class="fab fa-discord"></i>
-                </span>
-                
-                <a href="https://open.spotify.com/user/31yxaqjenkqi743v7r4ntvpywlqy?si=906e87f53c954f8f" target="_blank" rel="noopener noreferrer" class="social-link spotify">
-                    <i class="fab fa-spotify"></i>
-                </a>
-                
-                <a href="mailto:maploop.val@gmail.com" class="social-link mail">
-                    <i class="far fa-envelope"></i>
-                </a>
-                
-                <a href="https://linkedin.com/in/Maploop" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-        </div>
-        <div id="slide-1">
-            <h1 class="section-title">My Ongoing Projects</h1>
-            <div class="grid-container">
-                <div class="card">
-                    <img src="ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png" alt="Atlas Network">
-                    <a href="https://discord.gg/paper">Atlas Network</a>
-                    <p>My largest and longest project to-date and one of if not the best active recreation of Hypixel Skyblock with a community of 9,000+ members.</p>
-                </div>
-                <div class="card">
-                    <img src="ARCHIVE/image/340363236-4680e148-eef2-4346-855b-7607d7585ebe.png" alt="Card Image">
-                    <a href="https://github.com/Maploop/EFlame">EFlame Engine</a>
-                    <p>A Simple OpenGL game engine which I intend to use as a framework to practice computer physics in.</p>
-                </div>
-            </div>
-
-            <h1 class="section-title">My Finished Projects</h1>
-
-            <div class="grid-container">
-                <div class="card">
-                    <img src="ARCHIVE/image/dnumframework.png" alt="Card Image">
-                    <a href="https://github.com/Maploop/DnumFramework">Dnum Framework</a>
-                    <p>A simple framework with pre-made libraries such as Commands, NPCs, Holograms, SignGUI, Packet Listener, GUI, etc. Check it out on git!</p>
-                </div>
-                <div class="card">
-                    <img src="ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png" alt="Atlas Network">
-                    <a href="https://discord.gg/paper">SkyBlock Recreation</a>
-                    <p>The best commercial Hypixel SkyBlock Sandbox / Recreation currently available. Contains Gemstones, 70% of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests, Islands, Bazaar and just about everything else!</p>
-                </div>
-                <div class="card">
-                    <img src="ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877b.png" alt="Card Image">
-                    <a href="https://github.com/Maploop/ReimaginedUmbrella">Reimagined Engine</a>
-                    <p>Graphics Engine (soon to be game engine) created with Microsoft DirectX and OpenGL. With features like Anti-Aliasing, Accurate light reflection, semi-editor UI, Multiple cameras on scene, etc. Check out the full project on Github for more info</p>
-                </div>
-            </div>
-            
-            <p class="section-description">If you would like to find out about how I work and get a showcase of Atlas Network and more fun stuff, please check out my 
-                <a class="pretty-a" href="https://www.youtube.com/@Jinx_Luvr"> YouTube channel!</a>
-            </p>
-        </div>
-        <div id="slide-2">
-            <h1 class="section-title">Where I've worked</h1>
-
-            <div class="grid-container">
-                <div class="card">
-                    <a style="font-size: 30px;" href="https://the-atlas.net">Atlas Network</a>
-                    <p style="color: var(--signature-blue); font-weight: bold;">February 2020 - Present</p>
-                    <br>
-                    <p>• Communicate and manage multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis</p>
-                    <p>• Work with a variety of different languages, platforms, frameworks, and content management systems such as Java, JSP, JavaScript and Python</p>
-                    <p>• Contributed extensively to AtlasRedisAPI, a Java library aimed to make utilizing Redis messaging systems easier</p>
-                    <p>• Write modern, performant, maintainable code for a diverse array of client and internal projects</p>
-                </div>
-                <div class="card">
-                    <a style="font-size: 30px;" href="https://trexmine.com">Trex Mine</a>
-                    <p style="color: var(--signature-blue); font-weight: bold;">July 2020 - May 2021</p>
-                    <p style="color: gray;">Left due to incompitence of certain co-workers.</p>
-                    <br>
-                    <p>• Handle MySQL database management</p>
-                    <p>• Work with a variety of different languages, platforms, frameworks, and content management systems such as MySQL, Perodactyl</p>
-                    <p>• Write modern, performant, maintainable code for a diverse array of client and internal projects</p>
-                    <p>•  Contributed extensively to TrexMine's custom BedWars plugin, fixing bugs and adding new features</p>
-                </div>
-            </div>
-        </div>
+        <br> <br>
+        <h1 class="section-title"><i style="scale: 2.0; color: crimson" class="fas fa-exclamation-triangle"></i></h1>
+        <h1 class="section-description">Looks like this is a dead end.</h1>
     </div>
 
     <footer>
