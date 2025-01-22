@@ -449,6 +449,7 @@ footer {
     justify-content: center;
     gap: 2rem;
     margin-top: 1rem;
+    scale: 1.5;
 }
 
 .social-link {
@@ -566,7 +567,7 @@ footer {
     text-decoration: none;
     font-weight: bold;
     display: inline-block;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
 }
 
 .pretty-a:hover {
