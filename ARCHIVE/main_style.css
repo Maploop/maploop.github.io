@@ -54,6 +54,7 @@ body {
 /* Navbar Styles */
 .navbar {
     position: fixed;
+    height: 60px;
     top: 0;
     width: 100%;
     background-color: #111111;
