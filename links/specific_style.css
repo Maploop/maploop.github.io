@@ -12,18 +12,19 @@
 }
 
 .blurry-box {
-    padding: 50px;
+    padding: 35px;
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    background: rgba(82, 76, 76, 0.2);
-    box-shadow: rgba(44, 41, 41, 0.2);
+    background: rgba(104, 103, 103, 0.2);
+    box-shadow: rgba(66, 66, 66, 0.2);
 }
 
 .holder {
     width: 100%;
     height: 100vh;
     background-image: url('background.png');
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
 }
 
 @media (max-width: 768px) {
@@ -44,7 +45,6 @@
     }
 
     .holder {
-        width: 100%;
         height: 100vh;
         background-image: url('background.png');
         background-size: cover;
@@ -67,3 +67,33 @@
         text-shadow: 0 0 10px var(--text-glow-color), 0 0 20px var(--text-glow-color), 0 0 30px var(--text-glow-color), 0 0 40px var(--text-glow-color);
     }
 }
+
+/* Create the snowfall effect */
+.snowfall {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .snowflake {
+    position: absolute;
+    top: -10px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: fall linear infinite;
+    width: 3px;  /* All snowflakes are the same size */
+    height: 3px;
+  }
+  
+  /* Keyframe animation for snow falling */
+  @keyframes fall {
+    0% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }

@@ -311,6 +311,37 @@
         </div>
     </div>
 
+    <div class="snowfall"></div>
+
     <script src="./ARCHIVE/script/main_script.js"></script>
+    <script>
+        const snowfall = document.querySelector('.snowfall');
+
+        // Generate snowflakes
+        for (let i = 0; i < 50; i++) {  // Increase the number of snowflakes
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.animationDuration = `${Math.random() * 4 + 6}s`;  // Faster snowflakes (3-6s)
+            snowflake.style.animationDelay = `${Math.random() * 5}s`;
+            snowfall.appendChild(snowflake);
+        }
+
+        // Move snowflakes in the opposite direction of the mouse cursor
+        document.addEventListener('mousemove', (event) => {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+
+        const snowflakes = document.querySelectorAll('.snowflake');
+        snowflakes.forEach((snowflake) => {
+            const snowflakeX = parseFloat(snowflake.style.left);
+            const distanceX = mouseX - snowflakeX;
+            
+            // Adjust snowflake's horizontal movement to move in the opposite direction
+            snowflake.style.animationTimingFunction = 'linear';
+            snowflake.style.transform = `translateX(${(distanceX / 50)}px)`;
+        });
+        });
+    </script>
 </body>
 </html>
