@@ -19,7 +19,7 @@ send_statistic(statistic_msg);
 
 function send_statistic(message) {
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", webHookURL, true);
+    xhr.open("POST", webhookUrl, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
         'content': message,
