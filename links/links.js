@@ -5,16 +5,11 @@ This is entirely intended for me to see who visits my links websites. Keeping tr
 */
 const webhookUrl = "https://discord.com/api/webhooks/1347935412961939456/tSa3gYu96TvRC7qbS2qdsHvCSQObozvTgY_ec8BvakL51kRlq03pe87tJoSv96gtOpBF";
 const startTime = Date.now();
-var visitCountSinceUp = 0;
-
-visitCountSinceUp++;
 
 
 const statistic_msg = "~~-------------------------------------~~\n"
-+ "# Links Visit!\n"
-+ "Up Since: " + "<t:" + Math.floor(startTime / 1000) + ">"
-+ "Visits Since Up: " + visitCountSinceUp
-+ "Uptime: " + "<t:" + Math.floor((Date.now() - startTime) / 1000) + ">";
++ "### Links Visit!\n"
++ "Time: " + "<t:" + Math.floor(startTime / 1000) + ">";
 send_statistic(statistic_msg);
 
 function send_statistic(message) {
