@@ -1,24 +1,8 @@
 /*
-============================
-This is entirely intended for me to see who visits my links websites. Keeping track of how many clicks I've got and etc.
-===========================
+Hello! Welcome to the source code.
+
+I will not be paying to host this website on an actual server where 
+I can use some dumbass obfuscator for the code.
+
+So do whatever you want with the information that's here.
 */
-const webhookUrl = "https://discord.com/api/webhooks/1347935412961939456/tSa3gYu96TvRC7qbS2qdsHvCSQObozvTgY_ec8BvakL51kRlq03pe87tJoSv96gtOpBF";
-const startTime = Date.now();
-
-
-const statistic_msg = "~~-------------------------------------~~\n"
-+ "### Links Visit!\n"
-+ "Time: " + "<t:" + Math.floor(startTime / 1000) + ">";
-send_statistic(statistic_msg);
-
-function send_statistic(message) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", webhookUrl, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify({
-        'content': message,
-        'username':'Statistic Report [VISIT]',
-        'avatar_url': 'https://raw.githubusercontent.com/Maploop/maploop.github.io/refs/heads/master/links/ac885f19-48d5-499c-93cf-eafa43c773cc.jpg',
-    }));
-}
