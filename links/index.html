@@ -266,9 +266,9 @@
             </div>
         </div>
         <div class="nav-links">
-            <a href="/">WHO AM I?</a>
-            <a href="/jobs">MY WORK</a>
-            <a href="/blog">MY BLOG</a>
+            <a onclick="logclick('WhoAmI')" href="/">WHO AM I?</a>
+            <a onclick="logclick('MyWork')" href="/jobs">MY WORK</a>
+            <a onclick="logclick('MyBlog')" href="/blog">MY BLOG</a>
         </div>
     </nav>
 
@@ -277,12 +277,13 @@
             <div style="margin-top: 100px"></div>
     
             <div class="blurry-box">
-                <img class="pfp" width="150px" height="150px" src="16468154671349815681241.png">
+                <img class="pfp" width="150px" height="150px" src="ac885f19-48d5-499c-93cf-eafa43c773cc.jpg">
                 <h1 class="section-title glowing-text" style="font-size: 44px">Ekko</h1>
-                <p class="section-description">Yo</p>
+                <p class="section-description"  style="margin-top: -50px">Every second matters.</p>
+                <p class="section-description" style="margin-top: -50px"> I consider myself an artist of all arts.</p>
     
                 <div class="socials">
-                    <a href="https://youtube.com/@Jinx_Luvr" target="_blank" rel="noopener noreferrer" class="social-link youtube">
+                    <a href="https://youtube.com/@Jinx_Luvr" onclick="logclick('youtube')" target="_blank" rel="noopener noreferrer" class="social-link youtube">
                         <i class="fab fa-youtube"></i>
                     </a>
                     
@@ -290,11 +291,11 @@
                         <i class="fab fa-discord"></i>
                     </span>
 
-                    <a href="https://instagram.com/realekko_" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                    <a href="https://instagram.com/realekko_" onclick="logclick('instagram')" target="_blank" rel="noopener noreferrer" class="social-link instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
 
-                    <a href="https://open.spotify.com/user/31yxaqjenkqi743v7r4ntvpywlqy?si=906e87f53c954f8f" target="_blank" rel="noopener noreferrer" class="social-link spotify">
+                    <a href="https://open.spotify.com/user/31yxaqjenkqi743v7r4ntvpywlqy?si=906e87f53c954f8f" onclick="logclick('spotify')" target="_blank" rel="noopener noreferrer" class="social-link spotify">
                         <i class="fab fa-spotify"></i>
                     </a>
                     
@@ -302,7 +303,7 @@
                         <i class="far fa-envelope"></i>
                     </a>
                     
-                    <a href="https://www.pixiv.net/en/users/113162363" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+                    <a href="https://www.pixiv.net/en/users/113162363" onclick="logclick('pixiv')" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
                         <i class="fab fa-pixiv"></i>
                     </a>
                     
@@ -312,6 +313,8 @@
     </div>
 
     <div class="snowfall"></div>
+
+    <div class="footer">&copy; 2025 Maploop, LLC. All rights reserved.</div>
 
     <script src="./ARCHIVE/script/main_script.js"></script>
     <script src="./links.js"></script>

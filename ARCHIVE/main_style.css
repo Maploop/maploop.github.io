@@ -570,6 +570,10 @@ footer {
 }
 
 /* Add these brand-specific classes */
+.social-link.instagram {
+    color: #b100a8;
+}
+
 .social-link.youtube {
     color: #FF0000;
 }
