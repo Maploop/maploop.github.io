@@ -102,7 +102,7 @@ function collectVisitorAnalytics() {
     };
   }
 
-  window.onload = collectVisitorAnalytics();
+  collectVisitorAnalytics();
 
 function logclick(key) {
   var data = {
