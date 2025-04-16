@@ -509,7 +509,7 @@ footer {
 }
 
 .discord-tooltip::after {
-    content: "Add me: @nightmare.freddy or @jinx.luvr";
+    content: "Add me: @wheres.leon";
     position: absolute;
     bottom: 100%;
     left: 50%;
@@ -592,6 +592,10 @@ footer {
 
 .social-link.linkedin {
     color: #0A66C2;
+}
+
+.social-link.telegram {
+    color: #3299ff;
 }
 
 .social-link.mail {
