@@ -602,6 +602,10 @@ footer {
     color: blueviolet;
 }
 
+.social-link.twitter {
+    color: black;
+}
+
 /* Update the hover state */
 .social-link:hover {
     color: #8B5CF6; /* Purple color on hover */

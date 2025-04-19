@@ -15,6 +15,8 @@ function showSlide(n) {
 
 function goToSlide(n) {
     showSlide(n);
+
+    scrollPastBanner();
 }
 
 function goto(link) {
