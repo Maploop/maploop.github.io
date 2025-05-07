@@ -109,15 +109,12 @@ function trackPageEngagement() {
     }
   });
   
-  // Before user leaves, update time spent on current page
-  window.addEventListener('beforeunload', () => {
-    const timeSpent = (performance.now() - pageLoadTime) / 1000;
-    pageViews[pageViews.length - 1].timeSpent = timeSpent.toFixed(2);
-    visitorData.pageViews = pageViews;
-    
-    // Send the final data to server
-    sendDataToServer();
-  });
+  const timeSpent = (performance.now() - pageLoadTime) / 1000;
+  pageViews[pageViews.length - 1].timeSpent = timeSpent.toFixed(2);
+  visitorData.pageViews = pageViews;
+  
+  // Send the final data to server
+  sendDataToServer();
 }
 
 // Collect UTM parameters
@@ -183,11 +180,6 @@ function initDataCollection() {
   collectUTMParameters();
   manageCookies();
   trackPageEngagement();
-  
-  // Save initial data
-  setTimeout(() => {
-    sendDataToServer();
-  }, 3000);
 }
 
 // Start collecting data when the page loads
