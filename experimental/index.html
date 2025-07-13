@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>古い日本のサイト</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'MS Gothic', monospace;
+            overflow-x: hidden;
+            
+            cursor: url('../ARCHIVE/icon/cursor_resized.png'), auto;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Japanese text styling */
+        .japanese-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        /* Main container */
+        .container {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Left sidebar */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            border-right: 2px solid #444;
+            padding: 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 0;
+        }
+
+        .sidebar h2 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .nav-item {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 5px 0;
+            background: #333;
+            border: 1px solid #555;
+            border-radius: 3px;
+            cursor: url('../ARCHIVE/icon/cursor_resized.png'), auto;
+            font-size: 12px;
+        }
+
+        .nav-item:hover {
+            background: #555;
+            color: #ff6b6b;
+        }
+
+        /* Gallery */
+        .gallery {
+            margin-top: 30px;
+        }
+
+        .gallery h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 80px;
+            background: #333;
+            border: 1px solid #555;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 80px;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.3s;
+        }
+
+        .gallery-item:hover::before {
+            left: 100%;
+        }
+
+        /* Main content area */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px;
+            background: radial-gradient(circle at 20% 20%, #1a1a1a, #000);
+            min-height: 100vh;
+        }
+
+        .main-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .intro-text {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* Windows 98 style windows */
+        .window {
+            position: fixed;
+            background: #c0c0c0;
+            border: 2px outset #c0c0c0;
+            min-width: 300px;
+            min-height: 200px;
+            z-index: 1000;
+            font-family: 'MS Sans Serif', sans-serif;
+            display: none;
+            scale: 1.0;
+        }
+
+        .window.active {
+            display: block;
+        }
+
+        .window-header {
+            background: linear-gradient(90deg, #0000ff 0%, #6565ff 100%);
+            color: white;
+            padding: 2px 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .window-title {
+            flex: 1;
+            padding-left: 4px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .window-btn {
+            width: 16px;
+            height: 14px;
+            background: #c0c0c0;
+            border: 1px outset #c0c0c0;
+            font-size: 9px;
+            cursor: url('../ARCHIVE/icon/cursor_resized.png'), auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .window-btn:hover {
+            opacity: 0.8;
+        }
+
+        .window-btn:active {
+            border: 1px inset #c0c0c0;
+        }
+
+        .window-content {
+            padding: 10px;
+            background: #c0c0c0;
+            color: #000;
+            font-size: 11px;
+            line-height: 1.4;
+            height: calc(100% - 20px);
+            overflow-y: auto;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            body {
+                zoom: 0.7;
+            }
+            
+            .sidebar {
+                width: 200px;
+            }
+            
+            .main-content {
+                margin-left: 200px;
+            }
+            
+            .window {
+                max-width: calc(100vw - 40px);
+                max-height: calc(100vh - 40px);
+            }
+        }
+
+        /* Decorative elements */
+        a {
+            text-decoration: none;
+            cursor: url('../ARCHIVE/icon/cursor_resized.png'), auto;
+            color: blue;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: purple;
+        }
+
+        .decoration {
+            position: fixed;
+            color: #333;
+            font-size: 100px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .decoration.top-right {
+            top: 20px;
+            right: 20px;
+        }
+
+        .decoration.bottom-left {
+            bottom: 20px;
+            left: 300px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>部分 Sections</h2>
+            <div class="nav-items">
+                <a href="#" class="nav-item" onclick="openWindow('about')">about me</a>
+                <a href="#" class="nav-item" onclick="openWindow('services')">experiences</a>
+                <a href="#" class="nav-item" onclick="openWindow('projects')">projects</a>
+                <a href="#" class="nav-item" onclick="openWindow('contact')">contact</a>
+                <a href="#" class="nav-item" onclick="openWindow('gallery')">art</a>
+            </div>
+            
+            <div class="gallery">
+                <h3>古い日本 Gallery</h3>
+                <div class="gallery-item">
+                    <img src="../ARCHIVE/image/nice.png"></img>
+                </div>
+                <div class="gallery-item">
+                    <img src="../ARCHIVE/image/nice2.png"></img>
+                    <!-- <span>写真 2</span> -->
+                </div>
+                <div class="gallery-item">
+                    <img src="../ARCHIVE/image/nice3..png"></img>
+                    <!-- <span>写真 3</span> -->
+                </div>
+                <div class="gallery-item">
+                    <img src="../ARCHIVE/image/nice4.png"></img>
+                    <!-- <span>写真 4</span> -->
+                </div>
+                <div class="gallery-item">
+                    <img src="../ARCHIVE/image/nice5.png"></img>
+                    <!-- <span>写真 5</span> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h1 class="main-title">Leon's Website</h1>
+            <p class="intro-text">
+                Hey! I'm Leon. Here you can view my<br>
+                projects, work experiences, and just find<br>
+                out more about me!
+            </p>
+            <p class="intro-text" style="color: yellow">⚠︎ You are in an experimental <br>version of my website! visit the original <a href="https://maploop.github.io">here</a> <br> 
+                or enter with a desktop for better quality. ⚠︎</p>
+        </div>
+    </div>
+
+    <!-- Decorative elements -->
+    <div class="decoration top-right">刀</div>
+    <div class="decoration bottom-left">武</div>
+
+    <!-- Windows -->
+    <div class="window" id="about-window">
+        <div class="window-header">
+            <div class="window-title">About Me</div>
+            <div class="window-controls">
+                <div class="window-btn" onclick="closeWindow('about')">×</div>
+            </div>
+        </div>
+        <div class="window-content">
+            <h3>Hello!</h3>
+            <p>Hello! My name is Maploop (Leon); I'm an 18 year old software developer, and I enjoy creating things that live <br>on the internet. 
+                My journey in software development began back in 2018 when I started learning the Minecraft Spigot library<br> — since then I've had the opportunity to
+                <a href="https://discord.gg/atlasmc" class="pretty-a">manage my own dev team of over 10</a>, <br>
+                <a href="https://trexmine.com" class="pretty-a">work for one of the largest Minecraft servers in Iran</a>, and <br>
+                <a href="https://github.com/maploop" class="pretty-a">deliver over 50 freelance projects</a>. <br>
+                My main focus right now building large-scale, inclusive projects and digital experiences with my development team at 
+                <a href="https://discord.gg/atlasmc" class="pretty-a">Atlas Network</a>. <br> <br>
+                I have also recently worked on a variety of <a class="pretty-a" href="#slide-1">Open Source Projects</a>.
+                <br> <br>
+                <a href="https://github.com/maploop">>> Visit my GitHub</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="window" id="services-window">
+        <div class="window-header">
+            <div class="window-title">My Experiences</div>
+            <div class="window-controls">
+                <div class="window-btn" onclick="closeWindow('services')">×</div>
+            </div>
+        </div>
+        <div class="window-content">
+            <h3>1. Atlas Network</h3>
+                    <p style="color: var(--signature-blue); font-weight: bold;">February 2020 - Present</p>
+                    <br>
+                    <p>• Communicate and manage multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis</p>
+                    <p>• Work with a variety of different languages, platforms, frameworks, and content management systems such as Java, JSP, JavaScript and Python</p>
+                    <p>• Contributed extensively to AtlasRedisAPI, a Java library aimed to make utilizing Redis messaging systems easier</p>
+                    <p>• Develope modern, performant, maintainable code for a diverse array of client and internal projects</p>
+            <br><br>
+            <h3>2. TrexMine</h3>
+                    <p style="color: var(--signature-blue); font-weight: bold;">July 2020 - May 2021</p>
+                    <br>
+                    <p>• Collaborated effectively within a dynamic team of over 10 skilled professionals, fostering a productive and enjoyable working environment.</p>
+                    <p>• Handle MySQL databases</p>
+                    <p>• Work with a variety of different languages, platforms, frameworks, and content management systems such as MySQL, Perodactyl</p>
+                    <p>• Develope modern, performant, maintainable code for a diverse array of client and internal projects</p>
+                    <p>• Contributed extensively to TrexMine's custom BedWars plugin, fixing bugs and adding new features</p>
+        </div>
+    </div>
+
+    <div style="height: 500px" class="window" id="projects-window">
+        <div class="window-header">
+            <div class="window-title">My Current Projects</div>
+            <div class="window-controls">
+                <div class="window-btn" onclick="closeWindow('projects')">×</div>
+            </div>
+        </div>
+        <div class="window-content">
+            <h4>* These are some of the projects that I'm actively working on or have already finished.</h4> <br>
+            <h2>EFlame Engine</h2>
+            <p>A simple OpenGL-based game engine that I am developing<br> as a foundational framework,
+                 with the primary goal of using <br>it to practice and experiment with various concepts in computer physics, <br>
+                 including collision detection, <br>rigid body dynamics, and real-time simulation.</p>
+            <a style="font-size: 12px" href="https://github.com/maploop/EFlame">>> View on GitHub</a>
+            <br><br>
+            <div style="background: #999; overflow:auto; max-width: 390; max-height: 300px; display: flex; align-items: center; justify-content: center;">
+                <img style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/340363236-4680e148-eef2-4346-855b-7607d7585ebe.png">
+            </div>
+            
+            <br><br><br>
+            <h2>SkyBlock Recreation</h2>
+            <p>The best commercial Hypixel SkyBlock Sandbox / Recreation currently available.<br>
+                 Contains Gemstones, 70% of <br>Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests, Islands, <br>
+                 Bazaar and just about everything else!</p>
+
+            <a style="font-size: 12px" href="https://github.com/Swofty-Developments/HypixelSkyBlock">>> View on GitHub</a>
+            <br><br>
+            <div style="background: #999; overflow:auto; max-height: 300px; display: flex; align-items: center; justify-content: center;">
+                <img style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/photo_2025-04-25_17-56-58.jpg">
+            </div>
+
+            <br><br><br>
+            <h2>Highwind</h2>
+            <p>Yet another game engine project that I've recently been expanding on, planning to be the <br>
+            host of my first ever game</p>
+
+            <a style="font-size: 12px" href="https://github.com/maploop/Highwind">>> View on GitHub</a>
+            <br><br>
+            <div style="background: #999; overflow:auto; max-height: 300px; display: flex; align-items: center; justify-content: center;">
+                <img style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/vegaengine.png">
+            </div>
+
+            <br><br><br>
+            <h2>Cora</h2>
+            <p>My experiments with the Vulkan Graphics API using the C programming language, <br>
+                where I explore low-level graphics programming concepts,<br>
+                 rendering techniques, and performance optimization.</p>
+            <a style="font-size: 12px" href="https://github.com/maploop/Cora">>> View on GitHub</a>
+
+            <br><br><br>
+            <h2>Atlas Network</h2>
+            <p>My largest and longest-running project to date, and one of, if not the best, 
+                active recreations of Hypixel Skyblock, <br>featuring a thriving community of over 
+                9,000 members. The project is constantly evolving with <br>regular updates, new features, and a passionate player base that continues to grow.</p>
+
+            <a style="font-size: 12px" href="https://discord.gg/paper">>> View on GitHub</a>
+            <br><br>
+            <div style="background: #999; overflow:auto; max-height: 300px; display: flex; align-items: center; justify-content: center;">
+                <img style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png">
+            </div>
+
+            <br><br><br>
+            <h2>Dnum Framework</h2>
+            <p>A lightweight and modular framework featuring a suite of pre-built libraries including Commands, NPCs, Holograms, SignGUI, <br>Packet Listener, 
+                and GUI components. Available on GitHub for exploration and contribution.</p>
+
+            <a style="font-size: 12px" href="https://github.com/maploop/DnumFramework">>> View on GitHub</a>
+            <br><br>
+            <div style="background: #999; overflow:auto; max-height: 300px; display: flex; align-items: center; justify-content: center;">
+                <img style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/dnumframework.png">
+            </div>
+            
+            <br><br><br>
+            <h2>Reimgined Engine</h2>
+            <p>A graphics engine in development—soon evolving into a full game engine—built using Microsoft DirectX and OpenGL. <br>
+                It includes core rendering features and a semi-functional editor UI. <br>Explore the full project on GitHub for more details.</p>
+
+            <a style="font-size: 12px" href="https://github.com/maploop/ReimaginedEngine">>> View on GitHub</a>
+            <br><br>
+            <div style="background: #999; overflow:auto; max-height: 300px; display: flex; align-items: center; justify-content: center;">
+                <img style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877b.png">
+            </div>
+
+            <br>
+            <p>詳細については各項目をクリックしてご確認ください。</p>
+        </div>
+    </div>
+
+    <div class="window" id="contact-window">
+        <div class="window-header">
+            <div class="window-title">Contact Me!</div>
+            <div class="window-controls">
+                <div class="window-btn" onclick="closeWindow('contact')">×</div>
+            </div>
+        </div>
+        <div class="window-content">
+            <h3>Business Inquiries</h3>
+            <p><i class="far fa-envelope"></i> <a href="">Email (maploop.val@gmail.com)</a></p>
+            <p><i class="fab fa-linkedin"></i> <a href="">LinkedIn</a></p>
+            <h3>Social Media</h3>
+            <p><i class="fab fa-youtube"></i> <a href="https://youtube.com/@wheres_leon">YouTube</a></p>
+            <p><i class="fab fa-instagram"></i> <a href="https://instagram.com/wheres.leon">Instagram</a></p>
+            <p><i class="fa-brands fa-x-twitter"></i> <a href="https://x.com/wheres_leon">X</a></p>
+            <p><i class="fab fa-spotify"></i> <a href="https://open.spotify.com/user/31yxaqjenkqi743v7r4ntvpywlqy?si=906e87f53c954f8f">Spotify</a></p>
+            <p><i class="fab fa-telegram"></i> <a href="https://t.me/wheres_leon">Telegram</a></p>
+            <p><i class="fab fa-pixiv"></i> <a href="https://www.pixiv.net/en/users/113162363">Pixiv</a></p>
+            <br>
+            <p>お気軽にご連絡ください。できるだけ早くご返信いたします。</p>
+        </div>
+    </div>
+
+    <div class="window" id="gallery-window">
+        <div class="window-header">
+            <div class="window-title">Digital Art</div>
+            <div class="window-controls">
+                <div class="window-btn" onclick="closeWindow('gallery')">×</div>
+            </div>
+        </div>
+        <div class="window-content">
+            <h3>Some digital art pieces I've made</h3>
+            <p>You can find these on my twitter/instagram</p>
+            <p style="color: crimson">(!) No Images Featured Here (!)</p>
+            <br>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="background: #999; height: 80px; display: flex; align-items: center; justify-content: center;">作品1</div>
+                <div style="background: #999; height: 80px; display: flex; align-items: center; justify-content: center;">作品2</div>
+                <div style="background: #999; height: 80px; display: flex; align-items: center; justify-content: center;">作品3</div>
+                <div style="background: #999; height: 80px; display: flex; align-items: center; justify-content: center;">作品4</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isDragging = false;
+        let currentWindow = null;
+        let dragOffset = { x: 0, y: 0 };
+        let spawnOffset = { x: 0, y: 0 };
+        let windowZIndex = 1;
+
+        function openWindow(windowId) {
+            const window = document.getElementById(windowId + '-window');
+            if (window) {
+                window.classList.add('active');
+                window.style.zIndex = ++windowZIndex;
+
+                // Center the window
+                const rect = window.getBoundingClientRect();
+                const x = (document.documentElement.clientWidth - 300) / 2 + spawnOffset.x;
+                const y = (document.documentElement.clientHeight - 200) / 2 + spawnOffset.y;
+                spawnOffset.x += 10;
+                spawnOffset.y += 10;
+                window.style.left = x + 'px';
+                window.style.top = y + 'px';
+                
+                // Ensure window stays within bounds
+                constrainWindow(window);
+
+                window.addEventListener('mousedown', (e) => {
+                    focusWindow(windowId);
+                });
+                window.addEventListener('touchstart', (e) => {
+                    focusWindow(windowId);
+                });
+            }
+        }
+
+        function focusWindow(windowId) {
+            const window = document.getElementById(windowId + '-window');
+            window.style.zIndex = ++windowZIndex;
+        }
+
+        function closeWindow(windowId) {
+            const window = document.getElementById(windowId + '-window');
+            if (window) {
+                window.classList.remove('active');
+            }
+        }
+
+        function constrainWindow(window) {
+            const rect = window.getBoundingClientRect();
+            const maxX = document.documentElement.clientWidth - rect.width;
+            const maxY = document.documentElement.clientHeight - rect.height;
+            
+            let x = parseInt(window.style.left) || 0;
+            let y = parseInt(window.style.top) || 0;
+            
+            x = Math.max(0, Math.min(maxX, x));
+            y = Math.max(0, Math.min(maxY, y));
+            
+            window.style.left = x + 'px';
+            window.style.top = y + 'px';
+        }
+
+        // Window dragging functionality
+        document.addEventListener('mousedown', function(e) {
+            if (e.target.classList.contains('window-header') || e.target.closest('.window-header')) {
+                isDragging = true;
+                currentWindow = e.target.closest('.window');
+                
+                const rect = currentWindow.getBoundingClientRect();
+                dragOffset.x = e.clientX - rect.left;
+                dragOffset.y = e.clientY - rect.top;
+                
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging && currentWindow) {
+                const newX = e.clientX - dragOffset.x;
+                const newY = e.clientY - dragOffset.y;
+                
+                currentWindow.style.left = newX + 'px';
+                currentWindow.style.top = newY + 'px';
+                
+                constrainWindow(currentWindow);
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            currentWindow = null;
+        });
+
+        // Touch events for mobile
+        document.addEventListener('touchstart', function(e) {
+            if (e.target.classList.contains('window-header') || e.target.closest('.window-header')) {
+                isDragging = true;
+                currentWindow = e.target.closest('.window');
+                
+                const rect = currentWindow.getBoundingClientRect();
+                const touch = e.touches[0];
+                dragOffset.x = touch.clientX - rect.left;
+                dragOffset.y = touch.clientY - rect.top;
+                
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('touchmove', function(e) {
+            if (isDragging && currentWindow) {
+                const touch = e.touches[0];
+                const newX = touch.clientX - dragOffset.x;
+                const newY = touch.clientY - dragOffset.y;
+                
+                currentWindow.style.left = newX + 'px';
+                currentWindow.style.top = newY + 'px';
+                
+                constrainWindow(currentWindow);
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('touchend', function() {
+            isDragging = false;
+            currentWindow = null;
+        });
+
+        // Prevent context menu on right click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
