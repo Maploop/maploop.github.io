@@ -1,5 +1,5 @@
 :root {
-    --text-glow-color: #138503;
+    --text-glow-color: #857803;
 }
 
 .pfp {
@@ -22,7 +22,7 @@
 .holder {
     width: 100%;
     height: 100vh;
-    background-image: url('background.png');
+    background-image: url('../../image/links/background.png');
     background-size: cover;
     background-position: center;
 }
@@ -54,7 +54,7 @@
 
 .glowing-text {
     font-size: 3rem;
-    color: #fff;
+    color: #fff562;
     text-align: center;
     animation: glow 1.5s infinite alternate;
 }
@@ -97,3 +97,27 @@
       transform: translateY(100vh);
     }
   }
+
+.experimental-btn {
+    margin-top: 30px;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background-color: #000;
+    color: white;
+    opacity: 0.3;
+    border: none;
+    transition: 0.5s;
+}
+
+.experimental-btn:hover {
+    transform: translateY(-5px);
+    opacity: 1;
+    cursor: pointer;
+}
+
+.undertext-recommended {
+    margin-top: 10px;
+    color: white;
+    opacity: 0.5;
+    font-size: 12px;
+}

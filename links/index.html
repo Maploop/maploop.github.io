@@ -6,8 +6,8 @@
     <title>@Leon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../ARCHIVE/main_style.css">
-    <link rel="stylesheet" href="specific_style.css">
+    <link rel="stylesheet" href="../ARCHIVE/style/mainframe.css">
+    <link rel="stylesheet" href="../ARCHIVE/style/links/style.css">
     <link rel="icon" type="image/x-icon" href="../ARCHIVE/favi.ico">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -25,7 +25,6 @@
                 <img class="pfp" width="150px" height="150px" src="photo_2025-04-25_17-41-03.jpg">
                 <br>
                 <h1 class="section-title glowing-text" style="font-size: 44px">Leon</h1>
-                <p class="section-description"  style="margin-top: -50px">Every second matters.</p>
                 <p class="section-description" style="margin-top: -50px"> I consider myself an artist of all arts.</p>
     
                 <div class="socials">
@@ -60,8 +59,9 @@
                     <a href="https://www.pixiv.net/en/users/113162363" onclick="logclick('pixiv')" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
                         <i class="fab fa-pixiv"></i>
                     </a>
-                    
                 </div>
+                <button onclick="goToExpeirmental()" class="experimental-btn">Visit My Experimental Website</button>
+                <p class="undertext-recommended">(Desktop Recommended)</p>
             </div>
         </div>
     </div>
@@ -70,22 +70,19 @@
 
     <div class="footer">&copy; 2025 Maploop, LLC. All rights reserved.</div>
 
-    <script src="./ARCHIVE/script/main_script.js"></script>
-    <script src="./links.js"></script>
+    <script src="../ARCHIVE/script/links/script.js"></script>
     <script>
         const snowfall = document.querySelector('.snowfall');
 
-        // Generate snowflakes
-        for (let i = 0; i < 50; i++) {  // Increase the number of snowflakes
+        for (let i = 0; i < 50; i++) {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             snowflake.style.left = `${Math.random() * 100}vw`;
-            snowflake.style.animationDuration = `${Math.random() * 4 + 6}s`;  // Faster snowflakes (3-6s)
+            snowflake.style.animationDuration = `${Math.random() * 4 + 6}s`;  
             snowflake.style.animationDelay = `${Math.random() * 5}s`;
             snowfall.appendChild(snowflake);
         }
 
-        // Move snowflakes in the opposite direction of the mouse cursor
         document.addEventListener('mousemove', (event) => {
         const mouseX = event.clientX;
         const mouseY = event.clientY;
@@ -95,7 +92,6 @@
             const snowflakeX = parseFloat(snowflake.style.left);
             const distanceX = mouseX - snowflakeX;
             
-            // Adjust snowflake's horizontal movement to move in the opposite direction
             snowflake.style.animationTimingFunction = 'linear';
             snowflake.style.transform = `translateX(${(distanceX / 50)}px)`;
         });

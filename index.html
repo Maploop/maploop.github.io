@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maploop</title>
+    <link rel="stylesheet" href="ARCHIVE/style/other/loading-screen.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/x-icon" href="ARCHIVE/favi.ico">
-    <link rel="stylesheet" href="ARCHIVE/main_style.css">
+    <link rel="stylesheet" href="ARCHIVE/style/mainframe.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -15,6 +16,20 @@
     </style>
 </head>
 <body>
+    <div class="loading-overlay">
+        <div class="particles" id="particles"></div>
+        
+        <div class="loading-container" id="loadingContainer">
+            <div class="loading-spinner"></div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            
+            <div class="percentage" id="percentage">0%</div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
@@ -53,31 +68,31 @@
             <p style="margin-top: 100px;" class="bigger section-description">Here are a few technologies I've worked with recently:</p>
             <div  class="socials">
                 <span class="social-link colored-link tooltip java">
-                    <i class="fab fa-java"></i>
+                    <image class="svg-skill-icon" src="./ARCHIVE//icon/icons8-java.svg"></image>
                 </span>
                 
                 <span class="social-link colored-link tooltip python">
-                    <i class="fab fa-python"></i>
+                    <image class="svg-skill-icon" src="./ARCHIVE//icon/icons8-python.svg"></image>
                 </span>
 
                 <span class="social-link colored-link tooltip nodejs">
-                    <i class="fab fa-node"></i>
+                    <image class="svg-skill-icon" src="./ARCHIVE//icon/icons8-nodejs.svg"></image>
                 </span>
 
                 <span class="social-link colored-link tooltip react">
-                    <i class="fab fa-react"></i>
-                </span>
-
-                <span class="social-link colored-link tooltip nodejs">
-                    <i class="fab fa-node"></i>
+                    <image class="svg-skill-icon" src="./ARCHIVE//icon/icons8-react-120.svg"></image>
                 </span>
 
                 <span class="social-link colored-link tooltip cpp">
-                    <i class="fab fa-c"></i>
+                    <image class="svg-skill-icon" src="./ARCHIVE//icon/icons8-c.svg"></image>
                 </span>
 
-                <span class="social-link colored-link tooltip csharp">
-                    <i class="fab fa-c"></i>
+                <span class="social-link colored-link tooltip opengl">
+                    <image class="svg-skill-icon" src="./ARCHIVE//icon/opengl-svgrepo-com.svg"></image>
+                </span>
+
+                <span class="social-link colored-link tooltip vulkan">
+                    <image class="svg-skill-icon" src="./ARCHIVE//icon/vulkan-svgrepo-com.svg"></image>
                 </span>
             </div>
         </div>
@@ -112,22 +127,22 @@
             <h1 class="section-title">Current Projects</h1>
             <div class="grid-container">
                 <div title="https://github.com/Maploop/EFlame" onclick="window.location='https://github.com/Maploop/EFlame'" class="card scroll-item">
-                    <img src="ARCHIVE/image/340363236-4680e148-eef2-4346-855b-7607d7585ebe.png" alt="Card Image">
+                    <img src="ARCHIVE/image/eflame_engine.png" alt="Card Image">
                     <a href="https://github.com/Maploop/EFlame">EFlame Engine</a>
                     <p>A simple OpenGL-based game engine that I am developing as a foundational framework, with the primary goal of using it to practice and experiment with various concepts in computer physics, including collision detection, rigid body dynamics, and real-time simulation.</p>
                 </div>
                 <div title="https://discord.gg/paper" onclick="window.location='https://discord.gg/paper'" class="card scroll-item">
-                    <img src="ARCHIVE/image/photo_2025-04-25_17-56-58.jpg" alt="Atlas Network">
+                    <img src="ARCHIVE/image/hypixel_skyblock.jpg" alt="Atlas Network">
                     <a href="https://discord.gg/paper">SkyBlock Recreation</a>
                     <p>The best commercial Hypixel SkyBlock Sandbox / Recreation currently available. Contains Gemstones, 70% of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests, Islands, Bazaar and just about everything else!</p>
                 </div>
                 <div title="https://github.com/Maploop/Cora" onclick="window.location='https://github.com/Maploop/Cora'" class="card scroll-item">
-                    <img src="ARCHIVE/image/pic_1.jpg" alt="Card Image">
+                    <img src="ARCHIVE/image/code_snippet.jpg" alt="Card Image">
                     <a href="https://github.com/Maploop/Cora">Cora</a>
                     <p>My experiments with the Vulkan Graphics API using the C programming language, where I explore low-level graphics programming concepts, rendering techniques, and performance optimization.</p>
                 </div>
                 <div class="card scroll-item">
-                    <img src="ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877a.png" alt="Atlas Network">
+                    <img src="ARCHIVE/image/atlas_network.png" alt="Atlas Network">
                     <a href="https://discord.gg/paper">Atlas Network</a>
                     <p>My largest and longest-running project to date, and one of, if not the best, active recreations of Hypixel Skyblock, featuring a thriving community of over 9,000 members. The project is constantly evolving with regular updates, new features, and a passionate player base that continues to grow.</p>
                 </div>
@@ -137,7 +152,7 @@
                     <p>A lightweight and modular framework featuring a suite of pre-built libraries including Commands, NPCs, Holograms, SignGUI, Packet Listener, and GUI components. Available on GitHub for exploration and contribution.</p>
                 </div>
                 <div title="https://github.com/Maploop/ReimaginedUmbrella" onclick="window.location='https://github.com/Maploop/ReimaginedUmbrella'" class="card scroll-item">
-                    <img src="ARCHIVE/image/189074758-14cb31cc-5ff5-4a32-a298-e4e429e5877b.png" alt="Card Image">
+                    <img src="ARCHIVE/image/reimagined_engine.png" alt="Card Image">
                     <a href="https://github.com/Maploop/ReimaginedUmbrella">Reimagined Engine</a>
                     <p>A graphics engine in development—soon evolving into a full game engine—built using Microsoft DirectX and OpenGL. It includes core rendering features and a semi-functional editor UI. Explore the full project on GitHub for more details.</p>
                 </div>
@@ -168,6 +183,8 @@
         
     </div>
 
+    <div class="particles" id="particles"></div>
+
     <footer>
         <div class="footer-container">
           <div class="footer-left">
@@ -182,6 +199,7 @@
         </div>
     </footer>
 
+    <script src="./ARCHIVE/script/other/loading.js"></script>
     <script src="./ARCHIVE/script/main_script.js"></script>
 </body>
 </html>

