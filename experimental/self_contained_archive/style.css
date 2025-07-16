@@ -176,7 +176,7 @@ body {
     z-index: 1000;
     font-family: 'MS Sans Serif', sans-serif;
     display: none;
-    scale: 1.2;
+    /* scale: 1.2; */
 }
 
 .window.active {
