@@ -1,0 +1,1858 @@
+#MainBodyRight table {
+    border-collapse: separate;
+}
+
+.attention {
+    color: #FFF;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+#analysis-tag {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+}
+
+#logInfo {
+    background-color: rgba(255, 255, 255, 0);
+    border-bottom: 0px solid silver;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    padding: 1px;
+    color: black;
+    font-size: 0.9em;
+    line-height: 1.8;
+    min-width: 850px;
+    text-align: center;
+    z-index: 100;
+    opacity: 0.2;
+}
+
+#AlbumPage .thum img {
+    max-height: 140px;
+}
+
+.border-none td {
+    border: none !important;
+}
+
+.border-rows td {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.border-cols td {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+body {
+    -webkit-text-size-adjust: none;
+    background-color: #000000;
+    color: #fff;
+    margin: 0;
+    padding: 0px 0 0 0 !important;
+    text-align: center;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: left top;
+    background-image: url(//img-www3.hp-ez.com/img/ameno/background/bg_20241003-191209.jpg);
+    cursor: url(https://img-www4.hp-ez.com/img/confession/thumb/img_20240204-111448.png), auto;
+    overflow-x: hidden;
+    padding-top: 0px;
+}
+
+img {
+    border: none;
+}
+
+address {
+    clear: both;
+    margin-top: 5px;
+    overflow: hidden;
+    white-space: normal;
+    width: 480px;
+}
+
+h1 {
+    display: none !important;
+}
+
+h2 {
+    display: none !important;
+}
+
+h3 {
+    display: none !important;
+}
+
+.blogCFoot {
+    color: #999 !important;
+    font-size: 0.8em;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    text-align: left;
+}
+
+.BlancPic {
+    background-color: #FFF;
+    border: solid 5px white;
+    color: #fff;
+    font-weight: bold;
+    height: 150px;
+    line-height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 200px;
+}
+
+.detailtext {
+    float: right;
+    height: auto;
+    padding-bottom: 50px;
+    text-align: left;
+    width: 288px;
+}
+
+.blog-comment-link a {
+    color: #fff !important;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.clear {
+    clear: both;
+}
+
+.TableIndex {
+    background-color: #666;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.3;
+    min-width: 50px;
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.TableBody {
+    background-color: black;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+    text-align: left;
+}
+
+.Inline {
+    display: inline;
+}
+
+.block {
+    display: block;
+}
+
+.attention a {
+    color: #FFF;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.top {
+    vertical-align: top;
+}
+
+.bottom {
+    vertical-align: bottom;
+}
+
+.InpArea {
+    font-size: 1em;
+    width: 90%;
+}
+
+.marg15 {
+    margin: 10px;
+}
+
+.FormTable {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.CodeB {
+    margin-top: 10px;
+}
+
+.clearfix:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.middle {
+    vertical-align: middle;
+}
+
+#MainBody {
+    border: 0px #1C1C1C solid;
+    color: white;
+    font-family: 'ＭＳ 明朝', 'ＭＳ Ｐ明朝', 'ヒラギノ明朝 Pro W3', 細明朝体, 平成明朝, serif;
+    margin-left: 30;
+    margin-right: auto;
+    position: relative;
+    background-position: 0 0;
+    padding-top: 30px;
+    background-image: url('./img/ca4ac7cdd8f57f21b7d1d2b77b5e3c4d.jpg');
+    width: 1000px;
+    height: 650px;
+    background-size: cover;
+    background-color: #000000;
+    background-repeat: repeat;
+    background-attachment: scroll;
+}
+
+#MainBody img {
+    max-width: 100%;
+    object-fit: contain;
+    height: auto;
+}
+
+#MainBlock {
+    margin-left: auto;
+    margin-right: auto;
+    0: min-height0px;
+    padding: 155px;
+    text-align: left;
+    width: 55555555555px;
+}
+
+#MainBodyLeft {
+    float: left;
+    font-family: 'ＭＳ 明朝', 'ＭＳ Ｐ明朝', 'ヒラギノ明朝 Pro W3', 細明朝体, 平成明朝, serif;
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+    width: 100px;
+    display: flex;
+    margin-top: -17px;
+    margin-left: 490px;
+    flex-wrap: wrap;
+}
+
+#MainBodyRight {
+    float: right;
+    font-size: 13px;
+    overflow: scroll;
+    text-align: center;
+    width: 360px;
+    height: 655px;
+    margin-top: 0 !important;
+    margin-right: 50px;
+    background-repeat: repeat;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-top: 0 !important;
+    position: relative;
+    top: -14px !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    overflow-y: auto;
+}
+
+#head {
+    display: none;
+    background-position: 0% 0%;
+    background-attachment: fixed;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    padding-top: 0px;
+    background-size: 700px;
+    top: 0;
+    z-index: 1;
+    background-image: none;
+    background-repeat: repeat;
+}
+
+#MenuLink a {
+    background-image: none;
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    color: rgb(255, 255, 255);
+    display: Black;
+    font-size: 13px;
+    height: 100%;
+    line-height: 28.6px;
+    padding: 4px;
+    padding-left: 5px;
+    width: 100%;
+}
+
+#MenuLink li {
+    background-image: none !important;
+    background-color: transparent !important;
+}
+
+#MenuLink li:hover {
+    background-image: none !important;
+    background-color: transparent !important;
+}
+
+#MenuLink li.active {
+    background-image: none !important;
+    background-color: transparent !important;
+}
+
+ul#FootLink {
+    display: none;
+    clear: both;
+    color: #CCCCCC;
+    font-size: 14px;
+    height: auto;
+    list-style-type: none;
+    margin: 0 0 10px;
+    margin-bottom: 5px;
+    padding: 20px 0 0 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 680px;
+}
+
+ul#FootLink li {
+    border-right: solid 2px #CCCCCC;
+    display: inline;
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: -2px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+ul#FootLink li:first-child {
+    border-left: solid 2px #CCCCCC;
+    border-right: solid 2px #CCCCCC;
+    display: inline;
+    margin-bottom: 5px;
+    margin-left: 0;
+    margin-right: -2px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+div.PageNavi {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+div.PageNavi span {
+    background-color: #000;
+    border: solid 1px #808080;
+    color: white;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 5px;
+}
+
+div.PageNavi a {
+    background-color: #696969;
+    border: solid 1px #808080;
+    color: #000;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 5px;
+    text-decoration: underline;
+}
+
+#calendar table {
+    font-size: 14px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+#calendar h2 {
+    background-color: gray;
+    color: #fff;
+    font-size: 17px;
+    margin: 0;
+    padding: 5px;
+    text-align: center;
+    font-weight: normal;
+}
+
+#calendar .week {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#calendar td {
+    color: silver;
+}
+
+#profile {
+    overflow: auto;
+    margin: 3px 10px;
+    text-align: center;
+    width: 180px;
+}
+
+#profile h2 {
+    display: none;
+    background-color: gray;
+    color: #fff;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin: 0;
+    padding: 5px 0;
+    text-align: center;
+}
+
+#profile dl {
+    margin: 0;
+    padding: 5px;
+    text-align: left;
+}
+
+#counter {
+    background-color: black;
+    border: solid 2px #333;
+    margin: 10px;
+    text-align: center;
+}
+
+#counter dt {
+    background-color: gray;
+    color: #fff;
+    font-size: 0.9em;
+    margin: 0 0 3px;
+    padding: 3px 0;
+}
+
+#counter dd {
+    font-size: 1em;
+    margin: 10px 0;
+    padding: 0;
+}
+
+#counter2 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    overflow: auto;
+    text-align: center;
+    width: 175px;
+}
+
+#blogNew ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+}
+
+#blogNew h2 {
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0 0 5px;
+    padding: 5px 0 5px 0;
+    text-align: center;
+    color: #000;
+    background-color: gray;
+}
+
+#blogArchives ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 10px;
+    padding: 0;
+}
+
+#blogNew li {
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+#Blog .blogBlock {
+    margin: 20px auto 10px;
+    padding: 0;
+    text-align: left;
+    width: 95%;
+    zoom: 100%;
+    color: #fff;
+    background-color: transparent !important;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-left: 2px solid #000;
+    border: none !important;
+    padding-left: 10px;
+    padding-right: 0px;
+}
+
+#Blog .blogBlock p {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#Blog .blogP {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 0px;
+    line-height: 1.9;
+}
+
+#Blog .blogP img {
+    max-width: 99%;
+    height: auto;
+}
+
+#Blog .blogBlock h2 {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0px;
+    padding: 5px 5px 5px 5px;
+    text-align: left;
+    line-height: 2;
+    display: block !important;
+    color: white !important;
+    margin-bottom: 10px;
+}
+
+#Blog .blogPic {
+    clear: right;
+    float: right;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#Blog .blogComment {
+    margin-bottom: 15px;
+    margin-left: 0px;
+    margin-right: 20px;
+    padding-bottom: 20px;
+    text-align: left;
+    width: 95%;
+    background-color: #333;
+    border-right: 2px solid #333;
+    border-bottom: 2px solid #333;
+    border-left: 2px solid #333;
+}
+
+#Blog .blogComment h3 {
+    font-size: 1.1em;
+    margin: 20px 20px 0 20px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    padding-top: 10px;
+    text-align: left;
+    color: silver;
+    border-bottom: 1px dotted gray;
+}
+
+#Blog .blogComment h4 {
+    font-size: 1em;
+    margin: 0;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-top: 20px;
+    text-align: left;
+    color: #f96;
+}
+
+#Blog .blogCommentP {
+    font-size: 1em;
+    line-height: 2;
+    margin: 15px 5px 25px 5px;
+    padding: 10px 20px 10px 20px;
+    text-align: left;
+    width: 90%;
+}
+
+#Blog p.subject {
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#blogComForm {
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding-left: 0px;
+    padding-right: 38px;
+    padding-top: 15px;
+    text-align: left;
+    width: 70%;
+    background-color: black;
+    border: solid 2px #999;
+    color: silver;
+}
+
+#blogComForm textarea {
+    width: 90%;
+}
+
+#Blog .blogFoot {
+    display: none;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 10px 20px 25px 0px;
+    text-align: right;
+    color: #fff;
+    background-color: gray;
+}
+
+#blogArchivePage ul {
+    margin: 0px 0 0;
+    padding: 0;
+}
+
+#blogArchivePage li {
+    font-size: 1.3em;
+    line-height: 2;
+    list-style-type: none;
+    margin: 0 0 0 20px;
+    padding: 0;
+    text-align: left;
+}
+
+#Blog .tuiki {
+    font-size: 16px;
+    margin: 18px;
+}
+
+#Blog #tuiki {
+    margin: 18px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+#Blog .blogBlock .subject {
+    font-size: 16px;
+    color: #f96;
+}
+
+#FreePage h2 {
+    clear: both;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.9;
+    margin: 1.8em 10px 20px;
+    padding: 5px 5px 5px 10px;
+    text-align: left;
+    color: #fff;
+    background-color: #666;
+}
+
+#FreePage h3 {
+    font-size: 17px;
+    font-weight: normal;
+    line-height: 1.9;
+    padding: 3px 9px;
+}
+
+#FreePage p {
+    line-height: 1.9;
+    margin: 0.5em 0 0.2em;
+    padding: 0 5px;
+    text-align: left;
+    white-space: normal;
+    letter-spacing: 0.3px;
+}
+
+#FreePage {
+    line-height: 1.9;
+    padding: 20px 15px 0px 20px;
+    text-align: left;
+    text-decoration: none;
+    color: #fff;
+    margin-top: 15px !important;
+    padding-top: 15px !important;
+}
+
+#AlbumExp {
+    font-size: 17px;
+    line-height: 1.8;
+    margin: 30px 10px 30px 15px;
+    padding-left: 10px;
+    text-align: left;
+    width: 93%;
+    color: ffffff;
+}
+
+#AlbumPage .PicStr {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    padding: 5px;
+    text-align: left;
+    width: 80%;
+}
+
+#AlbumPage .PicBlock {
+    float: left;
+    margin: 5px 2px;
+    padding: 5px;
+    text-align: center;
+    width: 170px;
+}
+
+#AlbumPage .thum {
+    border: 1px solid rgba(255, 255, 255, 1);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.66);
+    float: left;
+    margin: 0px 0px 30px 30px;
+    padding: 14px;
+    text-align: center;
+    width: 109px;
+    padding-top: 13px !important;
+    padding-bottom: 8px !important;
+}
+
+#AlbumPage .PicName {
+    display: inline;
+    font-size: 14px;
+}
+
+#AlbumPage .PicComment {
+    font-size: 14px;
+    margin: 0;
+    padding: 0px;
+    text-align: left;
+    color: #fffffff;
+}
+
+#novel {
+    line-height: 1.9;
+    padding: 0px 0px 15px 25px;
+    text-align: left;
+    margin-top: 20px !important;
+    padding-top: 0px !important;
+    padding-left: 0px !important;
+    padding-right: -10px !important;
+    box-sizing: border-box;
+}
+
+#novel p {
+    margin-left: 0px;
+    margin-right: 0px;
+    text-align: left;
+}
+
+#novel h2 {
+    margin: 0 0 0px 0px;
+    margin-bottom: 6px;
+    padding: 5;
+    text-align: left;
+    color: #ccc;
+}
+
+#novel .novelList {
+    font-size: 1em;
+    line-height: 2.5;
+    margin: 0px 0px 0px 20px;
+    padding: 0;
+    padding-top: 0px;
+}
+
+#novel #cnForm {
+    padding-left: 0px;
+    padding-right: 30px;
+    padding-top: 30px;
+}
+
+#novel #nameReset {
+    text-align: right;
+}
+
+#novel .paragraph {
+    margin-right: 0px;
+}
+
+#novel #chapter {
+    font-size: 20px;
+    margin-right: 0px;
+}
+
+#novel #paragraph {
+    font-size: 1.1em;
+    line-height: 1.9;
+    margin-left: 0px;
+}
+
+#novel h3 {
+    font-size: 1.0em;
+    margin: 10px 20px 0 20px;
+    padding: 0;
+    text-align: left;
+}
+
+#novel h3#indexChapter {
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+#novel p.pageExp {
+    font-size: 14px;
+    line-height: 1.9;
+    margin-left: 40px;
+}
+
+#novelP {
+    margin: 25px 10px 8px 20px;
+}
+
+#NovelTitlePic {
+    display: block;
+    text-align: center;
+}
+
+#novel div#PageExp {
+    font-size: 11px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+#novel div.pageExp {
+    font-size: 11px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+#bbs img {
+    margin: 0 0 10px 10px;
+}
+
+#bbsList {
+    line-height: 1.3;
+    margin: 10px 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-align: left;
+}
+
+#bbs .bbsListRe {
+    background-image: url(//sozai.hp-ez.com/css/parts/reply.gif);
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    margin-left: 15px;
+    padding-left: 14px;
+}
+
+#bbsDisSelect {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    text-align: right;
+}
+
+#bbsList .name {
+    color: #FFF;
+    margin-left: 0;
+}
+
+#bbsList .day {
+    margin-left: 0;
+}
+
+#bbs .day {
+    color: silver;
+    font-size: 0.8em;
+    text-decoration: none;
+}
+
+#bbs .bbsBox address a {
+    color: #fc9;
+}
+
+#bbs .bbsBox h2 {
+    color: #000;
+    font-size: 14px;
+    margin: 10px 0;
+    padding-left: 5px;
+}
+
+#bbs .bbsBox h3 {
+    color: #000;
+    font-size: 1em;
+    margin: 10px 0;
+    padding-left: 5px;
+}
+
+#bbs .bbsBox {
+    border-bottom: 1px dotted gray;
+    color: #000;
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width: 95%;
+}
+
+#bbs .bbsReply {
+    margin-bottom: 10px;
+    margin-left: 30px;
+    text-align: left;
+    width: 92%;
+}
+
+#bbs .bbsBox p {
+    line-height: 1.5;
+    margin: 0;
+}
+
+#bbs .bbsBox address {
+    clear: both;
+    display: block;
+    font-size: 0.8em;
+    padding: 5px;
+}
+
+#bbs .bbsBox form {
+    margin: 0 5px 5px 0;
+    text-align: right;
+}
+
+#bbs .bbsBox form input[type="submit"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: none;
+}
+
+#bbs #NewComment {
+    color: FFF;
+    line-height: 1.5;
+    margin: 15px 15px 25px;
+}
+
+#bbs .name {
+    display: none;
+    color: #FFF;
+    font-size: 1em;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#ContactTable td {
+    border: solid 1px gray;
+}
+
+#ContactTable {
+    border-collapse: collapse;
+    margin: 0px auto;
+    width: 480px;
+}
+
+#ContactTable td.TableIndex {
+    white-space: normal;
+}
+
+#linkPage {
+    text-align: left;
+}
+
+#linkPage h2 {
+    background-color: gray;
+    clear: both;
+    color: #000;
+    font-size: 1.2em;
+    line-height: 2;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+}
+
+#linkPage dt {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    text-decoration: underline;
+}
+
+#linkPage dd {
+    border-bottom: 1px dotted gray;
+    color: silver;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 0;
+}
+
+#LinkCategory {
+    float: left;
+    font-style: inherit;
+    padding: 10px;
+    width: 170px;
+}
+
+#LinkCategory li {
+    list-style-position: outside;
+    list-style-type: disc;
+    margin: 0 0 8px 10px;
+    padding: 5px 0;
+}
+
+#link {
+    float: left;
+    overflow: hidden;
+    width: 380px;
+}
+
+#linkPage address a {
+    color: #000;
+}
+
+#NetShop #stepActive {
+    background-color: #FFF;
+    color: #fff;
+}
+
+#NetShop .gbox {
+    background-color: #000;
+    border: solid 2px #666666;
+}
+
+#NetShop #cart {
+    background-color: #000;
+    border: solid 2px #666666;
+    margin: 20px auto 10px;
+    padding-bottom: 20px;
+    width: 90%;
+}
+
+#NetShop #cart h2 {
+    background-color: #666666;
+    color: #fff;
+    font-size: 1em;
+    line-height: 2;
+    margin: 0 0 20px;
+    padding-left: 15px;
+    text-align: left;
+}
+
+#NetShop .gbox h3 {
+    background-color: #000;
+    color: #fff;
+}
+
+#NetShop .gbox div.exp {
+    color: #CCCCCC;
+}
+
+#NetShop .step {
+    background-color: #416cc0;
+    color: white;
+    float: left;
+    font-size: 0.9em;
+    height: 40px;
+    margin-left: 5px;
+    padding: 7px;
+    width: 115px;
+}
+
+#NetShop div.ShopBody {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+}
+
+#NetShop #gdetail {
+    height: auto;
+    padding-bottom: 10px;
+}
+
+#detailExp {
+    font-size: 0.9em;
+    height: auto;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+#NetShop #gdetail .gthum {
+    display: block;
+    float: left;
+    margin: 5px;
+}
+
+#NetShop #gdetail .gthumS {
+    display: block;
+    float: left;
+    margin: 5px 8px;
+}
+
+#DpicB {
+    float: left;
+    width: 202px;
+}
+
+#NetShop #gdetail .NoImage {
+    background-color: silver;
+    color: gray;
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    height: 130px;
+    line-height: 130px;
+    margin: 5px;
+    text-align: center;
+    width: 200px;
+}
+
+#NetShop #gdetail .MenuPrice {
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 8px;
+}
+
+#NetShop .Dbuttons {
+    clear: both;
+    padding-right: 10px;
+    text-align: right;
+}
+
+#NetShop .price {
+    font-size: 1em;
+    padding-left: 5px;
+}
+
+#NetShop .total {
+    border: solid 2px;
+    color: red;
+    font-size: 1.2em;
+    line-height: 3em;
+    text-align: center;
+}
+
+#NetShop #cart .exp {
+    font-size: 1em;
+    line-height: 1.3;
+    padding: 10px;
+    text-align: left;
+}
+
+#NetShop .cartTable {
+    margin: 10px auto 30px;
+    width: 90%;
+    zoom: 100%;
+}
+
+#stepBlock {
+    margin-bottom: 20px;
+    padding-left: 15px;
+}
+
+#ShopTop {
+    margin-bottom: 10px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+#modNum {
+    font-size: 10px;
+    padding-right: 15px;
+    text-align: right;
+}
+
+#NetShop h3.payment {
+    font-size: 1.2em;
+    margin: 5px 0 10px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+#ShopLayout1 .buttons {
+    clear: both;
+    margin: 8px;
+    text-align: right;
+}
+
+#ShopLayout1 .gbox .NoImage {
+    background-color: silver;
+    color: gray;
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    height: 60px;
+    line-height: 60px;
+    margin: 5px;
+    text-align: center;
+    width: 80px;
+}
+
+#ShopLayout1 .gpic {
+    float: left;
+    margin: 5px;
+    width: 90px;
+}
+
+#ShopLayout1 .gbox .exp {
+    border: none;
+    font-size: 0.9em;
+    overflow: hidden;
+    padding: 5px;
+}
+
+#ShopLayout1 .gbox {
+    margin-bottom: 10px;
+    position: relative;
+    text-align: left;
+    width: 98%;
+}
+
+#ShopLayout1 .gtext {
+    float: right;
+    width: 375px;
+}
+
+#ShopLayout2 .gbox {
+    float: left;
+    height: auto;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    position: relative;
+    text-align: center;
+    width: 240px;
+}
+
+#ShopLayout2 .buttons {
+    margin-top: 8px;
+    text-align: center;
+}
+
+#ShopLayout2 .gbox .NoImage {
+    background-color: silver;
+    color: gray;
+    font-size: 14px;
+    font-weight: bold;
+    height: 150px;
+    line-height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 200px;
+}
+
+#ShopLayout2 .gpic {
+    margin: 5px auto;
+    padding: 5px;
+}
+
+#ShopLayout2 .gbox h3 {
+    font-size: 0.9em;
+    margin: 5px 0 0;
+    padding: 3px 10px;
+}
+
+#ShopLayout2 .gtext {
+    text-align: left;
+    width: 230px;
+}
+
+#ShopLayout3 .MenuPrice {
+    float: left;
+    font-size: 0.8em;
+    margin-left: 10px;
+    margin-top: 3px;
+    width: 200px;
+}
+
+#ShopLayout3 .buttons {
+    float: right;
+    margin-right: 2px;
+    margin-top: 2px;
+    text-align: right;
+    width: 150px;
+}
+
+#ShopLayout3 .gbox .NoImage {
+    background-color: silver;
+    color: gray;
+    float: left;
+    font-size: 11px;
+    font-weight: bold;
+    height: 60px;
+    left: 5px;
+    line-height: 60px;
+    position: absolute;
+    text-align: center;
+    top: 5px;
+    width: 80px;
+}
+
+#ShopLayout3 .gpic {
+    display: block;
+    left: 5px;
+    margin: 5px auto;
+    padding: 5px;
+    position: absolute;
+    top: 5px;
+}
+
+#ShopLayout3 .gbox {
+    border-width: 1px;
+    margin: 0 0 2px;
+    text-align: left;
+    width: 98%;
+}
+
+#ShopLayout3 .gbox h3 {
+    clear: both;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 3px 8px;
+}
+
+#ShopLayout3 .gtext {
+    font-size: 0.9em;
+}
+
+#MailMagazineForm h2 {
+    background-color: gray;
+    color: #fff;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 8px;
+}
+
+#MailMagazineForm {
+    background-color: black;
+    border: solid 1px gray;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    padding-top: 0;
+    text-align: center;
+    width: 80%;
+}
+
+#MailMagazineForm .attention {
+    padding: 15px;
+}
+
+#MainBodyRight a:link {
+    color: #000;
+    text-decoration: underline;
+}
+
+#MainBodyRight::-webkit-scrollbar {
+    display: none;
+}
+
+#header-contents {
+    color: #fff;
+    margin: 0px auto;
+    position: relative;
+    text-align: left;
+    width: 700px;
+}
+
+#InputButton {
+    padding: 15px;
+    text-align: center;
+}
+
+#InputButton input[type="submit"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    background: none;
+    color: #000;
+}
+
+div#footprint {
+    color: #333;
+    font-size: 14px;
+    margin: 10px 10px 5px;
+    text-align: left;
+}
+
+span.footprint {
+    background-image: url(//sozai.hp-ez.com/css/parts/foot_print.gif);
+    background-position: right 0;
+    background-repeat: no-repeat;
+    margin-right: 8px;
+    padding-right: 20px;
+}
+
+#footprint a {
+    color: #00f;
+}
+
+#sTab {
+    height: 200px;
+    left: 0;
+    position: fixed;
+    top: 200px;
+    width: 45px;
+}
+
+#mailLabel {
+    font-size: 1em;
+    margin: 5px;
+    text-align: center;
+}
+
+#mailMessage {
+    font-size: 1em;
+    line-height: 1.5;
+    padding: 10px 30px;
+    text-align: left;
+}
+
+#PageExp {
+    background-color: black;
+    border: solid 2px #333;
+    font-size: 14px;
+    margin: 20px auto;
+    padding: 10px;
+    text-align: left;
+    width: 460px;
+    display: none;
+}
+
+#logname {
+    float: right;
+    font-weight: bold;
+    margin-right: 30px;
+    position: relative;
+    right: 60px;
+    z-index: 200;
+}
+
+#header-contents p {
+    margin: 3px;
+    padding: 5px 10px;
+}
+
+#wrap {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+a:hover {
+    outline: none !important;
+    background: transparent !important;
+    color: inherit !important;
+    text-decoration: underline !important;
+    opacity: 0.5 !important;
+    box-shadow: none !important;
+    border: none !important;
+    cursor: url(https://img-www4.hp-ez.com/img/confession/thumb/img_20240204-111448.png), auto;
+}
+
+ul#FootLink a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+div.PageNavi a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+#calendar td a {
+    color: #000;
+    text-decoration: underline;
+}
+
+#main {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -30px;
+}
+
+#counter2 table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul#MenuLink {
+    width: 300px;
+    height: 150px;
+    list-style-type: none;
+    margin: 0;
+    margin-left: 0px;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+ul#MenuLink::-webkit-scrollbar {
+    display: none;
+}
+
+#blogNewCom ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#blogCategory ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#blogNewCom li {
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+#blogArchives li {
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+#blogCategory li {
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+#blogNewCom h2 {
+    background-color: gray;
+    color: #fff;
+    font-size: 1em;
+    margin: 0 0 5px;
+    padding: 5px 0 5px 0;
+    text-align: center;
+}
+
+#blogArchives h2 {
+    background-color: gray;
+    color: #fff;
+    font-size: 1em;
+    margin: 0 0 5px;
+    padding: 5px 0 5px 0;
+    text-align: center;
+}
+
+#blogCategory h2 {
+    background-color: gray;
+    color: #fff;
+    font-size: 1em;
+    margin: 0 0 5px;
+    padding: 5px 0 5px 0;
+    text-align: center;
+}
+
+#novel div.novelPageNo {
+    font-size: 0.9em;
+    margin: 20px;
+    text-align: center;
+}
+
+#novelLinkToIndex {
+    font-size: 0.9em;
+    margin: 20px;
+    text-align: center;
+}
+
+a:link {
+    color: #000;
+    text-decoration: none;
+}
+
+a:visited {
+    outline: none !important;
+    background: transparent !important;
+    color: inherit !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+#contact {
+    color: #000;
+    text-decoration: none;
+}
+
+#counter dl {
+    margin: 0;
+    padding: 0;
+}
+
+#novel ul {
+    margin: 0;
+    padding: 0;
+}
+
+#LinkCategory ul {
+    margin: 0;
+    padding: 0;
+}
+
+#MainBodyLeft a {}
+
+#QrCode p {
+    color: #000;
+}
+
+#AlbumPage .thum p {
+    color: #000;
+}
+
+#calendar .saturday {
+    color: #000;
+}
+
+#calendar .sunday {
+    color: #000;
+}
+
+#linkPage address a:hover {
+    color: #000;
+}
+
+#linkPage dd img {
+    float: left;
+    margin: 5px;
+}
+
+#ShopLayout1 .gthum {
+    float: left;
+    margin: 5px;
+}
+
+#NetShop #gdetail h3 {
+    font-size: 1em;
+    margin: 0;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+#ShopLayout1 .gbox h3 {
+    font-size: 1em;
+    margin: 0;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+#ShopLayout1 .MenuPrice {
+    margin-top: 3px;
+}
+
+#ShopLayout2 .MenuPrice {
+    margin-top: 3px;
+}
+
+#profile img {
+    margin: 0px auto;
+}
+
+#ShopLayout2 .gthum {
+    margin: 5px auto;
+}
+
+#ShopLayout2 .gbox .exp {
+    border: none;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+#ShopLayout3 .gbox .exp {
+    border: none;
+    font-size: 0.8em;
+    margin-bottom: 5px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+#Blog .blogFoot * {
+    vertical-align: middle;
+}
+
+#blogNew {
+    margin: 10px auto;
+    width: 160px;
+}
+
+#blogNewCom {
+    margin: 10px auto;
+    width: 160px;
+}
+
+#blogArchives {
+    margin: 10px auto;
+    width: 160px;
+}
+
+#blogCategory {
+    margin: 10px auto;
+    width: 160px;
+}
+
+#calendar {
+    margin: 10px auto;
+    width: 160px;
+}
+
+#linkPage a {
+    text-decoration: underline;
+}
+
+#main a:hover {
+    text-decoration: underline;
+}
+
+#MenuLink a:hover {
+    background-image: none;
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+    line-height: 28.6px;
+    padding-left: 5px;
+}
+
+#MenuLink .active a {
+    background-image: none;
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+    line-height: 28.6px;
+    padding-left: 5px;
+}
+
+#loginform .marg15 input {
+    background: none;
+    color: #000;
+    border: none;
+}
+
+#dynamicContainer {
+    text-align: left;
+    width: 400px;
+    padding: 25px;
+    height: 348px;
+    background-size: cover;
+    margin-top: 15px;
+    background-image: url(https://img-www4.hp-ez.com/img/confession/img_20240104-113331.png);
+}
+
+#dynamicInnerContainer {
+    width: 100%;
+    height: 100%;
+    margin-left: -2px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#dynamicInnerContainer::-webkit-scrollbar {
+    display: none;
+}
+
+#heartImg {
+    position: absolute;
+    left: 62px;
+    bottom: 110px;
+    width: 121px;
+}
+
+#loginform-table {
+    width: 100%;
+}
+
+#confessionLink {
+    position: absolute;
+    width: 327px;
+    left: 33px;
+    top: 0px;
+}
+
+body :not(#MenuLink):not(#MenuLink *) {
+    color: white;
+    0: !important;
+}
+
+* {
+    font-size: 13px !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-focus-ring-color: transparent !important;
+}
+
+a:focus-visible {
+    outline: none !important;
+}
+
+a:focus {
+    outline: none !important;
+    background: transparent !important;
+    color: inherit !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+a:active {
+    outline: none !important;
+    background: transparent !important;
+    color: inherit !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+#MainBodyRight * {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+#MainBodyRight>*:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+#MainBodyRight br:last-child {
+    display: none !important;
+}
