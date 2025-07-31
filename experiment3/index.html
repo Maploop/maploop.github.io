@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAT14#8148162159018</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .data-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        .data-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .data-item {
+            margin: 8px 0;
+            padding: 5px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+        .data-item:last-child {
+            border-bottom: none;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+            display: inline-block;
+            width: 150px;
+        }
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        .error {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DATA WILL REMAIN CONFIDENTIAL.</h1>
+        
+        <div class="data-section">
+            <h3>IP ADDRESS INFO.</h3>
+            <div id="ip-data">
+                <div class="loading">Loading IP information...</div>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <h3>BROWSER INFO.</h3>
+            <div id="browser-data"></div>
+        </div>
+
+        <div class="data-section">
+            <h3>DEVICE INFO.</h3>
+            <div id="device-data"></div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Collect browser and device information immediately
+            collectBrowserInfo();
+            collectDeviceInfo();
+            
+            // Get IP information from external API
+            getIPInfo();
+        });
+
+        function collectBrowserInfo() {
+            const nav = navigator;
+            const browserData = {
+                'User Agent': nav.userAgent,
+                'Browser Language': nav.language,
+                'Available Languages': nav.languages ? nav.languages.join(', ') : 'Not available',
+                'Platform': nav.platform,
+                'Cookie Enabled': nav.cookieEnabled ? 'Yes' : 'No',
+                'Java Enabled': nav.javaEnabled ? nav.javaEnabled() : 'Unknown',
+                'Online Status': nav.onLine ? 'Online' : 'Offline',
+                'Vendor': nav.vendor || 'Not available',
+                'Product': nav.product || 'Not available'
+            };
+
+            displayData('#browser-data', browserData);
+        }
+
+        function collectDeviceInfo() {
+            const deviceData = {
+                'Screen Resolution': screen.width + ' x ' + screen.height,
+                'Available Screen': screen.availWidth + ' x ' + screen.availHeight,
+                'Color Depth': screen.colorDepth + ' bits',
+                'Pixel Depth': screen.pixelDepth + ' bits',
+                'Window Size': $(window).width() + ' x ' + $(window).height(),
+                'Document Size': $(document).width() + ' x ' + $(document).height(),
+                'Timezone Offset': new Date().getTimezoneOffset() + ' minutes',
+                'Local Time': new Date().toString(),
+                'Referrer': document.referrer || 'Direct visit'
+            };
+
+            // Check for touch support
+            deviceData['Touch Support'] = 'ontouchstart' in window ? 'Yes' : 'No';
+
+            // Check for mobile device
+            deviceData['Mobile Device'] = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Yes' : 'No';
+
+            displayData('#device-data', deviceData);
+
+            // Update window size on resize
+            $(window).resize(function() {
+                $('#device-data .window-size').text($(window).width() + ' x ' + $(window).height());
+            });
+        }
+
+        function getIPInfo() {
+            // Try multiple IP services for better reliability
+            const ipServices = [
+                'https://api.ipify.org?format=json',
+                'https://ipapi.co/json/',
+                'https://ip-api.com/json/'
+            ];
+
+            // Try the first service
+            $.ajax({
+                url: ipServices[0],
+                method: 'GET',
+                timeout: 5000,
+                success: function(data) {
+                    displayIPData({ ip: data.ip });
+                    // Get more detailed info from another service
+                    getDetailedIPInfo(data.ip);
+                },
+                error: function() {
+                    // Try backup service
+                    tryBackupIPService(ipServices, 1);
+                }
+            });
+        }
+
+        function tryBackupIPService(services, index) {
+            if (index >= services.length) {
+                $('#ip-data').html('<div class="error">Unable to retrieve IP information</div>');
+                return;
+            }
+
+            $.ajax({
+                url: services[index],
+                method: 'GET',
+                timeout: 5000,
+                success: function(data) {
+                    if (data.ip) {
+                        displayIPData(data);
+                    } else if (data.query) {
+                        data.ip = data.query;
+                        displayIPData(data);
+                    }
+                },
+                error: function() {
+                    tryBackupIPService(services, index + 1);
+                }
+            });
+        }
+
+        function getDetailedIPInfo(ip) {
+            $.ajax({
+                url: 'https://ipapi.co/' + ip + '/json/',
+                method: 'GET',
+                timeout: 5000,
+                success: function(data) {
+                    displayIPData(data);
+                },
+                error: function() {
+                    // Try another service for detailed info
+                    $.ajax({
+                        url: 'http://ip-api.com/json/' + ip,
+                        method: 'GET',
+                        timeout: 5000,
+                        success: function(data) {
+                            // Convert ip-api format to consistent format
+                            const convertedData = {
+                                ip: data.query,
+                                city: data.city,
+                                region: data.regionName,
+                                country_name: data.country,
+                                country_code: data.countryCode,
+                                postal: data.zip,
+                                latitude: data.lat,
+                                longitude: data.lon,
+                                timezone: data.timezone,
+                                org: data.org,
+                                asn: data.as
+                            };
+                            displayIPData(convertedData);
+                        },
+                        error: function() {
+                            console.log('Could not get detailed IP information');
+                        }
+                    });
+                }
+            });
+        }
+
+        function displayIPData(data) {
+            const ipInfo = {
+                'IP Address': data.ip || 'Not available',
+                'City': data.city || 'Not available',
+                'Region': data.region || 'Not available',
+                'Country': data.country_name || 'Not available',
+                'Country Code': data.country_code || 'Not available',
+                'Postal Code': data.postal || 'Not available',
+                'Latitude': data.latitude || 'Not available',
+                'Longitude': data.longitude || 'Not available',
+                'Timezone': data.timezone || 'Not available',
+                'ISP/Organization': data.org || 'Not available',
+                'ASN': data.asn || 'Not available'
+            };
+
+            displayData('#ip-data', ipInfo);
+        }
+
+        function displayData(container, dataObject) {
+            let html = '';
+            for (const [key, value] of Object.entries(dataObject)) {
+                html += `<div class="data-item">
+                    <span class="label">${key}:</span>
+                    <span class="${key.toLowerCase().replace(' ', '-')}">${value}</span>
+                </div>`;
+            }
+            $(container).html(html);
+        }
+
+        // Optional: Send data to server
+        function sendDataToServer(data) {
+            // Uncomment and modify this section to send data to your server
+            /*
+            $.ajax({
+                url: '/collect-user-data',
+                method: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function(response) {
+                    console.log('Data sent successfully');
+                },
+                error: function(xhr, status, error) {
+                    console.log('Error sending data:', error);
+                }
+            });
+            */
+        }
+    </script>
+</body>
+</html>

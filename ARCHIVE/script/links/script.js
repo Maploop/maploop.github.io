@@ -183,7 +183,7 @@ function initDataCollection() {
 }
 
 function goToExpeirmental() {
-  window.open('https://maploop.github.io/experimental/');
+  window.open('https://maploop.github.io/exp/');
 }
 
 // Start collecting data when the page loads
