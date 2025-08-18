@@ -1,6 +1,7 @@
 :root {
     --signature-blue: rgba(37, 99, 235, 1.0);
-    --bg-dark: #111111;
+    --bg-dark: #0a0e1a;
+    
     --signature-purple: #4ade80;
 
     --card-bg: #1e1e1e;
@@ -12,14 +13,14 @@
 }
 
 body {
-    background-color: var(--bg-dark);
+    background-color: #0a0e1a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
     scrollbar-width: thin;
     scrollbar-color: rgba(100, 100, 100, 0.3) transparent;
@@ -103,7 +104,7 @@ body {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: rgba(15, 15, 15, 0.95);
+            background-color: #1a1f2e;
             backdrop-filter: blur(10px);
             gap: 2rem;
             padding: 2rem;
@@ -147,7 +148,7 @@ body {
     left: 0;
     width: 100%;
     padding: 1rem 2rem;
-    background-color: rgba(15, 15, 15, 0.8);
+    background-color: #1a1f2e;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     z-index: 1000;
@@ -316,6 +317,9 @@ footer {
 .card:hover {
     /* transform: translateY(-1%); */
     border: 1px solid var(--text-color);
+    border-color: #2a3441;
+    background-color: #111720;
+    transform: translateY(-2px);
 }
 
 .card p {
@@ -383,14 +387,12 @@ footer {
 
 .section-title {
     color: whitesmoke;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-bottom: 50px;
     margin-top: 50px;
 }
 
 .section-description {
     color: whitesmoke;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin-bottom: 50px;
     margin-top: 50px;
 }
@@ -741,20 +743,25 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(25, 25, 25, 0.8) 0%, rgba(16, 16, 16, 0.9) 100%);
+    background: #0a0e1a;
     z-index: -1;
     pointer-events: none;
 }
 
 /* Cool hover effects for cards */
 .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     will-change: transform;
+    background-color: #0f1419;
+    border: 1px solid #1a1f2e;
+    border-radius: 12px;
+    padding: 32px;
+    transition: all 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: #2a3441;
+    background-color: #111720;
+    transform: translateY(-2px);
 }
 
 /* Back to top button animation */
