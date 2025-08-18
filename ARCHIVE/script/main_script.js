@@ -2,6 +2,15 @@ let currentSlide = 0;
 const slides = document.querySelectorAll('.banner-slide');
 const navButtons = document.querySelectorAll('.banner-nav-button');
 
+const icons = {
+    external: '<svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>',
+    github: '<svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>',
+    npm: '<svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>',
+    video: '<svg viewBox="0 0 24 24"><polygon points="23 12 8 22 8 2 23 12"/></svg>',
+    docker: '<svg viewBox="0 0 24 24"><path d="M13.5 11h-2v2h2v-2zm0-3h-2v2h2V8zm3 0h-2v2h2V8zm0 3h-2v2h2v-2zm0 3h-2v2h2v-2zm-3 0h-2v2h2v-2zm-3 0h-2v2h2v-2zm-3 0h-2v2h2v-2zm0-3h-2v2h2v-2z"/></svg>',
+    folder: '<svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>'
+};
+
 // refreshSlides();
 
 function showSlide(n) {
@@ -116,6 +125,7 @@ setTimeout(() => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    loadProjectCards();
     const navbar = document.querySelector('.navbar');
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navItems = document.querySelectorAll('.nav-item');
@@ -196,3 +206,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function createCardLinks(links) {
+    const linkElements = [];
+    
+    Object.keys(links).forEach(linkType => {
+        if (icons[linkType] && links[linkType]) {
+            linkElements.push(`
+                <a href="${links[linkType]}" class="card-link" target="_blank" rel="noopener noreferrer">
+                    ${icons[linkType]}
+                </a>
+            `);
+        }
+    });
+    
+    return linkElements.join('');
+}
+
+async function loadProjectCards() {
+    const grid = document.getElementById('projects-grid');
+    
+    try {
+        setTimeout(async () => {
+            const response = await fetch("/projects/projects_data.json");
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            console.log(data);
+            const projects = data.projects;
+            
+            if (!projects || projects.length === 0) {
+                grid.innerHTML = '<div class="cards-error">No projects found.</div>';
+                return;
+            }
+
+            const cardProjects = projects.slice(0, 4);
+
+            grid.innerHTML = cardProjects.map(project => `
+                <div class="project-card">
+                    <div class="card-header">
+                        <div class="card-folder">
+                            ${icons.folder}
+                        </div>
+                        <div class="card-links">
+                            ${createCardLinks(project.links)}
+                        </div>
+                    </div>
+                    
+                    <h3 class="card-title">${project.title}</h3>
+                    
+                    <p class="card-description">
+                        ${project.description || 'No description available.'}
+                    </p>
+                    
+                    <div class="card-tech">
+                        ${project.technologies.map(tech => `<span class="card-tech-tag">${tech}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }, 700);
+        
+    } catch (error) {
+        grid.innerHTML = '<div class="cards-error">Error loading projects. Please try again later.</div>';
+        console.error('Error loading project cards:', error);
+    }
+}

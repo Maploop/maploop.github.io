@@ -1,0 +1,106 @@
+{
+    "projects": [
+        {
+            "year": 2023,
+            "title": "Portfolio",
+            "company": null,
+            "technologies": ["jQuery"],
+            "description": "The portfolio website that you're looking at right now.",
+            "links": {
+                "external": "https://maploop.github.io",
+                "github": "https://github.com/maploop.github.io"
+            }
+        },
+        {
+            "year": 2025,
+            "title": "Minecraft NPC Plugin",
+            "company": "Luna MC",
+            "technologies": ["Minecraft", "NMS", "Spigot"],
+            "description": "An advanced and fully-optimized Minecraft NPC plugin, fully configurable and made custom for Luna MC.",
+            "links": {
+                "external": "https://lunamc.ir",
+                "github": "https://github.com/LunaMC-Development"
+            }
+        },
+        {
+            "year": 2022,
+            "title": "Java 2FA Wrapper",
+            "company": "Atlas Network",
+            "technologies": ["Google 2FA", "Java"],
+            "description": "A simple wrapper library for Google's 2FA library.",
+            "links": {
+                "github": "https://github.com/Maploop/Atlas2FA"
+            }
+        },
+        {
+            "year": 2025,
+            "title": "Discord-Minecraft Rank Syncing",
+            "company": "",
+            "description": "Plugin that maps a Discord role to a rank in-game and syncs it every time the player joins or leaves.",
+            "technologies": ["Javacord", "Minecraft", "Spigot"],
+            "links": {
+                "external": "#"
+            }
+        },
+        {
+            "year": 2024,
+            "title": "OpenGL Game Engine",
+            "company": "",
+            "technologies": ["OpenGL 4.5", "C++"],
+            "links": {
+                "github": "https://github.com/Maploop/EFlame"
+            }
+        },
+        {
+            "year": 2024,
+            "title": "Vulkan Game Engine",
+            "company": "",
+            "technologies": ["Vulkan (OpenGL 5.0)", "C", "C++"],
+            "links": {
+                "github": "https://github.com/Maploop/Cora"
+            }
+        },
+        {
+            "year": 2024,
+            "title": "Hypixel SkyBlock Re-creation",
+            "company": "Atlas Network",
+            "technologies": ["Minecraft", "MineStom"],
+            "links": {
+                "external": "https://discord.gg/paper",
+                "github": "https://github.com/Swofty-Developments/HypixelSkyBlock"
+            }
+        },
+        {
+            "year": 2021,
+            "title": "Hypixel Lobby Recreation",
+            "company": null,
+            "technologies": ["Java", "Redis", "Mongo", "Spigot"],
+            "links": {
+                "external": "https://discord.gg/paper",
+                "github": "https://github.com/AtlasNetworkDev"
+            }
+        },
+        {
+            "year": 2021,
+            "title": "Hypixel Rank Color",
+            "company": null,
+            "description": "Plugin that replicates Hypixel's rank color system for custom Minecraft servers.",
+            "technologies": ["Java", "Spigot"],
+            "links": {
+                "external": "#",
+                "github": "#"
+            }
+        },
+        {
+            "year": 2021,
+            "title": "Spigot Dnum Framework",
+            "company": "Atlas Network",
+            "description": "A comprehensive framework for Spigot plugin development with advanced NMS integration and utilities.",
+            "technologies": ["Minecraft", "Spigot", "NMS"],
+            "links": {
+                "external": "https://discord.gg/paper",
+                "github": "https://github.com/Maploop/DnumFramework"
+            }
+        }
+    ]
+}

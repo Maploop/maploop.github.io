@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0e1a;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.portfolio-table th {
+    background-color: #1a1f2e;
+    padding: 15px 20px;
+    text-align: left;
+    font-weight: 600;
+    color: #8b92a5;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #2a3441;
+}
+
+.portfolio-table td {
+    padding: 20px;
+    border-bottom: 1px solid #1a1f2e;
+    vertical-align: middle;
+}
+
+.portfolio-table tr:hover {
+    background-color: #0f1419;
+}
+
+.year {
+    color: #4ade80;
+    font-weight: 600;
+    font-size: 16px;
+    width: 80px;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+    width: 300px;
+}
+
+.company {
+    color: #6b73ff;
+    font-size: 14px;
+    width: 200px;
+}
+
+.tech-stack {
+    color: #8b92a5;
+    font-size: 14px;
+    width: 400px;
+}
+
+.tech-tag {
+    display: inline-block;
+    margin-right: 8px;
+    margin-bottom: 4px;
+}
+
+.tech-tag:not(:last-child)::after {
+    content: " • ";
+    color: #4a5568;
+    margin-left: 8px;
+}
+
+.links {
+    display: flex;
+    gap: 12px;
+    width: 120px;
+}
+
+.link-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.link-icon:hover {
+    opacity: 1;
+}
+
+.external-link {
+    color: #8b92a5;
+    text-decoration: none;
+}
+
+.github-link {
+    color: #8b92a5;
+    text-decoration: none;
+}
+
+.npm-link {
+    color: #8b92a5;
+    text-decoration: none;
+}
+
+.docker-link {
+    color: #8b92a5;
+    text-decoration: none;
+}
+
+.video-link {
+    color: #8b92a5;
+    text-decoration: none;
+}
+
+svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
