@@ -31,7 +31,7 @@
             <div class="nav-links">
                 <a class="nav-item" href="#slide-0" data-target="slide-0"><span style="color: var(--signature-purple)">01.</span> About</a>
                 <a class="nav-item" href="#slide-2" data-target="slide-2"><span style="color: var(--signature-purple)">02.</span> Experience</a>
-                <a class="nav-item" href="#slide-1" data-target="slide-1"><span style="color: var(--signature-purple)">03.</span> Projects</a>
+                <a class="nav-item" href="#slide-1" data-target="slide-1"><span style="color: var(--signature-purple)">03.</span> Work</a>
                 <a class="nav-item" href="#slide-3" data-target="slide-3"><span style="color: var(--signature-purple)">04.</span> Contact</a>
             </div>
         </div>
@@ -50,6 +50,9 @@
                 <a href="https://discord.gg/atlasmc" class="pretty-a">Atlas Network</a>. <br>
                 <br>
                 I have also recently worked on a variety of <a class="pretty-a" href="#slide-1">Open Source Projects</a>.
+                <br>
+                <br>
+                <button onclick="window.open('https://github.com/Maploop')" class="cool-btn">Visit my GitHub</button>
             </p>
 
             
@@ -86,63 +89,121 @@
         </div>
     
         <div style="margin-top: 500px;" id="slide-2" class="scroll-reveal">
-            <h1 class="section-title">Where I've worked</h1>
-
-            <div class="grid-container">
-                <div title="https://discord.gg/paper" onclick="window.location='https://discord.gg/paper'" class="card scroll-item">
-                    <a style="font-size: 30px;" href="https://discord.gg/paper">Atlas Network</a>
-                    <p style="color: var(--signature-blue); font-weight: bold;">February 2020 - Present</p>
-                    <br>
-                    <p><i style="color: var(--signature-purple); margin-top: 10px;" class="fa-solid fa-check"></i> Communicate and manage multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis</p>
-                    <p><i style="color: var(--signature-purple); margin-top: 10px;" class="fa-solid fa-check"></i> Work with a variety of different languages, platforms, frameworks, and content management systems such as Java, JSP, JavaScript and Python</p>
-                    <p><i style="color: var(--signature-purple); margin-top: 10px;" class="fa-solid fa-check"></i> Contributed extensively to AtlasRedisAPI, a Java library aimed to make utilizing Redis messaging systems easier</p>
-                    <p><i style="color: var(--signature-purple); margin-top: 10px;" class="fa-solid fa-check"></i> Develope modern, performant, maintainable code for a diverse array of client and internal projects</p>
+            <div class="work-section">
+                <div class="section-header">
+                    <h2 class="section-title">Where I've Worked</h2>
+                    <div class="section-line"></div>
                 </div>
-                <div title="https://trexmine.com" onclick="window.location='https://trexmine.com'" class="card scroll-item">
-                    <a style="font-size: 30px;" href="https://trexmine.com">Trex Mine</a>
-                    <p style="color: var(--signature-blue); font-weight: bold;">July 2020 - May 2021</p>
-                    <br>
-                    <p><i style="color: var(--signature-purple); margin-top: 10px;" class="fa-solid fa-check"></i> Collaborated effectively within a dynamic team of over 10 skilled professionals, fostering a productive and enjoyable working environment.</p>
-                    <p><i style="color: var(--signature-purple); margin-top: 10px;" class="fa-solid fa-check"></i> Handle MySQL databases</p>
-                    <p><i style="color: var(--signature-purple); margin-top: 10px;" class="fa-solid fa-check"></i> Work with a variety of different languages, platforms, frameworks, and content management systems such as MySQL, Perodactyl</p>
-                    <p><i style="color: var(--signature-purple); margin-top: 10px;" class="fa-solid fa-check"></i> Develope modern, performant, maintainable code for a diverse array of client and internal projects</p>
-                    <p><i style="color: var(--signature-purple); margin-top: 10px;" class="fa-solid fa-check"></i> Contributed extensively to TrexMine's custom BedWars plugin, fixing bugs and adding new features</p>
+
+                <div class="work-container">
+                    <div class="company-tabs">
+                        <button class="company-tab active" data-company="atlas">Atlas</button>
+                        <button class="company-tab" data-company="lunamc">Luna MC</button>
+                        <button class="company-tab" data-company="trexmine">TrexMine</button>
+                    </div>
+
+                    <div class="job-content">
+                        <div class="job-details" data-job="atlas">
+                            <h3 class="job-title">Lead Developer @ <a href="https://discord.gg/paper" class="company-link">Atlas</a></h3>
+                            <div class="job-date">February 2020 - Present</div>
+                            <ul class="job-description">
+                                <li>Communicate and manage multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis</li>
+                                <li>Work with a variety of different languages, platforms, frameworks, and content management systems such as Java, JSP, JavaScript and Python</li>
+                                <li>Write modern, performant, maintainable code for a diverse array of client and internal projects</li>
+                                <li>Contributed extensively to AtlasRedisAPI, a Java library aimed to make utilizing Redis messaging systems easier</li>
+                                <li>Develope modern, performant, maintainable code for a diverse array of client and internal projects</li>
+                            </ul>
+                        </div>
+
+                        <div class="job-details" data-job="lunamc" style="display: none;">
+                            <h3 class="job-title">Head Developer @ <a href="https://lunamc.ir" class="company-link">Luna MC</a></h3>
+                            <div class="job-date">August 2025 - Present</div>
+                            <ul class="job-description">
+                                <li>Communicate and manage multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis</li>
+                                <li>Work with a variety of different languages, platforms, frameworks, and content management systems such as Java, Placeholder API, NMS, etc.</li>
+                                <li>Develope modern, performant, maintainable code for a diverse array of client and internal projects</li>
+                            </ul>
+                        </div>
+
+                        <div class="job-details" data-job="trexmine" style="display: none;">
+                            <h3 class="job-title">Senior Developer @ <a href="https://trexmine.com" class="company-link">TrexMine</a></h3>
+                            <div class="job-date">July 2020 - May 2021</div>
+                            <ul class="job-description">
+                                <li>Collaborated effectively within a dynamic team of over 10 skilled professionals, fostering a productive and enjoyable working environment.</li>
+                                <li>Handle MySQL Databases</li>
+                                <li>Work with a variety of different languages, platforms, frameworks, and content management systems such as MySQL, Perodactyl</li>
+                                <li>Develope modern, performant, maintainable code for a diverse array of client and internal projects</li>
+                                <li>Contributed extensively to TrexMine's custom BedWars plugin, fixing bugs and adding new features</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div style="margin-top: 200px;" id="slide-1" class="scroll-reveal">
-            <h1 class="section-title">Active Projects</h1>
-            <div class="grid-container">
-                <div title="https://github.com/Maploop/EFlame" onclick="window.location='https://github.com/Maploop/EFlame'" class="card scroll-item">
-                    <img src="ARCHIVE/image/eflame_engine.png" alt="Card Image">
-                    <a href="https://github.com/Maploop/EFlame">EFlame Engine</a>
-                    <p>A simple OpenGL-based game engine that I am developing as a foundational framework, with the primary goal of using it to practice and experiment with various concepts in computer physics, including collision detection, rigid body dynamics, and real-time simulation.</p>
+        <div style="margin-top: 500px;"></div>
+        <div id="slide-1" class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Some Things I've Built</h2>
                 </div>
-                <div title="https://discord.gg/paper" onclick="window.location='https://discord.gg/paper'" class="card scroll-item">
-                    <img src="ARCHIVE/image/hypixel_skyblock.jpg" alt="Atlas Network">
-                    <a href="https://discord.gg/paper">SkyBlock Recreation</a>
-                    <p>The best commercial Hypixel SkyBlock Sandbox / Recreation currently available. Contains Gemstones, 70% of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests, Islands, Bazaar and just about everything else!</p>
+
+                <div class="project">
+                    <div class="project-content">
+                        <div class="project-image">
+                            <img src="./ARCHIVE/image/atlas_network.png">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-label">Featured Project</div>
+                            <h3 class="project-title">SkyBlock Recreation</h3>
+                            <div class="project-description">
+                                The best commercial Hypixel SkyBlock Sandbox / Recreation currently available. Contains Gemstones, 70% of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests, Islands, Bazaar and just about everything else!
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-item">Spigot Library</span>
+                                <span class="tech-item">Advanced NMS</span>
+                                <span class="tech-item">Java</span>
+                                <span class="tech-item">Cloudflare (Anti-DDOS)</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Swofty-Developments/HypixelSkyBlock" class="project-link" title="GitHub">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://discord.gg/paper" class="project-link" title="External Link">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div title="https://github.com/Maploop/Cora" onclick="window.location='https://github.com/Maploop/Cora'" class="card scroll-item">
-                    <img src="ARCHIVE/image/code_snippet.jpg" alt="Card Image">
-                    <a href="https://github.com/Maploop/Cora">Cora</a>
-                    <p>My experiments with the Vulkan Graphics API using the C programming language, where I explore low-level graphics programming concepts, rendering techniques, and performance optimization.</p>
-                </div>
-                <div class="card scroll-item">
-                    <img src="ARCHIVE/image/atlas_network.png" alt="Atlas Network">
-                    <a href="https://discord.gg/paper">Atlas Network</a>
-                    <p>My largest and longest-running project to date, and one of, if not the best, active recreations of Hypixel Skyblock, featuring a thriving community of over 9,000 members. The project is constantly evolving with regular updates, new features, and a passionate player base that continues to grow.</p>
-                </div>
-                <div title="https://github.com/Maploop/DnumFramework" onclick="window.location='https://github.com/Maploop/DnumFramework'" class="card scroll-item">
-                    <img src="ARCHIVE/image/dnumframework.png" alt="Card Image">
-                    <a href="https://github.com/Maploop/DnumFramework">Dnum Framework</a>
-                    <p>A lightweight and modular framework featuring a suite of pre-built libraries including Commands, NPCs, Holograms, SignGUI, Packet Listener, and GUI components. Available on GitHub for exploration and contribution.</p>
-                </div>
-                <div title="https://github.com/Maploop/ReimaginedUmbrella" onclick="window.location='https://github.com/Maploop/ReimaginedUmbrella'" class="card scroll-item">
-                    <img src="ARCHIVE/image/reimagined_engine.png" alt="Card Image">
-                    <a href="https://github.com/Maploop/ReimaginedUmbrella">Reimagined Engine</a>
-                    <p>A graphics engine in development—soon evolving into a full game engine—built using Microsoft DirectX and OpenGL. It includes core rendering features and a semi-functional editor UI. Explore the full project on GitHub for more details.</p>
+
+                <div class="project">
+                    <div class="project-content">
+                        <div class="project-image">
+                            <img src="./ARCHIVE/image/eflame_engine.png">
+                        </div>
+                        <div class="project-info">
+                            <div class="project-label">Featured Project</div>
+                            <h3 class="project-title">EFlame Engine</h3>
+                            <div class="project-description">
+                                A simple OpenGL-based game engine that I am developing as a foundational framework, with the primary goal of using it to practice and experiment with various concepts in computer physics, including collision detection, rigid body dynamics, and real-time simulation.
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-item">OpenGL</span>
+                                <span class="tech-item">PhysX</span>
+                                <span class="tech-item">C++</span>
+                                <span class="tech-item">GLSL</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://github.com/Maploop/EFlame" class="project-link" title="GitHub">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -156,15 +217,23 @@
             <div class="projects-grid" id="projects-grid">
                 <div class="cards-loading">Loading projects...</div>
             </div>
+
+            <br>
+            <br>
+            <button onclick="window.location.href = '/projects'" class="cool-btn">View All Projects</button>
         </div>
             
             <p class="section-description">If you would like to find out about how I work and get a showcase of Atlas Network and more fun stuff, please check out my 
                 <a class="pretty-a" href="https://www.youtube.com/@Jinx_Luvr"> YouTube channel!</a>
             </p>
-        </div>
 
-        <div style="margin-top: 500px; margin-bottom: 200px;" id="slide-3" class="scroll-reveal">
-            <h1 class="section-title">Contact Me:</h1>
+            
+            <div style="margin-top: 500px;" id="slide-3" class="section-header">
+                <h2 class="section-title">Contact Me:</h2>
+                <br>
+                <a href="/links?a=web" class="pretty-a section-description">view all socials</a>
+            </div>
+            
             <div class="socials">
                 <span class="social-link discord discord-tooltip">
                     <i class="fab fa-discord"></i>
@@ -178,26 +247,24 @@
                     <i class="fab fa-linkedin"></i>
                 </a>
             </div>
-            <a href="/links?a=web" class="pretty-a section-description">[View All Socials]</a>
+
+            <footer style="margin-top: 900px;">
+                <div class="footer-container">
+                <div class="footer-left">
+                    <p>&copy; 2025 Maploop, LLC. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="/tos">Terms of Service</a>
+                    <a href="/pp">Privacy Policy</a>
+                    <a href="/legal">Legal</a>
+                </div>
+                <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
+                </div>
+            </footer>
         </div>
-        
     </div>
 
     <div class="particles" id="particles"></div>
-
-    <footer>
-        <div class="footer-container">
-          <div class="footer-left">
-            <p>&copy; 2025 Maploop, LLC. All rights reserved.</p>
-          </div>
-          <div class="footer-links">
-            <a href="/tos">Terms of Service</a>
-            <a href="/pp">Privacy Policy</a>
-            <a href="/legal">Legal</a>
-          </div>
-          <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
-        </div>
-    </footer>
 
     <!-- <script src="./ARCHIVE/script/other/loading.js"></script> -->
     <script src="./ARCHIVE/script/main_script.js"></script>

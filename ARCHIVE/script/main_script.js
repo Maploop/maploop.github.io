@@ -86,46 +86,9 @@ window.scrollTo({
 });
 }
 
-document.addEventListener('mousemove', function(e) {
-const trail = document.createElement('div');
-trail.className = 'cursor-trail';
-
-const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
-const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-
-// Position accurately with scroll offsets
-trail.style.cssText = `
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: var(--signature-purple);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.7;
-    top: ${e.clientY + scrollY}px;
-    left: ${e.clientX + scrollX}px;
-`;
-
-document.body.appendChild(trail);
-
-setTimeout(() => {
-    trail.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    trail.style.opacity = '0';
-    trail.style.transform = 'scale(0.5)';
-    
-    setTimeout(() => {
-        if (trail.parentNode) {
-            document.body.removeChild(trail);
-        }
-    }, 500);
-}, 10);
-});
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     loadProjectCards();
+    loadWorkplaces();
     const navbar = document.querySelector('.navbar');
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navItems = document.querySelectorAll('.nav-item');
@@ -207,6 +170,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+function loadWorkplaces() {
+    const tabs = document.querySelectorAll('.company-tab');
+    const jobDetails = document.querySelectorAll('.job-details');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            tab.classList.add('active');
+            
+            // Hide all job details
+            jobDetails.forEach(detail => detail.style.display = 'none');
+            
+            // Show corresponding job details
+            const company = tab.dataset.company;
+            const targetJob = document.querySelector(`[data-job="${company}"]`);
+            if (targetJob) {
+                targetJob.style.display = 'block';
+            }
+        });
+    });
+}
+
 function createCardLinks(links) {
     const linkElements = [];
     
@@ -243,7 +231,7 @@ async function loadProjectCards() {
                 return;
             }
 
-            const cardProjects = projects.slice(0, 4);
+            const cardProjects = projects.slice(0, 6);
 
             grid.innerHTML = cardProjects.map(project => `
                 <div class="project-card">
