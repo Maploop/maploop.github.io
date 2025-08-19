@@ -3,16 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maploop - Projects</title>
+    <title>Maploop • Projects</title>
 
-    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="./style.css"/>
     <link rel="icon" type="image/x-icon" href="../ARCHIVE/favicon.ico" />
   </head>
 
   <body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">Maploop</div>
+            <div class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-links">
+                <a class="nav-item" href="/#slide-0" data-target="slide-0"><span
+                        style="color: var(--signature-purple)">01.</span> About</a>
+                <a class="nav-item" href="/#slide-2" data-target="slide-2"><span
+                        style="color: var(--signature-purple)">02.</span> Experience</a>
+                <a class="nav-item" href="/#slide-1" data-target="slide-1"><span
+                        style="color: var(--signature-purple)">03.</span> Work</a>
+                <a class="nav-item" href="/#slide-3" data-target="slide-3"><span
+                        style="color: var(--signature-purple)">04.</span> Contact</a>
+            </div>
+        </div>
+    </nav>
     <div class="container">
-      <h1 style="margin-bottom: 20px">
-        <svg viewBox="0 0 24 24">
+      <h1 style="margin-bottom: 50px; margin-top: 70px;">
+        <svg fill="currentColor" viewBox="0 0 24 24">
           <path
             style="color: #4ade80"
             d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
@@ -38,6 +59,14 @@
       </table>
     </div>
 
+    <footer style="margin-top: 300px;">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <p>&copy; 2025 Built by Maploop</p>
+                </div>
+         <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
+            </div>
+        </footer>
     <script src="./script.js"></script>
   </body>
 </html>
