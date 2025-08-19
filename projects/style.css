@@ -44,7 +44,7 @@ a {
 }
 
 .portfolio-table td {
-    padding: 20px;
+    padding: 10px;
     vertical-align: middle;
 }
 
@@ -54,9 +54,9 @@ a {
 
 .year {
     color: #4ade80;
-    font-weight: 600;
     font-size: 16px;
     width: 80px;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', Consolas, 'Courier New', monospace;;
 }
 
 .title {
@@ -67,15 +67,16 @@ a {
 }
 
 .company {
-    color: #6b73ff;
+    color: #8b92a5;
     font-size: 14px;
     width: 200px;
 }
 
 .tech-stack {
     color: #8b92a5;
-    font-size: 14px;
+    font-size: 12px;
     width: 400px;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', Consolas, 'Courier New', monospace;;
 }
 
 .tech-tag {
@@ -273,7 +274,6 @@ svg {
 
 .nav-item {
     position: relative;
-    color: #fff;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
