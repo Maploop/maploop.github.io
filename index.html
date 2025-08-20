@@ -25,7 +25,7 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
-            <div class="navbar-logo">Maploop</div>
+            <div class="navbar-logo"><a href="#">✨ Maploop</a></div>
             <div class="hamburger-menu">
                 <span></span>
                 <span></span>
@@ -33,13 +33,13 @@
                 <span></span>
             </div>
             <div class="nav-links">
-                <a class="nav-item" href="#slide-0" data-target="slide-0"><span
+                <a class="nav-item" href="#slide-0" data-target="slide-0"><span class="section-nav-num"
                         style="color: var(--signature-purple)">01.</span> About</a>
-                <a class="nav-item" href="#slide-2" data-target="slide-2"><span
+                <a class="nav-item" href="#slide-2" data-target="slide-2"><span class="section-nav-num"
                         style="color: var(--signature-purple)">02.</span> Experience</a>
-                <a class="nav-item" href="#slide-1" data-target="slide-1"><span
+                <a class="nav-item" href="#slide-1" data-target="slide-1"><span class="section-nav-num"
                         style="color: var(--signature-purple)">03.</span> Work</a>
-                <a class="nav-item" href="#slide-3" data-target="slide-3"><span
+                <a class="nav-item" href="#slide-3" data-target="slide-3"><span class="section-nav-num"
                         style="color: var(--signature-purple)">04.</span> Contact</a>
             </div>
         </div>
@@ -47,7 +47,7 @@
 
     <div class="content-section">
         <div id="slide-0" class="scroll-reveal">
-            <h1 class="section-title">About Me</h1>
+            <h1 class="section-title"><span class="section-num">01.</span> About Me</h1>
             <img class="img-on-right" src="/links/photo_2025-04-25_17-41-03.jpg">
             <p class="onleft bigger section-description">Hello! My name is Maploop and I enjoy creating things that live
                 on the internet.
@@ -105,7 +105,7 @@
         <div style="margin-top: 500px;" id="slide-2" class="scroll-reveal">
             <div class="work-section">
                 <div class="section-header">
-                    <h2 class="section-title">Where I've Worked</h2>
+                    <h2 class="section-title"><span class="section-num">02.</span> Where I've Worked</h2>
                     <div class="section-line"></div>
                 </div>
 
@@ -170,10 +170,9 @@
             </div>
         </div>
 
-        <div style="margin-top: 500px;"></div>
-        <div id="slide-1" class="container">
+        <div id="slide-1" class="container projects-section scroll-reveal">
             <div class="section-header">
-                <h2 class="section-title">Some Things I've Built</h2>
+                <h2 class="section-title"><span class="section-num">03.</span> Some Things I've Built</h2>
             </div>
 
             <div class="project">
@@ -245,60 +244,51 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="projects-section">
-            <div class="section-header">
-                <h2 class="section-title">Other Noteworthy Projects</h2>
-                <br>
-                <a href="/projects/" class="archive-link">view the archive</a>
-            </div>
+            <div class="projects-section">
+                    <div class="section-header">
+                        <h2 class="section-title">Other Noteworthy Projects</h2>
+                        <br>
+                        <a href="/projects/" class="archive-link">view the archive</a>
+                    </div>
 
-            <div class="projects-grid" id="projects-grid">
-                <div class="cards-loading">Loading projects...</div>
-            </div>
+                    <div class="projects-grid" id="projects-grid">
+                        <div class="cards-loading">Loading projects...</div>
+                    </div>
 
-            <br>
-            <br>
-            <button onclick="window.location.href = '/projects'" class="cool-btn">View All Projects</button>
-        </div>
-
-        <p class="section-description">If you would like to find out about how I work and get a showcase of Atlas
-            Network and more fun stuff, please check out my
-            <a class="pretty-a" href="https://www.youtube.com/@Jinx_Luvr"> YouTube channel!</a>
-        </p>
-
-
-        <div style="margin-top: 500px;" id="slide-3" class="section-header">
-            <h2 class="section-title">Contact Me:</h2>
-            <br>
-            <a href="/links?a=web" class="pretty-a section-description">view all socials</a>
-        </div>
-
-        <div class="socials">
-            <span class="social-link discord discord-tooltip">
-                <i class="fab fa-discord"></i>
-            </span>
-
-            <a href="mailto:maploop.val@gmail.com" class="social-link mail">
-                <i class="far fa-envelope"></i>
-            </a>
-
-            <a href="https://linkedin.com/in/Maploop" target="_blank" rel="noopener noreferrer"
-                class="social-link linkedin">
-                <i class="fab fa-linkedin"></i>
-            </a>
-        </div>
-
-        <footer style="margin-top: 900px;">
-            <div class="footer-container">
-                <div class="footer-left">
-                    <p>&copy; 2025 Built by Maploop</p>
+                    <br>
+                    <br>
+                    <button onclick="window.location.href = '/projects'" class="cool-btn">View All Projects</button>
                 </div>
-         <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+                <p class="section-description">If you would like to find out about how I work and get a showcase of Atlas
+                    Network and more fun stuff, please check out my
+                    <a class="pretty-a" href="https://www.youtube.com/@Jinx_Luvr"> YouTube channel!</a>
+                </p>
             </div>
-        </footer>
-    </div>
+
+            <div style="margin-top: 300px;" id="slide-3" class="section-header scroll-reveal">
+                <h1><span class="section-num" style="font-size: 18px">04. What's Next?</span></h1>
+                <br>
+                <h2 style="font-size: 50px;" class="section-title">Get In Touch</h2>
+                <p class="section-description" style="margin-top: 0px; font-size: 18px;">Whether it's for an opportunity, a question, or a freelance request, my inbox is always open.
+                    <br>Even if you just want to say hi, I’ll try my best to get back to you!</p>
+            </div>
+
+            <button onclick="window.location.href = ('mailto:maploop.val@gmail.com')" class="cool-btn">E-Mail Me</button>
+            <br>
+            <br>
+            <a href="/links?a=web" class="pretty-a section-description" style="font-size: 18px;">view all socials</a>
+
+            <footer style="margin-top: 200px;">
+                <div class="footer-container">
+                    <div class="footer-left">
+                        <p>&copy; 2025 Built by Maploop</p>
+                    </div>
+                <button class="back-to-top" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
+                </div>
+            </footer>
+        </div>
     </div>
 
     <div class="particles" id="particles"></div>

@@ -136,6 +136,11 @@ body {
             font-size: 1.3rem;
             left: 0.75rem;
         }
+
+        .navbar-logo a {
+            font-size: 1.3rem;
+            left: 0.75rem;
+        }
         
         .hamburger-menu {
             right: 0.75rem;
@@ -175,12 +180,15 @@ body {
 }
 
 /* Logo styling */
-.navbar-logo {
+
+.navbar-logo a {
     font-size: 1.5rem;
     font-weight: 700;
+    top: 0;
     color: var(--signature-purple, #4ade80);
     letter-spacing: 1px;
     position: absolute;
+    text-decoration: none;
     left: 0;
 }
 
@@ -238,26 +246,17 @@ footer {
     position: relative;
     bottom: 0;
     left: 0;
-    background-color: var(--bg-dark);
-    color: #ffffff;
+    color: #ccd6f6;
     font-size: 0.9rem;
-    padding: 20px;
     text-align: center;
     width: 100%;
-    border-top: 1px solid #333333;
-    margin-top: 10rem;
   }
 
   .footer-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
     width: 100%;
-  }
-
-  .footer-left {
-    margin-bottom: 5px;
   }
 
   .footer-links {
@@ -278,14 +277,15 @@ footer {
   .back-to-top {
     background: none;
     border: none;
-    color: #ffffff;
+    color: #ccd6f6;
     padding: 8px 15px;
     border-radius: 4px;
     cursor: pointer;
+    transition: .5;
   }
 
   .back-to-top:hover {
-    background-color: #333333;
+    color: #fff;
   }
 
 .grid-container {
@@ -846,6 +846,16 @@ html {
     margin: 0 auto;
 }
 
+.section-num {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', Consolas, 'Courier New', monospace;
+    color: #4ade80;
+    font-size: 30px;
+}
+
+.section-nav-num {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', Consolas, 'Courier New', monospace;
+}
+
 .project-card {
     background-color: rgba(17, 34, 64, 0.9);
     border: 1px solid #1a1f2e;
@@ -1238,11 +1248,11 @@ html {
 }
 
 .cool-btn {
-    padding: 20px;
+    padding: 17px;
     background: none;
     color: #4ade80;
-    border-radius: 10px;
-    border: 2px solid #4ade80;
+    border-radius: 8px;
+    border: 1px solid #4ade80;
     font-size: 16px;
     transition: 0.2s;
 }
