@@ -18,7 +18,7 @@
             "technologies": ["Minecraft", "NMS", "Spigot"],
             "description": "An advanced and fully-optimized Minecraft NPC plugin, fully configurable and made custom for Luna MC.",
             "links": {
-                "external": "https://lunamc.ir",
+                "external": "https://lunamc.ir/",
                 "github": "https://github.com/LunaMC-Development"
             }
         },
@@ -68,6 +68,16 @@
             "links": {
                 "external": "https://discord.gg/paper",
                 "github": "https://github.com/Swofty-Developments/HypixelSkyBlock"
+            }
+        },
+		{
+            "year": 2025,
+            "title": "Luna MC Website",
+            "company": "Luna MC",
+            "description": "",
+            "technologies": ["Express.JS", "Node.JS", "HTML/CSS"],
+            "links": {
+                "external": "https://lunamc.ir/"
             }
         },
         {
