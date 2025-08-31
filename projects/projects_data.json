@@ -13,6 +13,16 @@
         },
         {
             "year": 2025,
+            "title": "Luna MC Website",
+            "company": "Luna MC",
+            "description": "Website for the Luna MC Minecraft server, with a functional store system; Worked on both front-end and back-end (back-end to an extent).",
+            "technologies": ["Express.JS", "TypeScript", "Prisma", "MongoDB"],
+            "links": {
+                "external": "https://lunamc.ir/"
+            }
+        },
+        {
+            "year": 2025,
             "title": "Minecraft NPC Plugin",
             "company": "Luna MC",
             "technologies": ["Minecraft", "NMS", "Spigot"],
@@ -68,16 +78,6 @@
             "links": {
                 "external": "https://discord.gg/paper",
                 "github": "https://github.com/Swofty-Developments/HypixelSkyBlock"
-            }
-        },
-		{
-            "year": 2025,
-            "title": "Luna MC Website",
-            "company": "Luna MC",
-            "description": "",
-            "technologies": ["Express.JS", "Node.JS", "HTML/CSS"],
-            "links": {
-                "external": "https://lunamc.ir/"
             }
         },
         {
