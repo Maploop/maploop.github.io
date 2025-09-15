@@ -12,6 +12,16 @@
             }
         },
         {
+            "year": 2024,
+            "title": "Hypixel SkyBlock Re-Creation",
+            "company": null,
+            "technologies": ["Minestom", "Velocity", "Java"],
+            "description": "Contributed extensively to a re-creation of Hypixel SkyBlock using Minestom on the latest versions",
+            "links": {
+                "github": "https://github.com/Swofty-Developments/HypixelSkyBlock"
+            }
+        },
+        {
             "year": 2025,
             "title": "Luna MC Website",
             "company": "Luna MC",
