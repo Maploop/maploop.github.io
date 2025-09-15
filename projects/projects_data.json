@@ -18,6 +18,7 @@
             "technologies": ["Minestom", "Velocity", "Java"],
             "description": "Contributed extensively to a re-creation of Hypixel SkyBlock using Minestom on the latest versions",
             "links": {
+                "external": "https://discord.gg/paper",
                 "github": "https://github.com/Swofty-Developments/HypixelSkyBlock"
             }
         },
@@ -78,16 +79,6 @@
             "technologies": ["Vulkan (OpenGL 5.0)", "C", "C++"],
             "links": {
                 "github": "https://github.com/Maploop/Cora"
-            }
-        },
-        {
-            "year": 2024,
-            "title": "Hypixel SkyBlock Re-creation",
-            "company": "Atlas Network",
-            "technologies": ["Minecraft", "MineStom"],
-            "links": {
-                "external": "https://discord.gg/paper",
-                "github": "https://github.com/Swofty-Developments/HypixelSkyBlock"
             }
         },
         {
