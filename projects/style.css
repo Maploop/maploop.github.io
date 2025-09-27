@@ -231,7 +231,6 @@ svg {
     left: 0;
     width: 100%;
     padding: 1rem 2rem;
-    background-color: #1a1f2e;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     z-index: 1000;
@@ -249,7 +248,6 @@ svg {
 
 /* Navbar scroll behavior */
 .navbar.scrolled {
-    background-color: rgba(10, 10, 10, 0.95);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -272,7 +270,7 @@ svg {
     display: flex;
     gap: 2rem;
     margin: 0 auto;
-    justify-content: center;
+    justify-content: right;
     width: 100%;
 }
 
@@ -295,6 +293,23 @@ svg {
     height: 2px;
     background-color: var(--signature-purple, #4ade80);
     transition: width 0.3s ease;
+}
+
+.resume {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    color: #4ade80;
+    border: 1px #4ade80 solid;
+    transition: 0.3s all ease;
+}
+
+.resume:hover {
+    background-color: #4ade801c;
+}
+
+.resume:hover::after, .resume.active::after {
+    width: 0% !important;
+    
 }
 
 .nav-item:hover, .nav-item.active {
