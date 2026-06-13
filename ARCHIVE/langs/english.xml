@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page-content>
+
+  <navbar>
+    <nav-logo-link><![CDATA[🌸 Maploop]]></nav-logo-link>
+
+    <nav-links>
+      <navlink-0><![CDATA[<span class="section-nav-num" style="color: var(--signature-purple)">01.</span> About Me]]></navlink-0>
+      <navlink-1><![CDATA[<span class="section-nav-num" style="color: var(--signature-purple)">02.</span> Experience]]></navlink-1>
+      <navlink-2><![CDATA[<span class="section-nav-num" style="color: var(--signature-purple)">03.</span> Work]]></navlink-2>
+      <navlink-3><![CDATA[<span class="section-nav-num" style="color: var(--signature-purple)">04.</span> Contact]]></navlink-3>
+      <navlink-resume><![CDATA[Resume]]></navlink-resume>
+    </nav-links>
+  </navbar>
+
+
+  <about-section>
+
+    <about-section-title><![CDATA[<span class="section-num">01.</span> About Me]]></about-section-title>
+
+    <about-intro><![CDATA[
+      Hi, my name is <a class="pretty-a" href="#" style="font-family: Minecraft; font-size: 24px">Maploop</a><br>
+      ...and I enjoy creating things that live on the internet. <br> <br>
+      I have extensive experience with Minecraft development and building large-scale multiplayer experiences, including an open source Hypixel SkyBlock recreation that has gained hundreds of stars on GitHub.
+      <br> <br>
+      My journey in software development began back in late 2019, when I decided I wanted to make my own Minecraft plugin for the first time. Since then, I've had the opportunity to
+      <a href="https://discord.gg/atlasmc" class="pretty-a">manage my own dev team of over 10</a>, <br>
+      <a href="https://trexmine.com" class="pretty-a">work for the largest Minecraft server in Iran</a>, <br>
+      <a href="https://github.com/maploop" class="pretty-a">deliver over 50 freelance projects</a> and <br>
+      <a href="https://discord.gg/atlasmc" class="pretty-a">Lead the largest community-driven re-creation of Hypixel SkyBlock at Atlas Network</a>. <br>
+      <br>
+      I have also recently worked on a variety of <a class="pretty-a" href="#slide-1">Open Source Projects</a>.
+      <br>
+      <br>
+      <button onclick="window.open('https://github.com/Maploop')" class="cool-btn">Visit my GitHub</button>
+    ]]></about-intro>
+
+    <about-tech-intro><![CDATA[Here are a few of the technologies I've worked with recently:]]></about-tech-intro>
+
+  </about-section>
+
+  <experience-section>
+
+    <experience-section-title><![CDATA[<span class="section-num">02.</span> Where I've Worked]]></experience-section-title>
+
+    <company-tabs>
+      <tab-atlas><![CDATA[Atlas]]></tab-atlas>
+      <tab-lunamc><![CDATA[LunaMC]]></tab-lunamc>
+      <tab-trexmine><![CDATA[TrexMine]]></tab-trexmine>
+    </company-tabs>
+
+    <job-atlas>
+      <job-atlas-title><![CDATA[Lead Maintainer @ <a href="https://discord.gg/mJDvBEkqpg" class="pretty-a">Swofty Developments (formerly Atlas)</a>]]></job-atlas-title>
+      <job-atlas-date><![CDATA[February 2020 - Present]]></job-atlas-date>
+      <job-atlas-description><![CDATA[
+        <li>Communicated and managed a developer team of ~8</li>
+        <li>Wrote modern, performant, maintainable code for internal projects</li>
+        <li>Founded and contribute extensively to the largest community driven re-creation of Hypixel SkyBlock</li>
+        <li>Contributed extensively to AtlasRedisAPI, a Java library aimed to make utilizing Redis messaging systems easier</li>
+      ]]></job-atlas-description>
+    </job-atlas>
+
+    <job-lunamc>
+      <job-lunamc-title><![CDATA[Lead Developer @ <a href="https://lunamc.ir" class="pretty-a">LunaMC</a>]]></job-lunamc-title>
+      <job-lunamc-date><![CDATA[August 2025 - Present]]></job-lunamc-date>
+      <job-lunamc-description><![CDATA[
+        <li>Was solely responsible for the design, development, and implementation of the entire project adhering to professional industry standards.</li>
+        <li>Developped performant, and scalable products optimized for large player bases</li>
+        <li>Worked with a variety of different frameworks and content management systems such as Redis, MongoDB, Spring, NMS, etc.</li>
+      ]]></job-lunamc-description>
+    </job-lunamc>
+
+    <job-trexmine>
+      <job-trexmine-title><![CDATA[Senior Developer @ <a href="https://trexmine.com" class="pretty-a">TrexMine</a>]]></job-trexmine-title>
+      <job-trexmine-date><![CDATA[July 2020 - May 2021]]></job-trexmine-date>
+      <job-trexmine-description><![CDATA[
+        <li>Collaborated effectively within a team of over 10 skilled professionals.</li>
+        <li>Contributed to the project's internal "Nick System"</li>
+      ]]></job-trexmine-description>
+    </job-trexmine>
+
+  </experience-section>
+
+  <projects-section>
+
+    <projects-section-title><![CDATA[<span class="section-num">03.</span> Some Things I've Built]]></projects-section-title>
+
+    <project-1>
+      <project1-label><![CDATA[Featured Project]]></project1-label>
+      <project1-title><![CDATA[SkyBlock Recreation]]></project1-title>
+      <project1-description><![CDATA[
+        The best commercial Hypixel SkyBlock Sandbox / Recreation currently available. Contains
+        Gemstones, 70% of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests,
+        Islands, Bazaar and just about everything else!
+      ]]></project1-description>
+      <project1-tech><![CDATA[
+        <span class="tech-item">Spigot Library</span>
+        <span class="tech-item">Advanced NMS</span>
+        <span class="tech-item">Java</span>
+        <span class="tech-item">Cloudflare (Anti-DDOS)</span>
+      ]]></project1-tech>
+    </project-1>
+
+    <project-2>
+      <project2-label><![CDATA[Featured Project]]></project2-label>
+      <project2-title><![CDATA[EFlame Engine]]></project2-title>
+      <project2-description><![CDATA[
+        A simple yet scalable game engine using OpenGL which I am developping foundational framework, with the
+        primary goal of using it to practice and experiment with various concepts in computer
+        physics and real-time simulations.
+      ]]></project2-description>
+      <project2-tech><![CDATA[
+        <span class="tech-item">OpenGL</span>
+        <span class="tech-item">PhysX</span>
+        <span class="tech-item">C++</span>
+        <span class="tech-item">GLSL</span>
+      ]]></project2-tech>
+    </project-2>
+
+    <other-projects>
+      <other-projects-title><![CDATA[Other Noteworthy Projects]]></other-projects-title>
+      <archive-link-text><![CDATA[view the archive]]></archive-link-text>
+      <projects-loading-text><![CDATA[Loading projects...]]></projects-loading-text>
+      <view-all-button-text><![CDATA[View All Projects]]></view-all-button-text>
+    </other-projects>
+
+    <youtube-note><![CDATA[Showcases of my work in Atlas Network can be found on my <a class="pretty-a" href="https://www.youtube.com/@Jinx_Luvr"> YouTube</a>.]]></youtube-note>
+
+  </projects-section>
+
+  <events-section>
+ 
+    <events-section-title><![CDATA[<span class="section-num">04.</span> Events I've Been a Part Of]]></events-section-title>
+ 
+    <!--
+      Each event below follows the same shape:
+        eventN-title       -> name of the event (and an optional link)
+        eventN-date        -> when it took place
+        eventN-description -> bullet points about your role / what happened
+ 
+      Add or remove <event-N> blocks as needed - just give the new
+      elements matching ids in index.html (e.g. event4-title,
+      event4-date, event4-description) inside an .event-details div.
+    -->
+ 
+    <event-1>
+      <event1-title><![CDATA[SPACE National Student Programming Competition]]></event1-title>
+      <event1-date><![CDATA[November 2025]]></event1-date>
+      <event1-description><![CDATA[
+        <li>Took part in the 6th SPACE national student programming competition at Sajjad University</li>
+        <li>Solved algorithmic questions as part of a team</li>
+        <li>Came out 7th between 43 other competing teams from all over Iran</li>
+      ]]></event1-description>
+    </event-1>
+ 
+  </events-section>
+
+
+  <contact-section>
+
+    <contact-label><![CDATA[05. What's Next?]]></contact-label>
+    <contact-title><![CDATA[Get In Touch]]></contact-title>
+    <contact-description><![CDATA[Whether it's for an opportunity, a question, or a freelance request, my inbox is always open. <br>Even if you just want to say hi, I’ll try my best to get back to you!]]></contact-description>
+    <hello-button-text><![CDATA[Say Hello 👋]]></hello-button-text>
+    <socials-link-text><![CDATA[view all socials]]></socials-link-text>
+
+  </contact-section>
+
+  <footer-section>
+    <footer-text><![CDATA[&copy; 2025 ♡ Built with love by Maploop]]></footer-text>
+  </footer-section>
+
+</page-content>

@@ -1,14 +1,23 @@
 {
     "projects": [
         {
-            "year": 2023,
-            "title": "Portfolio",
-            "company": null,
-            "technologies": ["jQuery"],
-            "description": "The portfolio website that you're looking at right now.",
+            "year": 2026,
+            "title": "LunaMC Minecraft Server",
+            "company": "LunaMC",
+            "technologies": ["Minecraft", "NMS", "Spigot", "MongoDB", "Redis", "Spring"],
+            "description": "Fully functional server core along with a ranks, punishments, back-end, store, etc. developped from zero with minimum dependencies.",
             "links": {
-                "external": "https://maploop.github.io",
-                "github": "https://github.com/maploop.github.io"
+                "github": "https://github.com/LunaMC-Development"
+            }
+        },
+        {
+            "year": 2026,
+            "title": "LunaMC Bed Wars",
+            "company": "LunaMC",
+            "technologies": ["Minecraft", "NMS", "Spigot"],
+            "description": "LunaMC's Bed Wars minigame built from scratch.",
+            "links": {
+                "github": "https://github.com/LunaMC-Development"
             }
         },
         {
@@ -18,14 +27,34 @@
             "technologies": ["Minestom", "Velocity", "Java"],
             "description": "Contributed extensively to a re-creation of Hypixel SkyBlock using Minestom on the latest versions",
             "links": {
-                "external": "https://discord.gg/paper",
+                "external": "https://discord.gg/mJDvBEkqpg",
                 "github": "https://github.com/Swofty-Developments/HypixelSkyBlock"
             }
         },
         {
+            "year": 2021,
+            "title": "Hypixel Lobby Recreation",
+            "company": null,
+            "technologies": ["Java", "Redis", "Mongo", "Spigot"],
+            "links": {
+                "external": "https://discord.gg/mJDvBEkqpg",
+                "github": "https://github.com/AtlasNetworkDev"
+            }
+        },
+        {
+            "year": 2024,
+            "title": "EFlame Graphics Engine",
+            "company": null,
+            "description": "An OpenGL based (graphics only) engine, a side project to practice computer physics.",
+            "technologies": ["OpenGL 4.5", "C++"],
+            "links": {
+                "github": "https://github.com/Maploop/EFlame"
+            }
+        },
+        {
             "year": 2025,
-            "title": "Luna MC Website",
-            "company": "Luna MC",
+            "title": "LunaMC Website",
+            "company": "LunaMC",
             "description": "Website for the Luna MC Minecraft server, with a functional store system; Worked on both front-end and back-end (back-end to an extent).",
             "technologies": ["Express.JS", "TypeScript", "Prisma", "MongoDB"],
             "links": {
@@ -33,14 +62,13 @@
             }
         },
         {
-            "year": 2025,
-            "title": "Minecraft NPC Plugin",
-            "company": "Luna MC",
-            "technologies": ["Minecraft", "NMS", "Spigot"],
-            "description": "An advanced and fully-optimized Minecraft NPC plugin, fully configurable and made custom for Luna MC.",
+            "year": 2024,
+            "title": "Cora Game Engine",
+            "company": "",
+            "description": "Small yet clean C project, meant to become a usable engine in the future.",
+            "technologies": ["Vulkan", "C", "C++"],
             "links": {
-                "external": "https://lunamc.ir/",
-                "github": "https://github.com/LunaMC-Development"
+                "github": "https://github.com/Maploop/Cora"
             }
         },
         {
@@ -64,31 +92,14 @@
             }
         },
         {
-            "year": 2024,
-            "title": "OpenGL Game Engine",
-            "company": "",
-            "technologies": ["OpenGL 4.5", "C++"],
-            "links": {
-                "github": "https://github.com/Maploop/EFlame"
-            }
-        },
-        {
-            "year": 2024,
-            "title": "Vulkan Game Engine",
-            "company": "",
-            "technologies": ["Vulkan (OpenGL 5.0)", "C", "C++"],
-            "links": {
-                "github": "https://github.com/Maploop/Cora"
-            }
-        },
-        {
-            "year": 2021,
-            "title": "Hypixel Lobby Recreation",
+            "year": 2023,
+            "title": "Portfolio",
             "company": null,
-            "technologies": ["Java", "Redis", "Mongo", "Spigot"],
+            "technologies": ["jQuery"],
+            "description": "The portfolio website that you're looking at right now.",
             "links": {
-                "external": "https://discord.gg/paper",
-                "github": "https://github.com/AtlasNetworkDev"
+                "external": "https://maploop.github.io",
+                "github": "https://github.com/maploop.github.io"
             }
         },
         {
