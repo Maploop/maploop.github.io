@@ -47,6 +47,7 @@
       <tab-atlas><![CDATA[Atlas]]></tab-atlas>
       <tab-lunamc><![CDATA[LunaMC]]></tab-lunamc>
       <tab-trexmine><![CDATA[TrexMine]]></tab-trexmine>
+      <tab-mineheaven><![CDATA[MineHeaven]]></tab-mineheaven>
     </company-tabs>
 
     <job-atlas>
@@ -78,6 +79,13 @@
         <li>Contributed to the project's internal "Nick System"</li>
       ]]></job-trexmine-description>
     </job-trexmine>
+
+    <job-mineheaven>
+      <job-mineheaven-title><![CDATA[Senior Developer @ <a href="https://mineheaven.com" class="pretty-a">MineHeaven</a>]]></job-mineheaven-title>
+      <job-mineheaven-date><![CDATA[May 2026 - Present]]></job-mineheaven-date>
+      <job-mineheaven-description><![CDATA[
+      ]]></job-mineheaven-description>
+    </job-mineheaven>
 
   </experience-section>
 
