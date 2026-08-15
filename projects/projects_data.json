@@ -4,7 +4,7 @@
             "year": 2026,
             "title": "LunaMC Minecraft Server",
             "company": "LunaMC",
-            "technologies": ["Minecraft", "NMS", "Spigot", "MongoDB", "Redis", "Spring"],
+            "technologies": ["Minecraft", "Redis", "MongoDB", "Spring", "NMS", "Spigot"],
             "description": "Fully functional server core along with a ranks, punishments, back-end, store, etc. developped from zero with minimum dependencies.",
             "links": {
                 "github": "https://github.com/LunaMC-Development"
@@ -12,9 +12,20 @@
         },
         {
             "year": 2026,
-            "title": "LunaMC Bed Wars",
+            "title": "LunaMC The Pit",
             "company": "LunaMC",
             "technologies": ["Minecraft", "NMS", "Spigot"],
+            "description": "LunaMC's The Pit minigame, a replica of Hypixel's Pit built for LunaMC from scratch.",
+            "links": {
+                "github": "https://github.com/LunaMC-Development",
+                "youtube": ""
+            }
+        },
+        {
+            "year": 2026,
+            "title": "LunaMC Bed Wars",
+            "company": "LunaMC",
+            "technologies": ["Minecraft", "Redis", "NMS", "Spigot"],
             "description": "LunaMC's Bed Wars minigame built from scratch.",
             "links": {
                 "github": "https://github.com/LunaMC-Development"

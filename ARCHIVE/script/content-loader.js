@@ -21,6 +21,7 @@
                 }
 
                 applyContent(xmlDoc.documentElement);
+                document.dispatchEvent(new CustomEvent('content:loaded'));
             })
             .catch(function (err) {
                 console.error('content-loader: ', err);

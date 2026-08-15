@@ -191,8 +191,34 @@ function loadWorkplaces() {
             if (targetJob) {
                 targetJob.style.display = 'block';
             }
+
+            tabs.forEach(t => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
         });
     });
+}
+
+function decorateWorkplaces() {
+    document.querySelectorAll('.job-date').forEach(date => {
+        date.classList.toggle('is-current', /present/i.test(date.textContent));
+    });
+
+    document.querySelectorAll('.job-description').forEach(list => {
+        if (!list.querySelector('li')) {
+            list.innerHTML = '<li class="job-placeholder">Write-up in progress.</li>';
+        }
+    });
+}
+
+document.addEventListener('content:loaded', decorateWorkplaces);
+
+const cardAccents = ['#b79cff', '#9f8bff', '#c9a7ff', '#8f9dff', '#cf9ce0', '#a2b6ff'];
+
+function cardMark(title) {
+    const words = String(title || '?').trim().split(/\s+/);
+    const letters = words.length > 1
+        ? words[0][0] + words[1][0]
+        : words[0].slice(0, 2);
+    return letters.toUpperCase();
 }
 
 function createCardLinks(links) {
@@ -233,27 +259,32 @@ async function loadProjectCards() {
 
             const cardProjects = projects.slice(0, 6);
 
-            grid.innerHTML = cardProjects.map(project => `
-                <div class="project-card">
-                    <div class="card-header">
-                        <div class="card-folder">
-                            ${icons.folder}
+            grid.innerHTML = cardProjects.map((project, index) => `
+                <article class="project-card" style="--card-accent: ${cardAccents[index % cardAccents.length]}">
+                    <div class="card-preview">
+                        <span class="card-preview-mark">${cardMark(project.title)}</span>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="card-header">
+                            <h3 class="card-title">${project.title}</h3>
+                            <span class="card-year">${project.year || ''}</span>
                         </div>
-                        <div class="card-links">
-                            ${createCardLinks(project.links)}
+
+                        <p class="card-description">
+                            ${project.description || 'No description available.'}
+                        </p>
+
+                        <div class="card-bottom">
+                            <div class="card-tech">
+                                ${project.technologies.slice(0, 3).map(tech => `<span class="card-tech-tag">${tech}</span>`).join('')}
+                            </div>
+                            <div class="card-links">
+                                ${createCardLinks(project.links)}
+                            </div>
                         </div>
                     </div>
-                    
-                    <h3 class="card-title">${project.title}</h3>
-                    
-                    <p class="card-description">
-                        ${project.description || 'No description available.'}
-                    </p>
-                    
-                    <div class="card-tech">
-                        ${project.technologies.map(tech => `<span class="card-tech-tag">${tech}</span>`).join('')}
-                    </div>
-                </div>
+                </article>
             `).join('');
         }, 700);
         

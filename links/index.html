@@ -4,96 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@Leon</title>
+    <meta name="description" content="Every place you can find Leon online.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../ARCHIVE/style/mainframe.css">
-    <link rel="stylesheet" href="../ARCHIVE/style/links/style.css">
-    <link rel="icon" type="image/x-icon" href="../ARCHIVE/favi.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../ARCHIVE/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../ARCHIVE/style/lavender.css">
+    <link rel="stylesheet" href="../ARCHIVE/style/links/style.css">
 </head>
-<body>
+<body class="links-page">
 
-    <div class="holder">
-        <div class="content-section">
-            <div style="margin-top: 100px"></div>
-    
-            <div class="blurry-box">
-                <img class="pfp" width="150px" height="150px" src="photo_2025-04-25_17-41-03.jpg">
-                <br>
-                <h1 class="section-title glowing-text" style="font-size: 44px">Leon</h1>
-                <p class="section-description" style="margin-top: -50px"> I consider myself an artist of all arts.</p>
-    
-                <div class="socials">
-                    <a href="https://youtube.com/@wheres_leon" onclick="logclick('youtube')" target="_blank" rel="noopener noreferrer" class="social-link youtube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    
-                    <span class="social-link discord discord-tooltip">
-                        <i class="fab fa-discord"></i>
-                    </span>
-
-                    <a href="https://instagram.com/wheres.leon" onclick="logclick('instagram')" target="_blank" rel="noopener noreferrer" class="social-link instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-
-                    <a href="https://x.com/wheres_leon" onclick="logclick('twitter')" target="_blank" rel="noopener noreferrer" class="social-link twitter">
-                        <i class="fa-brands fa-x-twitter"></i>
-                    </a>
-
-                    <a href="https://open.spotify.com/user/31yxaqjenkqi743v7r4ntvpywlqy?si=906e87f53c954f8f" onclick="logclick('spotify')" target="_blank" rel="noopener noreferrer" class="social-link spotify">
-                        <i class="fab fa-spotify"></i>
-                    </a>
-                    
-                    <a href="https://t.me/wheres_ada" onclick="logclick('telegram')" target="_blank" rel="noopener noreferrer" class="social-link telegram">
-                        <i class="fab fa-telegram"></i>
-                    </a>
-                    
-                    <a href="mailto:maploop.val@gmail.com" class="social-link mail">
-                        <i class="far fa-envelope"></i>
-                    </a>
-                    
-                    <a href="https://www.pixiv.net/en/users/113162363" onclick="logclick('pixiv')" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
-                        <i class="fab fa-pixiv"></i>
-                    </a>
-                </div>
-                <button onclick="goToExpeirmental()" class="experimental-btn">Visit My Experimental Website</button>
-                <p class="undertext-recommended">(Desktop Recommended)</p>
-            </div>
-        </div>
-    </div>
-
+    <div class="links-backdrop"></div>
     <div class="snowfall"></div>
 
-    <div class="footer">&copy; 2025 Maploop, LLC. All rights reserved.</div>
+    <main class="links-shell">
+        <section class="links-card">
+            <div class="links-card-head">
+                <span>links · @dinner_wanter</span>
+                <span class="links-status"><i class="status-dot"></i> online</span>
+            </div>
+
+            <div class="links-profile">
+                <img class="pfp" width="92" height="92" src="profile.jpg" alt="Leon">
+                <div class="links-identity">
+                    <h1>leon</h1>
+                    <div class="links-handle">AKA. Maploop</div>
+                    <p class="links-bio">I consider myself an artist of all arts.</p>
+                </div>
+            </div>
+
+            <div class="links-list">
+                <a href="https://www.youtube.com/@Maploop" onclick="logclick('youtube')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #ff5c5c">
+                    <span class="link-glyph"><i class="fab fa-youtube"></i></span>
+                    <span class="link-meta">
+                        <span class="link-name">YouTube</span>
+                        <span class="link-handle">@Maploop</span>
+                    </span>
+                    <span class="link-arrow">↗</span>
+                </a>
+
+                <button type="button" class="link-row" data-copy="wheres.leon" style="--brand: #7c8cff">
+                    <span class="link-glyph"><i class="fab fa-discord"></i></span>
+                    <span class="link-meta">
+                        <span class="link-name">Discord</span>
+                        <span class="link-handle">maplooop</span>
+                    </span>
+                    <span class="link-arrow">copy</span>
+                </button>
+
+                <a href="https://instagram.com/wheres.leon" onclick="logclick('instagram')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #e774b4">
+                    <span class="link-glyph"><i class="fab fa-instagram"></i></span>
+                    <span class="link-meta">
+                        <span class="link-name">Instagram</span>
+                        <span class="link-handle">dinner_wanter (art)</span>
+                    </span>
+                    <span class="link-arrow">↗</span>
+                </a>
+
+                <!-- <a href="https://x.com/wheres_leon" onclick="logclick('twitter')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #d8d3e8">
+                    <span class="link-glyph"><i class="fa-brands fa-x-twitter"></i></span>
+                    <span class="link-meta">
+                        <span class="link-name">X</span>
+                        <span class="link-handle">@wheres_leon</span>
+                    </span>
+                    <span class="link-arrow">↗</span>
+                </a> -->
+
+                <a href="https://open.spotify.com/user/31yxaqjenkqi743v7r4ntvpywlqy?si=906e87f53c954f8f" onclick="logclick('spotify')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #56d97b">
+                    <span class="link-glyph"><i class="fab fa-spotify"></i></span>
+                    <span class="link-meta">
+                        <span class="link-name">Spotify</span>
+                        <span class="link-handle">What I have on repeat</span>
+                    </span>
+                    <span class="link-arrow">↗</span>
+                </a>
+<!-- 
+                <a href="https://t.me/noone -- nice try buddy" onclick="logclick('telegram')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #4fb6e8">
+                    <span class="link-glyph"><i class="fab fa-telegram"></i></span>
+                    <span class="link-meta">
+                        <span class="link-name">Telegram</span>
+                        <span class="link-handle">nice try buddy</span>
+                    </span>
+                    <span class="link-arrow">↗</span>
+                </a>
+
+                <a href="https://www.pixiv.net/en/users/000000 nice try buddy" onclick="logclick('pixiv')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #5ac8fa">
+                    <span class="link-glyph"><i class="fab fa-pixiv"></i></span>
+                    <span class="link-meta">
+                        <span class="link-name">Pixiv</span>
+                        <span class="link-handle">Drawings and sketches</span>
+                    </span>
+                    <span class="link-arrow">↗</span>
+                </a> -->
+
+                <a href="mailto:maploop.val@gmail.com" class="link-row" style="--brand: #b79cff">
+                    <span class="link-glyph"><i class="far fa-envelope"></i></span>
+                    <span class="link-meta">
+                        <span class="link-name">Email</span>
+                        <span class="link-handle">maploop.val@gmail.com</span>
+                    </span>
+                    <span class="link-arrow">↗</span>
+                </a>
+            </div>
+
+            <div class="links-card-foot">
+                <span class="links-foot-note">Desktop recommended</span>
+                <button onclick="goToExpeirmental()" type="button" class="button primary">Experimental site <span aria-hidden="true">→</span></button>
+            </div>
+        </section>
+
+        <p class="links-footer">&copy; 2026 Maploop. All rights reserved. · <a href="/">maploop.github.io</a></p>
+    </main>
 
     <script src="../ARCHIVE/script/links/script.js"></script>
     <script src="../universal_archive/js/tracker2.js"></script>
     <script>
+        document.querySelectorAll('.link-row[data-copy]').forEach(row => {
+            const arrow = row.querySelector('.link-arrow');
+            const original = arrow.textContent;
+
+            row.addEventListener('click', async () => {
+                const value = row.dataset.copy;
+                try {
+                    await navigator.clipboard.writeText(value);
+                } catch (error) {
+                    const helper = document.createElement('textarea');
+                    helper.value = value;
+                    document.body.appendChild(helper);
+                    helper.select();
+                    document.execCommand('copy');
+                    helper.remove();
+                }
+
+                arrow.textContent = 'copied';
+                row.classList.add('is-copied');
+                setTimeout(() => {
+                    arrow.textContent = original;
+                    row.classList.remove('is-copied');
+                }, 1600);
+            });
+        });
+
         const snowfall = document.querySelector('.snowfall');
 
         for (let i = 0; i < 50; i++) {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             snowflake.style.left = `${Math.random() * 100}vw`;
-            snowflake.style.animationDuration = `${Math.random() * 4 + 6}s`;  
+            snowflake.style.animationDuration = `${Math.random() * 4 + 6}s`;
             snowflake.style.animationDelay = `${Math.random() * 5}s`;
             snowfall.appendChild(snowflake);
         }
 
         document.addEventListener('mousemove', (event) => {
-        const mouseX = event.clientX;
-        const mouseY = event.clientY;
+            const mouseX = event.clientX;
 
-        const snowflakes = document.querySelectorAll('.snowflake');
-        snowflakes.forEach((snowflake) => {
-            const snowflakeX = parseFloat(snowflake.style.left);
-            const distanceX = mouseX - snowflakeX;
-            
-            snowflake.style.animationTimingFunction = 'linear';
-            snowflake.style.transform = `translateX(${(distanceX / 50)}px)`;
-        });
+            document.querySelectorAll('.snowflake').forEach((snowflake) => {
+                const snowflakeX = parseFloat(snowflake.style.left);
+                const distanceX = mouseX - snowflakeX;
+
+                snowflake.style.animationTimingFunction = 'linear';
+                snowflake.style.transform = `translateX(${(distanceX / 50)}px)`;
+            });
         });
     </script>
 </body>

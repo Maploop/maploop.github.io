@@ -1,73 +1,115 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Maploop • Projects</title>
 
-    <link rel="stylesheet" type="text/css" href="./style.css"/>
-    <link rel="icon" type="image/x-icon" href="../ARCHIVE/favicon.ico" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A full archive of everything Maploop has built." />
+  <meta name="theme-color" content="#08070c" />
+  <title>Maploop • Projects</title>
 
-  <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="navbar-logo"><a href="/#">🌸 Maploop</a></div>
-            <div class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="nav-links">
-                <a class="nav-item" href="/#slide-0" data-target="slide-0"><span class="section-nav-num"
-                        style="color: #834ade">01.</span> About</a>
-                <a class="nav-item" href="/#slide-2" data-target="slide-2"><span class="section-nav-num"
-                        style="color: #834ade">02.</span> Experience</a>
-                <a class="nav-item" href="/#slide-1" data-target="slide-1"><span class="section-nav-num"
-                        style="color: #834ade">03.</span> Work</a>
-                <a class="nav-item" href="/#slide-3" data-target="slide-3"><span class="section-nav-num"
-                        style="color: #834ade">04.</span> Contact</a>
-                <a class="nav-item resume" href="/resume" data-target="resume">Resume</a>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-      <h1 style="margin-bottom: 50px; margin-top: 70px;">
-        <svg style="scale: 2.5; margin-bottom: 10px; margin-right: 20px;" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            style="color: #834ade"
-            d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
-          />
-        </svg>
-        Maploop's Project Archive
-      </h1>
-      <table class="portfolio-table">
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Title</th>
-            <th>Made at</th>
-            <th>Built with</th>
-            <th>Links</th>
-          </tr>
-        </thead>
-        <tbody id="portfolio-body">
-          <tr>
-            <td colspan="5" class="loading">Loading projects...</td>
-          </tr>
-        </tbody>
-      </table>
+  <link rel="icon" type="image/x-icon" href="../ARCHIVE/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="/ARCHIVE/style/lavender.css" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo"><a href="/">🌸 Maploop</a></div>
+      <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links">
+        <a class="nav-item" href="/#slide-0"><span class="section-nav-num">01.</span> About</a>
+        <a class="nav-item" href="/#slide-2"><span class="section-nav-num">02.</span> Experience</a>
+        <a class="nav-item active" href="/#slide-1"><span class="section-nav-num">03.</span> Work</a>
+        <a class="nav-item" href="/#slide-3"><span class="section-nav-num">04.</span> Contact</a>
+        <a class="nav-item resume" href="/resume">Resume</a>
+      </div>
     </div>
+  </nav>
 
-    <footer style="margin-top: 300px;">
-            <div class="footer-container">
-                <div class="footer-left">
-                    <p>&copy; 2026 Built by Maploop</p>
-                </div>
-         <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
-            </div>
-        </footer>
-    <script src="./script.js"></script>
-  </body>
+  <main class="archive-main">
+    <header class="archive-header">
+      <div class="page-eyebrow">Registry</div>
+      <h1>project archive</h1>
+      <p>
+        Everything worth keeping — servers, engines, libraries and experiments, oldest ideas to newest.
+        Filter by name, tech or the place it was built.
+      </p>
+      <div class="page-meta">
+        <span><b id="project-count">0</b> projects</span>
+        <span id="project-range">—</span>
+        <span><a class="pretty-a" href="/">← back home</a></span>
+      </div>
+    </header>
+
+    <section class="archive-toolbar">
+      <div class="archive-search">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M20 20l-3.5-3.5" />
+        </svg>
+        <input id="archive-search" type="search" placeholder="Search projects, tech, companies…"
+          aria-label="Search projects" autocomplete="off" />
+        <kbd>Ctrl K</kbd>
+      </div>
+      <div class="archive-sort">
+        <select id="archive-sort" aria-label="Sort projects">
+          <option value="year-desc">Newest first</option>
+          <option value="year-asc">Oldest first</option>
+          <option value="title-asc">A – Z</option>
+          <option value="title-desc">Z – A</option>
+        </select>
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </div>
+    </section>
+
+    <table class="portfolio-table">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Title</th>
+          <th>Made at</th>
+          <th>Built with</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+      <tbody id="portfolio-body">
+        <tr>
+          <td colspan="5" class="loading">Loading projects…</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="status-dot"></span>
+        <p>&copy; 2026 Built by Maploop</p>
+      </div>
+      <span class="footer-project-name">Maploop.github.io</span>
+      <div class="footer-links">
+        <a href="https://github.com/Maploop" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="/links?a=web">Socials ↗</a>
+        <button class="back-to-top" onclick="scrollToTop()">Back to top ↑</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+
 </html>

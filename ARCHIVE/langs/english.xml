@@ -35,7 +35,7 @@
       <button onclick="window.open('https://github.com/Maploop')" class="cool-btn">Visit my GitHub</button>
     ]]></about-intro>
 
-    <about-tech-intro><![CDATA[Here are a few of the technologies I've worked with recently:]]></about-tech-intro>
+    <about-tech-intro><![CDATA[My self-proclaimed tech stack:]]></about-tech-intro>
 
   </about-section>
 
@@ -72,7 +72,7 @@
     </job-lunamc>
 
     <job-trexmine>
-      <job-trexmine-title><![CDATA[Senior Developer @ <a href="https://trexmine.com" class="pretty-a">TrexMine</a>]]></job-trexmine-title>
+      <job-trexmine-title><![CDATA[Developer @ <a href="https://trexmine.com" class="pretty-a">TrexMine</a>]]></job-trexmine-title>
       <job-trexmine-date><![CDATA[July 2020 - May 2021]]></job-trexmine-date>
       <job-trexmine-description><![CDATA[
         <li>Collaborated effectively within a team of over 10 skilled professionals.</li>
@@ -81,9 +81,10 @@
     </job-trexmine>
 
     <job-mineheaven>
-      <job-mineheaven-title><![CDATA[Senior Developer @ <a href="https://mineheaven.com" class="pretty-a">MineHeaven</a>]]></job-mineheaven-title>
-      <job-mineheaven-date><![CDATA[May 2026 - Present]]></job-mineheaven-date>
+      <job-mineheaven-title><![CDATA[Developer @ <a href="https://mineheaven.com" class="pretty-a">MineHeaven</a>]]></job-mineheaven-title>
+      <job-mineheaven-date><![CDATA[May 2026 - August 2026]]></job-mineheaven-date>
       <job-mineheaven-description><![CDATA[
+      <li>Develop and maintain the internal Redis framework</li>
       ]]></job-mineheaven-description>
     </job-mineheaven>
 
@@ -102,10 +103,11 @@
         Islands, Bazaar and just about everything else!
       ]]></project1-description>
       <project1-tech><![CDATA[
-        <span class="tech-item">Spigot Library</span>
-        <span class="tech-item">Advanced NMS</span>
+        <span class="tech-item">Paper Software</span>
+        <span class="tech-item">Redis</span>
+        <span class="tech-item">MongoDB</span>
         <span class="tech-item">Java</span>
-        <span class="tech-item">Cloudflare (Anti-DDOS)</span>
+        <span class="tech-item">Cloudflare</span>
       ]]></project1-tech>
     </project-1>
 
@@ -118,7 +120,7 @@
         physics and real-time simulations.
       ]]></project2-description>
       <project2-tech><![CDATA[
-        <span class="tech-item">OpenGL</span>
+        <span class="tech-item">OpenGL 4.5</span>
         <span class="tech-item">PhysX</span>
         <span class="tech-item">C++</span>
         <span class="tech-item">GLSL</span>
@@ -139,17 +141,6 @@
   <events-section>
  
     <events-section-title><![CDATA[<span class="section-num">04.</span> Events I've Been a Part Of]]></events-section-title>
- 
-    <!--
-      Each event below follows the same shape:
-        eventN-title       -> name of the event (and an optional link)
-        eventN-date        -> when it took place
-        eventN-description -> bullet points about your role / what happened
- 
-      Add or remove <event-N> blocks as needed - just give the new
-      elements matching ids in index.html (e.g. event4-title,
-      event4-date, event4-description) inside an .event-details div.
-    -->
  
     <event-1>
       <event1-title><![CDATA[SPACE National Student Programming Competition]]></event1-title>
@@ -175,7 +166,7 @@
   </contact-section>
 
   <footer-section>
-    <footer-text><![CDATA[&copy; 2025 ♡ Built with love by Maploop]]></footer-text>
+    <footer-text><![CDATA[&copy; 2026 ♡ Built with love by Maploop]]></footer-text>
   </footer-section>
 
 </page-content>
