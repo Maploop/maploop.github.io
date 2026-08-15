@@ -1,263 +1,527 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@</title>
+    <title>喰種 // CCG 端末</title>
 
+    <link rel="icon" type="image/x-icon" href="../ARCHIVE/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./self_contained_archive/style.css">
 </head>
+
 <body>
+    <!-- Backdrop: 人間 → 喰種 -->
+    <div class="bg-layer bg-human"></div>
+    <div class="bg-layer bg-ghoul"></div>
+    <div class="bg-layer bg-awaken"></div>
+    <div class="bg-vignette"></div>
+    <div class="wordmark">東京喰種</div>
+
     <div class="container">
         <div class="context-menu" id="contextMenu">
-            <div class="context-menu-item refresh-item" onclick="handleRefresh()">
-                Refresh
-            </div>
-            <div class="context-menu-item share-item" onclick="handleShare()">
-                Share
-            </div>
+            <div class="context-menu-item refresh-item" onclick="handleRefresh()">Re-scan</div>
+            <div class="context-menu-item share-item" onclick="handleShare()">Flag case</div>
         </div>
+
         <div class="sidebar">
-            <!-- <h2>部分 Sections</h2> -->
+            <div class="rail-title"><span>Case Index</span><em>資料</em></div>
+
             <div class="nav-items">
-                <div onclick="openWindow('about')" class="nav-item">
-                    <img class="nav-icon" src="./self_contained_archive/img/about_me.png">
-                    <p>about me</p>
+                <div onclick="openWindow('about')" data-win="about" class="nav-item">
+                    <span class="nav-glyph"><svg viewBox="0 0 16 16">
+                            <circle cx="8" cy="5.4" r="2.6" />
+                            <path d="M2.6 14c.6-3 2.7-4.4 5.4-4.4S12.8 11 13.4 14" />
+                        </svg></span>
+                    <span class="nav-text"><b>対象資料</b><i>Subject profile</i></span>
                 </div>
-                <div onclick="openWindow('services')" class="nav-item">
-                    <img class="nav-icon" src="./self_contained_archive/img/this_pc.png">
-                    <p">my experience</p>
+
+                <div onclick="openWindow('services')" data-win="services" class="nav-item">
+                    <span class="nav-glyph"><svg viewBox="0 0 16 16">
+                            <path d="M2.5 4.5h11v9h-11z" />
+                            <path d="M5.5 4.5V2.8h5v1.7M2.5 8.5h11" />
+                        </svg></span>
+                    <span class="nav-text"><b>経歴</b><i>Case history</i></span>
                 </div>
-                <div onclick="openWindow('projects')" class="nav-item">
-                    <img class="nav-icon" src="./self_contained_archive/img/documents.png">
-                    <p>my projects</p>
+
+                <div onclick="openWindow('projects')" data-win="projects" class="nav-item">
+                    <span class="nav-glyph"><svg viewBox="0 0 16 16">
+                            <path d="M3.5 2.5h6l3 3v8h-9z" />
+                            <path d="M9.5 2.5v3h3M5.5 8.5h5M5.5 11h5" />
+                        </svg></span>
+                    <span class="nav-text"><b>証拠品</b><i>Evidence log</i></span>
                 </div>
-                <div onclick="openWindow('contact')" class="nav-item">
-                    <img class="nav-icon" src="./self_contained_archive/img/people.png">
-                    <p>contact me</p>
+
+                <div onclick="openWindow('events')" data-win="events" class="nav-item">
+                    <span class="nav-glyph"><svg viewBox="0 0 16 16">
+                            <path d="M2.5 3.5h11v10h-11z" />
+                            <path d="M2.5 6.5h11M5.5 2v2M10.5 2v2" />
+                        </svg></span>
+                    <span class="nav-text"><b>事件記録</b><i>Incidents</i></span>
                 </div>
-                <div onclick="openWindow('gallery')" class="nav-item">
-                    <img class="nav-icon" src="./self_contained_archive/img/camera.png">
-                    <p>my art</p>
+
+                <div onclick="openWindow('contact')" data-win="contact" class="nav-item">
+                    <span class="nav-glyph"><svg viewBox="0 0 16 16">
+                            <path d="M2.5 4h11v8h-11z" />
+                            <path d="M2.5 4.5 8 9l5.5-4.5" />
+                        </svg></span>
+                    <span class="nav-text"><b>連絡先</b><i>Contact</i></span>
                 </div>
+
+                <div onclick="openWindow('gallery')" data-win="gallery" class="nav-item">
+                    <span class="nav-glyph"><svg viewBox="0 0 16 16">
+                            <path d="M2.5 3.5h11v9h-11z" />
+                            <path d="M2.5 10.5 6 7l3 3 2-1.7 2.5 2.2" />
+                            <circle cx="5.6" cy="6" r="1" />
+                        </svg></span>
+                    <span class="nav-text"><b>作品</b><i>Artwork</i></span>
+                </div>
+            </div>
+
+            <div class="rail-note">
+                Terminal <b>CCG-20-0714</b><br>
+                Ward 20 / 20区<br>
+                Clearance <b>rank 2</b><br>
+                RC scan <b class="rc-word">clear</b>
             </div>
         </div>
     </div>
 
-    <!-- Decorative elements -->
-    <div class="decoration top-right">刀</div>
-    <div class="decoration bottom-left">武</div>
-    <div class="decoration secret">こんにちは、これは秘密です</div>
-    <div class="decoration secret2">こんにちは、これはもう一つの秘密です</div>
+    <!-- Decorative -->
+    <div class="decoration top-right">喰</div>
+    <div class="decoration bottom-left">種</div>
+    <div class="decoration secret">1000 - 7 は？</div>
+    <div class="decoration secret2">あなたは、どちら側？</div>
 
-    <!-- Windows -->
-    <div class="window" id="welcome-window">
+    <!-- ======================================================================
+         WINDOWS — case files
+         ====================================================================== -->
+
+    <div class="window" id="welcome-window" style="width: 470px">
         <div class="window-header">
-            <div class="window-title">Welcome!</div>
+            <div class="window-title glitch" data-text="認証 // Authentication">認証 // Authentication</div>
             <div class="window-controls">
                 <div class="window-btn" onclick="closeWindow('welcome')">×</div>
             </div>
         </div>
         <div class="window-content">
-            <h1>よこそ！！</h1><br>
-            <p>Hey! I'm Leon. In this small desktop environment you can view <br>my projects, work experiences, and just find out more about me!
-                <br>
-                Simply click on any app on the left and a window just like this will pop<br> up with all the information you'd want to know.
-            </p> <br>
-            <p>⚠︎ Disclaimer: I know little to no Japanese and the Japanese<br> text on this website is only to be aesthetically pleasing.</p>
+            <img class="rize-plate" src="./self_contained_archive/img/tg/rize_blood.jpg"
+                alt="Case reference photograph">
+            <div class="file-head">
+                <span class="en">CCG terminal · 20th ward</span>
+                <h2>ようこそ<span class="stamp">機密</span></h2>
+            </div>
+            <p>Hey — I'm Leon (Maploop). This is the experimental cut of my portfolio, dressed up as a
+                CCG case terminal. Everything on the real site is in here: who I am, where I've worked,
+                what I've built.</p>
             <br>
-            <h3 style="text-shadow: 1px 1px 2px #000; color: rgb(255, 255, 0)">⚠︎ You are in an experimental version of my website! visit the original <br>
-                or enter with a desktop for better quality.</b>
-                <br><br>
-            
-            <button class="win-btn-selected" onclick="closeWindow('welcome')">Continue</button>
-            <button class="win-btn" onclick="window.location.href = 'https://maploop.github.io'">Go to original</button>
+            <p>Open a file from the case index. Windows drag by their header, and right-click the desk
+                for a menu.</p>
+            <br>
+            <div class="warn">
+                注意 — the deeper you read, the less human this terminal stays. Watch the RC gauge in
+                the top bar.
+            </div>
+            <br>
+            <p style="color: var(--faint); font-size: 12px">⚠︎ I know little to no Japanese; the Japanese
+                text here is decoration. Best viewed on desktop.</p>
+            <br>
+            <button class="win-btn-selected" onclick="closeWindow('welcome')">Begin</button>
+            <button class="win-btn" onclick="window.location.href = 'https://maploop.github.io'">Original
+                site</button>
         </div>
     </div>
-    
-    <div class="window" id="about-window">
+
+    <div class="window" id="about-window" style="width: 500px">
         <div class="window-header">
-            <div class="window-title">About Me</div>
+            <div class="window-title glitch" data-text="対象資料 // Subject profile">対象資料 // Subject profile</div>
             <div class="window-controls">
                 <div class="window-btn" onclick="closeWindow('about')">×</div>
             </div>
         </div>
         <div class="window-content">
-            <h3>Hello!</h3>
-            <p>Hello! My name is Maploop (Leon); I'm an 18 year old software developer, and I enjoy creating things that live <br>on the internet. 
-                My journey in software development began back in 2018 when I started learning the Minecraft Spigot library<br> — since then I've had the opportunity to
-                <a href="https://discord.gg/atlasmc" class="pretty-a">manage my own dev team of over 10</a>, <br>
-                <a href="https://trexmine.com" class="pretty-a">work for one of the largest Minecraft servers in Iran</a>, and <br>
-                <a href="https://github.com/maploop" class="pretty-a">deliver over 50 freelance projects</a>. <br>
-                My main focus right now building large-scale, inclusive projects and digital experiences with my development team at 
-                <a href="https://discord.gg/atlasmc" class="pretty-a">Atlas Network</a>. <br> <br>
-                I have also recently worked on a variety of <a class="pretty-a" href="#slide-1">Open Source Projects</a>.
-                <br> <br>
-                <a href="https://github.com/maploop">>> Visit my GitHub</a>
+            <div class="file-head">
+                <span class="en">File 01 · subject profile</span>
+                <h2>Maploop<span class="stamp">要観察</span></h2>
+            </div>
+
+            <dl class="meta">
+                <dt>Alias</dt>
+                <dd>Maploop / Leon</dd>
+                <dt>Ward</dt>
+                <dd>20区 — Anteiku vicinity</dd>
+                <dt>Occupation</dt>
+                <dd>Software developer</dd>
+                <dt>Active since</dt>
+                <dd>Late 2019</dd>
+                <dt>Classification</dt>
+                <dd><span class="bad">半喰種</span> — one-eyed, half ghoul</dd>
+                <dt>Threat</dt>
+                <dd><span class="ok">S</span> (ships on time)</dd>
+            </dl>
+
+            <p>…and I enjoy creating things that live on the internet.</p>
+            <br>
+            <p>I have extensive experience with Minecraft development and building large-scale
+                multiplayer experiences, including an open source Hypixel SkyBlock recreation that has
+                gained hundreds of stars on GitHub.</p>
+            <br>
+            <p>My journey in software development began back in late 2019, when I decided I wanted to
+                make my own Minecraft plugin for the first time. Since then I've had the opportunity to
+                <a href="https://discord.gg/atlasmc" class="pretty-a">manage my own dev team of over 10</a>,
+                <a href="https://trexmine.com" class="pretty-a">work for the largest Minecraft server in Iran</a>,
+                <a href="https://github.com/maploop" class="pretty-a">deliver over 50 freelance projects</a> and
+                <a href="https://discord.gg/atlasmc" class="pretty-a">lead the largest community-driven
+                    re-creation of Hypixel SkyBlock at Atlas Network</a>.
             </p>
+            <br>
+            <p style="color: var(--faint); font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase">
+                Kagune composition — 赫子成分</p>
+            <div class="tags">
+                <span>Java</span><span>C++</span><span>Minestom</span><span>Vulkan</span>
+                <span>JavaScript</span><span>Python</span><span>Spring</span><span>Node.js</span>
+                <span>NPM</span><span>Tailwind</span><span>MongoDB</span><span>Redis</span>
+                <span>SQLite</span><span>Git</span><span>Gradle</span><span>Docker</span>
+            </div>
+            <br>
+            <button class="win-btn" onclick="window.open('https://github.com/Maploop')">Visit my GitHub</button>
         </div>
     </div>
 
-    <div class="window" id="services-window">
+    <div class="window" id="services-window" style="width: 520px">
         <div class="window-header">
-            <div class="window-title">My Experiences</div>
+            <div class="window-title glitch" data-text="経歴 // Case history">経歴 // Case history</div>
             <div class="window-controls">
                 <div class="window-btn" onclick="closeWindow('services')">×</div>
             </div>
         </div>
         <div class="window-content">
-            <h3>1. Atlas Network</h3>
-                    <p style="color: var(--signature-blue); font-weight: bold;">February 2020 - Present</p>
-                    <br>
-                    <p>• Communicate and manage multi-disciplinary teams of engineers, designers, producers, and clients on a daily basis</p>
-                    <p>• Work with a variety of different languages, platforms, frameworks, and content management systems such as Java, JSP, JavaScript and Python</p>
-                    <p>• Contributed extensively to AtlasRedisAPI, a Java library aimed to make utilizing Redis messaging systems easier</p>
-                    <p>• Develope modern, performant, maintainable code for a diverse array of client and internal projects</p>
-            <br><br>
-            <h3>2. TrexMine</h3>
-                    <p style="color: var(--signature-blue); font-weight: bold;">July 2020 - May 2021</p>
-                    <br>
-                    <p>• Collaborated effectively within a dynamic team of over 10 skilled professionals, fostering a productive and enjoyable working environment.</p>
-                    <p>• Handle MySQL databases</p>
-                    <p>• Work with a variety of different languages, platforms, frameworks, and content management systems such as MySQL, Perodactyl</p>
-                    <p>• Develope modern, performant, maintainable code for a diverse array of client and internal projects</p>
-                    <p>• Contributed extensively to TrexMine's custom BedWars plugin, fixing bugs and adding new features</p>
+            <div class="file-head">
+                <span class="en">File 02 · where I've worked</span>
+                <h2>経歴<span class="stamp">04 件</span></h2>
+            </div>
+
+            <div class="entry">
+                <h3>Lead Maintainer @ <a href="https://discord.gg/mJDvBEkqpg" class="pretty-a">Swofty
+                        Developments (formerly Atlas)</a></h3>
+                <span class="when">February 2020 — present</span>
+                <ul>
+                    <li>Communicated and managed a developer team of ~8</li>
+                    <li>Wrote modern, performant, maintainable code for internal projects</li>
+                    <li>Founded and contribute extensively to the largest community driven re-creation of
+                        Hypixel SkyBlock</li>
+                    <li>Contributed extensively to AtlasRedisAPI, a Java library aimed to make utilizing
+                        Redis messaging systems easier</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <h3>Lead Developer @ <a href="https://lunamc.ir" class="pretty-a">LunaMC</a></h3>
+                <span class="when">August 2025 — present</span>
+                <ul>
+                    <li>Was solely responsible for the design, development, and implementation of the
+                        entire project adhering to professional industry standards</li>
+                    <li>Developed performant, scalable products optimized for large player bases</li>
+                    <li>Worked with a variety of different frameworks and content management systems such
+                        as Redis, MongoDB, Spring, NMS, etc.</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <h3>Developer @ <a href="https://trexmine.com" class="pretty-a">TrexMine</a></h3>
+                <span class="when">July 2020 — May 2021</span>
+                <ul>
+                    <li>Collaborated effectively within a team of over 10 skilled professionals</li>
+                    <li>Contributed to the project's internal "Nick System"</li>
+                </ul>
+            </div>
+
+            <div class="entry">
+                <h3>Developer @ <a href="https://mineheaven.com" class="pretty-a">MineHeaven</a></h3>
+                <span class="when">May 2026 — August 2026</span>
+                <ul>
+                    <li>Develop and maintain the internal Redis framework</li>
+                </ul>
+            </div>
         </div>
     </div>
 
-    <div style="height: 500px" class="window" id="projects-window">
+    <div class="window" id="projects-window" style="width: 520px; height: 560px">
         <div class="window-header">
-            <div class="window-title">My Current Projects</div>
+            <div class="window-title glitch" data-text="証拠品 // Evidence log">証拠品 // Evidence log</div>
             <div class="window-controls">
                 <div class="window-btn" onclick="closeWindow('projects')">×</div>
             </div>
         </div>
         <div class="window-content">
-            <h4>* These are some of the projects that I'm actively working on or have already finished.</h4> <br>
-            <h2>EFlame Engine</h2>
-            <p>A simple OpenGL-based game engine that I am developing<br> as a foundational framework,
-                 with the primary goal of using <br>it to practice and experiment with various concepts in computer physics, <br>
-                 including collision detection, <br>rigid body dynamics, and real-time simulation.</p>
-            <a style="font-size: 12px" href="https://github.com/maploop/EFlame">>> View on GitHub</a>
-            <br><br>
-            <div style="background: #999; overflow:auto; max-width: 390; max-height: 300px; display: flex; align-items: center; justify-content: center;">
-                <img alt="Screenshot of engine environment" style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/eflame_engine.png">
-            </div>
-            
-            <br><br><br>
-            <h2>SkyBlock Recreation</h2>
-            <p>The best commercial Hypixel SkyBlock Sandbox / Recreation currently available.<br>
-                 Contains Gemstones, 70% of <br>Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests, Islands, <br>
-                 Bazaar and just about everything else!</p>
-
-            <a style="font-size: 12px" href="https://github.com/Swofty-Developments/HypixelSkyBlock">>> View on GitHub</a>
-            <br><br>
-            <div style="background: #999; overflow:auto; max-height: 300px; display: flex; align-items: center; justify-content: center;">
-                <img alt="Hypixel SkyBlock (www.hypixel.net)" style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/hypixel_skyblock.jpg">
+            <div class="file-head">
+                <span class="en">File 03 · some things I've built</span>
+                <h2>証拠品<span class="stamp">押収</span></h2>
             </div>
 
-            <br><br><br>
-            <h2>Highwind</h2>
-            <p>Yet another game engine project that I've recently been expanding on, planning to be the <br>
-            host of my first ever game</p>
-
-            <a style="font-size: 12px" href="https://github.com/maploop/Highwind">>> View on GitHub</a>
-            <br><br>
-            <div style="background: #999; overflow:auto; max-height: 300px; display: flex; align-items: center; justify-content: center;">
-                <img alt="Screenshot of engine environment" style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/vega_engine.png">
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-01 · featured</span><span class="yr">2024</span></div>
+                <div class="evidence-body">
+                    <h3>SkyBlock Recreation</h3>
+                    <p>The best commercial Hypixel SkyBlock sandbox / recreation currently available.
+                        Contains Gemstones, 70% of Hypixel's items, Dwarven Mines, Guilds, Auction House,
+                        NPC shops, Quests, Islands, Bazaar and just about everything else.</p>
+                    <div class="tags"><span>Paper</span><span>Redis</span><span>MongoDB</span><span>Java</span><span>Cloudflare</span>
+                    </div>
+                    <p style="margin-top:8px"><a href="https://github.com/Swofty-Developments/HypixelSkyBlock"
+                            class="pretty-a">&gt;&gt; View on GitHub</a></p>
+                </div>
+                <img src="../ARCHIVE/image/hypixel_skyblock.jpg" alt="Hypixel SkyBlock">
             </div>
 
-            <br><br><br>
-            <h2>Cora</h2>
-            <p>My experiments with the Vulkan Graphics API using the C programming language, <br>
-                where I explore low-level graphics programming concepts,<br>
-                 rendering techniques, and performance optimization.</p>
-            <a style="font-size: 12px" href="https://github.com/maploop/Cora">>> View on GitHub</a>
-
-            <br><br><br>
-            <h2>Atlas Network</h2>
-            <p>My largest and longest-running project to date, and one of, if not the best, 
-                active recreations of Hypixel Skyblock, <br>featuring a thriving community of over 
-                9,000 members. The project is constantly evolving with <br>regular updates, new features, and a passionate player base that continues to grow.</p>
-
-            <a style="font-size: 12px" href="https://discord.gg/paper">>> View on GitHub</a>
-            <br><br>
-            <div style="background: #999; overflow:auto; max-height: 300px; display: flex; align-items: center; justify-content: center;">
-                <img alt="Screenshot of Atlas Network" style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/atlas_network.png">
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-02 · featured</span><span class="yr">2024</span></div>
+                <div class="evidence-body">
+                    <h3>EFlame Engine</h3>
+                    <p>A simple yet scalable game engine using OpenGL which I am developing as a
+                        foundational framework, with the primary goal of using it to practice and
+                        experiment with various concepts in computer physics and real-time simulation.</p>
+                    <div class="tags"><span>OpenGL 4.5</span><span>PhysX</span><span>C++</span><span>GLSL</span></div>
+                    <p style="margin-top:8px"><a href="https://github.com/Maploop/EFlame" class="pretty-a">&gt;&gt;
+                            View on GitHub</a></p>
+                </div>
+                <img src="../ARCHIVE/image/eflame_engine.png" alt="EFlame engine">
             </div>
 
-            <br><br><br>
-            <h2>Dnum Framework</h2>
-            <p>A lightweight and modular framework featuring a suite of pre-built libraries including Commands, NPCs, Holograms, SignGUI, <br>Packet Listener, 
-                and GUI components. Available on GitHub for exploration and contribution.</p>
-
-            <a style="font-size: 12px" href="https://github.com/maploop/DnumFramework">>> View on GitHub</a>
-            <br><br>
-            <div style="background: #999; overflow:auto; max-height: 300px; display: flex; align-items: center; justify-content: center;">
-                <img alt="Slogan or something?" style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/dnumframework.png">
-            </div>
-            
-            <br><br><br>
-            <h2>Reimgined Engine</h2>
-            <p>A graphics engine in development—soon evolving into a full game engine—built using Microsoft DirectX and OpenGL. <br>
-                It includes core rendering features and a semi-functional editor UI. <br>Explore the full project on GitHub for more details.</p>
-
-            <a style="font-size: 12px" href="https://github.com/maploop/ReimaginedEngine">>> View on GitHub</a>
-            <br><br>
-            <div style="background: #999; overflow:auto; max-height: 300px; display: flex; align-items: center; justify-content: center;">
-                <img alt="Screenshot of engine environment" style="max-width: 390; max-height: 300px;" src="../ARCHIVE/image/reimagined_engine.png">
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-03</span><span class="yr">2026</span></div>
+                <div class="evidence-body">
+                    <h3>LunaMC Minecraft Server</h3>
+                    <p>Fully functional server core along with ranks, punishments, back-end, store, etc.
+                        developed from zero with minimum dependencies.</p>
+                    <div class="tags"><span>Minecraft</span><span>Redis</span><span>MongoDB</span><span>Spring</span><span>NMS</span>
+                    </div>
+                    <p style="margin-top:8px"><a href="https://github.com/LunaMC-Development"
+                            class="pretty-a">&gt;&gt; View on GitHub</a></p>
+                </div>
             </div>
 
-            <br>
-            <p>詳細については各項目をクリックしてご確認ください。</p>
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-04</span><span class="yr">2026</span></div>
+                <div class="evidence-body">
+                    <h3>LunaMC The Pit</h3>
+                    <p>LunaMC's The Pit minigame, a replica of Hypixel's Pit built from scratch.</p>
+                    <div class="tags"><span>Minecraft</span><span>NMS</span><span>Spigot</span></div>
+                </div>
+            </div>
+
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-05</span><span class="yr">2026</span></div>
+                <div class="evidence-body">
+                    <h3>LunaMC Bed Wars</h3>
+                    <p>LunaMC's Bed Wars minigame built from scratch.</p>
+                    <div class="tags"><span>Minecraft</span><span>Redis</span><span>NMS</span><span>Spigot</span></div>
+                </div>
+            </div>
+
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-06</span><span class="yr">2026</span></div>
+                <div class="evidence-body">
+                    <h3>LunaMC Bug Tracker</h3>
+                    <p>A bug tracking website built for LunaMC, with a functioning REST API and admin
+                        panel.</p>
+                    <div class="tags"><span>Spring</span><span>Redis</span><span>MongoDB</span></div>
+                </div>
+            </div>
+
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-07</span><span class="yr">2025</span></div>
+                <div class="evidence-body">
+                    <h3>LunaMC Website</h3>
+                    <p>Website for the LunaMC Minecraft server, with a functional store system; worked on
+                        both front-end and back-end (back-end to an extent).</p>
+                    <div class="tags"><span>Express.JS</span><span>TypeScript</span><span>Prisma</span><span>MongoDB</span>
+                    </div>
+                    <p style="margin-top:8px"><a href="https://lunamc.ir/" class="pretty-a">&gt;&gt; Visit</a></p>
+                </div>
+            </div>
+
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-08</span><span class="yr">2025</span></div>
+                <div class="evidence-body">
+                    <h3>Discord–Minecraft Rank Syncing</h3>
+                    <p>Plugin that maps a Discord role to a rank in-game and syncs it every time the
+                        player joins.</p>
+                    <div class="tags"><span>Javacord</span><span>Minecraft</span><span>Spigot</span></div>
+                </div>
+            </div>
+
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-09</span><span class="yr">2024</span></div>
+                <div class="evidence-body">
+                    <h3>Cora Game Engine</h3>
+                    <p>Small yet clean C project — my experiments with the Vulkan graphics API, meant to
+                        become a usable engine in the future.</p>
+                    <div class="tags"><span>Vulkan</span><span>C</span><span>C++</span></div>
+                    <p style="margin-top:8px"><a href="https://github.com/Maploop/Cora" class="pretty-a">&gt;&gt;
+                            View on GitHub</a></p>
+                </div>
+            </div>
+
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-10</span><span class="yr">2023</span></div>
+                <div class="evidence-body">
+                    <h3>Portfolio</h3>
+                    <p>The portfolio website you're looking at a mutated copy of right now.</p>
+                    <div class="tags"><span>jQuery</span></div>
+                </div>
+            </div>
+
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-11</span><span class="yr">2022</span></div>
+                <div class="evidence-body">
+                    <h3>Java 2FA Wrapper</h3>
+                    <p>A simple wrapper library for Google's 2FA library.</p>
+                    <div class="tags"><span>Google 2FA</span><span>Java</span></div>
+                </div>
+            </div>
+
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-12</span><span class="yr">2021</span></div>
+                <div class="evidence-body">
+                    <h3>Spigot Dnum Framework</h3>
+                    <p>A comprehensive framework for Spigot plugin development with advanced NMS
+                        integration — Commands, NPCs, Holograms, SignGUI, packet listeners and GUI
+                        components.</p>
+                    <div class="tags"><span>Minecraft</span><span>Spigot</span><span>NMS</span></div>
+                    <p style="margin-top:8px"><a href="https://github.com/maploop/DnumFramework"
+                            class="pretty-a">&gt;&gt; View on GitHub</a></p>
+                </div>
+                <img src="../ARCHIVE/image/dnumframework.png" alt="Dnum Framework">
+            </div>
+
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-13</span><span class="yr">2021</span></div>
+                <div class="evidence-body">
+                    <h3>Hypixel Lobby Recreation</h3>
+                    <p>A faithful recreation of the Hypixel lobby experience for Atlas Network.</p>
+                    <div class="tags"><span>Java</span><span>Redis</span><span>Mongo</span><span>Spigot</span></div>
+                </div>
+            </div>
+
+            <div class="evidence">
+                <div class="evidence-head"><span class="no">EV-14</span><span class="yr">2021</span></div>
+                <div class="evidence-body">
+                    <h3>Hypixel Rank Color</h3>
+                    <p>Plugin that replicates Hypixel's rank color system for custom Minecraft servers.</p>
+                    <div class="tags"><span>Java</span><span>Spigot</span></div>
+                </div>
+            </div>
+
+            <p style="color: var(--faint); font-size: 12px">証拠品は全て20区分室にて保管。 Full archive at
+                <a href="/projects/" class="pretty-a">/projects</a>.
+            </p>
         </div>
     </div>
 
-    <div class="window" id="contact-window">
+    <div class="window" id="events-window" style="width: 470px">
         <div class="window-header">
-            <div class="window-title">Contact Me!</div>
+            <div class="window-title glitch" data-text="事件記録 // Incidents">事件記録 // Incidents</div>
+            <div class="window-controls">
+                <div class="window-btn" onclick="closeWindow('events')">×</div>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="file-head">
+                <span class="en">File 04 · events I've been a part of</span>
+                <h2>事件記録<span class="stamp">確認済</span></h2>
+            </div>
+
+            <div class="entry">
+                <h3>SPACE National Student Programming Competition</h3>
+                <span class="when">November 2025</span>
+                <ul>
+                    <li>Took part in the 6th SPACE national student programming competition at Sajjad
+                        University</li>
+                    <li>Solved algorithmic questions as part of a team</li>
+                    <li>Came out 7th among 43 other competing teams from all over Iran</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="window" id="contact-window" style="width: 440px">
+        <div class="window-header">
+            <div class="window-title glitch" data-text="連絡先 // Contact">連絡先 // Contact</div>
             <div class="window-controls">
                 <div class="window-btn" onclick="closeWindow('contact')">×</div>
             </div>
         </div>
         <div class="window-content">
-            <h3>Business Inquiries</h3>
-            <p><i class="far fa-envelope"></i> <a href="">Email (maploop.val@gmail.com)</a></p>
-            <p><i class="fab fa-linkedin"></i> <a href="">LinkedIn</a></p>
-            <h3>Social Media</h3>
-            <p><i class="fab fa-youtube"></i> <a href="https://youtube.com/@wheres_leon">YouTube</a></p>
-            <p><i class="fab fa-instagram"></i> <a href="https://instagram.com/wheres.leon">Instagram</a></p>
-            <p><i class="fa-brands fa-x-twitter"></i> <a href="https://x.com/wheres_leon">X</a></p>
-            <p><i class="fab fa-spotify"></i> <a href="https://open.spotify.com/user/31yxaqjenkqi743v7r4ntvpywlqy?si=906e87f53c954f8f">Spotify</a></p>
-            <p><i class="fab fa-telegram"></i> <a href="https://t.me/wheres_leon">Telegram</a></p>
-            <p><i class="fab fa-pixiv"></i> <a href="https://www.pixiv.net/en/users/113162363">Pixiv</a></p>
+            <div class="file-head">
+                <span class="en">File 05 · what's next?</span>
+                <h2>連絡先<span class="stamp">開放</span></h2>
+            </div>
+
+            <p>Whether it's for an opportunity, a question, or a freelance request, my inbox is always
+                open. Even if you just want to say hi, I'll try my best to get back to you.</p>
             <br>
-            <p>お気軽にご連絡ください。できるだけ早くご返信いたします。</p>
+
+            <ul class="contact-list">
+                <li><i class="far fa-envelope"></i> <a href="mailto:maploop.val@gmail.com">Email</a>
+                    <span class="who">maploop.val@gmail.com</span>
+                </li>
+                <li><i class="fab fa-youtube"></i> <a href="https://www.youtube.com/@Maploop">YouTube</a>
+                    <span class="who">@Maploop</span>
+                </li>
+                <li><i class="fab fa-discord"></i> <span>Discord</span> <span class="who">maplooop</span></li>
+                <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/dinner.wanter">Instagram</a>
+                    <span class="who">art</span>
+                </li>
+                <li><i class="fab fa-spotify"></i>
+                    <a href="https://open.spotify.com/user/31yxaqjenkqi743v7r4ntvpywlqy?si=906e87f53c954f8f">Spotify</a>
+                    <span class="who">on repeat</span>
+                </li>
+            </ul>
+            <br>
+            <button class="win-btn-selected" onclick="window.location.href='mailto:maploop.val@gmail.com'">Say
+                hello 👋</button>
+            <button class="win-btn" onclick="window.location.href='/links/'">All socials</button>
+            <br><br>
+            <p style="color: var(--faint); font-size: 12px">お気軽にご連絡ください。できるだけ早くご返信いたします。</p>
         </div>
     </div>
 
-    <div class="window" id="gallery-window">
+    <div class="window" id="gallery-window" style="width: 440px">
         <div class="window-header">
-            <div class="window-title">Digital Art</div>
+            <div class="window-title glitch" data-text="作品 // Artwork">作品 // Artwork</div>
             <div class="window-controls">
                 <div class="window-btn" onclick="closeWindow('gallery')">×</div>
             </div>
         </div>
         <div class="window-content">
-            <h3>Some digital art pieces I've made</h3>
-            <p>You can find these on my twitter/instagram</p>
-            <p style="color: crimson">(!) No Images Featured Here (!)</p>
-            <br>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div style="background: #999; height: 80px; display: flex; align-items: center; justify-content: center;">作品1</div>
-                <div style="background: #999; height: 80px; display: flex; align-items: center; justify-content: center;">作品2</div>
-                <div style="background: #999; height: 80px; display: flex; align-items: center; justify-content: center;">作品3</div>
-                <div style="background: #999; height: 80px; display: flex; align-items: center; justify-content: center;">作品4</div>
+            <div class="file-head">
+                <span class="en">File 06 · digital art</span>
+                <h2>作品<span class="stamp">未公開</span></h2>
             </div>
+            <p>Some digital art pieces I've made — these live on my Instagram.</p>
+            <p style="color: var(--blood)">(!) No images featured here yet (!)</p>
+            <br>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <div class="evidence" style="margin:0; display:flex; align-items:center; justify-content:center; height:88px; color:var(--faint); font-family:var(--serif); font-size:20px">作品1</div>
+                <div class="evidence" style="margin:0; display:flex; align-items:center; justify-content:center; height:88px; color:var(--faint); font-family:var(--serif); font-size:20px">作品2</div>
+                <div class="evidence" style="margin:0; display:flex; align-items:center; justify-content:center; height:88px; color:var(--faint); font-family:var(--serif); font-size:20px">作品3</div>
+                <div class="evidence" style="margin:0; display:flex; align-items:center; justify-content:center; height:88px; color:var(--faint); font-family:var(--serif); font-size:20px">作品4</div>
+            </div>
+            <br>
+            <button class="win-btn" onclick="window.open('https://instagram.com/dinner.wanter')">See them on
+                Instagram</button>
         </div>
     </div>
 
     <script src="./self_contained_archive/behavior.js"></script>
+    <script src="./self_contained_archive/ghoul.js"></script>
 </body>
+
 </html>

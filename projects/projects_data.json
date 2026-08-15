@@ -32,6 +32,17 @@
             }
         },
         {
+            "year": 2026,
+            "title": "LunaMC Bug Tracker",
+            "company": "LunaMC",
+            "technologies": ["Spring", "Redis", "MongoDB"],
+            "description": "A bug tracking website built for LunaMC, with a functioning rest api and admin panel",
+            "links": {
+                "github": "https://github.com/LunaMC-Development",
+                "external": "https://rest.lunamc.ir/"
+            }
+        },
+        {
             "year": 2024,
             "title": "Hypixel SkyBlock Re-Creation",
             "company": null,
