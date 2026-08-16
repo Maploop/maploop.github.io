@@ -14,8 +14,8 @@
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     var patterns = [
-        { name: 'ORBIT', draw: orbit },
         { name: 'RAY', draw: ray },
+        { name: 'ORBIT', draw: orbit },
         { name: 'WAVE', draw: wave },
         { name: 'MESH', draw: mesh }
     ];
