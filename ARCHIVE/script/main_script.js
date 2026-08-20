@@ -89,6 +89,7 @@ window.scrollTo({
 document.addEventListener('DOMContentLoaded', () => {
     loadProjectCards();
     loadWorkplaces();
+    initCompanyMarker();
     const navbar = document.querySelector('.navbar');
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navItems = document.querySelectorAll('.nav-item');
@@ -178,23 +179,55 @@ function loadWorkplaces() {
         tab.addEventListener('click', () => {
             // Remove active class from all tabs
             tabs.forEach(t => t.classList.remove('active'));
-            
+
             // Add active class to clicked tab
             tab.classList.add('active');
-            
+
             // Hide all job details
             jobDetails.forEach(detail => detail.style.display = 'none');
-            
+
             // Show corresponding job details
             const company = tab.dataset.company;
             const targetJob = document.querySelector(`[data-job="${company}"]`);
+            // Going from display:none restarts the entry animations on its own
             if (targetJob) {
-                targetJob.style.display = 'block';
+                targetJob.style.display = 'flex';
             }
 
             tabs.forEach(t => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
+
+            moveCompanyMarker();
         });
     });
+}
+
+/* The rail highlight is a single element that glides between tabs, so the
+   selection reads as one continuous movement instead of four separate states. */
+let moveCompanyMarker = () => {};
+
+function initCompanyMarker() {
+    const rail = document.querySelector('.company-tabs');
+    const marker = rail?.querySelector('.tab-marker');
+    if (!rail || !marker) return;
+
+    moveCompanyMarker = () => {
+        const active = rail.querySelector('.company-tab.active');
+        if (!active) return;
+
+        marker.style.width = `${active.offsetWidth}px`;
+        marker.style.height = `${active.offsetHeight}px`;
+        marker.style.transform = `translate(${active.offsetLeft}px, ${active.offsetTop}px)`;
+        marker.classList.add('is-ready');
+    };
+
+    moveCompanyMarker();
+
+    // Text arriving from english.xml, webfonts and reflows all change tab sizes
+    if (typeof ResizeObserver === 'function') {
+        new ResizeObserver(() => moveCompanyMarker()).observe(rail);
+    }
+    window.addEventListener('resize', moveCompanyMarker);
+    document.fonts?.ready.then(moveCompanyMarker);
 }
 
 function decorateWorkplaces() {
@@ -207,6 +240,8 @@ function decorateWorkplaces() {
             list.innerHTML = '<li class="job-placeholder">Write-up in progress.</li>';
         }
     });
+
+    moveCompanyMarker();
 }
 
 document.addEventListener('content:loaded', decorateWorkplaces);
@@ -219,6 +254,10 @@ function cardMark(title) {
         ? words[0][0] + words[1][0]
         : words[0].slice(0, 2);
     return letters.toUpperCase();
+}
+
+function attr(value) {
+    return String(value ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 }
 
 function createCardLinks(links) {
@@ -237,57 +276,72 @@ function createCardLinks(links) {
     return linkElements.join('');
 }
 
+/* One card = identity row, blurb, a data strip, then links.
+   The data strip is live GitHub numbers when the project points at a real
+   repository, and a colour-coded stack when it doesn't. */
+function projectCardMarkup(project, index) {
+    const links = project.links || {};
+    const tech = (project.technologies || []).filter(Boolean);
+    const slug = window.RepoStats?.parseRepo(links.github) || '';
+
+    const primary = [links.github, links.external].find(link => link && link !== '#') || '';
+    const heading = primary
+        ? `<a href="${attr(primary)}" target="_blank" rel="noopener noreferrer">${project.title}</a>`
+        : project.title;
+
+    return `
+        <article class="project-card" style="--card-accent: ${cardAccents[index % cardAccents.length]}">
+            <div class="card-top">
+                <span class="card-mark" aria-hidden="true">${cardMark(project.title)}</span>
+                <div class="card-heading">
+                    <h3 class="card-title">${heading}</h3>
+                    ${project.company ? `<span class="card-company">${project.company}</span>` : ''}
+                </div>
+                <span class="card-year">${project.year || ''}</span>
+            </div>
+
+            <p class="card-description">${project.description || 'No description available.'}</p>
+
+            <div class="card-metrics"
+                 data-repo-stats="${attr(slug)}"
+                 data-stat-fallback="stack"
+                 data-stat-compact="true"
+                 data-stat-tech="${attr(tech.join(', '))}"></div>
+
+            <div class="card-foot">
+                <div class="tech-chips is-compact card-foot-tech">
+                    ${window.RepoStats?.techChips(tech, 3) || ''}
+                </div>
+                <div class="card-links">${createCardLinks(links)}</div>
+            </div>
+        </article>
+    `;
+}
+
 async function loadProjectCards() {
     const grid = document.getElementById('projects-grid');
-    
+    if (!grid) return;
+
     try {
-        setTimeout(async () => {
-            const response = await fetch("/projects/projects_data.json");
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            
-            const data = await response.json();
-            console.log(data);
-            const projects = data.projects;
-            
-            if (!projects || projects.length === 0) {
-                grid.innerHTML = '<div class="cards-error">No projects found.</div>';
-                return;
-            }
+        const response = await fetch('/projects/projects_data.json');
 
-            const cardProjects = projects.slice(0, 6);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-            grid.innerHTML = cardProjects.map((project, index) => `
-                <article class="project-card" style="--card-accent: ${cardAccents[index % cardAccents.length]}">
-                    <div class="card-preview">
-                        <span class="card-preview-mark">${cardMark(project.title)}</span>
-                    </div>
+        const data = await response.json();
+        const projects = data.projects;
 
-                    <div class="card-body">
-                        <div class="card-header">
-                            <h3 class="card-title">${project.title}</h3>
-                            <span class="card-year">${project.year || ''}</span>
-                        </div>
+        if (!projects || projects.length === 0) {
+            grid.innerHTML = '<div class="cards-error">No projects found.</div>';
+            return;
+        }
 
-                        <p class="card-description">
-                            ${project.description || 'No description available.'}
-                        </p>
+        grid.innerHTML = projects.slice(0, 6).map(projectCardMarkup).join('');
 
-                        <div class="card-bottom">
-                            <div class="card-tech">
-                                ${project.technologies.slice(0, 3).map(tech => `<span class="card-tech-tag">${tech}</span>`).join('')}
-                            </div>
-                            <div class="card-links">
-                                ${createCardLinks(project.links)}
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            `).join('');
-        }, 700);
-        
+        // Fills every .card-metrics: repo stats where possible, stack otherwise
+        window.RepoStats?.mount(grid);
+
     } catch (error) {
         grid.innerHTML = '<div class="cards-error">Error loading projects. Please try again later.</div>';
         console.error('Error loading project cards:', error);

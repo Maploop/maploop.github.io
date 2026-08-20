@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  English translation for index.html and projects/index.html.
+
+  Every tag below whose name matches an element id on either page replaces that
+  element's content. Add attr="..." to write to an attribute instead of the body
+  (see <archive-search> further down). Tags that match no element are still
+  readable from JavaScript via I18N.t('tag-name') — that's how the strings baked
+  into the project cards and the archive table get translated.
+
+  The section nesting (<navbar>, <about-section>, …) is purely for readability;
+  the loader flattens it. Copy this file to add a language: ARCHIVE/langs/<name>.xml,
+  edit the <meta> block, translate the text. It'll appear in the picker by itself.
+-->
 <page-content>
+
+  <meta>
+    <code>fr</code>
+    <name>Français</name>
+    <english-name>English</english-name>
+    <flag>🇫🇷</flag>
+    <dir>ltr</dir>
+  </meta>
 
   <navbar>
     <nav-logo-link><![CDATA[🌸 Maploop]]></nav-logo-link>
@@ -12,6 +33,21 @@
       <navlink-resume><![CDATA[Resume]]></navlink-resume>
     </nav-links>
   </navbar>
+
+
+  <hero-section>
+
+    <hero-eyebrow><![CDATA[Developer · since 2019]]></hero-eyebrow>
+    <hero-title><![CDATA[i build things that live on the internet]]></hero-title>
+    <hero-description><![CDATA[
+      Minecraft infrastructure, game engines and the occasional experiment. Read the work, dig through
+      the archive, or drop me a line! My inbox is always open.
+    ]]></hero-description>
+    <hero-button-work><![CDATA[Browse work <span aria-hidden="true">→</span>]]></hero-button-work>
+    <hero-button-archive><![CDATA[Project archive <span aria-hidden="true">→</span>]]></hero-button-archive>
+    <hero-button-github><![CDATA[GitHub <span aria-hidden="true">↗</span>]]></hero-button-github>
+
+  </hero-section>
 
 
   <about-section>
@@ -32,7 +68,7 @@
       I have also recently worked on a variety of <a class="pretty-a" href="#slide-1">Open Source Projects</a>.
       <br>
       <br>
-      <button onclick="window.open('https://github.com/Maploop')" class="cool-btn">Visit my GitHub</button>
+      <button onclick="window.open('https://github.com/Maploop')" class="cool-btn mt-[23px]">Visit my GitHub</button>
     ]]></about-intro>
 
     <about-tech-intro><![CDATA[My self-proclaimed tech stack:]]></about-tech-intro>
@@ -43,15 +79,18 @@
 
     <experience-section-title><![CDATA[<span class="section-num">02.</span> Where I've Worked]]></experience-section-title>
 
+    <!-- Labels on the company rail, desktop only. -->
+    <rail-head-label><![CDATA[Companies]]></rail-head-label>
+    <rail-foot-label><![CDATA[Since]]></rail-foot-label>
+
     <company-tabs>
-      <tab-atlas><![CDATA[<span class="tab-name">Atlas</span><span class="tab-role">Lead Maintainer</span><span class="tab-year">2020</span>]]></tab-atlas>
-      <tab-lunamc><![CDATA[<span class="tab-name">LunaMC</span><span class="tab-role">Lead Developer</span><span class="tab-year">2025</span>]]></tab-lunamc>
-      <tab-trexmine><![CDATA[<span class="tab-name">TrexMine</span><span class="tab-role">Developer</span><span class="tab-year">2020</span>]]></tab-trexmine>
-      <tab-mineheaven><![CDATA[<span class="tab-name">MineHeaven</span><span class="tab-role">Developer</span><span class="tab-year">2026</span>]]></tab-mineheaven>
+      <tab-atlas><![CDATA[Atlas]]></tab-atlas>
+      <tab-lunamc><![CDATA[LunaMC]]></tab-lunamc>
+      <tab-trexmine><![CDATA[TrexMine]]></tab-trexmine>
+      <tab-mineheaven><![CDATA[MineHeaven]]></tab-mineheaven>
     </company-tabs>
 
     <job-atlas>
-      <job-atlas-meta><![CDATA[Open source · Team of ~8]]></job-atlas-meta>
       <job-atlas-title><![CDATA[Lead Maintainer @ <a href="https://discord.gg/mJDvBEkqpg" class="pretty-a">Swofty Developments (formerly Atlas)</a>]]></job-atlas-title>
       <job-atlas-date><![CDATA[February 2020 - Present]]></job-atlas-date>
       <job-atlas-description><![CDATA[
@@ -60,17 +99,9 @@
         <li>Founded and contribute extensively to the largest community driven re-creation of Hypixel SkyBlock</li>
         <li>Contributed extensively to AtlasRedisAPI, a Java library aimed to make utilizing Redis messaging systems easier</li>
       ]]></job-atlas-description>
-      <job-atlas-stack><![CDATA[
-        <span class="tech-item">Java</span>
-        <span class="tech-item">Minestom</span>
-        <span class="tech-item">Velocity</span>
-        <span class="tech-item">Redis</span>
-        <span class="tech-item">MongoDB</span>
-      ]]></job-atlas-stack>
     </job-atlas>
 
     <job-lunamc>
-      <job-lunamc-meta><![CDATA[Solo build · End-to-end ownership]]></job-lunamc-meta>
       <job-lunamc-title><![CDATA[Lead Developer @ <a href="https://lunamc.ir" class="pretty-a">LunaMC</a>]]></job-lunamc-title>
       <job-lunamc-date><![CDATA[August 2025 - Present]]></job-lunamc-date>
       <job-lunamc-description><![CDATA[
@@ -78,43 +109,27 @@
         <li>Developped performant, and scalable products optimized for large player bases</li>
         <li>Worked with a variety of different frameworks and content management systems such as Redis, MongoDB, Spring, NMS, etc.</li>
       ]]></job-lunamc-description>
-      <job-lunamc-stack><![CDATA[
-        <span class="tech-item">Java</span>
-        <span class="tech-item">Spring</span>
-        <span class="tech-item">NMS</span>
-        <span class="tech-item">Redis</span>
-        <span class="tech-item">MongoDB</span>
-      ]]></job-lunamc-stack>
     </job-lunamc>
 
     <job-trexmine>
-      <job-trexmine-meta><![CDATA[Team of 10+ · Gameplay systems]]></job-trexmine-meta>
       <job-trexmine-title><![CDATA[Developer @ <a href="https://trexmine.com" class="pretty-a">TrexMine</a>]]></job-trexmine-title>
       <job-trexmine-date><![CDATA[July 2020 - May 2021]]></job-trexmine-date>
       <job-trexmine-description><![CDATA[
         <li>Collaborated effectively within a team of over 10 skilled professionals.</li>
         <li>Contributed to the project's internal "Nick System"</li>
       ]]></job-trexmine-description>
-      <job-trexmine-stack><![CDATA[
-        <span class="tech-item">Java</span>
-        <span class="tech-item">Spigot</span>
-        <span class="tech-item">NMS</span>
-      ]]></job-trexmine-stack>
     </job-trexmine>
 
     <job-mineheaven>
-      <job-mineheaven-meta><![CDATA[Infrastructure · Internal tooling]]></job-mineheaven-meta>
       <job-mineheaven-title><![CDATA[Developer @ <a href="https://mineheaven.com" class="pretty-a">MineHeaven</a>]]></job-mineheaven-title>
       <job-mineheaven-date><![CDATA[May 2026 - August 2026]]></job-mineheaven-date>
       <job-mineheaven-description><![CDATA[
       <li>Develop and maintain the internal Redis framework</li>
       ]]></job-mineheaven-description>
-      <job-mineheaven-stack><![CDATA[
-        <span class="tech-item">Java</span>
-        <span class="tech-item">Redis</span>
-        <span class="tech-item">Spigot</span>
-      ]]></job-mineheaven-stack>
     </job-mineheaven>
+
+    <!-- Shown by main_script.js when a company tab has no write-up yet. -->
+    <job-placeholder-text><![CDATA[Write-up in progress.]]></job-placeholder-text>
 
   </experience-section>
 
@@ -131,10 +146,11 @@
         Islands, Bazaar and just about everything else!
       ]]></project1-description>
       <project1-tech><![CDATA[
-        <span class="tech-item">Minestom</span>
+        <span class="tech-item">Paper Software</span>
         <span class="tech-item">Redis</span>
         <span class="tech-item">MongoDB</span>
         <span class="tech-item">Java</span>
+        <span class="tech-item">Cloudflare</span>
       ]]></project1-tech>
     </project-1>
 
@@ -159,6 +175,11 @@
       <archive-link-text><![CDATA[view the archive]]></archive-link-text>
       <projects-loading-text><![CDATA[Loading projects...]]></projects-loading-text>
       <view-all-button-text><![CDATA[View All Projects]]></view-all-button-text>
+
+      <!-- Card states, rendered by main_script.js. -->
+      <cards-empty-text><![CDATA[No projects found.]]></cards-empty-text>
+      <cards-error-text><![CDATA[Error loading projects. Please try again later.]]></cards-error-text>
+      <cards-no-description-text><![CDATA[No description available.]]></cards-no-description-text>
     </other-projects>
 
     <youtube-note><![CDATA[Showcases of my work in Atlas Network can be found on my <a class="pretty-a" href="https://www.youtube.com/@Jinx_Luvr"> YouTube</a>.]]></youtube-note>
@@ -166,11 +187,10 @@
   </projects-section>
 
   <events-section>
- 
+
     <events-section-title><![CDATA[<span class="section-num">04.</span> Events I've Been a Part Of]]></events-section-title>
- 
+
     <event-1>
-      <event1-org><![CDATA[Sajjad University · National · 6th edition]]></event1-org>
       <event1-title><![CDATA[SPACE National Student Programming Competition]]></event1-title>
       <event1-date><![CDATA[November 2025]]></event1-date>
       <event1-description><![CDATA[
@@ -178,15 +198,8 @@
         <li>Solved algorithmic questions as part of a team</li>
         <li>Came out 7th between 43 other competing teams from all over Iran</li>
       ]]></event1-description>
-      <event1-tags><![CDATA[
-        <span class="tech-item">Algorithms</span>
-        <span class="tech-item">Problem solving</span>
-        <span class="tech-item">Teamwork</span>
-      ]]></event1-tags>
-      <event1-result-value><![CDATA[7th]]></event1-result-value>
-      <event1-result-label><![CDATA[of 44 teams nationwide]]></event1-result-label>
     </event-1>
- 
+
   </events-section>
 
 
@@ -203,5 +216,46 @@
   <footer-section>
     <footer-text><![CDATA[&copy; 2026 ♡ Built with love by Maploop]]></footer-text>
   </footer-section>
+
+
+  <!-- ==================================================================
+       projects/index.html — the archive page.
+       ================================================================== -->
+  <projects-page>
+
+    <archive-eyebrow><![CDATA[Registry]]></archive-eyebrow>
+    <archive-title><![CDATA[project archive]]></archive-title>
+    <archive-description><![CDATA[
+      Everything worth keeping — servers, engines, libraries and experiments, oldest ideas to newest.
+      Filter by name, tech or the place it was built.
+    ]]></archive-description>
+    <archive-count-label><![CDATA[projects]]></archive-count-label>
+    <archive-back-link><![CDATA[← back home]]></archive-back-link>
+
+    <archive-toolbar>
+      <!-- attr="..." writes to an attribute rather than replacing the element. -->
+      <archive-search attr="placeholder"><![CDATA[Search projects, tech, companies…]]></archive-search>
+      <sort-year-desc><![CDATA[Newest first]]></sort-year-desc>
+      <sort-year-asc><![CDATA[Oldest first]]></sort-year-asc>
+      <sort-title-asc><![CDATA[A – Z]]></sort-title-asc>
+      <sort-title-desc><![CDATA[Z – A]]></sort-title-desc>
+    </archive-toolbar>
+
+    <archive-table>
+      <th-year><![CDATA[Year]]></th-year>
+      <th-title><![CDATA[Title]]></th-title>
+      <th-company><![CDATA[Made at]]></th-company>
+      <th-tech><![CDATA[Built with]]></th-tech>
+      <th-links><![CDATA[Links]]></th-links>
+
+      <!-- Row states, rendered by projects/script.js. -->
+      <table-loading-text><![CDATA[Loading projects…]]></table-loading-text>
+      <table-empty-text><![CDATA[No projects found.]]></table-empty-text>
+      <table-no-match-text><![CDATA[No projects match that search.]]></table-no-match-text>
+      <table-error-text><![CDATA[Error loading projects. Please try again later.]]></table-error-text>
+      <table-no-results-range><![CDATA[no results]]></table-no-results-range>
+    </archive-table>
+
+  </projects-page>
 
 </page-content>

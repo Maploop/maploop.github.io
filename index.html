@@ -162,6 +162,7 @@
                     </div>
 
                     <div class="company-tabs" role="tablist" aria-label="Companies">
+                        <span class="tab-marker" aria-hidden="true"></span>
                         <button id="tab-atlas" class="company-tab active" data-company="atlas" role="tab"
                             aria-selected="true"></button>
                         <button id="tab-lunamc" class="company-tab" data-company="lunamc" role="tab"
@@ -181,34 +182,50 @@
                 <div class="job-content">
                     <div class="job-details" data-job="atlas">
                         <div class="job-head">
-                            <h3 id="job-atlas-title" class="job-title"></h3>
+                            <div class="job-head-main">
+                                <span id="job-atlas-meta" class="job-eyebrow"></span>
+                                <h3 id="job-atlas-title" class="job-title"></h3>
+                            </div>
                             <div id="job-atlas-date" class="job-date"></div>
                         </div>
                         <ul id="job-atlas-description" class="job-description"></ul>
+                        <div id="job-atlas-stack" class="job-stack"></div>
                     </div>
 
                     <div class="job-details" data-job="lunamc" style="display: none;">
                         <div class="job-head">
-                            <h3 id="job-lunamc-title" class="job-title"></h3>
+                            <div class="job-head-main">
+                                <span id="job-lunamc-meta" class="job-eyebrow"></span>
+                                <h3 id="job-lunamc-title" class="job-title"></h3>
+                            </div>
                             <div id="job-lunamc-date" class="job-date"></div>
                         </div>
                         <ul id="job-lunamc-description" class="job-description"></ul>
+                        <div id="job-lunamc-stack" class="job-stack"></div>
                     </div>
 
                     <div class="job-details" data-job="trexmine" style="display: none;">
                         <div class="job-head">
-                            <h3 id="job-trexmine-title" class="job-title"></h3>
+                            <div class="job-head-main">
+                                <span id="job-trexmine-meta" class="job-eyebrow"></span>
+                                <h3 id="job-trexmine-title" class="job-title"></h3>
+                            </div>
                             <div id="job-trexmine-date" class="job-date"></div>
                         </div>
                         <ul id="job-trexmine-description" class="job-description"></ul>
+                        <div id="job-trexmine-stack" class="job-stack"></div>
                     </div>
 
                     <div class="job-details" data-job="mineheaven" style="display: none;">
                         <div class="job-head">
-                            <h3 id="job-mineheaven-title" class="job-title"></h3>
+                            <div class="job-head-main">
+                                <span id="job-mineheaven-meta" class="job-eyebrow"></span>
+                                <h3 id="job-mineheaven-title" class="job-title"></h3>
+                            </div>
                             <div id="job-mineheaven-date" class="job-date"></div>
                         </div>
                         <ul id="job-mineheaven-description" class="job-description"></ul>
+                        <div id="job-mineheaven-stack" class="job-stack"></div>
                     </div>
                 </div>
             </div>
@@ -221,15 +238,18 @@
                 <div class="section-line"></div>
             </div>
 
-            <div class="project">
+            <div class="project is-flipped" style="--project-accent: #b79cff">
                 <div class="project-content">
                     <div class="project-image">
                         <img src="./ARCHIVE/image/atlas_network.png" alt="SkyBlock recreation">
+                        <span class="project-index">01 — Featured</span>
                     </div>
                     <div class="project-info">
                         <div id="project1-label" class="project-label"></div>
                         <h3 id="project1-title" class="project-title"></h3>
                         <div id="project1-description" class="project-description"></div>
+                        <div class="project-metrics" data-repo-stats="Swofty-Developments/HypixelSkyBlock"
+                            data-stat-fallback="hide" data-stat-slug="true"></div>
                         <div id="project1-tech" class="project-tech"></div>
                         <div class="project-links">
                             <a href="https://github.com/Swofty-Developments/HypixelSkyBlock" class="project-link"
@@ -252,15 +272,18 @@
                 </div>
             </div>
 
-            <div class="project">
+            <div class="project" style="--project-accent: #8f9dff">
                 <div class="project-content">
                     <div class="project-image">
                         <img src="./ARCHIVE/image/eflame_engine.png" alt="EFlame engine">
+                        <span class="project-index">02 — Featured</span>
                     </div>
                     <div class="project-info">
                         <div id="project2-label" class="project-label"></div>
                         <h3 id="project2-title" class="project-title"></h3>
                         <div id="project2-description" class="project-description"></div>
+                        <div class="project-metrics" data-repo-stats="Maploop/EFlame" data-stat-fallback="hide"
+                            data-stat-slug="true"></div>
                         <div id="project2-tech" class="project-tech"></div>
                         <div class="project-links">
                             <a href="https://github.com/Maploop/EFlame" class="project-link" target="_blank"
@@ -300,12 +323,28 @@
                 <div class="section-line"></div>
             </div>
 
-            <div class="events-container">
-                <div class="event-details">
-                    <h3 id="event1-title" class="job-title"></h3>
-                    <div id="event1-date" class="job-date"></div>
-                    <ul id="event1-description" class="job-description"></ul>
-                </div>
+            <div class="events-timeline">
+                <article class="event-card">
+                    <div class="event-spine" aria-hidden="true"></div>
+
+                    <div class="event-body">
+                        <div class="event-head">
+                            <div class="event-head-main">
+                                <span id="event1-org" class="job-eyebrow"></span>
+                                <h3 id="event1-title" class="job-title"></h3>
+                            </div>
+                            <div id="event1-date" class="job-date"></div>
+                        </div>
+
+                        <ul id="event1-description" class="job-description"></ul>
+                        <div id="event1-tags" class="event-tags"></div>
+                    </div>
+
+                    <div class="event-result">
+                        <span id="event1-result-value" class="result-value"></span>
+                        <span id="event1-result-label" class="result-label"></span>
+                    </div>
+                </article>
             </div>
         </section>
 
@@ -338,6 +377,7 @@
         </div>
     </footer>
 
+    <script src="./ARCHIVE/script/repo-stats.js"></script>
     <script src="./ARCHIVE/script/main_script.js"></script>
     <script src="./ARCHIVE/script/content-loader.js"></script>
     <script src="./ARCHIVE/script/hero-ray.js"></script>
