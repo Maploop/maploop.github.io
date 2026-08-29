@@ -1,26 +1,11 @@
-/* ==========================================================================
-   repo-stats.js — live GitHub numbers + colour-coded tech chips
-
-   Anything that links to a real repository gets stars / forks / language /
-   last-push pulled straight from the public API. Anything that doesn't (private
-   work, org links, dead links) falls back to a colour-coded stack instead, so a
-   card is never just a row of grey words.
-
-   Mount points are plain markup:
-     <div data-repo-stats="owner/repo"
-          data-stat-fallback="stack|hide"
-          data-stat-tech="Java, Redis"
-          data-stat-slug="true"></div>
-   ========================================================================== */
 (function () {
     'use strict';
 
     var API = 'https://api.github.com/repos/';
     var CACHE_KEY = 'maploop.repo-stats.v1';
-    var TTL_OK = 6 * 60 * 60 * 1000;   /* good answers keep for 6h  */
-    var TTL_FAIL = 30 * 60 * 1000;     /* rate limits / 404s, 30min */
+    var TTL_OK = 6 * 60 * 60 * 1000;
+    var TTL_FAIL = 30 * 60 * 1000;
 
-    /* Brand-ish colours, pulled toward the lavender palette so nothing shouts. */
     var TECH_COLORS = {
         'java': '#e08a5a',
         'kotlin': '#a97bff',
@@ -90,8 +75,6 @@
 
     var inflight = {};
 
-    /* -- helpers ---------------------------------------------------------- */
-
     function esc(value) {
         return String(value == null ? '' : value)
             .replace(/&/g, '&amp;')
@@ -102,7 +85,7 @@
 
     function techKey(name) {
         var key = String(name || '').toLowerCase().trim();
-        key = key.replace(/\s+\d+(\.\d+)*$/, '');       /* "OpenGL 4.5" -> "opengl" */
+        key = key.replace(/\s+\d+(\.\d+)*$/, '');
         return TECH_ALIASES[key] || key;
     }
 
@@ -110,8 +93,6 @@
         var key = techKey(name);
         if (TECH_COLORS[key]) return TECH_COLORS[key];
 
-        /* Unknown tools get a stable hue inside the indigo/violet family so
-           they still read as part of the same palette. */
         var hash = 0;
         for (var i = 0; i < key.length; i++) {
             hash = (hash * 31 + key.charCodeAt(i)) % 997;
@@ -157,9 +138,6 @@
         return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
     }
 
-    /* Accepts a full GitHub URL or a bare "owner/repo" slug. Org pages, user
-       pages, "#" placeholders and non-GitHub links all return null — those are
-       the ones that fall back to a colour-coded stack. */
     function parseRepo(url) {
         var value = String(url || '').trim();
         if (!value || value === '#') return null;
@@ -177,8 +155,6 @@
         return owner + '/' + repo;
     }
 
-    /* -- cache ------------------------------------------------------------ */
-
     function readCache() {
         try {
             return JSON.parse(localStorage.getItem(CACHE_KEY)) || {};
@@ -193,11 +169,9 @@
             store[slug] = { expires: Date.now() + ttl, data: data };
             localStorage.setItem(CACHE_KEY, JSON.stringify(store));
         } catch (err) {
-            /* private mode / full quota — stats still work, just uncached */
+
         }
     }
-
-    /* -- fetching --------------------------------------------------------- */
 
     function fetchStats(slug) {
         if (!slug) return Promise.resolve(null);
@@ -234,10 +208,6 @@
         return inflight[slug];
     }
 
-    /* -- markup ----------------------------------------------------------- */
-
-    /* opts.compact keeps it to a single line — cards are narrow, the featured
-       panels have room for issues, last push and the repo path. */
     function statsMarkup(data, options) {
         var opts = options || {};
         var parts = [];
@@ -290,8 +260,6 @@
             + '<div class="tech-chips">' + techChips(tech) + '</div>';
     }
 
-    /* -- mounting --------------------------------------------------------- */
-
     function render(el) {
         if (el.dataset.statMounted === 'true') return;
         el.dataset.statMounted = 'true';
@@ -324,8 +292,6 @@
         Array.prototype.forEach.call(nodes, render);
     }
 
-    /* Turns plain .tech-item spans (injected from english.xml) into the same
-       colour-coded chips the cards use, without touching the XML. */
     function colorizeTech(root) {
         var scope = root || document;
         var nodes = scope.querySelectorAll('.tech-item:not(.tech-chip)');

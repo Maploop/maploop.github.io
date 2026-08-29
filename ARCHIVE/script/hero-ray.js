@@ -1,4 +1,3 @@
-
 (function () {
     'use strict';
 
@@ -32,8 +31,6 @@
         ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
         return { w: w, h: h };
     }
-
-    /* --- patterns ------------------------------------------------------- */
 
     function ray(w, h, time) {
         var lines = 26;

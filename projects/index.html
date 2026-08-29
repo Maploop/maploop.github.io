@@ -5,14 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="A full archive of everything Maploop has built." />
-  <meta name="theme-color" content="#08070c" />
+  <meta name="theme-color" content="#0f0e13" />
   <title>Maploop • Projects</title>
 
   <link rel="icon" type="image/x-icon" href="../ARCHIVE/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="/ARCHIVE/style/lavender.css" />
   <link rel="stylesheet" href="./style.css" />
@@ -39,59 +39,65 @@
   </nav>
 
   <main class="archive-main">
-    <header class="archive-header">
-      <div class="page-eyebrow">Registry</div>
-      <h1>project archive</h1>
-      <p>
-        Everything worth keeping — servers, engines, libraries and experiments, oldest ideas to newest.
-        Filter by name, tech or the place it was built.
-      </p>
-      <div class="page-meta">
-        <span><b id="project-count">0</b> projects</span>
-        <span id="project-range">—</span>
-        <span><a class="pretty-a" href="/">← back home</a></span>
-      </div>
-    </header>
+    <div class="shell">
+      <header class="archive-header specimen">
+        <div class="specimen-meta">
+          <span class="mono">Registry · Full index</span>
+          <a class="archive-link" href="/">← Back home</a>
+        </div>
 
-    <section class="archive-toolbar">
-      <div class="archive-search">
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="7" />
-          <path d="M20 20l-3.5-3.5" />
-        </svg>
-        <input id="archive-search" type="search" placeholder="Search projects, tech, companies…"
-          aria-label="Search projects" autocomplete="off" />
-        <kbd>Ctrl K</kbd>
-      </div>
-      <div class="archive-sort">
-        <select id="archive-sort" aria-label="Sort projects">
-          <option value="year-desc">Newest first</option>
-          <option value="year-asc">Oldest first</option>
-          <option value="title-asc">A – Z</option>
-          <option value="title-desc">Z – A</option>
-        </select>
-        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M6 9l6 6 6-6" />
-        </svg>
-      </div>
-    </section>
+        <h1>Project archive</h1>
 
-    <table class="portfolio-table">
-      <thead>
-        <tr>
-          <th>Year</th>
-          <th>Title</th>
-          <th>Made at</th>
-          <th>Built with</th>
-          <th>Links</th>
-        </tr>
-      </thead>
-      <tbody id="portfolio-body">
-        <tr>
-          <td colspan="5" class="loading">Loading projects…</td>
-        </tr>
-      </tbody>
-    </table>
+        <p class="lede">
+          Everything worth keeping — servers, engines, libraries and experiments, oldest ideas to newest.
+          Filter by name, tech or the place it was built.
+        </p>
+
+        <div class="page-meta">
+          <span><b id="project-count">0</b> projects</span>
+          <span id="project-range">—</span>
+        </div>
+      </header>
+
+      <section class="archive-toolbar">
+        <div class="archive-search">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M20 20l-3.5-3.5" />
+          </svg>
+          <input id="archive-search" type="search" placeholder="Search projects, tech, companies…"
+            aria-label="Search projects" autocomplete="off" />
+          <kbd>Ctrl K</kbd>
+        </div>
+        <div class="archive-sort">
+          <select id="archive-sort" aria-label="Sort projects">
+            <option value="year-desc">Newest first</option>
+            <option value="year-asc">Oldest first</option>
+            <option value="title-asc">A – Z</option>
+            <option value="title-desc">Z – A</option>
+          </select>
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </div>
+      </section>
+
+      <div class="index">
+        <div class="index-head" aria-hidden="true">
+          <span class="index-bar"></span>
+          <span class="index-num">№</span>
+          <span class="index-name">Project</span>
+          <span class="index-kind">Made at</span>
+          <span class="index-tech">Built with</span>
+          <span class="index-release">Year</span>
+          <span class="index-links">Links</span>
+        </div>
+
+        <div class="index-body" id="portfolio-body">
+          <p class="index-note">Loading projects…</p>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">

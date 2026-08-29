@@ -16,6 +16,9 @@
 
   <about-section>
 
+    <about-section-label><![CDATA[Profile]]></about-section-label>
+    <about-section-slug><![CDATA[Origin · Stack · Tools]]></about-section-slug>
+
     <about-section-title><![CDATA[<span class="section-num">01.</span> About Me]]></about-section-title>
 
     <about-intro><![CDATA[
@@ -40,6 +43,9 @@
   </about-section>
 
   <experience-section>
+
+    <experience-section-label><![CDATA[Employment record]]></experience-section-label>
+    <experience-section-slug><![CDATA[2020 — Present · 04 entries]]></experience-section-slug>
 
     <experience-section-title><![CDATA[<span class="section-num">02.</span> Where I've Worked]]></experience-section-title>
 
@@ -120,6 +126,9 @@
 
   <projects-section>
 
+    <projects-section-label><![CDATA[Selected work]]></projects-section-label>
+    <projects-section-slug><![CDATA[Featured · 02 plates]]></projects-section-slug>
+
     <projects-section-title><![CDATA[<span class="section-num">03.</span> Some Things I've Built]]></projects-section-title>
 
     <project-1>
@@ -155,6 +164,7 @@
     </project-2>
 
     <other-projects>
+      <other-projects-label><![CDATA[Archive sample]]></other-projects-label>
       <other-projects-title><![CDATA[Other Noteworthy Projects]]></other-projects-title>
       <archive-link-text><![CDATA[view the archive]]></archive-link-text>
       <projects-loading-text><![CDATA[Loading projects...]]></projects-loading-text>
@@ -167,6 +177,9 @@
 
   <events-section>
  
+    <events-section-label><![CDATA[Appearances]]></events-section-label>
+    <events-section-slug><![CDATA[Competitions · 01 entry]]></events-section-slug>
+
     <events-section-title><![CDATA[<span class="section-num">04.</span> Events I've Been a Part Of]]></events-section-title>
  
     <event-1>

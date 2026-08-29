@@ -1,4 +1,4 @@
-(function () { // Yes I know this is overengineered. I do not care. It was fun to make.
+(function () {
     'use strict';
 
     var CONTENT_URL = '/ARCHIVE/langs/english.xml';

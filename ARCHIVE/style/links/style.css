@@ -1,14 +1,9 @@
-/* ==========================================================================
-   Links card — page specific styles.
-   Design tokens and primitives come from /ARCHIVE/style/lavender.css
-   ========================================================================== */
-
 .links-page {
     position: relative;
     min-height: 100vh;
-}
 
-/* Backdrop ---------------------------------------------------------------- */
+    font-variation-settings: "wdth" 87.5;
+}
 
 .links-backdrop {
     position: fixed;
@@ -23,15 +18,13 @@
 .links-backdrop::after {
     position: absolute;
     inset: 0;
-    background: 
+    background:
         linear-gradient(rgba(183, 156, 255, .05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(183, 156, 255, .05) 1px, transparent 1px),
         radial-gradient(120% 90% at 50% 0%, rgba(8, 7, 12, .55), rgba(8, 7, 12, .93));
     background-size: 30px 30px, 30px 30px, auto;
     content: "";
 }
-
-/* Shell ------------------------------------------------------------------- */
 
 .links-shell {
     display: flex;
@@ -75,8 +68,6 @@
     gap: 8px;
     color: var(--accent);
 }
-
-/* Profile ----------------------------------------------------------------- */
 
 .links-profile {
     display: grid;
@@ -124,8 +115,6 @@
     font-size: 14px;
     line-height: 1.65;
 }
-
-/* Link rows --------------------------------------------------------------- */
 
 .links-list {
     display: grid;
@@ -218,8 +207,6 @@
     letter-spacing: .1em;
 }
 
-/* Card footer ------------------------------------------------------------- */
-
 .links-card-foot {
     display: flex;
     padding: 18.5px;
@@ -255,8 +242,6 @@
     color: var(--accent);
 }
 
-/* Drifting dust ----------------------------------------------------------- */
-
 .snowfall {
     position: fixed;
     z-index: -1;
@@ -291,8 +276,6 @@
         display: none;
     }
 }
-
-/* Responsive -------------------------------------------------------------- */
 
 @media (max-width: 598px) {
     .links-profile {

