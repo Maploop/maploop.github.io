@@ -160,10 +160,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initSectionEntrances();
 
-    initSectionStack();
     initHeroArtMotion();
     initCareerRuler();
-    initScrollEffects();
+    initScrollProgress();
 
     const backToTopBtn = document.querySelector('.back-to-top');
     window.addEventListener('scroll', () => {
@@ -175,45 +174,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function initScrollEffects() {
-    const panels = Array.from(document.querySelectorAll('.scroll-panel'));
+function initScrollProgress() {
     const navbar = document.querySelector('.navbar');
-    if (!panels.length) return;
+    if (!navbar) return;
 
-    const motionAllowed = window.matchMedia('(prefers-reduced-motion: no-preference)');
     let frame = null;
 
     const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 
     function update() {
         frame = null;
-        const headerHeight = parseFloat(getComputedStyle(document.documentElement)
-            .getPropertyValue('--header-h')) * 16 || 56;
         const viewport = window.innerHeight;
         const documentHeight = Math.max(document.documentElement.scrollHeight - viewport, 1);
         const pageProgress = clamp(window.scrollY / documentHeight);
 
-        navbar?.style.setProperty('--scroll-progress', pageProgress.toFixed(4));
-
-        panels.forEach(panel => {
-            const rect = panel.getBoundingClientRect();
-            const distanceFromHeader = rect.top - headerHeight;
-            const entering = clamp(1 - distanceFromHeader / Math.max(viewport * .72, 1));
-            const leaving = clamp((headerHeight - rect.top) / Math.max(rect.height * .55, 1));
-            const shell = panel.querySelector(':scope > .shell');
-
-            panel.style.setProperty('--panel-enter', entering.toFixed(4));
-            panel.style.setProperty('--panel-leave', leaving.toFixed(4));
-            panel.classList.toggle('is-current', distanceFromHeader <= viewport * .35 && rect.bottom > headerHeight);
-            panel.classList.toggle('is-past', rect.bottom <= headerHeight);
-
-            if (shell && motionAllowed.matches) {
-                const drift = (1 - entering) * 14 - leaving * 9;
-                const scale = 1 - leaving * .025;
-                shell.style.setProperty('--panel-shift', `${drift.toFixed(2)}px`);
-                shell.style.setProperty('--panel-scale', scale.toFixed(4));
-            }
-        });
+        navbar.style.setProperty('--scroll-progress', pageProgress.toFixed(4));
     }
 
     function requestUpdate() {
@@ -223,54 +198,7 @@ function initScrollEffects() {
 
     window.addEventListener('scroll', requestUpdate, { passive: true });
     window.addEventListener('resize', requestUpdate, { passive: true });
-    motionAllowed.addEventListener('change', requestUpdate);
     document.addEventListener('content:loaded', requestUpdate);
-    update();
-}
-
-function initSectionStack() {
-    const panels = Array.from(document.querySelectorAll('.scroll-panel'));
-    if (!panels.length) return;
-
-    const motionAllowed = window.matchMedia('(prefers-reduced-motion: no-preference)');
-    const headerHeight = parseFloat(getComputedStyle(document.documentElement)
-        .getPropertyValue('--header-h')) * 16 || 56;
-
-    function update() {
-        const available = window.innerHeight - headerHeight;
-
-        panels.forEach(panel => {
-            panel.classList.remove('is-stackable', 'is-short');
-            panel.style.removeProperty('--stack-top');
-            if (!motionAllowed.matches) return;
-
-            const overflow = panel.offsetHeight - available;
-
-            panel.classList.add('is-stackable');
-            panel.classList.toggle('is-short', overflow <= 0);
-            panel.style.setProperty('--stack-top',
-                `${Math.round(headerHeight - Math.max(overflow, 0))}px`);
-        });
-    }
-
-    if (typeof ResizeObserver === 'function') {
-        const observer = new ResizeObserver(() => {
-
-            requestAnimationFrame(update);
-        });
-        panels.forEach(panel => {
-            const content = panel.querySelector(':scope > .shell');
-            if (content) observer.observe(content);
-        });
-    }
-
-    motionAllowed.addEventListener('change', update);
-    window.addEventListener('resize', update, { passive: true });
-    document.fonts?.ready.then(update);
-
-    document.addEventListener('content:loaded', update);
-    window.addEventListener('load', () => setTimeout(update, 200));
-
     update();
 }
 
