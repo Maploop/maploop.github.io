@@ -39,6 +39,8 @@
 }
 
 .links-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
     width: 100%;
     border: 1px solid var(--line);
     background: rgba(14, 12, 19, .82);
@@ -86,7 +88,7 @@
     border: 1px solid var(--line-strong);
     background: var(--code-bg);
     object-fit: cover;
-    border-radius: 0;
+    border-radius: var(--radius-lg);
 }
 
 .links-identity h1 {
@@ -118,13 +120,16 @@
 
 .links-list {
     display: grid;
+    padding: .75rem;
+    gap: .375rem;
 }
 
 .link-row {
+    border-radius: var(--radius-md);
     position: relative;
     display: flex;
     padding: 15px 18.5px;
-    border-bottom: 1px solid var(--line-soft);
+    border-bottom: 0;
     align-items: center;
     gap: 15px;
     background: transparent;
@@ -146,6 +151,7 @@
 }
 
 .link-row .link-glyph {
+    border-radius: var(--radius-md);
     display: grid;
     width: 39px;
     height: 39px;

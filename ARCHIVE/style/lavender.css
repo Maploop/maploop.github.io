@@ -25,6 +25,10 @@
     --font-mono: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
     --header-h: 3.5rem;
+    --radius-sm: .5rem;
+    --radius-md: .875rem;
+    --radius-lg: 1.5rem;
+    --radius-pill: 999px;
 
     --bg: var(--c-shell);
     --panel: var(--c-panel);
@@ -64,6 +68,7 @@
 }
 
 html {
+    overflow-x: clip;
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-h);
     -webkit-text-size-adjust: 100%;
@@ -76,7 +81,7 @@ body {
     font-variation-settings: "wdth" 100;
     font-size: 1.0625rem;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: clip;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -885,10 +890,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .socials {
     display: grid;
-    background: var(--c-shell);
-    border: 2px solid var(--c-shell);
+    background: transparent;
     grid-template-columns: repeat(auto-fit, minmax(4.5rem, 1fr));
-    gap: 2px;
+    gap: .5rem;
 }
 
 .social-link {
@@ -1448,7 +1452,7 @@ h1, h2, h3, h4, h5, h6 {
 .project {
     --project-accent: var(--c-signal);
     position: relative;
-    margin-bottom: 2px;
+    margin-bottom: 1rem;
     overflow: hidden;
     background: var(--c-shell);
     border: 2px solid var(--c-shell);
@@ -1642,10 +1646,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .projects-grid {
     display: grid;
-    background: var(--c-shell);
-    border: 2px solid var(--c-shell);
+    background: transparent;
     grid-template-columns: minmax(0, 1fr);
-    gap: 2px;
+    gap: 1rem;
 }
 
 @media (min-width: 40rem) {
@@ -2700,4 +2703,115 @@ h1, h2, h3, h4, h5, h6 {
 
 .event-result {
     background: color-mix(in srgb, var(--c-signal) 88%, #16121e);
+}
+
+/* Shared shapes: broad surfaces, compact controls and pill-shaped metadata. */
+.button,
+.cool-btn,
+.nav-item.resume,
+.social-link,
+.quick-nav {
+    border-radius: var(--radius-md);
+}
+
+.panel,
+.spec-list,
+.hero-art,
+.about-portrait,
+.project,
+.project-card,
+.work-container,
+.event-card {
+    border-radius: var(--radius-lg);
+}
+
+.work-container,
+.event-card {
+    overflow: hidden;
+    border-color: var(--c-rule);
+    border-width: 1px;
+}
+
+.company-tab:focus-visible {
+    outline-offset: -3px;
+}
+
+.project-content {
+    border-radius: calc(var(--radius-lg) - 2px);
+}
+
+.about-portrait img {
+    border-radius: calc(var(--radius-lg) - .5rem);
+}
+
+.project-card {
+    border: 1px solid color-mix(in srgb, var(--card-accent) 25%, var(--c-rule));
+    box-shadow: none;
+}
+
+.project-index {
+    top: .75rem;
+    right: .75rem;
+    border-radius: var(--radius-pill);
+}
+
+.project.is-flipped .project-index {
+    left: .75rem;
+}
+
+.tag,
+.tech-item,
+.card-tech-tag,
+.tech-tag,
+.tech-chip,
+.repo-stat,
+.job-date {
+    border-radius: var(--radius-pill);
+}
+
+.card-mark,
+.card-link,
+.project-link,
+.quick-nav-text,
+.tooltip::after,
+.repo-skeleton span {
+    border-radius: var(--radius-sm);
+}
+
+.status-dot,
+.status::before,
+.chip-dot,
+.job-date.is-current::before,
+.hamburger-menu span {
+    border-radius: var(--radius-pill);
+}
+
+.quick-nav-heading {
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.quick-nav-link:last-child {
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.nav-item:not(.resume) {
+    border-radius: var(--radius-sm);
+    border-bottom-color: transparent;
+}
+
+.nav-item:not(.resume):is(:hover, .active) {
+    background: color-mix(in srgb, var(--c-signal) 12%, var(--c-panel));
+    box-shadow: 0 0 0 .35rem color-mix(in srgb, var(--c-signal) 12%, var(--c-panel));
+    color: var(--c-signal-text);
+}
+
+@media (max-width: 63.99rem) {
+    .nav-links {
+        border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+    }
+
+    .project.is-flipped .project-index {
+        left: auto;
+        right: .75rem;
+    }
 }
