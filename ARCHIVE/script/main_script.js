@@ -61,10 +61,93 @@ function stageRevealGroup(container) {
     if (!container || prefersReducedMotion) return;
 
     Array.from(container.children).forEach((child, index) => {
+        if (container.dataset.revealEffect) {
+            child.dataset.entrance = container.dataset.revealEffect;
+            child.style.setProperty('--entrance-delay', `${(index % 3) * 90}ms`);
+            stageEntrance(child);
+            return;
+        }
         if (child.classList.contains('reveal')) return;
         child.style.setProperty('--reveal-index', index);
         child.classList.add('reveal');
         revealObserver.observe(child);
+    });
+}
+
+const entranceElements = new Set();
+const entranceReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let entranceFrame = null;
+
+function requestEntranceUpdate() {
+    if (entranceFrame !== null) return;
+    entranceFrame = requestAnimationFrame(updateEntrances);
+}
+
+function updateEntrances() {
+    entranceFrame = null;
+    const shellBounds = new Map();
+    const states = [];
+
+    entranceElements.forEach(element => {
+        const shell = element.closest('.shell');
+        if (!shell) return;
+        if (!shellBounds.has(shell)) {
+            const rect = shell.getBoundingClientRect();
+            shellBounds.set(shell, {
+                top: rect.top,
+                scale: shell.offsetHeight ? rect.height / shell.offsetHeight : 1
+            });
+        }
+
+        // offsetTop measures the resting layout, ignoring the element's slide,
+        // scale and clip-path. Measuring the animated box creates a deadlock:
+        // an offscreen project can never intersect and start its own entrance.
+        let top = 0;
+        for (let node = element; node && node !== shell; node = node.offsetParent) {
+            top += node.offsetTop;
+        }
+        const bounds = shellBounds.get(shell);
+        top = bounds.top + top * bounds.scale;
+        const bottom = top + element.offsetHeight * bounds.scale;
+        const visible = entranceReducedMotion.matches || element.contains(document.activeElement) ||
+            (top < window.innerHeight - 32 && bottom > 0);
+        states.push({ element, visible });
+    });
+
+    // Batch reads above, then writes so the animation cannot affect its trigger.
+    states.forEach(({ element, visible }) => {
+        element.classList.toggle('entrance-visible', visible);
+        element.classList.toggle('entrance-pending', !visible);
+    });
+}
+
+function stageEntrance(element) {
+    entranceElements.add(element);
+    requestEntranceUpdate();
+}
+
+function initSectionEntrances() {
+    document.querySelectorAll('[data-entrance]').forEach(stageEntrance);
+
+    window.addEventListener('scroll', requestEntranceUpdate, { passive: true });
+    window.addEventListener('resize', requestEntranceUpdate, { passive: true });
+    window.addEventListener('load', requestEntranceUpdate);
+    document.addEventListener('content:loaded', requestEntranceUpdate);
+    entranceReducedMotion.addEventListener('change', requestEntranceUpdate);
+    document.fonts?.ready.then(requestEntranceUpdate);
+    if (typeof ResizeObserver === 'function') {
+        const observer = new ResizeObserver(requestEntranceUpdate);
+        document.querySelectorAll('.scroll-panel > .shell').forEach(shell => observer.observe(shell));
+    }
+
+    // A keyboard jump into an animating piece should land on settled content.
+    document.addEventListener('focusin', event => {
+        event.target.closest('[data-entrance]')?.classList.add('entrance-focused');
+        requestEntranceUpdate();
+    });
+    document.addEventListener('focusout', event => {
+        event.target.closest('[data-entrance]')?.classList.remove('entrance-focused');
+        requestEntranceUpdate();
     });
 }
 
@@ -75,9 +158,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('[data-reveal-group]').forEach(stageRevealGroup);
 
+    initSectionEntrances();
+
     initSectionStack();
     initHeroArtMotion();
     initCareerRuler();
+    initScrollEffects();
 
     const backToTopBtn = document.querySelector('.back-to-top');
     window.addEventListener('scroll', () => {
@@ -88,6 +174,59 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+function initScrollEffects() {
+    const panels = Array.from(document.querySelectorAll('.scroll-panel'));
+    const navbar = document.querySelector('.navbar');
+    if (!panels.length) return;
+
+    const motionAllowed = window.matchMedia('(prefers-reduced-motion: no-preference)');
+    let frame = null;
+
+    const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+
+    function update() {
+        frame = null;
+        const headerHeight = parseFloat(getComputedStyle(document.documentElement)
+            .getPropertyValue('--header-h')) * 16 || 56;
+        const viewport = window.innerHeight;
+        const documentHeight = Math.max(document.documentElement.scrollHeight - viewport, 1);
+        const pageProgress = clamp(window.scrollY / documentHeight);
+
+        navbar?.style.setProperty('--scroll-progress', pageProgress.toFixed(4));
+
+        panels.forEach(panel => {
+            const rect = panel.getBoundingClientRect();
+            const distanceFromHeader = rect.top - headerHeight;
+            const entering = clamp(1 - distanceFromHeader / Math.max(viewport * .72, 1));
+            const leaving = clamp((headerHeight - rect.top) / Math.max(rect.height * .55, 1));
+            const shell = panel.querySelector(':scope > .shell');
+
+            panel.style.setProperty('--panel-enter', entering.toFixed(4));
+            panel.style.setProperty('--panel-leave', leaving.toFixed(4));
+            panel.classList.toggle('is-current', distanceFromHeader <= viewport * .35 && rect.bottom > headerHeight);
+            panel.classList.toggle('is-past', rect.bottom <= headerHeight);
+
+            if (shell && motionAllowed.matches) {
+                const drift = (1 - entering) * 14 - leaving * 9;
+                const scale = 1 - leaving * .025;
+                shell.style.setProperty('--panel-shift', `${drift.toFixed(2)}px`);
+                shell.style.setProperty('--panel-scale', scale.toFixed(4));
+            }
+        });
+    }
+
+    function requestUpdate() {
+        if (frame !== null) return;
+        frame = requestAnimationFrame(update);
+    }
+
+    window.addEventListener('scroll', requestUpdate, { passive: true });
+    window.addEventListener('resize', requestUpdate, { passive: true });
+    motionAllowed.addEventListener('change', requestUpdate);
+    document.addEventListener('content:loaded', requestUpdate);
+    update();
+}
 
 function initSectionStack() {
     const panels = Array.from(document.querySelectorAll('.scroll-panel'));
@@ -352,7 +491,7 @@ function decorateWorkplaces() {
 
 document.addEventListener('content:loaded', decorateWorkplaces);
 
-const cardAccents = ['#b79cff', '#9f8bff', '#c9a7ff', '#8f9dff', '#cf9ce0', '#a2b6ff'];
+const cardAccents = ['#b99aff', '#71e3f2', '#ff9c9c', '#88e4bd', '#f4c76d', '#c09cff'];
 
 function cardMark(title) {
     const words = String(title || '?').trim().split(/\s+/);

@@ -112,7 +112,7 @@
         <!-- About -->
         <section id="slide-0" class="section scroll-panel scroll-reveal">
             <div class="shell">
-                <div class="section-header specimen">
+                <div class="section-header specimen" data-entrance="rise">
                     <div class="specimen-meta">
                         <span id="about-section-label" class="mono"></span>
                         <span id="about-section-slug" class="mono specimen-slug"></span>
@@ -121,15 +121,15 @@
                 </div>
 
                 <div class="about-grid">
-                    <div class="panel about-copy">
+                    <div class="panel about-copy" data-entrance="left">
                         <p id="about-intro" class="bigger section-description"></p>
                     </div>
-                    <figure class="about-portrait">
+                    <figure class="about-portrait" data-entrance="right" style="--entrance-delay: 100ms">
                         <img src="/ARCHIVE/main.png" alt="Maploop">
                     </figure>
                 </div>
 
-                <p id="about-tech-intro" class="about-tech-lead"></p>
+                <p id="about-tech-intro" class="about-tech-lead" data-entrance="rise"></p>
 
                 <div class="socials" data-reveal-group>
                     <span class="social-link tooltip java">
@@ -202,7 +202,7 @@
         <!-- Experience -->
         <section id="slide-2" class="section scroll-panel scroll-reveal">
             <div class="shell">
-                <div class="section-header specimen">
+                <div class="section-header specimen" data-entrance="wipe">
                     <div class="specimen-meta">
                         <span id="experience-section-label" class="mono"></span>
                         <span id="experience-section-slug" class="mono specimen-slug"></span>
@@ -229,7 +229,7 @@
                 </div>
 
                 <div class="work-container">
-                    <div class="company-rail">
+                    <div class="company-rail" data-entrance="wipe">
                         <div class="rail-head">
                             <span>Companies</span>
                             <b>04</b>
@@ -253,7 +253,7 @@
                         </div>
                     </div>
 
-                    <div class="job-content">
+                    <div class="job-content" data-entrance="wipe" style="--entrance-delay: 160ms">
                         <div class="job-details" data-job="atlas">
                             <div class="job-head">
                                 <div class="job-head-main">
@@ -317,7 +317,7 @@
                     <h2 id="projects-section-title" class="section-title"></h2>
                 </div>
 
-                <div class="project is-flipped" style="--project-accent: #b79cff">
+                <div class="project is-flipped" data-entrance="left" style="--project-accent: #c09cff">
                     <div class="project-content">
                         <div class="project-image">
                             <img src="./ARCHIVE/image/atlas_network.png" alt="SkyBlock recreation">
@@ -351,7 +351,7 @@
                     </div>
                 </div>
 
-                <div class="project" style="--project-accent: #8f9dff">
+                <div class="project" data-entrance="right" style="--project-accent: #71e3f2">
                     <div class="project-content">
                         <div class="project-image">
                             <img src="./ARCHIVE/image/eflame_engine.png" alt="EFlame engine">
@@ -389,19 +389,19 @@
                     <div id="projects-loading-text" class="cards-loading"></div>
                 </div>
 
-                <div class="hero-actions" style="margin-top: 2rem;">
+                <div class="hero-actions" data-entrance="rise" style="margin-top: 2rem;">
                     <button id="view-all-button-text" onclick="window.location.href = '/projects/'"
                         class="button primary"></button>
                 </div>
 
-                <p id="youtube-note" class="projects-footnote"></p>
+                <p id="youtube-note" class="projects-footnote" data-entrance="rise"></p>
             </div>
         </section>
 
         <!-- Events -->
         <section id="slide-4" class="section scroll-panel scroll-reveal">
             <div class="shell">
-                <div class="section-header specimen">
+                <div class="section-header specimen" data-entrance="rise">
                     <div class="specimen-meta">
                         <span id="events-section-label" class="mono"></span>
                         <span id="events-section-slug" class="mono specimen-slug"></span>
@@ -411,7 +411,7 @@
 
                 <div class="events-timeline">
                     <article class="event-card">
-                        <div class="event-body">
+                        <div class="event-body" data-entrance="rise">
                             <div class="event-head">
                                 <div class="event-head-main">
                                     <span id="event1-org" class="job-eyebrow"></span>
@@ -424,7 +424,7 @@
                             <div id="event1-tags" class="event-tags"></div>
                         </div>
 
-                        <div class="event-result">
+                        <div class="event-result" data-entrance="stamp" style="--entrance-delay: 180ms">
                             <span id="event1-result-value" class="result-value"></span>
                             <span id="event1-result-label" class="result-label"></span>
                         </div>
@@ -436,11 +436,11 @@
         <!-- Contact — the one light band on the page -->
         <section id="slide-3" class="contact scroll-panel band-invert on-fill scroll-reveal">
             <div class="shell">
-                <span id="contact-label" class="page-eyebrow"></span>
-                <h2 id="contact-title" class="big-title"></h2>
-                <p id="contact-description" class="section-description"></p>
+                <span id="contact-label" class="page-eyebrow" data-entrance="rise"></span>
+                <h2 id="contact-title" class="big-title" data-entrance="rise" style="--entrance-delay: 90ms"></h2>
+                <p id="contact-description" class="section-description" data-entrance="rise" style="--entrance-delay: 180ms"></p>
 
-                <div class="contact-actions">
+                <div class="contact-actions" data-entrance="rise" style="--entrance-delay: 270ms">
                     <button id="hello-button-text" onclick="window.location.href = 'mailto:maploop.val@gmail.com'"
                         class="button primary"></button>
                     <a href="/links?a=web" id="socials-link-text" class="pretty-a"></a>
