@@ -35,7 +35,7 @@
             </div>
 
             <div class="links-list">
-                <a href="https://www.youtube.com/@Maploop" onclick="logclick('youtube')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #ff5c5c">
+                <a href="https://www.youtube.com/@Maploop" data-track="youtube" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #ff5c5c">
                     <span class="link-glyph"><i class="fab fa-youtube"></i></span>
                     <span class="link-meta">
                         <span class="link-name">YouTube</span>
@@ -44,7 +44,7 @@
                     <span class="link-arrow">↗</span>
                 </a>
 
-                <button type="button" class="link-row" data-copy="wheres.leon" style="--brand: #7c8cff">
+                <button type="button" class="link-row" data-copy="wheres.leon" data-track="discord" style="--brand: #7c8cff">
                     <span class="link-glyph"><i class="fab fa-discord"></i></span>
                     <span class="link-meta">
                         <span class="link-name">Discord</span>
@@ -53,7 +53,7 @@
                     <span class="link-arrow">copy</span>
                 </button>
 
-                <a href="https://instagram.com/dinner.wanter" onclick="logclick('instagram')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #e774b4">
+                <a href="https://instagram.com/dinner.wanter" data-track="instagram" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #e774b4">
                     <span class="link-glyph"><i class="fab fa-instagram"></i></span>
                     <span class="link-meta">
                         <span class="link-name">Instagram</span>
@@ -62,7 +62,7 @@
                     <span class="link-arrow">↗</span>
                 </a>
 
-                <!-- <a href="https://x.com/wheres_leon" onclick="logclick('twitter')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #d8d3e8">
+                <!-- <a href="https://x.com/wheres_leon" data-track="twitter" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #d8d3e8">
                     <span class="link-glyph"><i class="fa-brands fa-x-twitter"></i></span>
                     <span class="link-meta">
                         <span class="link-name">X</span>
@@ -71,7 +71,7 @@
                     <span class="link-arrow">↗</span>
                 </a> -->
 
-                <a href="https://open.spotify.com/user/31yxaqjenkqi743v7r4ntvpywlqy?si=906e87f53c954f8f" onclick="logclick('spotify')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #56d97b">
+                <a href="https://open.spotify.com/user/31yxaqjenkqi743v7r4ntvpywlqy?si=906e87f53c954f8f" data-track="spotify" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #56d97b">
                     <span class="link-glyph"><i class="fab fa-spotify"></i></span>
                     <span class="link-meta">
                         <span class="link-name">Spotify</span>
@@ -80,7 +80,7 @@
                     <span class="link-arrow">↗</span>
                 </a>
 <!-- 
-                <a href="https://t.me/noone -- nice try buddy" onclick="logclick('telegram')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #4fb6e8">
+                <a href="https://t.me/noone -- nice try buddy" data-track="telegram" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #4fb6e8">
                     <span class="link-glyph"><i class="fab fa-telegram"></i></span>
                     <span class="link-meta">
                         <span class="link-name">Telegram</span>
@@ -89,7 +89,7 @@
                     <span class="link-arrow">↗</span>
                 </a>
 
-                <a href="https://www.pixiv.net/en/users/000000 nice try buddy" onclick="logclick('pixiv')" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #5ac8fa">
+                <a href="https://www.pixiv.net/en/users/000000 nice try buddy" data-track="pixiv" target="_blank" rel="noopener noreferrer" class="link-row" style="--brand: #5ac8fa">
                     <span class="link-glyph"><i class="fab fa-pixiv"></i></span>
                     <span class="link-meta">
                         <span class="link-name">Pixiv</span>
@@ -98,7 +98,7 @@
                     <span class="link-arrow">↗</span>
                 </a> -->
 
-                <a href="mailto:maploop.val@gmail.com" class="link-row" style="--brand: #b79cff">
+                <a href="mailto:maploop.val@gmail.com" data-track="email" class="link-row" style="--brand: #b79cff">
                     <span class="link-glyph"><i class="far fa-envelope"></i></span>
                     <span class="link-meta">
                         <span class="link-name">Email</span>
@@ -110,15 +110,14 @@
 
             <div class="links-card-foot">
                 <span class="links-foot-note">Desktop recommended</span>
-                <button onclick="goToExpeirmental()" type="button" class="button primary">Experimental site <span aria-hidden="true">→</span></button>
+                <button onclick="goToExpeirmental()" data-track="experimental" type="button" class="button primary">Experimental site <span aria-hidden="true">→</span></button>
             </div>
         </section>
 
-        <p class="links-footer">&copy; 2026 Maploop. All rights reserved. · <a href="/">maploop.github.io</a></p>
+        <p class="links-footer">&copy; 2026 Maploop. All rights reserved. · <a href="/" data-track="home">maploop.github.io</a></p>
     </main>
 
     <script src="../ARCHIVE/script/links/script.js"></script>
-    <script src="../universal_archive/js/tracker2.js"></script>
     <script>
         document.querySelectorAll('.link-row[data-copy]').forEach(row => {
             const arrow = row.querySelector('.link-arrow');
