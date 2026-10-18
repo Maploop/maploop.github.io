@@ -399,13 +399,6 @@ body::after {
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    body::before {
-        opacity: .28;
-        transition: none;
-    }
-}
-
 /* Swofty-inspired opening: quiet space, floating signals, and one clear name. */
 .hero {
     position: relative;
@@ -1065,11 +1058,38 @@ body::after {
 }
 
 .contact-actions .button.primary {
+    position: relative;
+    isolation: isolate;
     padding: .95rem 1.35rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 48%, rgba(255, 255, 255, .2));
     border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--accent) 15%, rgba(255, 255, 255, .055));
+    box-shadow: 0 .8rem 2rem rgba(0, 0, 0, .16), inset 0 1px 0 rgba(255, 255, 255, .12);
+    color: var(--c-signal-text);
     font-family: var(--font-mono);
     font-size: .72rem;
     letter-spacing: .04em;
+    backdrop-filter: blur(.55rem) saturate(108%);
+    -webkit-backdrop-filter: blur(.55rem) saturate(108%);
+    transition: transform 1.05s cubic-bezier(.16, 1, .3, 1), background-color .2s ease, border-color .2s ease;
+}
+
+.contact-actions .button.primary::before {
+    position: absolute;
+    z-index: -1;
+    inset: 1px 18% 52% 10%;
+    border-radius: inherit;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .08), transparent 72%);
+    content: "";
+    pointer-events: none;
+}
+
+.contact-actions .button.primary:hover,
+.contact-actions .button.primary:focus-visible {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 25%, rgba(255, 255, 255, .08));
+    color: var(--c-fg);
+    transform: translateY(-2px);
 }
 
 .contact-actions .pretty-a {
@@ -1160,6 +1180,150 @@ body::after {
 
     .contact-links {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* The two headline projects use a layered showcase treatment: the image is a
+   full visual field and the readable project details sit in a floating glass
+   panel above it. */
+#slide-1 .project.project-lead {
+    min-height: clamp(28rem, 42vw, 38rem);
+}
+
+#slide-1 .project.project-lead .project-content {
+    position: relative;
+    display: block;
+    min-height: clamp(28rem, 42vw, 38rem);
+    grid-template-columns: none;
+    direction: ltr;
+}
+
+#slide-1 .project.project-lead .project-content > * {
+    direction: ltr;
+}
+
+#slide-1 .project.project-lead .project-image {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+#slide-1 .project.project-lead .project-image img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(.65) contrast(1.08) brightness(.72);
+    object-fit: cover;
+    transform: scale(1.025);
+    transition: filter .35s ease, transform .7s cubic-bezier(.16, 1, .3, 1);
+}
+
+#slide-1 .project.project-lead .project-image::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background:
+        linear-gradient(115deg, rgba(9, 9, 12, .88), rgba(9, 9, 12, .28) 48%, rgba(9, 9, 12, .72)),
+        linear-gradient(180deg, transparent 42%, rgba(9, 9, 12, .7));
+    content: "";
+}
+
+#slide-1 .project.project-lead .project-info {
+    position: absolute;
+    z-index: 2;
+    isolation: isolate;
+    bottom: clamp(1.1rem, 3vw, 2rem);
+    left: clamp(1.1rem, 3vw, 2rem);
+    width: min(72%, 31rem);
+    min-height: 0;
+    padding: clamp(1.15rem, 2.5vw, 1.8rem);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 1.1rem;
+    background:
+        radial-gradient(130% 160% at 0% 0%, rgba(255, 255, 255, .11), transparent 46%),
+        radial-gradient(110% 140% at 100% 100%, rgba(185, 154, 255, .1), transparent 58%),
+        rgba(17, 16, 22, .5);
+    box-shadow:
+        0 1.8rem 3.8rem rgba(0, 0, 0, .3),
+        inset 0 .45rem 1.5rem rgba(255, 255, 255, .045),
+        inset 0 -1rem 2rem rgba(0, 0, 0, .15);
+    backdrop-filter: blur(1.45rem) saturate(124%) brightness(1.06);
+    -webkit-backdrop-filter: blur(1.45rem) saturate(124%) brightness(1.06);
+}
+
+#slide-1 .project.project-lead:not(.is-flipped) .project-info {
+    right: clamp(1.1rem, 3vw, 2rem);
+    left: auto;
+}
+
+#slide-1 .project.project-lead .project-info::before {
+    position: absolute;
+    z-index: -1;
+    inset: -55% -25% 24% -42%;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 34% 36%, rgba(255, 255, 255, .16), transparent 42%),
+        radial-gradient(circle at 68% 64%, rgba(185, 154, 255, .18), transparent 58%);
+    filter: blur(1.25rem);
+    opacity: .68;
+    content: "";
+    pointer-events: none;
+    animation: project-glass-flow 15s ease-in-out infinite alternate;
+}
+
+#slide-1 .project.project-lead .project-info::after {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, .07);
+    border-radius: inherit;
+    background: radial-gradient(100% 90% at 100% 0%, rgba(185, 154, 255, .08), transparent 58%);
+    content: "";
+    opacity: .75;
+    pointer-events: none;
+}
+
+@keyframes project-glass-flow {
+    from {
+        transform: translate3d(-8%, -8%, 0) rotate(-4deg) scale(.92);
+    }
+    to {
+        transform: translate3d(18%, 12%, 0) rotate(5deg) scale(1.12);
+    }
+}
+
+#slide-1 .project.project-lead .project-index {
+    z-index: 3;
+}
+
+#slide-1 .project.project-lead:hover .project-image img {
+    filter: grayscale(.4) contrast(1.08) brightness(.78);
+    transform: scale(1.06);
+}
+
+@media (max-width: 42rem) {
+    #slide-1 .project.project-lead,
+    #slide-1 .project.project-lead .project-content {
+        min-height: 31rem;
+    }
+
+    #slide-1 .project.project-lead .project-info,
+    #slide-1 .project.project-lead:not(.is-flipped) .project-info {
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+        width: auto;
+        padding: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #slide-1 .project.project-lead .project-info::before {
+        animation: none;
     }
 }
 
@@ -1615,4 +1779,716 @@ body::after {
         animation-delay: .28s !important;
     }
 
+}
+
+/* Shared liquid-glass finish: soft volume, layered light, and a slow internal
+   drift keep every translucent surface in the same visual language. */
+@keyframes liquid-glass-drift {
+    from {
+        transform: translate3d(-10%, -8%, 0) rotate(-4deg) scale(.9);
+    }
+    to {
+        transform: translate3d(16%, 12%, 0) rotate(5deg) scale(1.12);
+    }
+}
+
+.navbar,
+.hero-about .about-copy,
+.hero-pill,
+#slide-1 .project-card,
+#slide-1 .archive-callout,
+.contact-actions .button.primary {
+    border-color: rgba(255, 255, 255, .12);
+    background:
+        radial-gradient(130% 160% at 0% 0%, rgba(255, 255, 255, .1), transparent 46%),
+        radial-gradient(110% 140% at 100% 100%, rgba(185, 154, 255, .08), transparent 58%),
+        rgba(18, 17, 23, .48);
+    box-shadow:
+        0 1.25rem 3rem rgba(0, 0, 0, .2),
+        inset 0 .4rem 1.2rem rgba(255, 255, 255, .04),
+        inset 0 -1rem 2rem rgba(0, 0, 0, .12);
+    backdrop-filter: blur(1.35rem) saturate(122%) brightness(1.05);
+    -webkit-backdrop-filter: blur(1.35rem) saturate(122%) brightness(1.05);
+}
+
+.navbar,
+.hero-about .about-copy,
+.hero-pill,
+#slide-1 .project-card,
+#slide-1 .archive-callout,
+.contact-actions .button.primary {
+    isolation: isolate;
+}
+
+.navbar::after,
+.hero-about .about-copy::before,
+.hero-pill::before,
+#slide-1 .project-card::before,
+#slide-1 .archive-callout::before,
+.contact-actions .button.primary::before {
+    position: absolute;
+    z-index: -1;
+    border-radius: inherit;
+    background:
+        radial-gradient(circle at 34% 36%, rgba(255, 255, 255, .14), transparent 42%),
+        radial-gradient(circle at 68% 64%, rgba(185, 154, 255, .16), transparent 58%);
+    content: "";
+    filter: blur(1.1rem);
+    opacity: .58;
+    pointer-events: none;
+    animation: liquid-glass-drift 15s ease-in-out infinite alternate;
+}
+
+.navbar::after {
+    display: block;
+    inset: -55% -25% 20% -42%;
+}
+
+.hero-about .about-copy,
+#slide-1 .project-card,
+#slide-1 .archive-callout,
+.contact-actions .button.primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-pill {
+    overflow: hidden;
+}
+
+.hero-about .about-copy::before {
+    inset: -55% -25% 20% -42%;
+}
+
+.hero-pill::before {
+    inset: -75% -36% 15% -48%;
+}
+
+#slide-1 .project-card::before,
+#slide-1 .archive-callout::before,
+.contact-actions .button.primary::before {
+    inset: -65% -28% 18% -44%;
+}
+
+.hero-pill:nth-child(3) {
+    border-color: rgba(255, 255, 255, .14);
+    background:
+        radial-gradient(130% 160% at 0% 0%, rgba(255, 255, 255, .07), transparent 46%),
+        radial-gradient(110% 140% at 100% 100%, rgba(185, 154, 255, .06), transparent 58%),
+        rgba(20, 20, 24, .68);
+}
+
+.hero-pill-link,
+.hero-cta {
+    border-color: color-mix(in srgb, var(--accent) 42%, rgba(255, 255, 255, .14));
+    background:
+        radial-gradient(130% 160% at 0% 0%, rgba(255, 255, 255, .12), transparent 44%),
+        radial-gradient(110% 140% at 100% 100%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%),
+        color-mix(in srgb, var(--accent) 12%, rgba(18, 17, 23, .48));
+}
+
+.contact {
+    border-color: rgba(185, 154, 255, .16) !important;
+    background:
+        radial-gradient(120% 100% at 8% 0%, rgba(185, 154, 255, .14), transparent 48%),
+        radial-gradient(110% 120% at 100% 100%, rgba(255, 255, 255, .045), transparent 56%),
+        rgba(25, 20, 42, .78) !important;
+    box-shadow:
+        0 -1.5rem 4rem rgba(0, 0, 0, .2),
+        inset 0 .45rem 1.5rem rgba(255, 255, 255, .035),
+        inset 0 -1.2rem 2.2rem rgba(0, 0, 0, .16);
+    backdrop-filter: blur(1rem) saturate(120%);
+    -webkit-backdrop-filter: blur(1rem) saturate(120%);
+}
+
+.contact::before {
+    inset: -35% -20%;
+    background:
+        radial-gradient(circle at 22% 30%, rgba(255, 255, 255, .08), transparent 32%),
+        radial-gradient(circle at 76% 72%, rgba(185, 154, 255, .12), transparent 52%);
+    filter: blur(2rem);
+    opacity: .72;
+    animation: liquid-glass-drift 18s ease-in-out infinite alternate;
+}
+
+.hero-pill-link:hover,
+.hero-cta:hover,
+.contact-actions .button.primary:hover,
+.contact-actions .button.primary:focus-visible {
+    background:
+        radial-gradient(130% 160% at 0% 0%, rgba(255, 255, 255, .16), transparent 44%),
+        radial-gradient(110% 140% at 100% 100%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 60%),
+        color-mix(in srgb, var(--accent) 19%, rgba(18, 17, 23, .5));
+}
+
+.nav-item:not(.resume):is(:hover, .active),
+.nav-item:is(:hover, .active) {
+    border-color: color-mix(in srgb, var(--accent) 42%, rgba(255, 255, 255, .12));
+    background:
+        radial-gradient(120% 150% at 0% 0%, rgba(255, 255, 255, .12), transparent 48%),
+        color-mix(in srgb, var(--accent) 13%, rgba(18, 17, 23, .42));
+    box-shadow: inset 0 .3rem .8rem rgba(255, 255, 255, .035), 0 .45rem 1.1rem rgba(0, 0, 0, .12);
+    backdrop-filter: blur(.9rem) saturate(118%);
+    -webkit-backdrop-filter: blur(.9rem) saturate(118%);
+}
+
+#slide-1 .project-index,
+.project-language,
+.card-language {
+    border-color: rgba(255, 255, 255, .13);
+    background:
+        radial-gradient(120% 150% at 0% 0%, rgba(255, 255, 255, .1), transparent 48%),
+        color-mix(in srgb, var(--accent) 8%, rgba(12, 11, 15, .5));
+    box-shadow: inset 0 .25rem .7rem rgba(255, 255, 255, .03), 0 .45rem 1rem rgba(0, 0, 0, .15);
+    backdrop-filter: blur(.85rem) saturate(116%);
+    -webkit-backdrop-filter: blur(.85rem) saturate(116%);
+}
+
+#slide-1 .project-card,
+#slide-1 .archive-callout {
+    overflow: hidden;
+}
+
+#slide-2 .work-container {
+    isolation: isolate;
+    border-color: rgba(255, 255, 255, .11);
+    background:
+        radial-gradient(120% 100% at 10% 0%, rgba(185, 154, 255, .09), transparent 48%),
+        radial-gradient(100% 120% at 100% 100%, rgba(255, 255, 255, .045), transparent 58%),
+        rgba(17, 14, 24, .72);
+    box-shadow:
+        0 1.5rem 4rem rgba(0, 0, 0, .23),
+        inset 0 .4rem 1.4rem rgba(255, 255, 255, .035),
+        inset 0 -1rem 2rem rgba(0, 0, 0, .16);
+    backdrop-filter: blur(1rem) saturate(118%);
+    -webkit-backdrop-filter: blur(1rem) saturate(118%);
+}
+
+#slide-2 .company-tab {
+    isolation: isolate;
+    overflow: hidden;
+    border-color: color-mix(in srgb, var(--bubble-color) 52%, rgba(255, 255, 255, .22));
+    background:
+        radial-gradient(120% 110% at 20% 12%, rgba(255, 255, 255, .2), transparent 42%),
+        radial-gradient(100% 120% at 86% 88%, color-mix(in srgb, var(--bubble-color) 62%, transparent), transparent 62%),
+        color-mix(in srgb, var(--bubble-color) 42%, rgba(18, 14, 28, .4));
+    box-shadow:
+        0 1.2rem 3rem color-mix(in srgb, var(--bubble-color) 24%, transparent),
+        inset .25rem .25rem 1.1rem rgba(255, 255, 255, .14),
+        inset -.45rem -.55rem 1.2rem rgba(26, 12, 48, .22);
+    backdrop-filter: blur(1.4rem) saturate(132%) brightness(1.04);
+    -webkit-backdrop-filter: blur(1.4rem) saturate(132%) brightness(1.04);
+}
+
+#slide-2 .company-tab::before {
+    position: absolute;
+    z-index: -1;
+    inset: -35% -25% 24% -34%;
+    display: block;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 32%, rgba(255, 255, 255, .28), transparent 38%),
+        radial-gradient(circle at 70% 68%, color-mix(in srgb, var(--bubble-color) 42%, transparent), transparent 60%);
+    content: "";
+    filter: blur(.9rem);
+    opacity: .62;
+    pointer-events: none;
+    animation: liquid-glass-drift 13s ease-in-out infinite alternate;
+}
+
+#slide-2 .company-tab::after {
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, .1);
+    background: radial-gradient(100% 80% at 20% 0%, rgba(255, 255, 255, .12), transparent 52%);
+    opacity: .72;
+}
+
+#slide-2 .work-bubble-shell {
+    isolation: isolate;
+    border-color: rgba(255, 255, 255, .14);
+    background:
+        radial-gradient(130% 130% at 0% 0%, color-mix(in srgb, var(--modal-color, var(--accent)) 24%, transparent), transparent 50%),
+        rgba(17, 15, 23, .82);
+    box-shadow:
+        0 1.5rem 4rem rgba(0, 0, 0, .4),
+        inset 0 .4rem 1.4rem rgba(255, 255, 255, .045),
+        inset 0 -1rem 2rem rgba(0, 0, 0, .16);
+    backdrop-filter: blur(1.35rem) saturate(122%);
+    -webkit-backdrop-filter: blur(1.35rem) saturate(122%);
+}
+
+#slide-2 .work-bubble-shell > .job-content {
+    border-color: rgba(255, 255, 255, .11);
+    background:
+        radial-gradient(120% 100% at 0% 0%, rgba(255, 255, 255, .055), transparent 48%),
+        rgba(12, 11, 15, .82);
+    box-shadow: inset 0 .35rem 1.2rem rgba(255, 255, 255, .025), inset 0 -1rem 2rem rgba(0, 0, 0, .2);
+    backdrop-filter: blur(1rem) saturate(115%);
+    -webkit-backdrop-filter: blur(1rem) saturate(115%);
+}
+
+#slide-2 .work-bubble-shell > .work-modal-cap {
+    border-color: color-mix(in srgb, var(--modal-color, var(--accent)) 55%, rgba(255, 255, 255, .18));
+    background:
+        radial-gradient(120% 100% at 16% 0%, rgba(255, 255, 255, .2), transparent 46%),
+        color-mix(in srgb, var(--modal-color, var(--accent)) 48%, rgba(17, 14, 24, .38));
+    box-shadow: inset .2rem .25rem 1.1rem rgba(255, 255, 255, .12), inset -.3rem -.35rem 1rem rgba(28, 12, 51, .2);
+    backdrop-filter: blur(1.35rem) saturate(130%);
+    -webkit-backdrop-filter: blur(1.35rem) saturate(130%);
+}
+
+#slide-2 .work-modal-close,
+.timeline-marker::after {
+    border-color: rgba(255, 255, 255, .11);
+    background:
+        radial-gradient(120% 100% at 0% 0%, rgba(255, 255, 255, .1), transparent 48%),
+        rgba(18, 17, 23, .58);
+    box-shadow: inset 0 .3rem .8rem rgba(255, 255, 255, .035), 0 .7rem 1.5rem rgba(0, 0, 0, .22);
+    backdrop-filter: blur(1rem) saturate(118%);
+    -webkit-backdrop-filter: blur(1rem) saturate(118%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .navbar::after,
+    .hero-about .about-copy::before,
+    .hero-pill::before,
+    #slide-1 .project-card::before,
+    #slide-1 .archive-callout::before,
+    .contact-actions .button.primary::before,
+    #slide-2 .company-tab::before {
+        animation: none;
+    }
+
+    .contact::before {
+        animation: none;
+    }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+    .navbar,
+    .hero-about .about-copy,
+    .hero-pill,
+    #slide-1 .project-card,
+    #slide-1 .archive-callout,
+    .contact-actions .button.primary,
+    .nav-item:is(:hover, .active),
+    #slide-1 .project-index,
+    .project-language,
+    .card-language,
+    #slide-2 .work-container,
+    #slide-2 .company-tab,
+    #slide-2 .work-bubble-shell,
+    #slide-2 .work-bubble-shell > .job-content,
+    #slide-2 .work-bubble-shell > .work-modal-cap,
+    #slide-2 .work-modal-close,
+    .timeline-marker::after,
+    .contact {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+}
+
+/* The open work card keeps the original bubble as its first frame. The cap is
+   a real semicircle with the same diameter as the closed bubble. */
+#slide-2 .company-tab.modal-source {
+    opacity: 0;
+}
+
+#slide-2 .work-bubble-shell {
+    background:
+        radial-gradient(120% 110% at 24% 8%, color-mix(in srgb, var(--modal-color, var(--accent)) 48%, transparent), transparent 58%),
+        color-mix(in srgb, var(--modal-color, var(--accent)) 38%, rgba(17, 15, 23, .72));
+}
+
+#slide-2 .work-bubble-shell > .work-modal-cap {
+    top: var(--modal-cap-top, -5.25rem);
+    right: auto;
+    left: 50%;
+    width: var(--modal-bubble-size, 10.5rem);
+    height: var(--modal-bubble-radius, 5.25rem);
+    padding: 0;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    isolation: isolate;
+    border-color: transparent;
+    background: transparent;
+    box-shadow: none;
+    transform: translateX(-50%) scale(var(--modal-cap-start-scale, 2.9));
+    transform-origin: center center;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+#slide-2 .work-bubble-shell > .work-modal-cap::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border: 1px solid color-mix(in srgb, var(--modal-color, var(--accent)) 55%, rgba(255, 255, 255, .18));
+    border-bottom: 0;
+    border-radius: inherit;
+    background:
+        radial-gradient(120% 100% at 16% 0%, rgba(255, 255, 255, .2), transparent 46%),
+        color-mix(in srgb, var(--modal-color, var(--accent)) 48%, rgba(17, 14, 24, .38));
+    box-shadow: inset .2rem .25rem 1.1rem rgba(255, 255, 255, .12), inset -.3rem -.35rem 1rem rgba(28, 12, 51, .2);
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(1.35rem) saturate(130%);
+    -webkit-backdrop-filter: blur(1.35rem) saturate(130%);
+}
+
+#slide-2 .work-bubble-shell.is-open > .work-modal-cap {
+    animation: work-modal-cap-in .64s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+#slide-2 .work-bubble-shell.is-open > .work-modal-cap::before {
+    animation: work-modal-cap-surface-in .64s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+#slide-2 .work-bubble-shell > .work-modal-cap > .work-modal-company,
+#slide-2 .work-bubble-shell > .work-modal-cap > .work-modal-role {
+    transform-origin: center center;
+    will-change: transform;
+}
+
+#slide-2 .work-bubble-shell.is-open > .work-modal-cap > .work-modal-company,
+#slide-2 .work-bubble-shell.is-open > .work-modal-cap > .work-modal-role {
+    animation: work-modal-text-lock .64s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+#slide-2 .work-bubble-shell.is-open > .job-content {
+    animation-delay: .58s;
+}
+
+#slide-2 .work-bubble-shell.is-open .job-details {
+    animation-delay: .62s;
+}
+
+@keyframes work-modal-cap-in {
+    from {
+        opacity: 1;
+        top: var(--modal-cap-start-top, 0px);
+        width: var(--modal-bubble-size, 10.5rem);
+        height: var(--modal-bubble-size, 10.5rem);
+        border-radius: 50%;
+        transform: translateX(-50%) scale(var(--modal-cap-start-scale, 2.9));
+    }
+
+    48% {
+        opacity: 1;
+        top: var(--modal-cap-start-top, 0px);
+        width: var(--modal-bubble-size, 10.5rem);
+        height: var(--modal-bubble-size, 10.5rem);
+        border-radius: 50%;
+        transform: translateX(-50%) scale(var(--modal-cap-start-scale, 2.9));
+    }
+
+    66% {
+        opacity: 1;
+        top: var(--modal-cap-start-top, 0px);
+        width: var(--modal-bubble-size, 10.5rem);
+        height: var(--modal-bubble-size, 10.5rem);
+        border-radius: 50%;
+        transform: translateX(-50%) scale(var(--modal-cap-start-scale, 2.9));
+    }
+
+    82% {
+        opacity: 1;
+        top: var(--modal-cap-start-top, 0px);
+        width: var(--modal-bubble-size, 10.5rem);
+        height: var(--modal-bubble-size, 10.5rem);
+        border-radius: 50%;
+        transform: translateX(-50%) scale(var(--modal-cap-start-scale, 2.9));
+    }
+
+    90% {
+        opacity: 1;
+        top: var(--modal-cap-top, -5.25rem);
+        width: var(--modal-bubble-size, 10.5rem);
+        height: var(--modal-bubble-radius, 5.25rem);
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        transform: translateX(-50%) scale(1);
+    }
+
+    to {
+        opacity: 1;
+        top: var(--modal-cap-top, -5.25rem);
+        width: var(--modal-bubble-size, 10.5rem);
+        height: var(--modal-bubble-radius, 5.25rem);
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+@keyframes work-modal-cap-surface-in {
+    from,
+    82% {
+        opacity: 0;
+    }
+
+    90%,
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes work-modal-text-lock {
+    from {
+        transform: scale(1);
+    }
+
+    34% {
+        transform: scale(.4);
+    }
+
+    48% {
+        transform: scale(.36);
+    }
+
+    82% {
+        transform: scale(.34);
+    }
+
+    90%,
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes work-bubble-expand {
+    from {
+        border-radius: 50%;
+        opacity: .98;
+        transform:
+            translate3d(var(--modal-start-x), var(--modal-start-y), 0)
+            scale(var(--modal-start-scale));
+    }
+
+    34% {
+        border-radius: 50%;
+    }
+
+    62% {
+        border-radius: 50%;
+    }
+
+    82% {
+        border-radius: 1.8rem;
+    }
+
+    to {
+        border-radius: 1.35rem;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 42rem) {
+    #slide-2 .work-bubble-shell > .work-modal-cap {
+        top: var(--modal-cap-top, -4.25rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before {
+        opacity: .28;
+        transition: none;
+    }
+}
+
+/* Keep the work bubbles expressive, while the rest of the interface uses a
+   quieter translucent blur with no liquid-glass light fields. */
+.navbar,
+.hero-about .about-copy,
+.hero-pill,
+#slide-1 .project-card,
+#slide-1 .archive-callout,
+.contact-actions .button.primary,
+.contact,
+#slide-1 .project.project-lead .project-info {
+    border-color: rgba(255, 255, 255, .08);
+    background: rgba(18, 17, 23, .72);
+    box-shadow: 0 .9rem 2.5rem rgba(0, 0, 0, .2);
+    backdrop-filter: blur(1.1rem);
+    -webkit-backdrop-filter: blur(1.1rem);
+}
+
+.hero-about .about-copy,
+.hero-pill,
+#slide-1 .project-card,
+#slide-1 .archive-callout,
+.contact-actions .button.primary,
+#slide-1 .project.project-lead .project-info {
+    isolation: auto;
+}
+
+.navbar::after,
+.hero-about .about-copy::before,
+.hero-pill::before,
+#slide-1 .project-card::before,
+#slide-1 .archive-callout::before,
+.contact-actions .button.primary::before,
+.contact::before,
+#slide-1 .project.project-lead .project-info::before,
+#slide-1 .project.project-lead .project-info::after {
+    display: none;
+    animation: none;
+}
+
+.hero-pill:nth-child(3) {
+    border-color: rgba(255, 255, 255, .08);
+    background: rgba(20, 20, 24, .72);
+}
+
+.hero-pill-link,
+.hero-cta {
+    border-color: color-mix(in srgb, var(--accent) 38%, rgba(255, 255, 255, .08));
+    background: color-mix(in srgb, var(--accent) 12%, rgba(18, 17, 23, .72));
+    backdrop-filter: blur(.8rem);
+    -webkit-backdrop-filter: blur(.8rem);
+}
+
+.hero-pill-link:hover,
+.hero-pill-link:focus-visible,
+.hero-cta:hover,
+.hero-cta:focus-visible,
+.contact-actions .button.primary:hover,
+.contact-actions .button.primary:focus-visible {
+    background: color-mix(in srgb, var(--accent) 20%, rgba(18, 17, 23, .78));
+}
+
+.contact {
+    border-color: color-mix(in srgb, var(--accent) 20%, rgba(255, 255, 255, .08)) !important;
+    background: color-mix(in srgb, var(--accent) 7%, rgba(18, 17, 23, .8)) !important;
+    box-shadow: 0 -1rem 3rem rgba(0, 0, 0, .2);
+}
+
+.nav-item:not(.resume):is(:hover, .active),
+.nav-item:is(:hover, .active) {
+    border-color: color-mix(in srgb, var(--accent) 36%, rgba(255, 255, 255, .08));
+    background: color-mix(in srgb, var(--accent) 10%, rgba(18, 17, 23, .74));
+    box-shadow: 0 .35rem 1rem rgba(0, 0, 0, .14);
+    backdrop-filter: blur(.85rem);
+    -webkit-backdrop-filter: blur(.85rem);
+}
+
+#slide-1 .project-index,
+.project-language,
+.card-language {
+    border-color: rgba(255, 255, 255, .08);
+    background: rgba(12, 11, 15, .68);
+    box-shadow: 0 .35rem 1rem rgba(0, 0, 0, .14);
+    backdrop-filter: blur(.85rem);
+    -webkit-backdrop-filter: blur(.85rem);
+}
+
+/* The company circles keep their liquid depth, but lose the bright outline. */
+#slide-2 .company-tab {
+    border-color: color-mix(in srgb, var(--bubble-color) 64%, transparent);
+    outline: none;
+}
+
+#slide-2 .company-tab::after {
+    border: 0;
+    background: none;
+    opacity: 0;
+}
+
+#slide-2 .company-tab.active {
+    outline: none;
+}
+
+#slide-2 .company-tab:hover,
+#slide-2 .company-tab:focus-visible {
+    box-shadow: 0 1.2rem 2.5rem color-mix(in srgb, var(--bubble-color) 42%, transparent), inset 0 1px 0 color-mix(in srgb, var(--bubble-color) 34%, transparent);
+}
+
+#slide-2 .work-bubble-shell > .work-modal-cap::before {
+    border-color: color-mix(in srgb, var(--modal-color, var(--accent)) 68%, transparent);
+}
+
+/* Expanded work details use a plain blurred surface; only the closed company
+   bubbles retain the liquid-glass treatment. */
+#slide-2 .work-bubble-shell,
+#slide-2 .work-bubble-shell > .job-content,
+#slide-2 .work-modal-close {
+    border-color: rgba(255, 255, 255, .08);
+    background: rgba(17, 15, 23, .88);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .3);
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+}
+
+#slide-2 .work-bubble-shell > .work-modal-cap::before {
+    border-color: color-mix(in srgb, var(--modal-color, var(--accent)) 42%, rgba(255, 255, 255, .08));
+    background: color-mix(in srgb, var(--modal-color, var(--accent)) 18%, rgba(17, 15, 23, .86));
+    box-shadow: 0 .8rem 2rem rgba(0, 0, 0, .22);
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
+}
+
+/* The expanding shell and cap remain the selected bubble's color. The plain
+   blur treatment applies to the information panel inside them. */
+#slide-2 .work-bubble-shell {
+    border-color: color-mix(in srgb, var(--modal-color, var(--accent)) 64%, transparent);
+    background:
+        radial-gradient(120% 110% at 20% 12%, rgba(255, 255, 255, .2), transparent 42%),
+        radial-gradient(100% 120% at 86% 88%, color-mix(in srgb, var(--modal-color, var(--accent)) 62%, transparent), transparent 62%),
+        color-mix(in srgb, var(--modal-color, var(--accent)) 42%, rgba(18, 14, 28, .4));
+    box-shadow:
+        0 1.2rem 3rem color-mix(in srgb, var(--modal-color, var(--accent)) 24%, transparent),
+        inset .25rem .25rem 1.1rem rgba(255, 255, 255, .14),
+        inset -.45rem -.55rem 1.2rem rgba(26, 12, 48, .22);
+    backdrop-filter: blur(1.4rem) saturate(132%);
+    -webkit-backdrop-filter: blur(1.4rem) saturate(132%);
+}
+
+#slide-2 .work-bubble-shell > .work-modal-cap::before {
+    border-color: color-mix(in srgb, var(--modal-color, var(--accent)) 52%, rgba(255, 255, 255, .22));
+    background:
+        radial-gradient(120% 110% at 20% 12%, rgba(255, 255, 255, .2), transparent 42%),
+        radial-gradient(100% 120% at 86% 88%, color-mix(in srgb, var(--modal-color, var(--accent)) 62%, transparent), transparent 62%),
+        color-mix(in srgb, var(--modal-color, var(--accent)) 42%, rgba(18, 14, 28, .4));
+    box-shadow: inset .25rem .25rem .8rem rgba(255, 255, 255, .16), inset -.3rem -.35rem .9rem rgba(28, 12, 51, .22);
+    backdrop-filter: blur(1.25rem) saturate(125%);
+    -webkit-backdrop-filter: blur(1.25rem) saturate(125%);
+}
+
+/* The animated contour field is restricted to About and Work. Other sections
+   use the static dot field below. */
+body::before {
+    z-index: -2;
+    background-image: radial-gradient(circle, rgba(185, 154, 255, .2) 0 1px, transparent 1.2px);
+    background-size: 1.2rem 1.2rem;
+    animation: none;
+    opacity: .24;
+}
+
+.background-splatter {
+    position: fixed;
+    z-index: -1;
+    inset: -12%;
+    width: 124%;
+    height: 124%;
+    overflow: visible;
+    background: var(--c-shell);
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.02);
+    transform-origin: center center;
+    image-rendering: auto;
+    transition: opacity .3s ease;
+}
+
+.background-splatter.is-active {
+    opacity: .72;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .background-splatter {
+        transition: none;
+    }
+
+    .background-splatter.is-active {
+        opacity: .5;
+    }
 }

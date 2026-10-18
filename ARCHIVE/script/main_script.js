@@ -43,6 +43,180 @@ function scrollToTop() {
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+function initBackgroundSplatter() {
+    if (document.querySelector('.background-splatter')) return;
+
+    // Keep a 480p backing surface while sampling the terrain at an even lower
+    // grid resolution. CSS enlarges this canvas to the viewport.
+    const width = 854;
+    const height = 480;
+    const gridWidth = 320;
+    const gridHeight = 180;
+    const canvas = document.createElement('canvas');
+    canvas.className = 'background-splatter';
+    canvas.width = width;
+    canvas.height = height;
+    canvas.setAttribute('aria-hidden', 'true');
+    const context = canvas.getContext('2d', { alpha: true });
+    if (!context) return;
+
+    const values = new Float32Array((gridWidth + 1) * (gridHeight + 1));
+    const levels = [.29, .37, .45, .53, .61, .69, .77];
+    const sources = [
+        { x: .13, y: .17, rx: .21, ry: .29, power: .25, phase: .2, speed: .038, drift: [.055, .028] },
+        { x: .43, y: .11, rx: .27, ry: .22, power: -.2, phase: 2.1, speed: .031, drift: [.065, .036] },
+        { x: .76, y: .17, rx: .22, ry: .28, power: .23, phase: 4.4, speed: .026, drift: [.05, .032] },
+        { x: .27, y: .49, rx: .3, ry: .2, power: -.24, phase: 1.2, speed: .034, drift: [.04, .065] },
+        { x: .59, y: .46, rx: .24, ry: .3, power: .26, phase: 3.3, speed: .029, drift: [.065, .042] },
+        { x: .9, y: .48, rx: .23, ry: .24, power: -.2, phase: 5.1, speed: .036, drift: [.038, .055] },
+        { x: .14, y: .82, rx: .24, ry: .26, power: .2, phase: 2.5, speed: .025, drift: [.06, .035] },
+        { x: .48, y: .83, rx: .3, ry: .2, power: -.23, phase: 4.7, speed: .032, drift: [.055, .045] },
+        { x: .78, y: .82, rx: .24, ry: .25, power: .22, phase: 1.8, speed: .028, drift: [.045, .05] }
+    ];
+
+    const clamp = (number, minimum, maximum) => Math.max(minimum, Math.min(maximum, number));
+    const valueAt = (x, y, time, movingSources) => {
+        // Broad, slow waves provide the base elevation. Moving elliptical
+        // sources then bend the contours into connected topographic islands.
+        let value = .5
+            + .13 * Math.sin(x * 8.4 + Math.sin(y * 5.3 + time * .035) * .7 + time * .045)
+            + .1 * Math.cos(y * 10.2 - x * 3.6 - time * .032)
+            + .065 * Math.sin((x + y) * 17.5 + time * .025);
+
+        for (let index = 0; index < movingSources.length; index += 1) {
+            const source = movingSources[index];
+            const sourceX = source.x;
+            const sourceY = source.y;
+            const dx = (x - sourceX) / source.rx;
+            const dy = (y - sourceY) / source.ry;
+            value += source.power * Math.exp(-(dx * dx + dy * dy) * 1.35);
+        }
+        return clamp(value, 0, 1);
+    };
+
+    const interpolate = (a, b, level) => {
+        const difference = b - a;
+        return difference === 0 ? .5 : clamp((level - a) / difference, 0, 1);
+    };
+
+    const edgePoint = (edge, x, y, topLeft, topRight, bottomRight, bottomLeft, level) => {
+        if (edge === 0) {
+            const amount = interpolate(topLeft, topRight, level);
+            return [x + amount, y];
+        }
+        if (edge === 1) {
+            const amount = interpolate(topRight, bottomRight, level);
+            return [x + 1, y + amount];
+        }
+        if (edge === 2) {
+            const amount = interpolate(bottomLeft, bottomRight, level);
+            return [x + amount, y + 1];
+        }
+        const amount = interpolate(topLeft, bottomLeft, level);
+        return [x, y + amount];
+    };
+
+    // Marching-squares keeps every contour continuous while avoiding the cost
+    // of a full-resolution noise texture or a WebGL pipeline.
+    const segments = [
+        [], [[3, 0]], [[0, 1]], [[3, 1]], [[1, 2]],
+        [[3, 2], [0, 1]], [[0, 2]], [[3, 2]], [[2, 3]],
+        [[0, 2]], [[0, 1], [2, 3]], [[1, 2]], [[1, 3]],
+        [[0, 1]], [[3, 0]], []
+    ];
+
+    let lastFrame = 0;
+    let animationFrame = 0;
+    let fluidSectionVisible = false;
+    const frameInterval = 1000 / 10;
+    const animateField = !prefersReducedMotion;
+    const schedule = () => {
+        if (animationFrame === 0 && !document.hidden) animationFrame = requestAnimationFrame(render);
+    };
+    const render = (timestamp) => {
+        animationFrame = 0;
+        if (!fluidSectionVisible) return;
+        if (animateField && timestamp - lastFrame < frameInterval) {
+            schedule();
+            return;
+        }
+        lastFrame = timestamp;
+        const time = timestamp * .001;
+        const movingSources = sources.map(source => ({
+            ...source,
+            x: source.x + Math.sin(time * source.speed + source.phase) * source.drift[0],
+            y: source.y + Math.cos(time * source.speed * .81 + source.phase) * source.drift[1]
+        }));
+
+        for (let y = 0; y <= gridHeight; y += 1) {
+            for (let x = 0; x <= gridWidth; x += 1) {
+                values[y * (gridWidth + 1) + x] = valueAt(x / gridWidth, y / gridHeight, time, movingSources);
+            }
+        }
+
+        context.clearRect(0, 0, width, height);
+        context.lineCap = 'round';
+        context.lineJoin = 'round';
+        const scaleX = width / gridWidth;
+        const scaleY = height / gridHeight;
+        levels.forEach((level, levelIndex) => {
+            context.beginPath();
+            for (let y = 0; y < gridHeight; y += 1) {
+                for (let x = 0; x < gridWidth; x += 1) {
+                    const row = gridWidth + 1;
+                    const topLeft = values[y * row + x];
+                    const topRight = values[y * row + x + 1];
+                    const bottomRight = values[(y + 1) * row + x + 1];
+                    const bottomLeft = values[(y + 1) * row + x];
+                    const mask = (topLeft >= level ? 1 : 0)
+                        | (topRight >= level ? 2 : 0)
+                        | (bottomRight >= level ? 4 : 0)
+                        | (bottomLeft >= level ? 8 : 0);
+                    const cellSegments = segments[mask];
+                    cellSegments.forEach(([firstEdge, secondEdge]) => {
+                        const first = edgePoint(firstEdge, x, y, topLeft, topRight, bottomRight, bottomLeft, level);
+                        const second = edgePoint(secondEdge, x, y, topLeft, topRight, bottomRight, bottomLeft, level);
+                        context.moveTo(first[0] * scaleX, first[1] * scaleY);
+                        context.lineTo(second[0] * scaleX, second[1] * scaleY);
+                    });
+                }
+            }
+            context.strokeStyle = `rgba(185, 154, 255, ${levelIndex === 3 ? .16 : .095})`;
+            context.lineWidth = levelIndex === 3 ? .78 : .42;
+            context.stroke();
+        });
+
+        if (animateField && !document.hidden) schedule();
+    };
+
+    document.body.prepend(canvas);
+    const animatedSections = [
+        document.getElementById('slide-0'),
+        document.getElementById('slide-2'),
+        document.getElementById('contact')
+    ]
+        .filter(Boolean);
+    const visibility = new Map(animatedSections.map(section => [section, false]));
+    const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => visibility.set(entry.target, entry.isIntersecting));
+        fluidSectionVisible = Array.from(visibility.values()).some(Boolean);
+        canvas.classList.toggle('is-active', fluidSectionVisible);
+        if (fluidSectionVisible) {
+            lastFrame = 0;
+            if (animateField) schedule();
+            else render(0);
+        }
+    }, { threshold: 0.02 });
+    animatedSections.forEach(section => sectionObserver.observe(section));
+
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && fluidSectionVisible) {
+            lastFrame = 0;
+            if (animateField) schedule();
+            else render(0);
+        }
+    }, { passive: true });
+}
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (!entry.isIntersecting) return;
@@ -152,6 +326,8 @@ function initSectionEntrances() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    initBackgroundSplatter();
+
     document.querySelectorAll('.scroll-reveal').forEach(element => {
         revealObserver.observe(element);
     });
@@ -565,6 +741,11 @@ function positionWorkModal(tab) {
     state.modal.style.setProperty('--modal-start-x', `${startX}px`);
     state.modal.style.setProperty('--modal-start-y', `${startY}px`);
     state.modal.style.setProperty('--modal-start-scale', startScale.toFixed(4));
+    state.modal.style.setProperty('--modal-bubble-size', `${bubbleRect.width}px`);
+    state.modal.style.setProperty('--modal-bubble-radius', `${bubbleRect.width / 2}px`);
+    state.modal.style.setProperty('--modal-cap-start-top', `${(modalHeight - bubbleRect.width) / 2}px`);
+    state.modal.style.setProperty('--modal-cap-top', `${-bubbleRect.width / 2}px`);
+    state.modal.style.setProperty('--modal-cap-start-scale', (1 / startScale).toFixed(4));
 }
 
 function closeWorkModal() {
@@ -583,6 +764,11 @@ function closeWorkModal() {
     state.modal.style.removeProperty('--modal-start-x');
     state.modal.style.removeProperty('--modal-start-y');
     state.modal.style.removeProperty('--modal-start-scale');
+    state.modal.style.removeProperty('--modal-bubble-size');
+    state.modal.style.removeProperty('--modal-bubble-radius');
+    state.modal.style.removeProperty('--modal-cap-start-top');
+    state.modal.style.removeProperty('--modal-cap-top');
+    state.modal.style.removeProperty('--modal-cap-start-scale');
     state.modal.style.removeProperty('--modal-color');
     state.tabs.forEach(item => {
         item.style.setProperty('transition', 'none');
