@@ -7,23 +7,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Maploop — software developer building large-scale multiplayer experiences, engines and tools.">
-    <meta name="theme-color" content="#0f0e13">
+    <meta name="theme-color" content="#0b0b0c">
     <title>Maploop</title>
     <link rel="icon" type="image/x-icon" href="ARCHIVE/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wdth,wght@75..100,400..700&family=Martian+Mono:wdth,wght@75..112.5,100..800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="ARCHIVE/style/lavender.css">
-    <link rel="stylesheet" href="ARCHIVE/style/themes.css">
+    <link rel="stylesheet" href="ARCHIVE/style/minimal.css">
 </head>
 
 <body>
     <!-- Header -->
     <nav class="navbar">
         <div class="navbar-container">
-            <div class="navbar-logo"><a id="nav-logo-link" href="/"></a></div>
             <div class="hamburger-menu">
                 <span></span>
                 <span></span>
@@ -31,191 +30,52 @@
                 <span></span>
             </div>
             <div class="nav-links">
-                <a id="navlink-0" class="nav-item active" href="#slide-0" data-target="slide-0"></a>
-                <a id="navlink-1" class="nav-item" href="#slide-2" data-target="slide-2"></a>
-                <a id="navlink-2" class="nav-item" href="#slide-1" data-target="slide-1"></a>
-                <a id="navlink-3" class="nav-item" href="#slide-3" data-target="slide-3"></a>
-                <a id="navlink-resume" class="nav-item resume" href="/resume" data-target="resume"></a>
-                <label class="theme-picker" for="theme-selector">
-                    <span>Modern</span>
-                    <input id="theme-selector" type="checkbox" aria-label="Use Chef's Special theme">
-                    <span>Chef's special</span>
-                </label>
+                <a id="navlink-0" class="nav-item active" href="#slide-0" data-target="slide-0">About</a>
+                <a id="navlink-1" class="nav-item" href="#slide-2" data-target="slide-2">Work</a>
+                <a id="navlink-2" class="nav-item" href="#slide-1" data-target="slide-1">Projects</a>
+                <a id="navlink-3" class="nav-item" href="#contact" data-target="contact">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Right-hand rail: plate numbers, hover for the name -->
-    <nav class="quick-nav" aria-label="Section index">
-        <span class="quick-nav-heading" aria-hidden="true">IDX</span>
-        <a class="quick-nav-link" href="#slide-0" data-target="slide-0">01<span class="quick-nav-text">About</span></a>
-        <a class="quick-nav-link" href="#slide-2" data-target="slide-2">02<span
-                class="quick-nav-text">Experience</span></a>
-        <a class="quick-nav-link" href="#slide-1" data-target="slide-1">03<span class="quick-nav-text">Work</span></a>
-        <a class="quick-nav-link" href="#slide-4" data-target="slide-4">04<span class="quick-nav-text">Events</span></a>
-        <a class="quick-nav-link" href="#slide-3" data-target="slide-3">05<span
-                class="quick-nav-text">Contact</span></a>
-    </nav>
-
-    <!-- Hero -->
-    <section class="hero scroll-panel">
+    <!-- Hero / About -->
+    <section id="slide-0" class="hero scroll-panel scroll-reveal">
         <div class="shell">
+            <div class="hero-signal" aria-hidden="true">
+                <span class="hero-signal-mark">M</span>
+                <span>software / systems that scale</span>
+            </div>
             <div class="hero-grid">
                 <div class="hero-heading">
-                    <div class="page-eyebrow">Developer · since 2019</div>
-                    <h1 class="display">I build things<br>that live on<br>the internet</h1>
-                    <p class="hero-subtitle subtitle">Minecraft infrastructure, game engines,<br>and the occasional
-                        experiment.</p>
+                    <div class="page-eyebrow">Hi, I'm</div>
+                    <h1 class="display">Maploop</h1>
                 </div>
 
-                <p class="hero-lede lede">
-                    Read the work, look through the archive, or drop me a line! My inbox is always open.
-                </p>
+                <aside class="hero-about" data-entrance="right">
+                    <div class="about-block-label page-eyebrow">About me</div>
+                    <div class="panel about-copy">
+                    <p id="about-intro" class="bigger section-description"></p>
+                    </div>
+                    <!-- <figure class="about-portrait" aria-label="Space reserved for a future image"></figure> -->
+                </aside>
 
-                <div class="hero-spec spec-list" data-reveal-group>
-                    <div class="spec-row">
-                        <span class="spec-key">Specialty</span>
-                        <span class="spec-val">Backend · Engines · Tooling</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Primary</span>
-                        <span class="spec-val">Java · C++ · Minestom</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Shipping since</span>
-                        <span class="spec-val">2019</span>
-                    </div>
-                    <div class="spec-row">
-                        <span class="spec-key">Availability</span>
-                        <span class="spec-val"><span class="status">Open to work</span></span>
-                    </div>
-                </div>
-
-                <div class="hero-actions">
-                    <a class="button primary" href="#slide-1">Browse work
-                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path d="M5 12h14m-6-6 6 6-6 6" />
-                        </svg>
-                    </a>
-                    <a class="button" href="/projects/">Project archive
-                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path d="M5 12h14m-6-6 6 6-6 6" />
-                        </svg>
-                    </a>
-                    <a class="button" href="https://github.com/Maploop" target="_blank" rel="noreferrer">GitHub
-                        <svg class="button-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                            <path d="M7 17 17 7M7 7h10v10" />
-                        </svg>
-                    </a>
-                </div>
-
-                <button class="hero-ray hero-art" type="button" aria-label="Show next parametric animation">
-                    <canvas width="400" height="300" aria-hidden="true"></canvas>
-                    <span class="art-lamellae" aria-hidden="true">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                    <span class="art-rule art-rule-top" aria-hidden="true"></span>
-                    <span class="art-rule art-rule-side" aria-hidden="true"></span>
-                    <span class="art-rule art-rule-bottom" aria-hidden="true"></span>
-                    <span class="hero-ray-label" aria-live="polite">RAY 01/04</span>
-                </button>
             </div>
+            <div class="hero-pills" aria-label="Maploop at a glance">
+                <span class="hero-pill hero-pill-status"><i aria-hidden="true"></i> Open to work</span>
+                <span class="hero-pill">Java · C++ · Minestom</span>
+                <span class="hero-pill">50+ shipped projects</span>
+                <span class="hero-pill">Open source</span>
+                <a class="hero-pill hero-pill-link" href="https://github.com/Maploop" target="_blank" rel="noreferrer">
+                    <svg class="hero-pill-github" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5a9.5 9.5 0 0 0-3 18.51c.47.09.64-.2.64-.45v-1.58c-2.6.57-3.15-1.1-3.15-1.1-.43-1.08-1.04-1.37-1.04-1.37-.85-.58.06-.57.06-.57.94.07 1.43.96 1.43.96.84 1.43 2.2 1.02 2.74.78.08-.61.33-1.02.6-1.26-2.08-.24-4.27-1.04-4.27-4.62 0-1.02.36-1.85.96-2.5-.1-.24-.42-1.19.09-2.47 0 0 .78-.25 2.57.95a8.9 8.9 0 0 1 4.68 0c1.78-1.2 2.56-.95 2.56-.95.51 1.28.19 2.23.1 2.47.6.65.96 1.48.96 2.5 0 3.59-2.2 4.38-4.29 4.61.34.3.64.88.64 1.78v2.64c0 .25.17.55.65.45A9.5 9.5 0 0 0 12 2.5Z"/></svg>
+                    <span>GitHub</span><span aria-hidden="true">↗</span>
+                </a>
+                <a class="hero-pill hero-cta" href="#slide-1">Check out the work <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="hero-footnote" aria-hidden="true"></div>
         </div>
     </section>
 
     <div class="content-section">
-        <!-- About -->
-        <section id="slide-0" class="section scroll-panel scroll-reveal">
-            <div class="shell">
-                <div class="section-header specimen" data-entrance="rise">
-                    <div class="specimen-meta">
-                        <span id="about-section-label" class="mono"></span>
-                        <span id="about-section-slug" class="mono specimen-slug"></span>
-                    </div>
-                    <h2 id="about-section-title" class="section-title"></h2>
-                </div>
-
-                <div class="about-grid">
-                    <div class="panel about-copy" data-entrance="left">
-                        <p id="about-intro" class="bigger section-description"></p>
-                    </div>
-                    <figure class="about-portrait" data-entrance="right" style="--entrance-delay: 100ms">
-                        <img src="/ARCHIVE/main.png" alt="Maploop">
-                    </figure>
-                </div>
-
-                <p id="about-tech-intro" class="about-tech-lead" data-entrance="rise"></p>
-
-                <div class="socials" data-reveal-group>
-                    <span class="social-link tooltip java">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/icons8-java.svg" alt="Java">
-                    </span>
-
-                    <span class="social-link tooltip cpp">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/si-cplusplus.svg" alt="C++">
-                    </span>
-
-                    <span class="social-link tooltip minestom">
-                        <img class="svg-skill-icon" src="./ARCHIVE/image/minestom-logo.png" alt="Minestom">
-                    </span>
-
-                    <span class="social-link tooltip vulkan">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/vulkan-svgrepo-com.svg" alt="Vulkan">
-                    </span>
-
-                    <span class="social-link tooltip javascript">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/si-javascript.svg" alt="JavaScript">
-                    </span>
-
-                    <span class="social-link tooltip python">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/icons8-python.svg" alt="Python">
-                    </span>
-
-                    <span class="social-link tooltip spring">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/si-spring.svg" alt="Spring">
-                    </span>
-
-                    <span class="social-link tooltip nodejs">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/icons8-nodejs.svg" alt="Node.js">
-                    </span>
-
-                    <span class="social-link tooltip npm">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/si-npm.svg" alt="NPM">
-                    </span>
-
-                    <span class="social-link tooltip tailwind">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/si-tailwindcss.svg" alt="Tailwind CSS">
-                    </span>
-
-                    <span class="social-link tooltip mongodb">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/si-mongodb.svg" alt="MongoDB">
-                    </span>
-
-                    <span class="social-link tooltip redis">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/si-redis.svg" alt="Redis">
-                    </span>
-
-                    <span class="social-link tooltip sqlite">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/si-sqlite.svg" alt="SQLite">
-                    </span>
-
-                    <span class="social-link tooltip git">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/si-git.svg" alt="Git">
-                    </span>
-
-                    <span class="social-link tooltip gradle">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/si-gradle.svg" alt="Gradle">
-                    </span>
-
-                    <span class="social-link tooltip docker">
-                        <img class="svg-skill-icon" src="./ARCHIVE/icon/si-docker.svg" alt="Docker">
-                    </span>
-                </div>
-            </div>
-        </section>
-
         <!-- Experience -->
         <section id="slide-2" class="section scroll-panel scroll-reveal">
             <div class="shell">
@@ -235,6 +95,10 @@
                         <b>Now</b>
                     </div>
                     <div class="path-scale-track">
+                        <span class="timeline-marker" style="--marker-pos: 1%" data-company-label="Atlas" tabindex="0" role="img" aria-label="Atlas"></span>
+                        <span class="timeline-marker" style="--marker-pos: 8%" data-company-label="TrexMine" tabindex="0" role="img" aria-label="TrexMine"></span>
+                        <span class="timeline-marker" style="--marker-pos: 93%" data-company-label="LunaMC" tabindex="0" role="img" aria-label="LunaMC"></span>
+                        <span class="timeline-marker" style="--marker-pos: 99%" data-company-label="MineHeaven" tabindex="0" role="img" aria-label="MineHeaven"></span>
                         <span class="path-scale-needle" aria-hidden="true"></span>
                     </div>
                     <div class="path-scale-labels" aria-hidden="true">
@@ -254,13 +118,13 @@
 
                         <div class="company-tabs" role="tablist" aria-label="Companies">
                             <span class="tab-marker" aria-hidden="true"></span>
-                            <button id="tab-atlas" class="company-tab active" data-company="atlas" data-path-pos="1" role="tab"
+                            <button id="tab-atlas" class="company-tab active" data-company="atlas" data-bubble-x="16" data-bubble-y="30" data-path-pos="1" role="tab"
                                 aria-selected="true"></button>
-                            <button id="tab-lunamc" class="company-tab" data-company="lunamc" data-path-pos="93" role="tab"
+                            <button id="tab-lunamc" class="company-tab" data-company="lunamc" data-bubble-x="47" data-bubble-y="16" data-path-pos="93" role="tab"
                                 aria-selected="false"></button>
-                            <button id="tab-trexmine" class="company-tab" data-company="trexmine" data-path-pos="8" role="tab"
+                            <button id="tab-trexmine" class="company-tab" data-company="trexmine" data-bubble-x="31" data-bubble-y="61" data-path-pos="8" role="tab"
                                 aria-selected="false"></button>
-                            <button id="tab-mineheaven" class="company-tab" data-company="mineheaven" data-path-pos="100" role="tab"
+                            <button id="tab-mineheaven" class="company-tab" data-company="mineheaven" data-bubble-x="70" data-bubble-y="53" data-path-pos="100" role="tab"
                                 aria-selected="false"></button>
                         </div>
 
@@ -270,8 +134,14 @@
                         </div>
                     </div>
 
-                    <div class="job-content" data-entrance="wipe" style="--entrance-delay: 160ms">
-                        <div class="job-details" data-job="atlas">
+                    <div id="work-detail-modal" class="work-bubble-shell" role="dialog" aria-modal="false" aria-label="Work details">
+                        <div class="work-modal-cap" aria-live="polite">
+                            <span class="work-modal-company"></span>
+                            <span class="work-modal-role"></span>
+                        </div>
+                        <div class="job-content">
+                            <button class="work-modal-close" type="button" aria-label="Close work details">×</button>
+                            <div class="job-details" data-job="atlas">
                             <div class="job-head">
                                 <div class="job-head-main">
                                     <span id="job-atlas-meta" class="job-eyebrow"></span>
@@ -281,9 +151,9 @@
                             </div>
                             <ul id="job-atlas-description" class="job-description"></ul>
                             <div id="job-atlas-stack" class="job-stack"></div>
-                        </div>
+                            </div>
 
-                        <div class="job-details" data-job="lunamc" style="display: none;">
+                            <div class="job-details" data-job="lunamc" style="display: none;">
                             <div class="job-head">
                                 <div class="job-head-main">
                                     <span id="job-lunamc-meta" class="job-eyebrow"></span>
@@ -293,9 +163,9 @@
                             </div>
                             <ul id="job-lunamc-description" class="job-description"></ul>
                             <div id="job-lunamc-stack" class="job-stack"></div>
-                        </div>
+                            </div>
 
-                        <div class="job-details" data-job="trexmine" style="display: none;">
+                            <div class="job-details" data-job="trexmine" style="display: none;">
                             <div class="job-head">
                                 <div class="job-head-main">
                                     <span id="job-trexmine-meta" class="job-eyebrow"></span>
@@ -305,9 +175,9 @@
                             </div>
                             <ul id="job-trexmine-description" class="job-description"></ul>
                             <div id="job-trexmine-stack" class="job-stack"></div>
-                        </div>
+                            </div>
 
-                        <div class="job-details" data-job="mineheaven" style="display: none;">
+                            <div class="job-details" data-job="mineheaven" style="display: none;">
                             <div class="job-head">
                                 <div class="job-head-main">
                                     <span id="job-mineheaven-meta" class="job-eyebrow"></span>
@@ -317,13 +187,14 @@
                             </div>
                             <ul id="job-mineheaven-description" class="job-description"></ul>
                             <div id="job-mineheaven-stack" class="job-stack"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Featured work -->
+                <!-- Project hall of fame -->
         <section id="slide-1" class="section scroll-panel scroll-reveal">
             <div class="shell">
                 <div class="section-header specimen">
@@ -334,7 +205,7 @@
                     <h2 id="projects-section-title" class="section-title"></h2>
                 </div>
 
-                <div class="project is-flipped" data-entrance="left" style="--project-accent: #c09cff">
+                <div class="project project-lead is-flipped" data-entrance="left" style="--project-accent: #c09cff">
                     <div class="project-content">
                         <div class="project-image">
                             <img src="./ARCHIVE/image/atlas_network.png" alt="SkyBlock recreation">
@@ -343,6 +214,7 @@
                         <div class="project-info">
                             <div id="project1-label" class="project-label"></div>
                             <h3 id="project1-title" class="project-title"></h3>
+                            <span class="project-language">Java</span>
                             <div id="project1-description" class="project-description"></div>
                             <div class="project-metrics" data-repo-stats="Swofty-Developments/HypixelSkyBlock"
                                 data-stat-fallback="hide" data-stat-slug="true"></div>
@@ -368,7 +240,7 @@
                     </div>
                 </div>
 
-                <div class="project" data-entrance="right" style="--project-accent: #71e3f2">
+                <div class="project project-lead" data-entrance="right" style="--project-accent: #71e3f2">
                     <div class="project-content">
                         <div class="project-image">
                             <img src="./ARCHIVE/image/eflame_engine.png" alt="EFlame engine">
@@ -377,6 +249,7 @@
                         <div class="project-info">
                             <div id="project2-label" class="project-label"></div>
                             <h3 id="project2-title" class="project-title"></h3>
+                            <span class="project-language">C++</span>
                             <div id="project2-description" class="project-description"></div>
                             <div class="project-metrics" data-repo-stats="Maploop/EFlame" data-stat-fallback="hide"
                                 data-stat-slug="true"></div>
@@ -402,16 +275,15 @@
                     <h2 id="other-projects-title" class="section-title is-sub"></h2>
                 </div>
 
-                <div class="projects-grid" id="projects-grid">
-                    <div id="projects-loading-text" class="cards-loading"></div>
+                <div class="projects-grid hall-of-fame-grid" id="projects-grid">
+                    <div class="cards-loading">Loading featured projects...</div>
                 </div>
 
-                <div class="hero-actions" data-entrance="rise" style="margin-top: 2rem;">
-                    <button id="view-all-button-text" onclick="window.location.href = '/projects/'"
-                        class="button primary"></button>
-                </div>
-
-                <p id="youtube-note" class="projects-footnote" data-entrance="rise"></p>
+                <a class="archive-callout" href="/projects/" data-entrance="rise">
+                    <span class="mono">Full archive</span>
+                    <strong>Browse the full archive</strong>
+                    <span class="archive-link">view all projects ↗</span>
+                </a>
             </div>
         </section>
 
@@ -450,17 +322,34 @@
             </div>
         </section>
 
-        <!-- Contact — the one light band on the page -->
-        <section id="slide-3" class="contact scroll-panel band-invert on-fill scroll-reveal">
+        <!-- Contact -->
+        <section id="contact" class="contact scroll-panel band-invert on-fill scroll-reveal">
             <div class="shell">
-                <span id="contact-label" class="page-eyebrow" data-entrance="rise"></span>
-                <h2 id="contact-title" class="big-title" data-entrance="rise" style="--entrance-delay: 90ms"></h2>
-                <p id="contact-description" class="section-description" data-entrance="rise" style="--entrance-delay: 180ms"></p>
+                <div class="contact-main" data-entrance="rise">
+                    <span id="contact-label" class="page-eyebrow"></span>
+                    <h2 id="contact-title" class="big-title"></h2>
+                    <p id="contact-description" class="section-description"></p>
 
-                <div class="contact-actions" data-entrance="rise" style="--entrance-delay: 270ms">
-                    <button id="hello-button-text" onclick="window.location.href = 'mailto:maploop.val@gmail.com'"
-                        class="button primary"></button>
-                    <a href="/links?a=web" id="socials-link-text" class="pretty-a"></a>
+                    <div class="contact-actions">
+                        <button id="hello-button-text" onclick="window.location.href = 'mailto:maploop.val@gmail.com'"
+                            class="button primary"></button>
+                        <a href="/links?a=web" id="socials-link-text" class="pretty-a"></a>
+                    </div>
+                </div>
+
+                <div class="contact-links" data-entrance="rise" style="--entrance-delay: 180ms">
+                    <div class="contact-link-group">
+                        <span class="contact-link-label">Pages</span>
+                        <a href="#slide-0">Home</a>
+                        <a href="#slide-1">Projects</a>
+                        <a href="#slide-2">Experience</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="contact-link-group">
+                        <span class="contact-link-label">Follow at</span>
+                        <a href="/links?a=web">Socials</a>
+                        <a href="https://github.com/Maploop" target="_blank" rel="noreferrer">GitHub</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -484,8 +373,6 @@
     <script src="./ARCHIVE/script/repo-stats.js"></script>
     <script src="./ARCHIVE/script/main_script.js"></script>
     <script src="./ARCHIVE/script/content-loader.js"></script>
-    <script src="./ARCHIVE/script/hero-ray.js"></script>
-    <script src="./ARCHIVE/script/theme-switcher.js"></script>
 </body>
 
 </html>

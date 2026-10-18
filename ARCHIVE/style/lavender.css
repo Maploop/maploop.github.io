@@ -693,22 +693,6 @@ h1, h2, h3, h4, h5, h6 {
     content: "";
 }
 
-.hero-ray-label {
-    position: absolute;
-    right: .6rem;
-    bottom: .5rem;
-    color: var(--c-fg-dim);
-    font-family: var(--font-mono);
-    font-size: .625rem;
-    font-weight: 600;
-    letter-spacing: .12em;
-    transition: color .15s ease;
-}
-
-.hero-art:hover .hero-ray-label {
-    color: var(--c-signal-text);
-}
-
 @media (min-width: 64rem) {
     .hero-grid {
         grid-template:

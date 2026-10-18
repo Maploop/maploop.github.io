@@ -160,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initSectionEntrances();
 
-    initHeroArtMotion();
     initCareerRuler();
     initScrollProgress();
 
@@ -202,51 +201,6 @@ function initScrollProgress() {
     update();
 }
 
-function initHeroArtMotion() {
-    const art = document.querySelector('.hero-art');
-    if (!art || prefersReducedMotion) return;
-
-    const lamellae = art.querySelector('.art-lamellae');
-
-    function updateScrollShift() {
-        const progress = Math.min(window.scrollY / Math.max(art.offsetHeight, 1), 1);
-        art.style.setProperty('--art-shift', `${(progress * 16).toFixed(2)}px`);
-        lamellae?.style.setProperty('--art-lamellae-y', `${(-progress * 11).toFixed(2)}px`);
-    }
-
-    let pointerFrame = null;
-    let pointer = { x: 0, y: 0 };
-
-    function queuePointerMotion(x, y) {
-        pointer = { x, y };
-        if (pointerFrame !== null) return;
-
-        pointerFrame = requestAnimationFrame(() => {
-            art.style.setProperty('--art-pointer-x', `${(pointer.x * 12).toFixed(2)}px`);
-            art.style.setProperty('--art-pointer-y', `${(pointer.y * 9).toFixed(2)}px`);
-            art.style.setProperty('--art-signal-x', `${(pointer.x * 3).toFixed(2)}px`);
-            art.style.setProperty('--art-signal-y', `${(pointer.y * 4).toFixed(2)}px`);
-            lamellae?.style.setProperty('--art-lamellae-x', `${(pointer.x * -9).toFixed(2)}px`);
-            pointerFrame = null;
-        });
-    }
-
-    art.addEventListener('pointermove', event => {
-        if (event.pointerType === 'touch') return;
-
-        const bounds = art.getBoundingClientRect();
-        const x = Math.max(-1, Math.min(1, ((event.clientX - bounds.left) / bounds.width) * 2 - 1));
-        const y = Math.max(-1, Math.min(1, ((event.clientY - bounds.top) / bounds.height) * 2 - 1));
-        queuePointerMotion(x, y);
-    }, { passive: true });
-
-    art.addEventListener('pointerleave', () => queuePointerMotion(0, 0));
-    art.addEventListener('pointercancel', () => queuePointerMotion(0, 0));
-
-    window.addEventListener('scroll', updateScrollShift, { passive: true });
-    updateScrollShift();
-}
-
 function initCareerRuler() {
     const scale = document.querySelector('.path-scale');
     const needle = scale?.querySelector('.path-scale-needle');
@@ -285,6 +239,8 @@ window.scrollTo({
 document.addEventListener('DOMContentLoaded', () => {
     loadProjectCards();
     loadWorkplaces();
+    initHeroPillMotion();
+    initWorkBubbles();
     initCompanyMarker();
     const navbar = document.querySelector('.navbar');
     const hamburgerMenu = document.querySelector('.hamburger-menu');
@@ -311,8 +267,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.getElementById(targetId);
 
             if (targetElement) {
+                const targetTop = targetElement.getBoundingClientRect().top + window.scrollY -
+                    navbar.offsetHeight - 16;
                 window.scrollTo({
-                    top: targetElement.offsetTop - navbar.offsetHeight,
+                    top: Math.max(0, targetTop),
                     behavior: 'smooth'
                 });
             }
@@ -332,7 +290,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let current = '';
 
         sections.forEach(section => {
-            if (scrollTop >= section.offsetTop - navbar.offsetHeight - 100) {
+            const sectionTop = section.getBoundingClientRect().top + scrollTop;
+            if (scrollTop >= sectionTop - navbar.offsetHeight - 100) {
                 current = section.getAttribute('id');
             }
         });
@@ -349,6 +308,64 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function initHeroPillMotion() {
+    const field = document.querySelector('#slide-0.hero');
+    const rail = field?.querySelector('.hero-pills');
+    const pills = Array.from(rail?.querySelectorAll('.hero-pill') || []);
+
+    if (!field || !rail || !pills.length) return;
+
+    const state = { pointer: null, frame: null };
+
+    const resetMotion = () => {
+        state.pointer = null;
+        pills.forEach(pill => {
+            pill.style.setProperty('--pill-tx', '0px');
+            pill.style.setProperty('--pill-ty', '0px');
+        });
+    };
+
+    const updateMotion = () => {
+        state.frame = null;
+        if (!state.pointer) {
+            resetMotion();
+            return;
+        }
+
+        const reach = Math.min(360, Math.max(240, rail.clientWidth * .42));
+
+        pills.forEach(pill => {
+            const baseX = pill.offsetLeft + pill.offsetWidth / 2;
+            const baseY = pill.offsetTop + pill.offsetHeight / 2;
+            const dx = state.pointer.x - baseX;
+            const dy = state.pointer.y - baseY;
+            const distance = Math.hypot(dx, dy);
+            const influence = Math.max(0, 1 - distance / reach);
+            const offset = Math.min(30, influence * 24);
+            const length = distance || 1;
+
+            pill.style.setProperty('--pill-tx', `${((dx / length) * offset).toFixed(1)}px`);
+            pill.style.setProperty('--pill-ty', `${((dy / length) * offset).toFixed(1)}px`);
+        });
+    };
+
+    const requestMotion = () => {
+        if (state.frame !== null) return;
+        state.frame = requestAnimationFrame(updateMotion);
+    };
+
+    const updatePointer = event => {
+        if (event.pointerType === 'touch') return;
+        const rect = rail.getBoundingClientRect();
+        state.pointer = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+        requestMotion();
+    };
+
+    field.addEventListener('pointerenter', updatePointer);
+    field.addEventListener('pointermove', updatePointer, { passive: true });
+    field.addEventListener('pointerleave', resetMotion);
+}
 
 function loadWorkplaces() {
     const tabs = document.querySelectorAll('.company-tab');
@@ -373,8 +390,209 @@ function loadWorkplaces() {
             tabs.forEach(t => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
 
             moveCompanyMarker();
+            openWorkModal(tab);
         });
     });
+}
+
+let workBubbleState = null;
+
+function initWorkBubbles() {
+    const field = document.querySelector('.company-tabs');
+    const modal = document.querySelector('#work-detail-modal');
+    const container = document.querySelector('#slide-2 .work-container');
+    const tabs = Array.from(document.querySelectorAll('.company-tab'));
+    const closeButton = modal?.querySelector('.work-modal-close');
+
+    if (!field || !modal || !container || !tabs.length) return;
+
+    const state = {
+        field,
+        modal,
+        container,
+        tabs,
+        pointer: null,
+        activeTab: null,
+        modalOpen: false,
+        closing: false,
+        closeTimer: null,
+        frame: null
+    };
+    workBubbleState = state;
+
+    tabs.forEach(tab => {
+        tab.style.left = `${Number(tab.dataset.bubbleX || 50)}%`;
+        tab.style.top = `${Number(tab.dataset.bubbleY || 50)}%`;
+        tab.setAttribute('aria-haspopup', 'dialog');
+    });
+
+    const resetMotion = () => {
+        state.pointer = null;
+        tabs.forEach(tab => {
+            tab.style.setProperty('--bubble-tx', '0px');
+            tab.style.setProperty('--bubble-ty', '0px');
+            tab.style.setProperty('--bubble-rotate', '0deg');
+        });
+    };
+
+    const updateMotion = () => {
+        state.frame = null;
+        if (!state.pointer || state.modalOpen || state.closing) {
+            resetMotion();
+            return;
+        }
+
+        const rect = field.getBoundingClientRect();
+        const reach = Math.min(300, Math.max(220, rect.width * .34));
+
+        tabs.forEach(tab => {
+            const baseX = rect.width * (Number(tab.dataset.bubbleX || 50) / 100);
+            const baseY = rect.height * (Number(tab.dataset.bubbleY || 50) / 100);
+            const dx = state.pointer.x - baseX;
+            const dy = state.pointer.y - baseY;
+            const distance = Math.hypot(dx, dy);
+            const influence = Math.max(0, 1 - distance / reach);
+            const offset = Math.min(52, influence * 42);
+            const length = distance || 1;
+
+            tab.style.setProperty('--bubble-tx', `${((dx / length) * offset).toFixed(1)}px`);
+            tab.style.setProperty('--bubble-ty', `${((dy / length) * offset).toFixed(1)}px`);
+            tab.style.setProperty('--bubble-rotate', `${((dx / length) * influence * 3).toFixed(2)}deg`);
+        });
+    };
+
+    const requestMotion = () => {
+        if (state.frame !== null) return;
+        state.frame = requestAnimationFrame(updateMotion);
+    };
+
+    field.addEventListener('pointerenter', event => {
+        if (state.modalOpen || state.closing || event.pointerType === 'touch') return;
+        const rect = field.getBoundingClientRect();
+        state.pointer = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+        requestMotion();
+    });
+
+    field.addEventListener('pointermove', event => {
+        if (state.modalOpen || state.closing || event.pointerType === 'touch') return;
+        const rect = field.getBoundingClientRect();
+        state.pointer = { x: event.clientX - rect.left, y: event.clientY - rect.top };
+        requestMotion();
+    }, { passive: true });
+
+    field.addEventListener('pointerleave', () => {
+        resetMotion();
+    });
+
+    closeButton?.addEventListener('click', closeWorkModal);
+    document.addEventListener('pointerdown', event => {
+        if (!state.modalOpen) return;
+        if (modal.contains(event.target) || event.target.closest('.company-tab')) return;
+        closeWorkModal();
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && state.modalOpen) closeWorkModal();
+    });
+}
+
+function openWorkModal(tab) {
+    const state = workBubbleState;
+    if (!state) return;
+
+    if (state.closeTimer) {
+        clearTimeout(state.closeTimer);
+        state.closeTimer = null;
+    }
+
+    const target = state.modal.querySelector(`[data-job="${tab.dataset.company}"]`);
+    if (!target) return;
+
+    state.tabs.forEach(item => {
+        const job = state.modal.querySelector(`[data-job="${item.dataset.company}"]`);
+        if (job) job.style.display = item === tab ? 'flex' : 'none';
+    });
+
+    state.activeTab = tab;
+    state.modalOpen = true;
+    state.closing = false;
+    state.field.classList.add('is-paused');
+    state.tabs.forEach(item => {
+        item.style.removeProperty('transition');
+        item.classList.toggle('modal-source', item === tab);
+    });
+    const companyName = tab.querySelector('.tab-name')?.textContent.trim() || tab.dataset.company;
+    const companyRole = tab.querySelector('.tab-role')?.textContent.trim() || 'Work details';
+    state.modal.querySelector('.work-modal-company').textContent = companyName;
+    state.modal.querySelector('.work-modal-role').textContent = companyRole;
+    const bubbleColor = getComputedStyle(tab).getPropertyValue('--bubble-color').trim();
+    state.modal.style.setProperty('--modal-color', bubbleColor || 'var(--accent)');
+    state.modal.classList.remove('is-closing');
+    state.modal.classList.remove('is-open');
+    void state.modal.offsetWidth;
+    state.modal.classList.add('is-open');
+    state.modal.setAttribute('aria-modal', 'true');
+    state.pointer = null;
+    positionWorkModal(tab);
+    state.modal.querySelector('.work-modal-close')?.focus({ preventScroll: true });
+}
+
+function positionWorkModal(tab) {
+    const state = workBubbleState;
+    if (!state || !state.modalOpen) return;
+
+    const containerRect = state.container.getBoundingClientRect();
+    const bubbleRect = tab.getBoundingClientRect();
+    const modalWidth = state.modal.offsetWidth;
+    const modalHeight = state.modal.offsetHeight;
+    const bubbleX = bubbleRect.left - containerRect.left;
+    const bubbleY = bubbleRect.top - containerRect.top;
+    const maxX = Math.max(8, containerRect.width - modalWidth - 8);
+    const maxY = Math.max(8, containerRect.height - modalHeight - 8);
+    const bubbleCenterX = bubbleX + bubbleRect.width / 2;
+    const bubbleCenterY = bubbleY + bubbleRect.height / 2;
+    const left = Math.min(maxX, Math.max(8, bubbleCenterX - modalWidth / 2));
+    const top = Math.min(maxY, Math.max(8, bubbleCenterY - modalHeight / 2));
+    const startScale = Math.min(
+        bubbleRect.width / modalWidth,
+        bubbleRect.height / modalHeight
+    );
+    const startX = bubbleCenterX - left - (modalWidth * startScale) / 2;
+    const startY = bubbleCenterY - top - (modalHeight * startScale) / 2;
+
+    state.modal.style.left = `${left}px`;
+    state.modal.style.top = `${top}px`;
+    state.modal.style.setProperty('--modal-start-x', `${startX}px`);
+    state.modal.style.setProperty('--modal-start-y', `${startY}px`);
+    state.modal.style.setProperty('--modal-start-scale', startScale.toFixed(4));
+}
+
+function closeWorkModal() {
+    const state = workBubbleState;
+    if (!state || (!state.modalOpen && !state.modal.classList.contains('is-open'))) return;
+
+    state.modalOpen = false;
+    state.closing = false;
+    state.modal.classList.remove('is-open', 'is-closing');
+    state.modal.setAttribute('aria-modal', 'false');
+    state.activeTab = null;
+    state.closeTimer = null;
+    state.field.classList.remove('is-paused');
+    state.modal.style.removeProperty('left');
+    state.modal.style.removeProperty('top');
+    state.modal.style.removeProperty('--modal-start-x');
+    state.modal.style.removeProperty('--modal-start-y');
+    state.modal.style.removeProperty('--modal-start-scale');
+    state.modal.style.removeProperty('--modal-color');
+    state.tabs.forEach(item => {
+        item.style.setProperty('transition', 'none');
+        item.classList.remove('modal-source');
+        item.style.setProperty('--bubble-tx', '0px');
+        item.style.setProperty('--bubble-ty', '0px');
+        item.style.setProperty('--bubble-rotate', '0deg');
+    });
+    state.pointer = null;
+    requestAnimationFrame(() => state.tabs.forEach(item => item.style.removeProperty('transition')));
 }
 
 let moveCompanyMarker = () => {};
@@ -449,9 +667,21 @@ function createCardLinks(links) {
     return linkElements.join('');
 }
 
+function dominantLanguage(technologies) {
+    const stack = technologies.map(item => String(item || '').toLowerCase());
+    if (stack.some(item => item.includes('typescript'))) return 'TypeScript';
+    if (stack.some(item => item === 'c++' || item.includes('opengl') || item.includes('vulkan'))) return 'C++';
+    if (stack.some(item => item === 'c')) return 'C';
+    if (stack.some(item => item.includes('java') || item.includes('spring') || item.includes('minecraft') || item.includes('spigot') || item.includes('nms'))) return 'Java';
+    if (stack.some(item => item.includes('python'))) return 'Python';
+    if (stack.some(item => item.includes('javascript') || item.includes('express') || item.includes('node'))) return 'JavaScript';
+    return technologies.find(Boolean) || 'Software';
+}
+
 function projectCardMarkup(project, index) {
     const links = project.links || {};
     const tech = (project.technologies || []).filter(Boolean);
+    const language = dominantLanguage(tech);
     const slug = window.RepoStats?.parseRepo(links.github) || '';
 
     const primary = [links.github, links.external].find(link => link && link !== '#') || '';
@@ -474,14 +704,12 @@ function projectCardMarkup(project, index) {
 
             <div class="card-metrics"
                  data-repo-stats="${attr(slug)}"
-                 data-stat-fallback="stack"
+                 data-stat-fallback="hide"
                  data-stat-compact="true"
                  data-stat-tech="${attr(tech.join(', '))}"></div>
 
             <div class="card-foot">
-                <div class="tech-chips is-compact card-foot-tech">
-                    ${window.RepoStats?.techChips(tech, 3) || ''}
-                </div>
+                <span class="card-language">${attr(language)}</span>
                 <div class="card-links">${createCardLinks(links)}</div>
             </div>
         </article>

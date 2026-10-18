@@ -2,43 +2,23 @@
 <page-content>
 
   <navbar>
-    <nav-logo-link><![CDATA[🌸 Maploop]]></nav-logo-link>
-
     <nav-links>
-      <navlink-0><![CDATA[<span class="section-nav-num" style="color: var(--signature-purple)">01.</span> About Me]]></navlink-0>
-      <navlink-1><![CDATA[<span class="section-nav-num" style="color: var(--signature-purple)">02.</span> Experience]]></navlink-1>
-      <navlink-2><![CDATA[<span class="section-nav-num" style="color: var(--signature-purple)">03.</span> Work]]></navlink-2>
-      <navlink-3><![CDATA[<span class="section-nav-num" style="color: var(--signature-purple)">04.</span> Contact]]></navlink-3>
-      <navlink-resume><![CDATA[Resume]]></navlink-resume>
+      <navlink-0><![CDATA[About]]></navlink-0>
+      <navlink-1><![CDATA[Work]]></navlink-1>
+      <navlink-2><![CDATA[Projects]]></navlink-2>
+      <navlink-3><![CDATA[Contact]]></navlink-3>
     </nav-links>
   </navbar>
 
 
   <about-section>
 
-    <about-section-label><![CDATA[Profile]]></about-section-label>
-    <about-section-slug><![CDATA[Origin · Stack · Tools]]></about-section-slug>
-
-    <about-section-title><![CDATA[<span class="section-num">01.</span> About Me]]></about-section-title>
-
     <about-intro><![CDATA[
-      Hi, my name is <a class="pretty-a" href="#" style="font-family: Minecraft; font-size: 24px">Maploop</a><br>
-      ...and I enjoy creating things that live on the internet. <br> <br>
-      I have extensive experience with Minecraft development and building large-scale multiplayer experiences, including an open source Hypixel SkyBlock recreation that has gained hundreds of stars on GitHub.
-      <br> <br>
-      My journey in software development began back in late 2019, when I decided I wanted to make my own Minecraft plugin for the first time. Since then, I've had the opportunity to
-      <a href="https://discord.gg/atlasmc" class="pretty-a">manage my own dev team of over 10</a>, <br>
-      <a href="https://trexmine.com" class="pretty-a">work for the largest Minecraft server in Iran</a>, <br>
-      <a href="https://github.com/maploop" class="pretty-a">deliver over 50 freelance projects</a> and <br>
-      <a href="https://discord.gg/atlasmc" class="pretty-a">Lead the largest community-driven re-creation of Hypixel SkyBlock at Atlas Network</a>. <br>
+      My interest in software began back in late 2019, I was eager to make my own minigames for Minecraft.
       <br>
-      I have also recently worked on a variety of <a class="pretty-a" href="#slide-1">Open Source Projects</a>.
-      <br>
-      <br>
-      <button onclick="window.open('https://github.com/Maploop')" class="cool-btn">Visit my GitHub</button>
+      Since then, I've had the opportunity to <a href="https://trexmine.com">work with the largest Minecraft server in Iran</a>,
+      <a href="">manage my own dev team of 8</a>, and work on a multitude of open source projects.
     ]]></about-intro>
-
-    <about-tech-intro><![CDATA[My self-proclaimed tech stack:]]></about-tech-intro>
 
   </about-section>
 
@@ -126,18 +106,17 @@
 
   <projects-section>
 
-    <projects-section-label><![CDATA[Selected work]]></projects-section-label>
-    <projects-section-slug><![CDATA[Featured · 02 plates]]></projects-section-slug>
+    <projects-section-label><![CDATA[Project hall of fame]]></projects-section-label>
+    <projects-section-slug><![CDATA[Selected builds · 02 entries]]></projects-section-slug>
 
-    <projects-section-title><![CDATA[<span class="section-num">03.</span> Some Things I've Built]]></projects-section-title>
+    <projects-section-title><![CDATA[<span class="section-num">03.</span> Work worth remembering]]></projects-section-title>
 
     <project-1>
       <project1-label><![CDATA[Featured Project]]></project1-label>
       <project1-title><![CDATA[SkyBlock Recreation]]></project1-title>
       <project1-description><![CDATA[
-        The best commercial Hypixel SkyBlock Sandbox / Recreation currently available. Contains
-        Gemstones, 70% of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests,
-        Islands, Bazaar and just about everything else!
+        A community-driven Hypixel SkyBlock recreation built on Minestom. I lead the team and
+        maintain the systems behind islands, quests, guilds, economy, shops, and the wider multiplayer world.
       ]]></project1-description>
       <project1-tech><![CDATA[
         <span class="tech-item">Minestom</span>
@@ -151,9 +130,8 @@
       <project2-label><![CDATA[Featured Project]]></project2-label>
       <project2-title><![CDATA[EFlame Engine]]></project2-title>
       <project2-description><![CDATA[
-        A simple yet scalable game engine using OpenGL which I am developping foundational framework, with the
-        primary goal of using it to practice and experiment with various concepts in computer
-        physics and real-time simulations.
+        A small, focused C++ and OpenGL engine for exploring real-time rendering, computer physics,
+        and simulation. It is a living laboratory for the foundations behind interactive worlds.
       ]]></project2-description>
       <project2-tech><![CDATA[
         <span class="tech-item">OpenGL 4.5</span>
@@ -164,14 +142,10 @@
     </project-2>
 
     <other-projects>
-      <other-projects-label><![CDATA[Archive sample]]></other-projects-label>
-      <other-projects-title><![CDATA[Other Noteworthy Projects]]></other-projects-title>
-      <archive-link-text><![CDATA[view the archive]]></archive-link-text>
-      <projects-loading-text><![CDATA[Loading projects...]]></projects-loading-text>
-      <view-all-button-text><![CDATA[View All Projects]]></view-all-button-text>
+      <other-projects-label><![CDATA[Hall of fame · six more builds]]></other-projects-label>
+      <other-projects-title><![CDATA[Small projects, lasting fingerprints]]></other-projects-title>
+      <archive-link-text><![CDATA[view the archive ↗]]></archive-link-text>
     </other-projects>
-
-    <youtube-note><![CDATA[Showcases of my work in Atlas Network can be found on my <a class="pretty-a" href="https://www.youtube.com/@Jinx_Luvr"> YouTube</a>.]]></youtube-note>
 
   </projects-section>
 
