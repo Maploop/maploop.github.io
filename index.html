@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="is-loading">
 
 <head>
     <meta name="p:domain_verify" content="0a86a24be406cb20b993f5fbc41aaf97" />
@@ -17,11 +17,23 @@
         rel="stylesheet">
     <link rel="stylesheet" href="ARCHIVE/style/lavender.css">
     <link rel="stylesheet" href="ARCHIVE/style/minimal.css">
+    <link rel="stylesheet" href="ARCHIVE/style/other/loading-screen.css">
 </head>
 
 <body>
+    <div id="page-loader" class="page-loader" role="status" aria-label="Loading page content">
+        <svg class="loader-mark" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+            <path class="loader-hex-track" d="M60 5 108 32.5V87.5L60 115 12 87.5V32.5Z" />
+            <path class="loader-hex-progress" pathLength="1" d="M60 5 108 32.5V87.5L60 115 12 87.5V32.5Z" />
+            <path class="loader-letter" d="M43 74V46L60 64 77 46V74" />
+        </svg>
+    </div>
+    <noscript>
+        <style>#page-loader { display: none; } html.is-loading { overflow: auto; }</style>
+        <p>This portfolio needs JavaScript to load its content.</p>
+    </noscript>
+    <div id="site-content" inert aria-hidden="true" aria-busy="true">
     <p id="content-status" class="content-status" role="status">Loading content…</p>
-    <noscript><p>This portfolio needs JavaScript to load its content.</p></noscript>
     <!-- Header -->
     <nav class="navbar">
         <div class="navbar-container">
@@ -226,7 +238,9 @@
             </div>
         </div>
     </footer>
+    </div>
 
+    <script src="./ARCHIVE/script/other/loading.js"></script>
     <script src="./ARCHIVE/script/repo-stats.js"></script>
     <script src="./ARCHIVE/script/main_script.js"></script>
     <script type="module" src="./ARCHIVE/script/content-loader.js"></script>

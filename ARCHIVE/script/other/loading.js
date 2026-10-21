@@ -1,64 +1,49 @@
-function createParticles() {
-    const particlesContainer = document.getElementById('particles');
-    const particleCount = 20;
-    
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 6 + 's';
-        particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
-        particlesContainer.appendChild(particle);
-    }
-}
+(() => {
+    'use strict';
 
-// Animate percentage counter
-function animatePercentage() {
-    const percentageElement = document.getElementById('percentage');
-    const loadingContainer = document.getElementById('loadingContainer');
-    const loadingOverlay = document.querySelector('.loading-overlay');
-    const mainContent = document.getElementById('mainContent');
-    let currentPercentage = 0;
-    
-    const interval = setInterval(() => {
-        currentPercentage += Math.floor(Math.random() * 3) + 1;
-        
-        if (currentPercentage >= 100) {
-            currentPercentage = 100;
-            clearInterval(interval);
-            
-            // Start fade out sequence
-            setTimeout(() => {
-                // First fade out loading elements
-                loadingContainer.classList.add('fade-out');
-                
-                // Then fade out the entire overlay
-                setTimeout(() => {
-                    loadingOverlay.style.opacity = '0';
-                    
-                    // Show main content
-                    setTimeout(() => {
-                        mainContent.classList.add('show');
-                        
-                        // Reset for demo purposes after 3 seconds
-                        setTimeout(() => {
-                            loadingOverlay.style.opacity = '1';
-                            loadingContainer.classList.remove('fade-out');
-                            mainContent.classList.remove('show');
-                            currentPercentage = 0;
-                            animatePercentage();
-                        }, 3000);
-                    }, 200);
-                }, 500);
-            }, 500);
-        }
-        
-        percentageElement.textContent = currentPercentage + '%';
-    }, 50);
-}
+    const overlay = document.getElementById('page-loader');
+    const content = document.getElementById('site-content');
+    const progress = overlay.querySelector('.loader-hex-progress');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Initialize loading screen
-document.addEventListener('DOMContentLoaded', function() {
-    createParticles();
-    animatePercentage();
-});
+    const contentReady = new Promise(resolve => {
+        const settle = () => {
+            document.removeEventListener('content:loaded', settle);
+            document.removeEventListener('content:error', settle);
+            resolve();
+        };
+        document.addEventListener('content:loaded', settle);
+        // Reveal the existing error message if loading fails instead of trapping visitors.
+        document.addEventListener('content:error', settle);
+    });
+
+    const minimumDuration = new Promise(resolve => {
+        // Start at the first painted frame, so time spent downloading scripts
+        // never shortens the visible one-second loading screen.
+        requestAnimationFrame(() => {
+            if (reducedMotion) {
+                progress.style.strokeDashoffset = '0';
+            } else {
+                progress.animate(
+                    [{ strokeDashoffset: '1' }, { strokeDashoffset: '0' }],
+                    { duration: 1000, easing: 'linear', fill: 'forwards' }
+                );
+            }
+            setTimeout(resolve, 1000);
+        });
+    });
+
+    Promise.all([minimumDuration, contentReady]).then(async () => {
+        // A slow locale leaves the completed hexagon in place until it is ready.
+        await overlay.animate([{ opacity: 1 }, { opacity: 0 }], {
+            duration: reducedMotion ? 0 : 280,
+            easing: 'ease-out',
+            fill: 'forwards'
+        }).finished;
+        overlay.remove();
+        content.inert = false;
+        content.removeAttribute('aria-hidden');
+        content.removeAttribute('aria-busy');
+        document.documentElement.classList.remove('is-loading');
+    });
+})();
