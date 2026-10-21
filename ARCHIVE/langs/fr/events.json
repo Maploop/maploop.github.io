@@ -1,0 +1,35 @@
+{
+  "heading": {
+    "number": "04",
+    "label": "Appearances",
+    "title": "Events I've Been a Part Of"
+  },
+  "labels": {
+    "summary": "Competitions",
+    "entry": "entry",
+    "entries": "entries",
+    "empty": "No events yet."
+  },
+  "items": [
+    {
+      "id": "space-2025",
+      "organization": "Sajjad University · National · 6th edition",
+      "title": "SPACE National Student Programming Competition",
+      "date": "November 2025",
+      "achievements": [
+        "Took part in the 6th SPACE national student programming competition at Sajjad University",
+        "Solved algorithmic questions as part of a team",
+        "Came out 7th between 43 other competing teams from all over Iran"
+      ],
+      "technologies": [
+        "Algorithms",
+        "Problem solving",
+        "Teamwork"
+      ],
+      "result": {
+        "value": "7th",
+        "label": "of 44 teams nationwide"
+      }
+    }
+  ]
+}

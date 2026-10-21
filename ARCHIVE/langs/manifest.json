@@ -1,0 +1,26 @@
+{
+  "default": "en",
+  "locales": {
+    "en": {
+      "name": "English",
+      "dir": "ltr",
+      "modules": {
+        "page": "en/page.json",
+        "experience": "en/experience.json",
+        "projects": "en/projects.json",
+        "events": "en/events.json"
+      }
+    },
+    "fr": {
+      "name": "Français",
+      "dir": "ltr",
+      "status": "Translation incomplete",
+      "modules": {
+        "page": "fr/page.json",
+        "experience": "fr/experience.json",
+        "projects": "fr/projects.json",
+        "events": "fr/events.json"
+      }
+    }
+  }
+}

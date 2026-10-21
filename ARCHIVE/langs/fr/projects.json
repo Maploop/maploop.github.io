@@ -1,0 +1,74 @@
+{
+  "heading": {
+    "number": "03",
+    "label": "Selected work",
+    "title": "Some Things I've Built"
+  },
+  "labels": {
+    "summary": "Selected builds",
+    "entry": "entry",
+    "entries": "entries",
+    "featured": "Featured",
+    "empty": "No featured projects yet."
+  },
+  "items": [
+    {
+      "id": "skyblock",
+      "label": "Featured Project",
+      "title": "SkyBlock Recreation",
+      "description": "The best commercial Hypixel SkyBlock Sandbox / Recreation currently available. Contains Gemstones, 70% of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests, Islands, Bazaar and just about everything else!",
+      "technologies": [
+        "Paper Software",
+        "Redis",
+        "MongoDB",
+        "Java",
+        "Cloudflare"
+      ],
+      "image": {
+        "src": "/ARCHIVE/image/atlas_network.png",
+        "alt": "SkyBlock recreation"
+      },
+      "language": "Java",
+      "repo": "Swofty-Developments/HypixelSkyBlock",
+      "accent": "#c09cff",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Swofty-Developments/HypixelSkyBlock",
+          "icon": "github"
+        },
+        {
+          "label": "External link",
+          "url": "https://discord.gg/mJDvBEkqpg",
+          "icon": "external"
+        }
+      ]
+    },
+    {
+      "id": "eflame",
+      "label": "Featured Project",
+      "title": "EFlame Engine",
+      "description": "A simple yet scalable game engine using OpenGL which I am developping foundational framework, with the primary goal of using it to practice and experiment with various concepts in computer physics and real-time simulations.",
+      "technologies": [
+        "OpenGL 4.5",
+        "PhysX",
+        "C++",
+        "GLSL"
+      ],
+      "image": {
+        "src": "/ARCHIVE/image/eflame_engine.png",
+        "alt": "EFlame engine"
+      },
+      "language": "C++",
+      "repo": "Maploop/EFlame",
+      "accent": "#71e3f2",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Maploop/EFlame",
+          "icon": "github"
+        }
+      ]
+    }
+  ]
+}

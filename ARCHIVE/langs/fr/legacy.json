@@ -1,0 +1,53 @@
+{
+  "navbar": {
+    "nav-logo-link": "🌸 Maploop",
+    "navlink-resume": "Resume"
+  },
+  "hero-section": {
+    "hero-eyebrow": "Developer · since 2019",
+    "hero-title": "i build things that live on the internet",
+    "hero-description": "Minecraft infrastructure, game engines and the occasional experiment. Read the work, dig through\n      the archive, or drop me a line! My inbox is always open.",
+    "hero-button-work": "Browse work <span aria-hidden=\"true\">→</span>",
+    "hero-button-archive": "Project archive <span aria-hidden=\"true\">→</span>",
+    "hero-button-github": "GitHub <span aria-hidden=\"true\">↗</span>"
+  },
+  "about-section": {
+    "about-section-label": "Profile",
+    "about-section-slug": "Origin · Stack · Tools",
+    "about-section-title": "<span class=\"section-num\">01.</span> About Me",
+    "about-tech-intro": "My self-proclaimed tech stack:"
+  },
+  "projects-section": {
+    "projects-loading-text": "Loading projects...",
+    "view-all-button-text": "View All Projects",
+    "cards-empty-text": "No projects found.",
+    "cards-error-text": "Error loading projects. Please try again later.",
+    "cards-no-description-text": "No description available.",
+    "youtube-note": "Showcases of my work in Atlas Network can be found on my <a class=\"pretty-a\" href=\"https://www.youtube.com/@Jinx_Luvr\"> YouTube</a>."
+  },
+  "projects-page": {
+    "archive-eyebrow": "Registry",
+    "archive-title": "project archive",
+    "archive-description": "Everything worth keeping — servers, engines, libraries and experiments, oldest ideas to newest.\n      Filter by name, tech or the place it was built.",
+    "archive-count-label": "projects",
+    "archive-back-link": "← back home",
+    "archive-search": {
+      "attribute": "placeholder",
+      "value": "Search projects, tech, companies…"
+    },
+    "sort-year-desc": "Newest first",
+    "sort-year-asc": "Oldest first",
+    "sort-title-asc": "A – Z",
+    "sort-title-desc": "Z – A",
+    "th-year": "Year",
+    "th-title": "Title",
+    "th-company": "Made at",
+    "th-tech": "Built with",
+    "th-links": "Links",
+    "table-loading-text": "Loading projects…",
+    "table-empty-text": "No projects found.",
+    "table-no-match-text": "No projects match that search.",
+    "table-error-text": "Error loading projects. Please try again later.",
+    "table-no-results-range": "no results"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "text": {
+    "navlink-0": "About",
+    "navlink-1": "Work",
+    "navlink-2": "Projects",
+    "navlink-3": "Contact",
+    "other-projects-label": "Hall of fame · six more builds",
+    "other-projects-title": "Small projects, lasting fingerprints",
+    "archive-link-text": "view the archive ↗",
+    "contact-label": "05. What's Next?",
+    "contact-title": "Get In Touch",
+    "hello-button-text": "Say Hello 👋",
+    "socials-link-text": "view all socials",
+    "footer-text": "© 2026 ♡ Built with love by Maploop"
+  },
+  "html": {
+    "about-intro": "My interest in software began back in late 2019, I was eager to make my own minigames for Minecraft.\n      <br>\n      Since then, I've had the opportunity to <a href=\"https://trexmine.com\">work with the largest Minecraft server in Iran</a>,\n      <a href=\"\">manage my own dev team of 8</a>, and work on a multitude of open source projects.",
+    "contact-description": "Whether it's for an opportunity, a question, or a freelance request, my inbox is always open. <br>Even if you just want to say hi, I’ll try my best to get back to you!"
+  },
+  "attributes": {}
+}

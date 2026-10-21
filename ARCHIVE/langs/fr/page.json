@@ -1,0 +1,21 @@
+{
+  "text": {
+    "other-projects-label": "Archive sample",
+    "other-projects-title": "Other Noteworthy Projects",
+    "archive-link-text": "view the archive",
+    "contact-label": "05. What's Next?",
+    "contact-title": "Get In Touch",
+    "hello-button-text": "Say Hello 👋",
+    "socials-link-text": "view all socials",
+    "footer-text": "© 2026 ♡ Built with love by Maploop"
+  },
+  "html": {
+    "navlink-0": "<span class=\"section-nav-num\" style=\"color: var(--signature-purple)\">01.</span> About Me",
+    "navlink-1": "<span class=\"section-nav-num\" style=\"color: var(--signature-purple)\">02.</span> Experience",
+    "navlink-2": "<span class=\"section-nav-num\" style=\"color: var(--signature-purple)\">03.</span> Work",
+    "navlink-3": "<span class=\"section-nav-num\" style=\"color: var(--signature-purple)\">04.</span> Contact",
+    "about-intro": "Hi, my name is <a class=\"pretty-a\" href=\"#\" style=\"font-family: Minecraft; font-size: 24px\">Maploop</a><br>\n      ...and I enjoy creating things that live on the internet. <br> <br>\n      I have extensive experience with Minecraft development and building large-scale multiplayer experiences, including an open source Hypixel SkyBlock recreation that has gained hundreds of stars on GitHub.\n      <br> <br>\n      My journey in software development began back in late 2019, when I decided I wanted to make my own Minecraft plugin for the first time. Since then, I've had the opportunity to\n      <a href=\"https://discord.gg/atlasmc\" class=\"pretty-a\">manage my own dev team of over 10</a>, <br>\n      <a href=\"https://trexmine.com\" class=\"pretty-a\">work for the largest Minecraft server in Iran</a>, <br>\n      <a href=\"https://github.com/maploop\" class=\"pretty-a\">deliver over 50 freelance projects</a> and <br>\n      <a href=\"https://discord.gg/atlasmc\" class=\"pretty-a\">Lead the largest community-driven re-creation of Hypixel SkyBlock at Atlas Network</a>. <br>\n      <br>\n      I have also recently worked on a variety of <a class=\"pretty-a\" href=\"#slide-1\">Open Source Projects</a>.\n      <br>\n      <br>\n      <button onclick=\"window.open('https://github.com/Maploop')\" class=\"cool-btn mt-[23px]\">Visit my GitHub</button>",
+    "contact-description": "Whether it's for an opportunity, a question, or a freelance request, my inbox is always open. <br>Even if you just want to say hi, I’ll try my best to get back to you!"
+  },
+  "attributes": {}
+}

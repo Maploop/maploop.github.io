@@ -1414,10 +1414,6 @@ body::after {
     pointer-events: none;
 }
 
-#slide-2 .company-tab[data-company="atlas"] { --bubble-color: #b99aff; }
-#slide-2 .company-tab[data-company="lunamc"] { --bubble-color: #9b76e8; }
-#slide-2 .company-tab[data-company="trexmine"] { --bubble-color: #c9a9ff; }
-#slide-2 .company-tab[data-company="mineheaven"] { --bubble-color: #8059ce; color: #f8f4ff; }
 
 #slide-2 .company-tab::before {
     display: none;
@@ -1430,10 +1426,6 @@ body::after {
     box-shadow: 0 1.2rem 2.5rem color-mix(in srgb, var(--bubble-color) 42%, transparent), inset 0 1px 0 rgba(255, 255, 255, .4);
 }
 
-#slide-2 .company-tab[data-company="mineheaven"]:hover,
-#slide-2 .company-tab[data-company="mineheaven"]:focus-visible {
-    color: #f8f4ff;
-}
 
 #slide-2 .company-tab.active {
     color: #17121f;
@@ -2492,3 +2484,20 @@ body::before {
         opacity: .5;
     }
 }
+
+/* JSON content status stays visible even if a module fails to load. */
+.content-status {
+    position: fixed;
+    z-index: 1000;
+    inset: auto 1rem 1rem;
+    width: fit-content;
+    max-width: calc(100% - 2rem);
+    margin: 0 auto;
+    padding: .8rem 1rem;
+    border: 1px solid var(--c-fg-dim);
+    border-radius: .5rem;
+    background: var(--c-bg, #0b0b0c);
+    color: var(--c-fg, #f4f1fa);
+}
+
+#company-details { width: 100%; }

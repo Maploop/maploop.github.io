@@ -336,7 +336,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initSectionEntrances();
 
-    initCareerRuler();
     initScrollProgress();
 
     const backToTopBtn = document.querySelector('.back-to-top');
@@ -414,10 +413,7 @@ window.scrollTo({
 
 document.addEventListener('DOMContentLoaded', () => {
     loadProjectCards();
-    loadWorkplaces();
     initHeroPillMotion();
-    initWorkBubbles();
-    initCompanyMarker();
     const navbar = document.querySelector('.navbar');
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const navItems = document.querySelectorAll('.nav-item');
@@ -563,9 +559,6 @@ function loadWorkplaces() {
                 targetJob.style.display = 'flex';
             }
 
-            tabs.forEach(t => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
-
-            moveCompanyMarker();
             openWorkModal(tab);
         });
     });
@@ -596,11 +589,27 @@ function initWorkBubbles() {
     };
     workBubbleState = state;
 
-    tabs.forEach(tab => {
-        tab.style.left = `${Number(tab.dataset.bubbleX || 50)}%`;
-        tab.style.top = `${Number(tab.dataset.bubbleY || 50)}%`;
-        tab.setAttribute('aria-haspopup', 'dialog');
-    });
+    // Grow the field with the collection; no company-specific coordinates.
+    const layout = () => {
+        const columns = Math.max(1, Math.min(tabs.length, Math.floor(field.clientWidth / 200)));
+        const rows = Math.ceil(tabs.length / columns);
+        const rail = field.closest('.company-rail');
+        rail.style.minHeight = `${Math.max(480, rows * 210 + 128)}px`;
+        container.style.minHeight = rail.style.minHeight;
+        tabs.forEach((tab, index) => {
+            const row = Math.floor(index / columns);
+            const rowCount = Math.min(columns, tabs.length - row * columns);
+            const x = (index % columns + 0.5) * 100 / rowCount;
+            const y = (row + 0.5) * 100 / rows;
+            tab.dataset.bubbleX = x;
+            tab.dataset.bubbleY = y;
+            tab.style.left = `${x}%`;
+            tab.style.top = `${y}%`;
+        });
+        if (state.modalOpen) positionWorkModal(state.activeTab);
+    };
+    layout();
+    window.addEventListener('resize', layout);
 
     const resetMotion = () => {
         state.pointer = null;
@@ -687,6 +696,7 @@ function openWorkModal(tab) {
     state.tabs.forEach(item => {
         const job = state.modal.querySelector(`[data-job="${item.dataset.company}"]`);
         if (job) job.style.display = item === tab ? 'flex' : 'none';
+        item.setAttribute('aria-expanded', item === tab ? 'true' : 'false');
     });
 
     state.activeTab = tab;
@@ -756,6 +766,7 @@ function closeWorkModal() {
     state.closing = false;
     state.modal.classList.remove('is-open', 'is-closing');
     state.modal.setAttribute('aria-modal', 'false');
+    const activeTab = state.activeTab;
     state.activeTab = null;
     state.closeTimer = null;
     state.field.classList.remove('is-paused');
@@ -771,6 +782,7 @@ function closeWorkModal() {
     state.modal.style.removeProperty('--modal-cap-start-scale');
     state.modal.style.removeProperty('--modal-color');
     state.tabs.forEach(item => {
+        item.setAttribute('aria-expanded', 'false');
         item.style.setProperty('transition', 'none');
         item.classList.remove('modal-source');
         item.style.setProperty('--bubble-tx', '0px');
@@ -778,50 +790,16 @@ function closeWorkModal() {
         item.style.setProperty('--bubble-rotate', '0deg');
     });
     state.pointer = null;
+    activeTab?.focus({ preventScroll: true });
     requestAnimationFrame(() => state.tabs.forEach(item => item.style.removeProperty('transition')));
 }
 
-let moveCompanyMarker = () => {};
-
-function initCompanyMarker() {
-    const rail = document.querySelector('.company-tabs');
-    const marker = rail?.querySelector('.tab-marker');
-    if (!rail || !marker) return;
-
-    moveCompanyMarker = () => {
-        const active = rail.querySelector('.company-tab.active');
-        if (!active) return;
-
-        marker.style.width = `${active.offsetWidth}px`;
-        marker.style.height = `${active.offsetHeight}px`;
-        marker.style.transform = `translate(${active.offsetLeft}px, ${active.offsetTop}px)`;
-        marker.classList.add('is-ready');
-    };
-
-    moveCompanyMarker();
-
-    if (typeof ResizeObserver === 'function') {
-        new ResizeObserver(() => moveCompanyMarker()).observe(rail);
-    }
-    window.addEventListener('resize', moveCompanyMarker);
-    document.fonts?.ready.then(moveCompanyMarker);
-}
-
-function decorateWorkplaces() {
-    document.querySelectorAll('.job-date').forEach(date => {
-        date.classList.toggle('is-current', /present/i.test(date.textContent));
-    });
-
-    document.querySelectorAll('.job-description').forEach(list => {
-        if (!list.querySelector('li')) {
-            list.innerHTML = '<li class="job-placeholder">Write-up in progress.</li>';
-        }
-    });
-
-    moveCompanyMarker();
-}
-
-document.addEventListener('content:loaded', decorateWorkplaces);
+document.addEventListener('content:loaded', () => {
+    loadWorkplaces();
+    initWorkBubbles();
+    initCareerRuler();
+    document.querySelectorAll('[data-entrance]').forEach(stageEntrance);
+}, { once: true });
 
 const cardAccents = ['#b99aff', '#71e3f2', '#ff9c9c', '#88e4bd', '#f4c76d', '#c09cff'];
 

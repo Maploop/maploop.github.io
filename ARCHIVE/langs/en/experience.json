@@ -1,0 +1,108 @@
+{
+  "heading": {
+    "number": "02",
+    "label": "Employment record",
+    "title": "Where I've Worked"
+  },
+  "labels": {
+    "companies": "Companies",
+    "since": "Since",
+    "timeline": "Timeline",
+    "present": "Present",
+    "now": "Now",
+    "entry": "entry",
+    "entries": "entries",
+    "empty": "No employment entries yet.",
+    "placeholder": "Write-up in progress.",
+    "details": "Work details",
+    "close": "Close work details"
+  },
+  "companies": [
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "company": "Swofty Developments (formerly Atlas)",
+      "url": "https://discord.gg/mJDvBEkqpg",
+      "role": "Lead Maintainer",
+      "meta": "Open source · Team of ~8",
+      "start": "2020-02",
+      "end": null,
+      "date": "February 2020 - Present",
+      "achievements": [
+        "Communicated and managed a developer team of ~8",
+        "Wrote modern, performant, maintainable code for internal projects",
+        "Founded and contribute extensively to the largest community driven re-creation of Hypixel SkyBlock",
+        "Contributed extensively to AtlasRedisAPI, a Java library aimed to make utilizing Redis messaging systems easier"
+      ],
+      "technologies": [
+        "Java",
+        "Minestom",
+        "Velocity",
+        "Redis",
+        "MongoDB"
+      ]
+    },
+    {
+      "id": "lunamc",
+      "name": "LunaMC",
+      "company": "LunaMC",
+      "url": "https://lunamc.ir",
+      "role": "Lead Developer",
+      "meta": "Enterprise Build",
+      "start": "2025-08",
+      "end": null,
+      "date": "August 2025 - Present",
+      "achievements": [
+        "Was solely responsible for the design, development, and implementation of the entire project adhering to professional industry standards.",
+        "Developped performant, and scalable products optimized for large player bases",
+        "Worked with a variety of different frameworks and content management systems such as Redis, MongoDB, Spring, NMS, etc."
+      ],
+      "technologies": [
+        "Java",
+        "Spring",
+        "NMS",
+        "Redis",
+        "MongoDB"
+      ]
+    },
+    {
+      "id": "trexmine",
+      "name": "TrexMine",
+      "company": "TrexMine",
+      "url": "https://trexmine.com",
+      "role": "Developer",
+      "meta": "Team of 10+ · Gameplay systems",
+      "start": "2020-07",
+      "end": "2021-05",
+      "date": "July 2020 - May 2021",
+      "achievements": [
+        "Collaborated effectively within a team of over 10 skilled professionals.",
+        "Contributed to the project's internal \"Nick System\""
+      ],
+      "technologies": [
+        "Java",
+        "Spigot",
+        "NMS"
+      ]
+    },
+    {
+      "id": "mineheaven",
+      "name": "MineHeaven",
+      "company": "MineHeaven",
+      "url": "https://mineheaven.com",
+      "role": "Developer",
+      "meta": "Infrastructure · Internal tooling",
+      "start": "2026-05",
+      "end": "2026-08",
+      "date": "May 2026 - August 2026",
+      "achievements": [
+        "Develop and maintain the internal Redis framework"
+      ],
+      "technologies": [
+        "Java",
+        "Redis",
+        "Spigot"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "heading": {
+    "number": "03",
+    "label": "Project hall of fame",
+    "title": "Work worth remembering"
+  },
+  "labels": {
+    "summary": "Selected builds",
+    "entry": "entry",
+    "entries": "entries",
+    "featured": "Featured",
+    "empty": "No featured projects yet."
+  },
+  "items": [
+    {
+      "id": "skyblock",
+      "label": "Featured Project",
+      "title": "SkyBlock Recreation",
+      "description": "A community-driven Hypixel SkyBlock recreation built on Minestom. I lead the team and maintain the systems behind islands, quests, guilds, economy, shops, and the wider multiplayer world.",
+      "technologies": [
+        "Minestom",
+        "Redis",
+        "MongoDB",
+        "Java"
+      ],
+      "image": {
+        "src": "/ARCHIVE/image/atlas_network.png",
+        "alt": "SkyBlock recreation"
+      },
+      "language": "Java",
+      "repo": "Swofty-Developments/HypixelSkyBlock",
+      "accent": "#c09cff",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Swofty-Developments/HypixelSkyBlock",
+          "icon": "github"
+        },
+        {
+          "label": "External link",
+          "url": "https://discord.gg/mJDvBEkqpg",
+          "icon": "external"
+        }
+      ]
+    },
+    {
+      "id": "eflame",
+      "label": "Featured Project",
+      "title": "EFlame Engine",
+      "description": "A small, focused C++ and OpenGL engine for exploring real-time rendering, computer physics, and simulation. It is a living laboratory for the foundations behind interactive worlds.",
+      "technologies": [
+        "OpenGL 4.5",
+        "PhysX",
+        "C++",
+        "GLSL"
+      ],
+      "image": {
+        "src": "/ARCHIVE/image/eflame_engine.png",
+        "alt": "EFlame engine"
+      },
+      "language": "C++",
+      "repo": "Maploop/EFlame",
+      "accent": "#71e3f2",
+      "links": [
+        {
+          "label": "GitHub",
+          "url": "https://github.com/Maploop/EFlame",
+          "icon": "github"
+        }
+      ]
+    }
+  ]
+}
