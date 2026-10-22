@@ -75,6 +75,11 @@ export function validateContent(data) {
     entries(data.projects.items, 'projects.items', (item, path) => {
         fields(item, ['label', 'title', 'description', 'language'], path);
         fields(item.image, ['src', 'alt'], `${path}.image`);
+        if (item.image.caption !== undefined) string(item.image.caption, `${path}.image.caption`);
+        if (item.facts !== undefined) {
+            check(Array.isArray(item.facts), `${path}.facts`, 'an array');
+            item.facts.forEach((fact, i) => fields(fact, ['label', 'value'], `${path}.facts[${i}]`));
+        }
         url(item.image.src, `${path}.image.src`);
         if (item.repo !== undefined) string(item.repo, `${path}.repo`);
         if (item.accent !== undefined) check(/^#[0-9a-f]{6}$/i.test(item.accent), `${path}.accent`, 'a six-digit hex color');

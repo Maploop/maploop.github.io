@@ -14,9 +14,9 @@
   "items": [
     {
       "id": "skyblock",
-      "label": "Featured Project",
+      "label": "",
       "title": "SkyBlock Recreation",
-      "description": "A community-driven Hypixel SkyBlock recreation built on Minestom. I lead the team and maintain the systems behind islands, quests, guilds, economy, shops, and the wider multiplayer world.",
+      "description": "A community-driven Hypixel SkyBlock recreation built on Minestom. Containing 10+ independant micro-services for managing the API, Auction House, Bazaar, Item Tracker, etc.",
       "technologies": [
         "Minestom",
         "Redis",
@@ -32,12 +32,12 @@
       "accent": "#c09cff",
       "links": [
         {
-          "label": "GitHub",
+          "label": "View source",
           "url": "https://github.com/Swofty-Developments/HypixelSkyBlock",
           "icon": "github"
         },
         {
-          "label": "External link",
+          "label": "Join the community",
           "url": "https://discord.gg/mJDvBEkqpg",
           "icon": "external"
         }
@@ -45,9 +45,9 @@
     },
     {
       "id": "eflame",
-      "label": "Featured Project",
+      "label": "",
       "title": "EFlame Engine",
-      "description": "A small, focused C++ and OpenGL engine for exploring real-time rendering, computer physics, and simulation. It is a living laboratory for the foundations behind interactive worlds.",
+      "description": "A hobby project I used to figure out usage of the PhysX library. Built on glfw and opengl 4.5",
       "technologies": [
         "OpenGL 4.5",
         "PhysX",
@@ -60,10 +60,10 @@
       },
       "language": "C++",
       "repo": "Maploop/EFlame",
-      "accent": "#71e3f2",
+      "accent": "#d4b181",
       "links": [
         {
-          "label": "GitHub",
+          "label": "View source",
           "url": "https://github.com/Maploop/EFlame",
           "icon": "github"
         }

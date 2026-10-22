@@ -14,7 +14,7 @@
   "items": [
     {
       "id": "skyblock",
-      "label": "Featured Project",
+      "label": "Minecraft · Multiplayer systems",
       "title": "SkyBlock Recreation",
       "description": "The best commercial Hypixel SkyBlock Sandbox / Recreation currently available. Contains Gemstones, 70% of Hypixels Items, Dwarven Mines, Guilds, Auction House, NPC shops, Quests, Islands, Bazaar and just about everything else!",
       "technologies": [
@@ -33,12 +33,12 @@
       "accent": "#c09cff",
       "links": [
         {
-          "label": "GitHub",
+          "label": "View source",
           "url": "https://github.com/Swofty-Developments/HypixelSkyBlock",
           "icon": "github"
         },
         {
-          "label": "External link",
+          "label": "Join the community",
           "url": "https://discord.gg/mJDvBEkqpg",
           "icon": "external"
         }
@@ -46,7 +46,7 @@
     },
     {
       "id": "eflame",
-      "label": "Featured Project",
+      "label": "Graphics · Game engine",
       "title": "EFlame Engine",
       "description": "A simple yet scalable game engine using OpenGL which I am developping foundational framework, with the primary goal of using it to practice and experiment with various concepts in computer physics and real-time simulations.",
       "technologies": [
@@ -61,10 +61,10 @@
       },
       "language": "C++",
       "repo": "Maploop/EFlame",
-      "accent": "#71e3f2",
+      "accent": "#d4b181",
       "links": [
         {
-          "label": "GitHub",
+          "label": "View source",
           "url": "https://github.com/Maploop/EFlame",
           "icon": "github"
         }

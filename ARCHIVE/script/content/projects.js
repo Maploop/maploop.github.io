@@ -9,20 +9,30 @@ export function renderProjects(data) {
     heading('projects', data.heading);
     text('projects-section-slug', `${data.labels.summary} · ${countLabel(data.items.length, data.labels)}`);
     document.getElementById('featured-projects').innerHTML = data.items.map((project, index) => `
-        <div id="project-${project.id}" class="project project-lead${index % 2 === 0 ? ' is-flipped' : ''}"
-            data-entrance="${index % 2 === 0 ? 'left' : 'right'}" style="--project-accent: ${project.accent || '#c09cff'}">
-            <div class="project-content">
-                <div class="project-image"><img src="${safeURL(project.image.src)}" alt="${esc(project.image.alt)}" loading="lazy"></div>
-                <span class="project-index">${number(index + 1)} — ${esc(data.labels.featured)}</span>
-                <div class="project-info">
-                    <div class="project-label">${esc(project.label)}</div>
-                    <h3 class="project-title">${esc(project.title)}</h3>
-                    <span class="project-language">${esc(project.language)}</span>
-                    <div class="project-description">${esc(project.description)}</div>
-                    ${project.repo ? `<div class="project-metrics" data-repo-stats="${esc(project.repo)}" data-stat-fallback="hide" data-stat-slug="true"></div>` : ''}
-                    <div class="project-tech">${chips(project.technologies)}</div>
-                    <div class="project-links">${project.links.map(link => `<a href="${safeURL(link.url)}" class="project-link" target="_blank" rel="noopener noreferrer" title="${esc(link.label)}" aria-label="${esc(link.label)}">${icons[link.icon || 'external']}</a>`).join('')}</div>
+        <article id="project-${project.id}" class="feature-showcase project-lead"
+            aria-labelledby="project-${project.id}-title" data-entrance="rise"
+            style="--project-accent: ${project.accent || '#c09cff'}">
+            <header class="feature-heading">
+                <span class="feature-number" aria-hidden="true">${number(index + 1)}</span>
+                <span class="feature-category">${esc(project.label)}</span>
+                <span class="feature-edition">${esc(data.labels.featured)} <span aria-hidden="true">↗</span></span>
+            </header>
+            <div class="feature-body">
+                <div class="feature-copy">
+                    <h3 id="project-${project.id}-title" class="feature-title">${esc(project.title)}</h3>
+                    <p class="feature-description">${esc(project.description)}</p>
+                    ${project.facts?.length ? `<dl class="feature-facts">${project.facts.map(fact => `<div><dt>${esc(fact.label)}</dt><dd>${esc(fact.value)}</dd></div>`).join('')}</dl>` : ''}
+                    <div class="feature-links">${project.links.map(link => `<a href="${safeURL(link.url)}" class="feature-link" target="_blank" rel="noopener noreferrer">${icons[link.icon || 'external']}<span>${esc(link.label)}</span><span class="feature-link-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>
                 </div>
+                <figure class="feature-visual">
+                    <div class="feature-image-frame">
+                        <img src="${safeURL(project.image.src)}" alt="${esc(project.image.alt)}" loading="lazy">
+                    </div>
+                </figure>
             </div>
-        </div>`).join('') || `<p class="cards-loading">${esc(data.labels.empty)}</p>`;
+            <footer class="feature-footer">
+                <div class="feature-technologies">${chips(project.technologies)}</div>
+                ${project.repo ? `<div class="feature-metrics" data-repo-stats="${esc(project.repo)}" data-stat-fallback="hide" data-stat-compact="true"></div>` : ''}
+            </footer>
+        </article>`).join('') || `<p class="cards-loading">${esc(data.labels.empty)}</p>`;
 }
